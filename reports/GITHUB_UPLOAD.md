@@ -1,10 +1,15 @@
 # D00RSH — public GitHub preparation, 2026-09-13
 
 Project: D00RSH. Author: Koło Naukowe BAZA — ZT, PN, MK, JT, KK.
-Public repository created at https://github.com/opelkus/D00RSH. The local
-pre-publication source commit is 60e40e9e213899b3100321591388d3e2c844380e.
-At this report snapshot the first push and remote CI are still pending. No
-payment or production submission has been performed.
+Publication target selected by the user:
+https://github.com/magnetoField/ieee-sep-2026-1st-ihp. The target is public,
+the authenticated account has WRITE permission, and its existing `main`
+history through dde98d17fe0eef79c5d05db6fbf471b7aeebed0e is merged without a
+force-push. The D00RSH project tree remains authoritative over the placeholder
+template. The earlier empty https://github.com/opelkus/D00RSH repository was
+created on the previous instruction but is not used as the publication target.
+At this report snapshot the first target push and remote CI are still pending.
+No payment or production submission has been performed.
 
 ## Prepared
 

@@ -235,3 +235,13 @@ commands used by this project. The public regression selects OSS CAD Suite
 release 2026-09-12 and pins the setup action to commit
 853bb54f52246aa8fb4fab963f104cfb6676197a. This is additional CI; the official
 IHP26b GDS, precheck, gate-level and viewer jobs remain the submission path.
+
+## D-023 — publish into the assigned holder repository without force-push
+
+The user redirected publication from the newly created empty opelkus/D00RSH
+repository to magnetoField/ieee-sep-2026-1st-ihp. The target already contains
+four placeholder/template commits and the authenticated account has WRITE
+permission. Merge the unrelated histories and keep the verified D00RSH tree as
+the result, instead of force-pushing or rewriting the owner's history. The
+remote placeholder commit dde98d17fe0eef79c5d05db6fbf471b7aeebed0e remains an
+ancestor of the publication commit. Do not submit, order or pay for tapeout.

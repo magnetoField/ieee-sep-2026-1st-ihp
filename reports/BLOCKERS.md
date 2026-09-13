@@ -81,7 +81,9 @@ presentation qualification, not a new blocker for the previously verified ASIC.
 
 Submission author B-007 is resolved by user: Koło Naukowe BAZA — ZT PN MK JT KK.
 Project name is D00RSH. Official metadata parser PASS. Local preparation and
-extracted-source tests PASS. Public repository opelkus/D00RSH and local source
-commit 60e40e9e213899b3100321591388d3e2c844380e exist; first push and actual
-remote CI remain. Remote CI is NOT_RUN, not PASS. Shuttle availability must be
-confirmed in Tiny Tapeout before submission. See GITHUB_UPLOAD.md.
+extracted-source tests PASS. The user redirected publication to public target
+magnetoField/ieee-sep-2026-1st-ihp; WRITE permission is confirmed. Its existing
+main history through dde98d17fe0eef79c5d05db6fbf471b7aeebed0e is integrated
+without force-push. First target push and actual remote CI remain. Remote CI is
+NOT_RUN, not PASS. Shuttle availability must be confirmed in Tiny Tapeout before
+submission. See GITHUB_UPLOAD.md.

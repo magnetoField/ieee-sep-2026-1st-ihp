@@ -352,12 +352,14 @@ remote-GL Makefile integration and signoff review, not another area sweep.
 ## P7–P8 — D00RSH public repository preparation (2026-09-13)
 
 User supplied product D00RSH, Koło Naukowe BAZA and initials ZT PN MK JT KK.
-Public repository https://github.com/opelkus/D00RSH was created after explicit
-authorization. Metadata and public documentation updated, IHP GDS flow
-preserved/pinned, wiki CI artifact and RTL log upload added. Transport
-archive/inventory/SHA-256 generated; local pre-publication source commit is
-60e40e9e213899b3100321591388d3e2c844380e. First push remains pending at this
-report snapshot.
+After initially requesting creation of opelkus/D00RSH, the user redirected the
+push to https://github.com/magnetoField/ieee-sep-2026-1st-ihp. The target is
+public and authenticated permission is WRITE. Its four-commit `main` history,
+ending at dde98d17fe0eef79c5d05db6fbf471b7aeebed0e, was fetched and merged with
+the D00RSH project commit without rewriting remote history. Metadata and public
+documentation are updated, the IHP GDS flow is preserved/pinned, and wiki CI
+artifact plus RTL log upload are present. First target push remains pending at
+this report snapshot.
 Original manifest retained; packaging/documentation hashes updated after
 confirming zero changes to RTL, physical config and verified artifacts.
 

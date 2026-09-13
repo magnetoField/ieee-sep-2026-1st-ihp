@@ -98,10 +98,12 @@ metrics and required regression evidence; it does not submit anything.
 
 ## GitHub publication update (2026-09-13)
 
-The public repository https://github.com/opelkus/D00RSH was created after
-explicit user authorization. The pre-publication content commit is
-60e40e9e213899b3100321591388d3e2c844380e; the published branch head is the
-commit containing this update. Remote CI remains NOT_RUN until the first push.
-This publication step does not perform a Tiny Tapeout import, production
-submission, order or payment and does not change the verification statuses
-above.
+The user selected public repository
+https://github.com/magnetoField/ieee-sep-2026-1st-ihp as the publication target.
+Authenticated WRITE permission is confirmed. Its existing `main` history
+through dde98d17fe0eef79c5d05db6fbf471b7aeebed0e is merged without force-push;
+the published branch head is the merge commit containing this update. Remote
+CI remains NOT_RUN until the first push. The earlier empty opelkus/D00RSH repo
+is not the publication target. This step does not perform a Tiny Tapeout import,
+production submission, order or payment and does not change the verification
+statuses above.
