@@ -1,0 +1,26 @@
+.venv/
+.tools/
+/tt/
+.build/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.vcd
+*.fst
+sim_build/
+runs/
+test/gate_level_netlist.v
+test/results.xml
+
+# Local previews, dependencies and public-upload bundles
+wiki/site/
+wiki/archive/
+.upload/
+node_modules/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.DS_Store
+Thumbs.db

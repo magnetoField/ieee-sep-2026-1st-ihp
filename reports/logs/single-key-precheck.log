@@ -1,0 +1,92 @@
+INFO: PDK_ROOT: /mnt/c/Users/user/Desktop/HACKATHON/.tools/IHP-Open-PDK-partial
+INFO: Tech: ihp-sg13g2
+INFO: using def template ../tech/ihp-sg13g2/def/tt_block_1x1_pgvdd.def
+INFO: Running klayout pin_label_purposes_overlapping_drawing on /mnt/c/Users/user/Desktop/HACKATHON/artifacts/single_key/tt_um_rumcajs.gds
+Running pin_label_purposes_overlapping_drawing.rb.drc on file=/mnt/c/Users/user/Desktop/HACKATHON/artifacts/single_key/tt_um_rumcajs.gds, topcell=, output to /mnt/c/Users/user/Desktop/HACKATHON/tt/precheck/reports/drc_pin_label_purposes_overlapping_drawing.xml
+  deep:true tiled:false threads:16
+--- #err|description, table for cell: 
+NO-Check ----        pwell:64/44/EMP   122/16/EMP    64/59/EMP    44/16/EMP     44/5/EMP
+         ----        nwell:64/20/EMP    64/16/EMP     64/5/EMP
+         ----         diff:65/20/EMP    65/16/EMP     65/6/EMP
+         ----          tap:65/44/EMP    65/48/EMP     65/5/EMP
+         ----         poly:66/20/EMP    66/16/EMP     66/5/EMP
+         ----       licon1:66/44/EMP    66/58/EMP
+         ----          li1:67/20/EMP    67/16/EMP     67/5/EMP
+         ----         mcon:67/44/EMP    67/48/EMP
+         ----         met1:68/20/EMP    68/16/EMP     68/5/EMP
+         ----          via:68/44/EMP    68/58/EMP
+         ----         met2:69/20/EMP    69/16/EMP     69/5/EMP
+         ----         via2:69/44/EMP    69/58/EMP
+         ----         met3:70/20/EMP    70/16/EMP     70/5/EMP
+         ----         via3:70/44/EMP    70/48/EMP
+         ----         met4:71/20/EMP    71/16/EMP     71/5/EMP
+         ----         via4:71/44/EMP    71/48/EMP
+         ----         met5:72/20/EMP    72/16/EMP     72/5/EMP
+         ----          pad:76/20/EMP     76/5/EMP    76/16/EMP
+         ----          pnp:82/44/EMP    82/59/EMP
+         ----          npn:82/20/EMP     82/5/EMP
+         ----          rdl:74/20/EMP    74/16/EMP     74/5/EMP
+         ----     inductor:82/24/EMP    82/25/EMP
+       0 total error(s) among 0 error type(s), 33 checks, cell: 
+Writing report...
+VmPeak:	 1009708 kB
+VmHWM:	  427172 kB
+INFO: Running klayout sg13g2 on /mnt/c/Users/user/Desktop/HACKATHON/artifacts/single_key/tt_um_rumcajs.gds
+ERROR: Unable to open file: /mnt/c/Users/user/Desktop/HACKATHON/.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.tech/klayout/tech/drc//ihp-sg13g2.drc (errno=2)
+INFO: Running klayout zero_area on /mnt/c/Users/user/Desktop/HACKATHON/artifacts/single_key/tt_um_rumcajs.gds
+0 zero-area shapes
+0 zero-length paths,  0 zero-length paths deleted.
+0 total zero-area objects,  0 total objects deleted.
+VmPeak:	 1015376 kB
+VmHWM:	  432740 kB
+INFO: Running top macro name check...
+INFO: Running forbidden layer check...
+INFO: * Checking TopMetal2.drawing
+INFO: * Checking TopMetal2.pin
+INFO: * Checking TopMetal2.label
+INFO: Running prBoundary check...
+INFO: Running pin check...
+INFO: * gds: /mnt/c/Users/user/Desktop/HACKATHON/artifacts/single_key/tt_um_rumcajs.gds
+INFO: * lef: /mnt/c/Users/user/Desktop/HACKATHON/artifacts/single_key/tt_um_rumcajs.lef
+INFO: * template_def: ../tech/ihp-sg13g2/def/tt_block_1x1_pgvdd.def
+INFO: * toplevel: tt_um_rumcajs
+INFO: * uses_vapwr: False
+INFO: Running Verilog syntax check on /mnt/c/Users/user/Desktop/HACKATHON/artifacts/single_key/tt_um_rumcajs.v
+Preparing to run yowasp-yosys. This might take a while...
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.63 (git sha1 70a11c6bf, ccache clang++ 18.1.3 -O3 -flto -flto) [yowasp/yosys at release-0.63]
+
+-- Running command `read_verilog -sv "/mnt/c/Users/user/Desktop/HACKATHON/artifacts/single_key/tt_um_rumcajs.v"' --
+
+1. Executing Verilog-2005 frontend: /mnt/c/Users/user/Desktop/HACKATHON/artifacts/single_key/tt_um_rumcajs.v
+Parsing SystemVerilog input from `/mnt/c/Users/user/Desktop/HACKATHON/artifacts/single_key/tt_um_rumcajs.v' to AST representation.
+Generating RTLIL representation for module `\tt_um_rumcajs'.
+Successfully finished Verilog frontend.
+
+End of script. Logfile hash: 5aedbc676c, CPU: user 0.26s system 0.00s
+Yosys 0.63 (git sha1 70a11c6bf, ccache clang++ 18.1.3 -O3 -flto -flto) [yowasp/yosys at release-0.63]
+Time spent: 99% 2x read_verilog (0 sec), 0% 0x id_gc (0 sec)
+ERROR: Precheck failed for /mnt/c/Users/user/Desktop/HACKATHON/artifacts/single_key/tt_um_rumcajs.gds! 😭
+ERROR: See /mnt/c/Users/user/Desktop/HACKATHON/tt/precheck/reports for more details
+ERROR: Markdown report:
+# Tiny Tapeout Precheck Results
+
+| Check | Result |
+|-----------|--------|
+| KLayout pin label overlapping drawing | ✅ |
+| KLayout SG13G2 DRC | ❌ Fail: Klayout sg13g2 failed |
+| KLayout zero area | ✅ |
+| KLayout Checks | ✅ |
+| Pin check | ✅ |
+| Boundary check | ✅ |
+| Layer check | ✅ |
+| Cell name check | ✅ |
+| Analog pin check | ✅ |
+| Verilog syntax check | ✅ |
+
+In case of failure, please reach out on [discord](https://tinytapeout.com/discord) for assistance.

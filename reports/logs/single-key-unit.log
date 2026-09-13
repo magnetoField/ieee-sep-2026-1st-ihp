@@ -1,0 +1,124 @@
+== unit:sync2 ==
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_sync2 -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_sync2.vvp src/sync2.v test/unit/tb_sync2.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_sync2.vvp
+PASS tb_sync2 WIDTH=1,4
+test/unit/tb_sync2.sv:21: $finish called at 27000 (1ps)
+== unit:reset_release ==
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_reset_release -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_reset_release.vvp src/reset_release.v test/unit/tb_reset_release.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_reset_release.vvp
+PASS tb_reset_release stopped-clock assertion and 2-edge release
+test/unit/tb_reset_release.sv:16: $finish called at 39000 (1ps)
+== unit:timebase ==
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_timebase -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_timebase.vvp src/timebase.v test/unit/tb_timebase.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_timebase.vvp
+PASS tb_timebase DIV=16, ms ratio=4, reset phase
+test/unit/tb_timebase.sv:29: $finish called at 817000 (1ps)
+== unit:timebase_params ==
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_timebase_params -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_timebase_params.vvp src/timebase.v test/unit/tb_timebase_params.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_timebase_params.vvp
+PASS tb_timebase_params valid dividers and default 1MHz/4kHz
+test/unit/tb_timebase_params.sv:28: $finish called at 10018000 (1ps)
+== unit:regs ==
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_regs -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_regs.vvp src/regs.v test/unit/tb_regs.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_regs.vvp
+PASS tb_regs mapping, atomic attempts, resets, BAD rejection, ready-valid
+test/unit/tb_regs.sv:62: $finish called at 611000 (1ps)
+== unit:regs_matrix ==
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_regs_matrix -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_regs_matrix.vvp src/regs.v test/unit/tb_regs_matrix.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_regs_matrix.vvp
+PASS tb_regs_matrix all key IDs/PIN positions/star/context/gating
+test/unit/tb_regs_matrix.sv:89: $finish called at 1650000 (1ps)
+== unit:buzzer ==
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_buzzer -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_buzzer.vvp src/buzzer.v test/unit/tb_buzzer.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_buzzer.vvp
+PASS tb_buzzer active/passive timing and busy trigger policy
+test/unit/tb_buzzer.sv:26: $finish called at 161000 (1ps)
+== unit:buzzer_params ==
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_buzzer_params -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_buzzer_params.vvp src/buzzer.v test/unit/tb_buzzer_params.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_buzzer_params.vvp
+PASS tb_buzzer_params BEEP=1 and passive HALF_TICKS=1,2,3
+test/unit/tb_buzzer_params.sv:33: $finish called at 111000 (1ps)
+== unit:buzzer_symmetry ==
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_buzzer_symmetry -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_buzzer_symmetry.vvp src/regs.v src/buzzer.v test/unit/tb_buzzer_symmetry.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_buzzer_symmetry.vvp
+PASS tb_buzzer_symmetry GOOD/BAD PINs have identical audible control trace
+test/unit/tb_buzzer_symmetry.sv:38: $finish called at 280000 (1ps)
+== unit:kb ==
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_kb -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_kb.vvp src/sync2.v src/kb.v test/unit/tb_kb.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_kb.vvp
+PASS tb_kb release emission, poison, no autorepeat, ready-valid, row safety
+test/unit/tb_kb.sv:77: $finish called at 6290000 (1ps)
+== unit:kb_edges ==
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_kb_edges -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_kb_edges.vvp src/sync2.v src/kb.v test/unit/tb_kb_edges.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_kb_edges.vvp
+PASS tb_kb_edges debounce, 16 keys, 120 pairs, 180 rectangle masks, poison/reset/pending
+test/unit/tb_kb_edges.sv:111: $finish called at 730690000 (1ps)
+== unit:serial_link ==
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_serial_link -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_serial_link.vvp src/sync2.v src/serial_link.v test/unit/tb_serial_link.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_serial_link.vvp
+PASS tb_serial_link RX/TX64, fresh CS, holds, backpressure, overrun, framing
+test/unit/tb_serial_link.sv:100: $finish called at 108255000 (1ps)
+== unit:serial_lengths ==
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_serial_lengths -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_serial_lengths.vvp src/sync2.v src/serial_link.v test/unit/tb_serial_lengths.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_serial_lengths.vvp
+PASS tb_serial_lengths RX 0/1/63/64/65/127/128, TX framing, min timing/phases
+test/unit/tb_serial_lengths.sv:99: $finish called at 391976000 (1ps)
+== unit:auth_ctrl ==
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_auth_ctrl -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_auth_ctrl.vvp src/auth_ctrl.v test/unit/tb_auth_ctrl.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_auth_ctrl.vvp
+PASS tb_auth_ctrl token, handshakes, absolute timeout, errors
+test/unit/tb_auth_ctrl.sv:74: $finish called at 460000 (1ps)
+== unit:auth_states ==
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_auth_states -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_auth_states.vvp src/auth_ctrl.v test/unit/tb_auth_states.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_auth_states.vvp
+PASS tb_auth_states errors/reset in states 1..9 and timeout completion priority
+test/unit/tb_auth_states.sv:96: $finish called at 2230000 (1ps)
+== unit:szymon ==
++ /usr/bin/python3 scripts/gen_simon_vectors.py /mnt/c/Users/user/Desktop/HACKATHON/.build/simon_vectors.mem --count 1024 --seed 0x52554d43
+generated 1024 SIMON vectors: directed=388 random=636 seed=0x52554d43
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_szymon -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon.vvp src/szymon.v test/unit/tb_szymon.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon.vvp +VECTORS=/mnt/c/Users/user/Desktop/HACKATHON/.build/simon_vectors.mem +COUNT=1024
+PASS tb_szymon: KAT + 1024 seeded vectors, exact latency, backpressure, abort
+== unit:szymon_trace_abort ==
++ /usr/bin/python3 scripts/gen_simon_trace.py /mnt/c/Users/user/Desktop/HACKATHON/.build/simon_trace.mem
+generated 44-round KAT trace ciphertext=44c8fc20b9dfa07a
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_szymon_trace_abort -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_trace_abort.vvp src/szymon.v test/unit/tb_szymon_trace_abort.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_trace_abort.vvp +TRACE=/mnt/c/Users/user/Desktop/HACKATHON/.build/simon_trace.mem
+PASS tb_szymon_trace_abort all 44 round states and cancel in every phase/round
+test/unit/tb_szymon_trace_abort.sv:94: $finish called at 398465000 (1ps)
+== unit:szymon_fixed ==
++ /usr/bin/python3 scripts/gen_fixed_round_keys.py /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_0.mem 0x1b1a1918131211100b0a090803020100 0x1b1a1918131211100b0a090803020100
+generated 44 fixed-key pairs: /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_0.mem
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_szymon_fixed -Ptb_szymon_fixed.TEST_KEY=128'h1b1a1918131211100b0a090803020100 -Ptb_szymon_fixed.EXPECT=64'h44c8fc20b9dfa07a -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_0.vvp src/szymon_fixed.v test/unit/tb_szymon_fixed.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_0.vvp +ROUND_KEYS=/mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_0.mem
+PASS tb_szymon_fixed: single-key KAT + 64-cycle wipe, 9344 cycles, key bits, data hold, 28 abort phases, rearm
++ /usr/bin/python3 scripts/gen_fixed_round_keys.py /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_1.mem 0x0 0x0
+generated 44 fixed-key pairs: /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_1.mem
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_szymon_fixed -Ptb_szymon_fixed.TEST_KEY=128'h00000000000000000000000000000000 -Ptb_szymon_fixed.EXPECT=64'h2add22b74aaedac1 -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_1.vvp src/szymon_fixed.v test/unit/tb_szymon_fixed.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_1.vvp +ROUND_KEYS=/mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_1.mem
+PASS tb_szymon_fixed: single-key KAT + 64-cycle wipe, 9344 cycles, key bits, data hold, 28 abort phases, rearm
++ /usr/bin/python3 scripts/gen_fixed_round_keys.py /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_2.mem 0xffffffffffffffffffffffffffffffff 0xffffffffffffffffffffffffffffffff
+generated 44 fixed-key pairs: /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_2.mem
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_szymon_fixed -Ptb_szymon_fixed.TEST_KEY=128'hffffffffffffffffffffffffffffffff -Ptb_szymon_fixed.EXPECT=64'h0c60d513bb08041d -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_2.vvp src/szymon_fixed.v test/unit/tb_szymon_fixed.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_2.vvp +ROUND_KEYS=/mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_2.mem
+PASS tb_szymon_fixed: single-key KAT + 64-cycle wipe, 9344 cycles, key bits, data hold, 28 abort phases, rearm
++ /usr/bin/python3 scripts/gen_fixed_round_keys.py /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_3.mem 0x24d322e8325b1c77900285da2d71002d 0x24d322e8325b1c77900285da2d71002d
+generated 44 fixed-key pairs: /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_3.mem
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_szymon_fixed -Ptb_szymon_fixed.TEST_KEY=128'h24d322e8325b1c77900285da2d71002d -Ptb_szymon_fixed.EXPECT=64'h1cb6abd601ad7eb4 -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_3.vvp src/szymon_fixed.v test/unit/tb_szymon_fixed.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_3.vvp +ROUND_KEYS=/mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_3.mem
+PASS tb_szymon_fixed: single-key KAT + 64-cycle wipe, 9344 cycles, key bits, data hold, 28 abort phases, rearm
++ /usr/bin/python3 scripts/gen_fixed_round_keys.py /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_4.mem 0xa6d02f4e7e4417620311d65b620607e 0xa6d02f4e7e4417620311d65b620607e
+generated 44 fixed-key pairs: /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_4.mem
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_szymon_fixed -Ptb_szymon_fixed.TEST_KEY=128'h0a6d02f4e7e4417620311d65b620607e -Ptb_szymon_fixed.EXPECT=64'h8aa5210613f61e58 -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_4.vvp src/szymon_fixed.v test/unit/tb_szymon_fixed.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_4.vvp +ROUND_KEYS=/mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_4.mem
+PASS tb_szymon_fixed: single-key KAT + 64-cycle wipe, 9344 cycles, key bits, data hold, 28 abort phases, rearm
++ /usr/bin/python3 scripts/gen_fixed_round_keys.py /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_5.mem 0x3d35924af7e10d4b6cd96d0d494b3796 0x3d35924af7e10d4b6cd96d0d494b3796
+generated 44 fixed-key pairs: /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_5.mem
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_szymon_fixed -Ptb_szymon_fixed.TEST_KEY=128'h3d35924af7e10d4b6cd96d0d494b3796 -Ptb_szymon_fixed.EXPECT=64'h5cddf336078d145f -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_5.vvp src/szymon_fixed.v test/unit/tb_szymon_fixed.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_5.vvp +ROUND_KEYS=/mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_5.mem
+PASS tb_szymon_fixed: single-key KAT + 64-cycle wipe, 9344 cycles, key bits, data hold, 28 abort phases, rearm
++ /usr/bin/python3 scripts/gen_fixed_round_keys.py /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_6.mem 0xdf4b84b744f6a8ec8ac03351acb52059 0xdf4b84b744f6a8ec8ac03351acb52059
+generated 44 fixed-key pairs: /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_6.mem
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_szymon_fixed -Ptb_szymon_fixed.TEST_KEY=128'hdf4b84b744f6a8ec8ac03351acb52059 -Ptb_szymon_fixed.EXPECT=64'h23d70d46d050eb32 -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_6.vvp src/szymon_fixed.v test/unit/tb_szymon_fixed.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_6.vvp +ROUND_KEYS=/mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_6.mem
+PASS tb_szymon_fixed: single-key KAT + 64-cycle wipe, 9344 cycles, key bits, data hold, 28 abort phases, rearm

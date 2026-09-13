@@ -1,0 +1,8 @@
+DRC: batch mode
+Active cell: tt_um_rumcajs
+ERROR: In /mnt/c/Users/user/Desktop/HACKATHON/.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.tech/klayout/tech/drc/sg13g2_maximal.lydrc: wrong number of arguments (given 2, expected 0..1)
+ERROR: ArgumentError: wrong number of arguments (given 2, expected 0..1) in Executable::execute
+  /mnt/c/Users/user/Desktop/HACKATHON/.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.tech/klayout/tech/drc/sg13g2_maximal.lydrc:639:in `ext_enclosed'
+  /mnt/c/Users/user/Desktop/HACKATHON/.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.tech/klayout/tech/drc/sg13g2_maximal.lydrc:1773:in `execute'
+  :/built-in-macros/drc_interpreters.lym:31:in `instance_eval'
+  :/built-in-macros/drc_interpreters.lym:31:in `execute'

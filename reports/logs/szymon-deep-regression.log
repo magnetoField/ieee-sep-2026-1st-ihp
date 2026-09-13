@@ -1,0 +1,44 @@
+- V e r i l a t i o n   R e p o r t: Verilator 5.032 2025-01-01 rev (Debian 5.032-1)
+- Verilator: Built from 0.575 MB sources in 21 modules, into 0.152 MB in 5 C++ files needing 0.000 MB
+- Verilator: Walltime 0.122 s (elab=0.014, cvt=0.021, bld=0.000); cpu 0.042 s on 1 threads; alloced 10.430 MB
+== unit:szymon_fixed ==
++ /usr/bin/python3 scripts/gen_fixed_round_keys.py /mnt/c/Users/user/Desktop/HACKATHON/.build/fixed_round_keys_default.mem 0x1b1a1918131211100b0a090803020100 0xf0e1d2c3b4a5968778695a4b3c2d1e0f
+generated 44 fixed-key pairs: /mnt/c/Users/user/Desktop/HACKATHON/.build/fixed_round_keys_default.mem
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_szymon_fixed -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_fixed_default.vvp src/szymon_fixed.v test/unit/tb_szymon_fixed.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_fixed_default.vvp +ROUND_KEYS=/mnt/c/Users/user/Desktop/HACKATHON/.build/fixed_round_keys_default.mem
+PASS tb_szymon_fixed: GOOD/BAD KAT, exact latency, framing, abort
++ /usr/bin/python3 scripts/gen_fixed_round_keys.py /mnt/c/Users/user/Desktop/HACKATHON/.build/fixed_round_keys_alternate.mem 0x00000000000000000000000000000000 0xffffffffffffffffffffffffffffffff
+generated 44 fixed-key pairs: /mnt/c/Users/user/Desktop/HACKATHON/.build/fixed_round_keys_alternate.mem
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_szymon_fixed -Ptb_szymon_fixed.TEST_KEY_GOOD=128'h00000000000000000000000000000000 -Ptb_szymon_fixed.TEST_KEY_BAD=128'hffffffffffffffffffffffffffffffff -Ptb_szymon_fixed.EXPECT_GOOD=64'h2add22b74aaedac1 -Ptb_szymon_fixed.EXPECT_BAD=64'h0c60d513bb08041d -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_fixed_alternate.vvp src/szymon_fixed.v test/unit/tb_szymon_fixed.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_fixed_alternate.vvp +ROUND_KEYS=/mnt/c/Users/user/Desktop/HACKATHON/.build/fixed_round_keys_alternate.mem
+PASS tb_szymon_fixed: GOOD/BAD KAT, exact latency, framing, abort
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_rumcajs -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_rumcajs.vvp src/sync2.v src/reset_release.v src/timebase.v src/kb.v src/regs.v src/szymon.v src/szymon_fixed.v src/serial_link.v src/auth_ctrl.v src/buzzer.v src/rumcajs.v test/integration/tb_rumcajs.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_rumcajs.vvp
+PASS tb_rumcajs 5 E2E sessions: GOOD/BAD/terminal lock/reset/ena
+test/integration/tb_rumcajs.sv:107: $finish called at 939335000 (1ps)
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_tt_um_rumcajs -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_tt_um_rumcajs.vvp src/sync2.v src/reset_release.v src/timebase.v src/kb.v src/regs.v src/szymon.v src/szymon_fixed.v src/serial_link.v src/auth_ctrl.v src/buzzer.v src/rumcajs.v src/project.v test/integration/tb_tt_um_rumcajs.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_tt_um_rumcajs.vvp
+PASS tb_tt_um_rumcajs default timing GOOD/BAD and complete pin mapping
+test/integration/tb_tt_um_rumcajs.sv:73: $finish called at 1290412000 (1ps)
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_fault_sessions -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_fault_sessions.vvp src/sync2.v src/reset_release.v src/timebase.v src/kb.v src/regs.v src/szymon.v src/szymon_fixed.v src/serial_link.v src/auth_ctrl.v src/buzzer.v src/rumcajs.v test/integration/tb_fault_sessions.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_fault_sessions.vvp
+FATAL: test/integration/tb_fault_sessions.sv:61: response wrong 3000000000000000
+       Time: 453895000  Scope: tb_fault_sessions.complete_exchange
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from scripts.run_unit import run_integration,run_wrapper,run_fault_sessions,run_random_sessions; run_integration(); run_wrapper(); run_fault_sessions(); run_random_sessions()
+                                                                                                                                       ~~~~~~~~~~~~~~~~~~^^
+  File "/mnt/c/Users/user/Desktop/HACKATHON/scripts/run_unit.py", line 179, in run_fault_sessions
+    run_simple("fault_sessions", sources)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/user/Desktop/HACKATHON/scripts/run_unit.py", line 84, in run_simple
+    run([str(LOCAL_TOOL), "vvp", str(output)])
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/user/Desktop/HACKATHON/scripts/run_unit.py", line 20, in run
+    subprocess.run(command, cwd=ROOT, check=True)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/subprocess.py", line 578, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['/mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh', 'vvp', '/mnt/c/Users/user/Desktop/HACKATHON/.build/tb_fault_sessions.vvp']' returned non-zero exit status 1.
+make: *** [Makefile:23: test-integration] Error 1

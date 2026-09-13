@@ -1,0 +1,34 @@
+site_name: D00RSH Wiki
+site_description: Dokumentacja użytkowa układu D00RSH
+docs_dir: manual
+site_dir: site
+use_directory_urls: false
+theme:
+  name: readthedocs
+  locale: pl
+  highlightjs: false
+  navigation_depth: 3
+plugins:
+  - search:
+      lang: [en]
+markdown_extensions:
+  - admonition
+  - attr_list
+  - toc:
+      permalink: true
+extra_css:
+  - assets/wiki.css
+nav:
+  - Strona główna: index.md
+  - Manual użytkownika:
+      - Pierwsze uruchomienie: uruchomienie.md
+      - Podłączenie i pinout: pinout.md
+      - Klawiatura i PIN: klawiatura.md
+  - Dokumentacja interfejsu:
+      - Protokół SHIFT64: protokol.md
+      - Czasy i reset: czasy.md
+      - Schemat blokowy: schemat.md
+  - Informacje o układzie:
+      - Layout i parametry: layout.md
+      - Bezpieczeństwo: bezpieczenstwo.md
+      - Rozwiązywanie problemów: diagnostyka.md

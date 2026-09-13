@@ -1,0 +1,1018 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+
+-- Running command `read_liberty -lib -ignore_miss_func ".tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib"; read_verilog src/*.v; hierarchy -check -top kb; synth -top kb -flatten -noabc; dfflibmap -liberty ".tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib"; abc -liberty ".tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib"; clean; stat -liberty ".tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib"; check' --
+
+1. Executing Liberty frontend: .tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib
+Imported 84 cell types from liberty file.
+
+2. Executing Verilog-2005 frontend: src/auth_ctrl.v
+Parsing Verilog input from `src/auth_ctrl.v' to AST representation.
+Generating RTLIL representation for module `\auth_ctrl'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: src/buzzer.v
+Parsing Verilog input from `src/buzzer.v' to AST representation.
+Generating RTLIL representation for module `\buzzer'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: src/kb.v
+Parsing Verilog input from `src/kb.v' to AST representation.
+Generating RTLIL representation for module `\kb'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: src/project.v
+Parsing Verilog input from `src/project.v' to AST representation.
+Generating RTLIL representation for module `\tt_um_rumcajs'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: src/regs.v
+Parsing Verilog input from `src/regs.v' to AST representation.
+Generating RTLIL representation for module `\regs'.
+Successfully finished Verilog frontend.
+
+7. Executing Verilog-2005 frontend: src/reset_release.v
+Parsing Verilog input from `src/reset_release.v' to AST representation.
+Generating RTLIL representation for module `\reset_release'.
+Successfully finished Verilog frontend.
+
+8. Executing Verilog-2005 frontend: src/rumcajs.v
+Parsing Verilog input from `src/rumcajs.v' to AST representation.
+Generating RTLIL representation for module `\rumcajs'.
+Successfully finished Verilog frontend.
+
+9. Executing Verilog-2005 frontend: src/serial_link.v
+Parsing Verilog input from `src/serial_link.v' to AST representation.
+Generating RTLIL representation for module `\serial_link'.
+Successfully finished Verilog frontend.
+
+10. Executing Verilog-2005 frontend: src/sync2.v
+Parsing Verilog input from `src/sync2.v' to AST representation.
+Generating RTLIL representation for module `\sync2'.
+Successfully finished Verilog frontend.
+
+11. Executing Verilog-2005 frontend: src/szymon.v
+Parsing Verilog input from `src/szymon.v' to AST representation.
+Generating RTLIL representation for module `\szymon'.
+Successfully finished Verilog frontend.
+
+12. Executing Verilog-2005 frontend: src/szymon_fixed.v
+Parsing Verilog input from `src/szymon_fixed.v' to AST representation.
+Generating RTLIL representation for module `\szymon_fixed'.
+Successfully finished Verilog frontend.
+
+13. Executing Verilog-2005 frontend: src/timebase.v
+Parsing Verilog input from `src/timebase.v' to AST representation.
+Generating RTLIL representation for module `\timebase'.
+Successfully finished Verilog frontend.
+
+14. Executing HIERARCHY pass (managing design hierarchy).
+
+14.1. Analyzing design hierarchy..
+Top module:  \kb
+Used module:     \sync2
+Parameter \WIDTH = 4
+
+14.2. Executing AST frontend in derive mode using pre-parsed AST for module `\sync2'.
+Parameter \WIDTH = 4
+Generating RTLIL representation for module `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100'.
+
+14.3. Analyzing design hierarchy..
+Top module:  \kb
+Used module:     $paramod\sync2\WIDTH=s32'00000000000000000000000000000100
+
+14.4. Analyzing design hierarchy..
+Top module:  \kb
+Used module:     $paramod\sync2\WIDTH=s32'00000000000000000000000000000100
+Removing unused module `\timebase'.
+Removing unused module `\szymon_fixed'.
+Removing unused module `\szymon'.
+Removing unused module `\sync2'.
+Removing unused module `\serial_link'.
+Removing unused module `\rumcajs'.
+Removing unused module `\reset_release'.
+Removing unused module `\regs'.
+Removing unused module `\tt_um_rumcajs'.
+Removing unused module `\buzzer'.
+Removing unused module `\auth_ctrl'.
+Removed 11 unused modules.
+
+15. Executing SYNTH pass.
+
+15.1. Executing HIERARCHY pass (managing design hierarchy).
+
+15.1.1. Analyzing design hierarchy..
+Top module:  \kb
+Used module:     $paramod\sync2\WIDTH=s32'00000000000000000000000000000100
+
+15.1.2. Analyzing design hierarchy..
+Top module:  \kb
+Used module:     $paramod\sync2\WIDTH=s32'00000000000000000000000000000100
+Removed 0 unused modules.
+
+15.2. Executing PROC pass (convert processes to netlists).
+
+15.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\kb.$proc$src/kb.v:94$84'.
+Cleaned up 1 empty switch.
+
+15.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$src/sync2.v:20$336 in module $paramod\sync2\WIDTH=s32'00000000000000000000000000000100.
+Marked 4 switch rules as full_case in process $proc$src/kb.v:0$131 in module kb.
+Marked 16 switch rules as full_case in process $proc$src/kb.v:94$84 in module kb.
+Removed a total of 0 dead cases.
+
+15.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 2 redundant assignments.
+Promoted 7 assignments to connections.
+
+15.2.4. Executing PROC_INIT pass (extract init attributes).
+
+15.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100.$proc$src/sync2.v:20$336'.
+Found async reset \rst_n in `\kb.$proc$src/kb.v:94$84'.
+
+15.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~25 debug messages>
+
+15.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100.$proc$src/sync2.v:20$336'.
+     1/2: $0\sync_out[3:0]
+     2/2: $0\stage1[3:0]
+Creating decoders for process `\kb.$proc$src/kb.v:0$131'.
+     1/4: $4\first_column$func$src/kb.v:65$77.$result[1:0]$138
+     2/4: $3\first_column$func$src/kb.v:65$77.$result[1:0]$137
+     3/4: $2\first_column$func$src/kb.v:65$77.$result[1:0]$136
+     4/4: $1\first_column$func$src/kb.v:65$77.$result[1:0]$135
+Creating decoders for process `\kb.$proc$src/kb.v:0$121'.
+Creating decoders for process `\kb.$proc$src/kb.v:94$84'.
+     1/14: $0\release_count[4:0]
+     2/14: $0\press_count[4:0]
+     3/14: $0\candidate_id[3:0]
+     4/14: $0\gesture_poisoned[0:0]
+     5/14: $0\gesture_qualified[0:0]
+     6/14: $0\gesture_active[0:0]
+     7/14: $0\armed[0:0]
+     8/14: $0\frame_first_id[3:0]
+     9/14: $0\frame_hits[1:0]
+    10/14: $0\blank_cycle[0:0]
+    11/14: $0\row_index[1:0]
+    12/14: $0\key_id[3:0]
+    13/14: $0\key_valid[0:0]
+    14/14: $0\row_oe[3:0]
+
+15.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\kb.\first_column$func$src/kb.v:65$75.$result' from process `\kb.$proc$src/kb.v:0$131'.
+No latch inferred for signal `\kb.\first_column$func$src/kb.v:65$77.$result' from process `\kb.$proc$src/kb.v:0$131'.
+No latch inferred for signal `\kb.\first_column$func$src/kb.v:65$77.hits' from process `\kb.$proc$src/kb.v:0$131'.
+No latch inferred for signal `\kb.\hit_count$func$src/kb.v:62$74.$result' from process `\kb.$proc$src/kb.v:0$121'.
+No latch inferred for signal `\kb.\hit_count$func$src/kb.v:62$76.$result' from process `\kb.$proc$src/kb.v:0$121'.
+No latch inferred for signal `\kb.\hit_count$func$src/kb.v:62$76.hits' from process `\kb.$proc$src/kb.v:0$121'.
+No latch inferred for signal `\kb.\hit_count$func$src/kb.v:62$76.count' from process `\kb.$proc$src/kb.v:0$121'.
+
+15.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100.\sync_out' using process `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100.$proc$src/sync2.v:20$336'.
+  created $adff cell `$procdff$769' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100.\stage1' using process `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100.$proc$src/sync2.v:20$336'.
+  created $adff cell `$procdff$774' with positive edge clock and positive level reset.
+Creating register for signal `\kb.\row_oe' using process `\kb.$proc$src/kb.v:94$84'.
+  created $adff cell `$procdff$779' with positive edge clock and positive level reset.
+Creating register for signal `\kb.\key_valid' using process `\kb.$proc$src/kb.v:94$84'.
+  created $adff cell `$procdff$784' with positive edge clock and positive level reset.
+Creating register for signal `\kb.\key_id' using process `\kb.$proc$src/kb.v:94$84'.
+  created $adff cell `$procdff$789' with positive edge clock and positive level reset.
+Creating register for signal `\kb.\row_index' using process `\kb.$proc$src/kb.v:94$84'.
+  created $adff cell `$procdff$794' with positive edge clock and positive level reset.
+Creating register for signal `\kb.\blank_cycle' using process `\kb.$proc$src/kb.v:94$84'.
+  created $adff cell `$procdff$799' with positive edge clock and positive level reset.
+Creating register for signal `\kb.\frame_hits' using process `\kb.$proc$src/kb.v:94$84'.
+  created $adff cell `$procdff$804' with positive edge clock and positive level reset.
+Creating register for signal `\kb.\frame_first_id' using process `\kb.$proc$src/kb.v:94$84'.
+  created $adff cell `$procdff$809' with positive edge clock and positive level reset.
+Creating register for signal `\kb.\armed' using process `\kb.$proc$src/kb.v:94$84'.
+  created $adff cell `$procdff$814' with positive edge clock and positive level reset.
+Creating register for signal `\kb.\gesture_active' using process `\kb.$proc$src/kb.v:94$84'.
+  created $adff cell `$procdff$819' with positive edge clock and positive level reset.
+Creating register for signal `\kb.\gesture_qualified' using process `\kb.$proc$src/kb.v:94$84'.
+  created $adff cell `$procdff$824' with positive edge clock and positive level reset.
+Creating register for signal `\kb.\gesture_poisoned' using process `\kb.$proc$src/kb.v:94$84'.
+  created $adff cell `$procdff$829' with positive edge clock and positive level reset.
+Creating register for signal `\kb.\candidate_id' using process `\kb.$proc$src/kb.v:94$84'.
+  created $adff cell `$procdff$834' with positive edge clock and positive level reset.
+Creating register for signal `\kb.\press_count' using process `\kb.$proc$src/kb.v:94$84'.
+  created $adff cell `$procdff$839' with positive edge clock and positive level reset.
+Creating register for signal `\kb.\release_count' using process `\kb.$proc$src/kb.v:94$84'.
+  created $adff cell `$procdff$844' with positive edge clock and positive level reset.
+
+15.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+15.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100.$proc$src/sync2.v:20$336'.
+Found and cleaned up 4 empty switches in `\kb.$proc$src/kb.v:0$131'.
+Removing empty process `kb.$proc$src/kb.v:0$131'.
+Removing empty process `kb.$proc$src/kb.v:0$121'.
+Found and cleaned up 21 empty switches in `\kb.$proc$src/kb.v:94$84'.
+Removing empty process `kb.$proc$src/kb.v:94$84'.
+Cleaned up 25 empty switches.
+
+15.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\sync2\WIDTH=s32'00000000000000000000000000000100.
+<suppressed ~4 debug messages>
+Optimizing module kb.
+<suppressed ~65 debug messages>
+
+15.3. Executing FLATTEN pass (flatten design).
+Deleting now unused module $paramod\sync2\WIDTH=s32'00000000000000000000000000000100.
+<suppressed ~1 debug messages>
+
+15.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module kb.
+
+15.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \kb..
+Removed 21 unused cells and 228 unused wires.
+<suppressed ~22 debug messages>
+
+15.6. Executing CHECK pass (checking for obvious problems).
+Checking module kb...
+Found and reported 0 problems.
+
+15.7. Executing OPT pass (performing simple optimizations).
+
+15.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module kb.
+
+15.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\kb'.
+<suppressed ~24 debug messages>
+Removed a total of 8 cells.
+
+15.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \kb..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+      Replacing known input bits on port A of cell $procmux$665: \blank_cycle -> 1'0
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $procmux$342.
+    dead port 1/2 on $mux $procmux$345.
+    dead port 1/2 on $mux $procmux$348.
+    dead port 1/2 on $mux $procmux$354.
+    dead port 1/2 on $mux $procmux$357.
+    dead port 1/2 on $mux $procmux$363.
+Removed 6 multiplexer ports.
+<suppressed ~25 debug messages>
+
+15.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \kb.
+Performed a total of 0 changes.
+
+15.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\kb'.
+<suppressed ~6 debug messages>
+Removed a total of 2 cells.
+
+15.7.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.7.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \kb..
+Removed 0 unused cells and 16 unused wires.
+<suppressed ~1 debug messages>
+
+15.7.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module kb.
+
+15.7.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+15.7.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \kb..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~26 debug messages>
+
+15.7.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \kb.
+Performed a total of 0 changes.
+
+15.7.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\kb'.
+Removed a total of 0 cells.
+
+15.7.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.7.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \kb..
+
+15.7.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module kb.
+
+15.7.16. Finished OPT passes. (There is nothing left to do.)
+
+15.8. Executing FSM pass (extract and optimize FSM).
+
+15.8.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+15.8.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+15.8.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+15.8.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \kb..
+
+15.8.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+15.8.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+15.8.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+15.8.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+15.9. Executing OPT pass (performing simple optimizations).
+
+15.9.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module kb.
+
+15.9.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\kb'.
+Removed a total of 0 cells.
+
+15.9.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \kb..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~26 debug messages>
+
+15.9.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \kb.
+Performed a total of 0 changes.
+
+15.9.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\kb'.
+Removed a total of 0 cells.
+
+15.9.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$834 ($adff) from module kb (D = $0\candidate_id[3:0], Q = \candidate_id).
+Adding EN signal on $procdff$809 ($adff) from module kb (D = $0\frame_first_id[3:0], Q = \frame_first_id).
+Adding EN signal on $procdff$804 ($adff) from module kb (D = $0\frame_hits[1:0], Q = \frame_hits).
+Adding EN signal on $procdff$794 ($adff) from module kb (D = $0\row_index[1:0], Q = \row_index).
+Adding EN signal on $procdff$789 ($adff) from module kb (D = $0\key_id[3:0], Q = \key_id).
+Adding EN signal on $procdff$779 ($adff) from module kb (D = $0\row_oe[3:0], Q = \row_oe).
+
+15.9.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \kb..
+
+15.9.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module kb.
+<suppressed ~2 debug messages>
+
+15.9.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+15.9.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \kb..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~26 debug messages>
+
+15.9.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \kb.
+Performed a total of 0 changes.
+
+15.9.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\kb'.
+<suppressed ~42 debug messages>
+Removed a total of 14 cells.
+
+15.9.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.9.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \kb..
+Removed 0 unused cells and 14 unused wires.
+<suppressed ~1 debug messages>
+
+15.9.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module kb.
+
+15.9.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+15.9.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \kb..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~26 debug messages>
+
+15.9.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \kb.
+Performed a total of 0 changes.
+
+15.9.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\kb'.
+Removed a total of 0 cells.
+
+15.9.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.9.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \kb..
+
+15.9.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module kb.
+
+15.9.23. Finished OPT passes. (There is nothing left to do.)
+
+15.10. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 6) from port B of cell kb.$auto$opt_dff.cc:195:make_patterns_logic$858 ($ne).
+Removed top 5 bits (of 7) from port B of cell kb.$auto$opt_dff.cc:195:make_patterns_logic$869 ($ne).
+Removed top 3 bits (of 5) from port B of cell kb.$auto$opt_dff.cc:195:make_patterns_logic$856 ($ne).
+Removed top 30 bits (of 32) from port B of cell kb.$ge$src/kb.v:64$80 ($ge).
+Removed top 3 bits (of 4) from port A of cell kb.$shl$src/kb.v:151$88 ($shl).
+Removed top 1 bits (of 9) from port B of cell kb.$auto$opt_dff.cc:195:make_patterns_logic$852 ($ne).
+Removed top 1 bits (of 2) from port B of cell kb.$eq$src/kb.v:176$99 ($eq).
+Removed top 30 bits (of 32) from port B of cell kb.$ge$src/kb.v:188$100 ($ge).
+Removed top 2 bits (of 4) from port B of cell kb.$auto$opt_dff.cc:195:make_patterns_logic$848 ($ne).
+Removed top 31 bits (of 32) from port A of cell kb.$add$src/kb.v:38$126 ($add).
+Removed top 31 bits (of 32) from port B of cell kb.$add$src/kb.v:38$126 ($add).
+Removed top 30 bits (of 32) from port Y of cell kb.$add$src/kb.v:38$126 ($add).
+Removed top 30 bits (of 32) from port A of cell kb.$add$src/kb.v:38$127 ($add).
+Removed top 31 bits (of 32) from port B of cell kb.$add$src/kb.v:38$127 ($add).
+Removed top 29 bits (of 32) from port Y of cell kb.$add$src/kb.v:38$127 ($add).
+Removed top 29 bits (of 32) from port A of cell kb.$add$src/kb.v:38$128 ($add).
+Removed top 31 bits (of 32) from port B of cell kb.$add$src/kb.v:38$128 ($add).
+Removed top 28 bits (of 32) from port Y of cell kb.$add$src/kb.v:38$128 ($add).
+Removed top 27 bits (of 32) from port A of cell kb.$ge$src/kb.v:40$129 ($ge).
+Removed top 29 bits (of 32) from port B of cell kb.$ge$src/kb.v:40$129 ($ge).
+Converting cell kb.$ge$src/kb.v:40$129 ($ge) from signed to unsigned.
+Removed top 1 bits (of 5) from port A of cell kb.$ge$src/kb.v:40$129 ($ge).
+Removed top 1 bits (of 3) from port B of cell kb.$ge$src/kb.v:40$129 ($ge).
+Removed top 1 bits (of 9) from port B of cell kb.$auto$opt_dff.cc:195:make_patterns_logic$898 ($ne).
+Removed top 1 bits (of 10) from port B of cell kb.$auto$opt_dff.cc:195:make_patterns_logic$900 ($ne).
+Removed top 1 bits (of 11) from port B of cell kb.$auto$opt_dff.cc:195:make_patterns_logic$902 ($ne).
+Removed top 28 bits (of 32) from wire kb.$0\hit_count$func$src/kb.v:62$76.count[31:0]$125.
+Removed top 30 bits (of 32) from wire kb.$add$src/kb.v:38$126_Y.
+Removed top 29 bits (of 32) from wire kb.$add$src/kb.v:38$127_Y.
+
+15.11. Executing PEEPOPT pass (run peephole optimizers).
+
+15.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \kb..
+Removed 0 unused cells and 3 unused wires.
+<suppressed ~1 debug messages>
+
+15.13. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module kb:
+  creating $macc model for $add$src/kb.v:170$97 ($add).
+  creating $macc model for $add$src/kb.v:224$115 ($add).
+  creating $macc model for $add$src/kb.v:231$116 ($add).
+  creating $macc model for $add$src/kb.v:38$126 ($add).
+  creating $macc model for $add$src/kb.v:38$127 ($add).
+  creating $macc model for $add$src/kb.v:38$128 ($add).
+  creating $macc model for $add$src/kb.v:63$79 ($add).
+  merging $macc model for $add$src/kb.v:38$127 into $add$src/kb.v:38$128.
+  merging $macc model for $add$src/kb.v:38$126 into $add$src/kb.v:38$128.
+  creating $alu model for $macc $add$src/kb.v:63$79.
+  creating $alu model for $macc $add$src/kb.v:231$116.
+  creating $alu model for $macc $add$src/kb.v:224$115.
+  creating $alu model for $macc $add$src/kb.v:170$97.
+  creating $macc cell for $add$src/kb.v:38$128: $auto$alumacc.cc:365:replace_macc$919
+  creating $alu model for $ge$src/kb.v:188$100 ($ge): new $alu
+  creating $alu model for $ge$src/kb.v:40$129 ($ge): new $alu
+  creating $alu model for $ge$src/kb.v:64$80 ($ge): new $alu
+  creating $alu cell for $ge$src/kb.v:64$80: $auto$alumacc.cc:495:replace_alu$923
+  creating $alu cell for $ge$src/kb.v:40$129: $auto$alumacc.cc:495:replace_alu$936
+  creating $alu cell for $ge$src/kb.v:188$100: $auto$alumacc.cc:495:replace_alu$949
+  creating $alu cell for $add$src/kb.v:170$97: $auto$alumacc.cc:495:replace_alu$962
+  creating $alu cell for $add$src/kb.v:224$115: $auto$alumacc.cc:495:replace_alu$965
+  creating $alu cell for $add$src/kb.v:231$116: $auto$alumacc.cc:495:replace_alu$968
+  creating $alu cell for $add$src/kb.v:63$79: $auto$alumacc.cc:495:replace_alu$971
+  created 7 $alu and 1 $macc cells.
+
+15.14. Executing SHARE pass (SAT-based resource sharing).
+
+15.15. Executing OPT pass (performing simple optimizations).
+
+15.15.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module kb.
+
+15.15.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\kb'.
+Removed a total of 0 cells.
+
+15.15.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \kb..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~26 debug messages>
+
+15.15.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \kb.
+Performed a total of 0 changes.
+
+15.15.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\kb'.
+Removed a total of 0 cells.
+
+15.15.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.15.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \kb..
+Removed 2 unused cells and 5 unused wires.
+<suppressed ~3 debug messages>
+
+15.15.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module kb.
+
+15.15.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+15.15.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \kb..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~26 debug messages>
+
+15.15.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \kb.
+Performed a total of 0 changes.
+
+15.15.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\kb'.
+Removed a total of 0 cells.
+
+15.15.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.15.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \kb..
+
+15.15.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module kb.
+
+15.15.16. Finished OPT passes. (There is nothing left to do.)
+
+15.16. Executing MEMORY pass.
+
+15.16.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+15.16.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+15.16.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+15.16.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+15.16.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+15.16.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \kb..
+
+15.16.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+15.16.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+15.16.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \kb..
+
+15.16.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+15.17. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \kb..
+
+15.18. Executing OPT pass (performing simple optimizations).
+
+15.18.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module kb.
+<suppressed ~44 debug messages>
+
+15.18.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\kb'.
+Removed a total of 0 cells.
+
+15.18.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.18.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \kb..
+Removed 0 unused cells and 31 unused wires.
+<suppressed ~1 debug messages>
+
+15.18.5. Finished fast OPT passes.
+
+15.19. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+15.20. Executing OPT pass (performing simple optimizations).
+
+15.20.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module kb.
+
+15.20.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\kb'.
+Removed a total of 0 cells.
+
+15.20.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \kb..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~30 debug messages>
+
+15.20.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \kb.
+    Consolidated identical input bits for $mux cell $procmux$339:
+      Old ports: A=2'00, B=2'11, Y=$4\first_column$func$src/kb.v:65$77.$result[1:0]$138
+      New ports: A=1'0, B=1'1, Y=$4\first_column$func$src/kb.v:65$77.$result[1:0]$138 [0]
+      New connections: $4\first_column$func$src/kb.v:65$77.$result[1:0]$138 [1] = $4\first_column$func$src/kb.v:65$77.$result[1:0]$138 [0]
+  Optimizing cells in module \kb.
+Performed a total of 1 changes.
+
+15.20.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\kb'.
+Removed a total of 0 cells.
+
+15.20.6. Executing OPT_SHARE pass.
+
+15.20.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.20.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \kb..
+
+15.20.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module kb.
+<suppressed ~1 debug messages>
+
+15.20.10. Rerunning OPT passes. (Maybe there is more to do..)
+
+15.20.11. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \kb..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~30 debug messages>
+
+15.20.12. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \kb.
+Performed a total of 0 changes.
+
+15.20.13. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\kb'.
+Removed a total of 0 cells.
+
+15.20.14. Executing OPT_SHARE pass.
+
+15.20.15. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.20.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \kb..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+15.20.17. Executing OPT_EXPR pass (perform const folding).
+Optimizing module kb.
+
+15.20.18. Rerunning OPT passes. (Maybe there is more to do..)
+
+15.20.19. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \kb..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~30 debug messages>
+
+15.20.20. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \kb.
+Performed a total of 0 changes.
+
+15.20.21. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\kb'.
+Removed a total of 0 cells.
+
+15.20.22. Executing OPT_SHARE pass.
+
+15.20.23. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.20.24. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \kb..
+
+15.20.25. Executing OPT_EXPR pass (perform const folding).
+Optimizing module kb.
+
+15.20.26. Finished OPT passes. (There is nothing left to do.)
+
+15.21. Executing TECHMAP pass (map to technology primitives).
+
+15.21.1. Executing Verilog-2005 frontend: /mnt/c/Users/user/Desktop/HACKATHON/.tools/root/usr/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/mnt/c/Users/user/Desktop/HACKATHON/.tools/root/usr/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+15.21.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $not.
+Using template $paramod$b8c0a997bce700f23568a5ada79cc6781d1f5ca0\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $logic_and.
+Using template $paramod$constmap:66d421c313e4e958be776b99540ac2de3b59fdbc$paramod$77562a466236eb4a6d905351a0995599b75075cb\_90_shift_ops_shr_shl_sshl_sshr for cells of type $shl.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $logic_not.
+Using template $paramod$672a140277c71df8314410f22acc08d55222c3c7\_90_alu for cells of type $alu.
+Using extmapper maccmap for cells of type $macc_v2.
+  add \sample_hits [0] (1 bits, unsigned)
+  add \sample_hits [3] (1 bits, unsigned)
+  add \sample_hits [2] (1 bits, unsigned)
+  add \sample_hits [1] (1 bits, unsigned)
+  packed 1 (1) bits / 1 words into adder tree
+Using template $paramod$649fc39eef2451024566705288528c8671211199\_90_alu for cells of type $alu.
+Using template $paramod$ba698a254f9a5947e85cbe7beae6b161eefc5386\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $adffe.
+Using extmapper simplemap for cells of type $logic_or.
+Using template $paramod$175e67c02b86e96b1288b9dc100122520d7240d8\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $reduce_or.
+Using template $paramod$fc972a7a46956c1788f3cb5257b53c8f1df2d0cc\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $adff.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000011 for cells of type $lcu.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000101 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000001 for cells of type $fa.
+Using template $paramod$740b056ede97228d3eae64ea2fdc81f0a33e0fe7\_90_alu for cells of type $alu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000010 for cells of type $lcu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000001 for cells of type $lcu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000100 for cells of type $lcu.
+No more expansions possible.
+<suppressed ~1219 debug messages>
+
+15.22. Executing OPT pass (performing simple optimizations).
+
+15.22.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module kb.
+<suppressed ~331 debug messages>
+
+15.22.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\kb'.
+<suppressed ~312 debug messages>
+Removed a total of 104 cells.
+
+15.22.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.22.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \kb..
+Removed 14 unused cells and 369 unused wires.
+<suppressed ~15 debug messages>
+
+15.22.5. Finished fast OPT passes.
+
+15.23. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `kb'. Setting top module to kb.
+
+15.23.1. Analyzing design hierarchy..
+Top module:  \kb
+
+15.23.2. Analyzing design hierarchy..
+Top module:  \kb
+Removed 0 unused modules.
+
+15.24. Printing statistics.
+
+=== kb ===
+
+   Number of wires:                285
+   Number of wire bits:            667
+   Number of public wires:          37
+   Number of public wire bits:     125
+   Number of ports:                 10
+   Number of port bits:             19
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                485
+     $_AND_                         48
+     $_DFFE_PN0P_                   20
+     $_DFF_PN0_                     23
+     $_DFF_PN1_                      1
+     $_MUX_                        263
+     $_NOT_                         41
+     $_OR_                          68
+     $_XOR_                         20
+     $scopeinfo                      1
+
+15.25. Executing CHECK pass (checking for obvious problems).
+Checking module kb...
+Found and reported 0 problems.
+
+16. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell sg13g2_dfrbpq_1 (noninv, pins=4, area=48.99) is a direct match for cell type $_DFF_PN0_.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    unmapped dff cell: $_DFF_P_
+    unmapped dff cell: $_DFF_NN0_
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \sg13g2_dfrbpq_1 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RESET_B( R));
+    unmapped dff cell: $_DFF_PN1_
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    unmapped dff cell: $_DFFE_NN_
+    unmapped dff cell: $_DFFE_NP_
+    unmapped dff cell: $_DFFE_PN_
+    unmapped dff cell: $_DFFE_PP_
+    unmapped dff cell: $_DFFSR_NNN_
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    unmapped dff cell: $_DFFSR_PNN_
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+16.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+<suppressed ~4 debug messages>
+Mapping DFF cells in module `\kb':
+  mapped 44 $_DFF_PN0_ cells to \sg13g2_dfrbpq_1 cells.
+
+17. Executing ABC pass (technology mapping using ABC).
+
+17.1. Extracting gate netlist of module `\kb' to `<abc-temp-dir>/input.blif'..
+Extracted 462 gates and 508 wires to a netlist network with 44 inputs and 36 outputs.
+
+17.1.1. Executing ABC.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /mnt/c/Users/user/Desktop/HACKATHON/.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.02 sec
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_antennanp" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_decap_4" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_decap_8" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dfrbpq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dfrbpq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dlhq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dlhr_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dlhrq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dllr_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dllrq_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_ebufn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_ebufn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_ebufn_8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_einvn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_einvn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_einvn_8".
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_fill_1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_fill_2" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_fill_4" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_fill_8" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_lgcp_1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfbbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfrbpq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfrbpq_2".
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_sighold" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_slgcp_1" due to dont_use attribute.
+ABC: Library "sg13g2_stdcell_typ_1p20V_25C" from "/mnt/c/Users/user/Desktop/HACKATHON/.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib" has 54 cells (20 skipped: 14 seq; 6 tri-state; 0 no func; 10 dont_use).  Time =     0.02 sec
+ABC: Memory =    2.85 MB. Time =     0.02 sec
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+17.1.2. Re-integrating ABC results.
+ABC RESULTS:     sg13g2_a21o_1 cells:       10
+ABC RESULTS:    sg13g2_a21oi_1 cells:       18
+ABC RESULTS:   sg13g2_a221oi_1 cells:        5
+ABC RESULTS:    sg13g2_a22oi_1 cells:       10
+ABC RESULTS:     sg13g2_and2_1 cells:       13
+ABC RESULTS:     sg13g2_and3_1 cells:        1
+ABC RESULTS:     sg13g2_and4_1 cells:        1
+ABC RESULTS:      sg13g2_inv_1 cells:       14
+ABC RESULTS:     sg13g2_mux2_1 cells:       10
+ABC RESULTS:    sg13g2_nand2_1 cells:       34
+ABC RESULTS:   sg13g2_nand2b_1 cells:        6
+ABC RESULTS:    sg13g2_nand3_1 cells:       10
+ABC RESULTS:   sg13g2_nand3b_1 cells:        1
+ABC RESULTS:    sg13g2_nand4_1 cells:        3
+ABC RESULTS:     sg13g2_nor2_1 cells:       24
+ABC RESULTS:    sg13g2_nor2b_1 cells:       12
+ABC RESULTS:     sg13g2_nor3_1 cells:       14
+ABC RESULTS:     sg13g2_nor4_1 cells:        7
+ABC RESULTS:    sg13g2_o21ai_1 cells:       27
+ABC RESULTS:      sg13g2_or2_1 cells:        5
+ABC RESULTS:      sg13g2_or3_1 cells:        1
+ABC RESULTS:      sg13g2_or4_1 cells:        1
+ABC RESULTS:    sg13g2_xnor2_1 cells:        4
+ABC RESULTS:     sg13g2_xor2_1 cells:        3
+ABC RESULTS:        internal signals:      428
+ABC RESULTS:           input signals:       44
+ABC RESULTS:          output signals:       36
+Removing temp directory.
+Removed 0 unused cells and 328 unused wires.
+
+18. Printing statistics.
+
+=== kb ===
+
+   Number of wires:                257
+   Number of wire bits:            342
+   Number of public wires:          30
+   Number of public wire bits:     107
+   Number of ports:                 10
+   Number of port bits:             19
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                279
+     $scopeinfo                      1
+     sg13g2_a21o_1                  10
+     sg13g2_a21oi_1                 18
+     sg13g2_a221oi_1                 5
+     sg13g2_a22oi_1                 10
+     sg13g2_and2_1                  13
+     sg13g2_and3_1                   1
+     sg13g2_and4_1                   1
+     sg13g2_dfrbpq_1                44
+     sg13g2_inv_1                   14
+     sg13g2_mux2_1                  10
+     sg13g2_nand2_1                 34
+     sg13g2_nand2b_1                 6
+     sg13g2_nand3_1                 10
+     sg13g2_nand3b_1                 1
+     sg13g2_nand4_1                  3
+     sg13g2_nor2_1                  24
+     sg13g2_nor2b_1                 12
+     sg13g2_nor3_1                  14
+     sg13g2_nor4_1                   7
+     sg13g2_o21ai_1                 27
+     sg13g2_or2_1                    5
+     sg13g2_or3_1                    1
+     sg13g2_or4_1                    1
+     sg13g2_xnor2_1                  4
+     sg13g2_xor2_1                   3
+
+   Area for cell type $scopeinfo is unknown!
+
+   Chip area for module '\kb': 4372.326000
+     of which used for sequential elements: 2155.507200 (49.30%)
+
+19. Executing CHECK pass (checking for obvious problems).
+Checking module kb...
+Found and reported 0 problems.
+
+End of script. Logfile hash: 45a6c9139b, CPU: user 0.24s system 0.03s, MEM: 20.88 MB peak
+Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+Time spent: 32% 1x abc (0 sec), 11% 30x opt_expr (0 sec), ...

@@ -1,0 +1,5 @@
+== unit:regs ==
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_regs -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_regs.vvp src/regs.v test/unit/tb_regs.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_regs.vvp
+PASS tb_regs mapping, atomic attempts, resets, BAD rejection, ready-valid
+test/unit/tb_regs.sv:62: $finish called at 611000 (1ps)

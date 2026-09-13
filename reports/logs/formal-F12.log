@@ -1,0 +1,646 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+
+-- Running command `read_verilog -formal -sv formal/key_schedule_equiv.sv; chformal -lower; prep -top key_schedule_equiv; sat -verify -prove-asserts -show-all' --
+
+1. Executing Verilog-2005 frontend: formal/key_schedule_equiv.sv
+Parsing formal SystemVerilog input from `formal/key_schedule_equiv.sv' to AST representation.
+Generating RTLIL representation for module `\key_schedule_equiv'.
+Successfully finished Verilog frontend.
+
+2. Executing PREP pass.
+
+2.1. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1.1. Analyzing design hierarchy..
+Top module:  \key_schedule_equiv
+
+2.1.2. Analyzing design hierarchy..
+Top module:  \key_schedule_equiv
+Removed 0 unused modules.
+Module key_schedule_equiv directly or indirectly contains formal properties -> setting "keep" attribute.
+
+2.2. Executing PROC pass (convert processes to netlists).
+
+2.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed a total of 0 dead cases.
+
+2.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 4 redundant assignments.
+Promoted 208 assignments to connections.
+
+2.2.4. Executing PROC_INIT pass (extract init attributes).
+
+2.2.5. Executing PROC_ARST pass (detect async resets in processes).
+
+2.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+2.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+
+2.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\key_schedule_equiv.\s0' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\s1' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\s2' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\s3' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\tmp' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\expected' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\feedback' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\index' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$2.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$2.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$3.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$3.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$4.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$4.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$5.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$5.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$6.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$6.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$7.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$7.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$8.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$8.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$9.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$9.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$10.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$10.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$11.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$11.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$12.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$12.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$13.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$13.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$14.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$14.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$15.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$15.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$16.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$16.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$17.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$17.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$18.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$18.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$19.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$19.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$20.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$20.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$21.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$21.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$22.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$22.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$23.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$23.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$24.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$24.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$25.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$25.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$26.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$26.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$27.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$27.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$28.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$28.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$29.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$29.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$30.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$30.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$31.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$31.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$32.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$32.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$33.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$33.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$34.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$34.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$35.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$35.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$36.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$36.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$37.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$37.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$38.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$38.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$39.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$39.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$40.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$40.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$41.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$41.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$42.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$42.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$43.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$43.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$44.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$44.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$45.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$45.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$46.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$46.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$47.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$47.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$48.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$48.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$49.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$49.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$50.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$50.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$51.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$51.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$52.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$52.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$53.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$53.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$54.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$54.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$55.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$55.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$56.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$56.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$57.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$57.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$58.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$58.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$59.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$59.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$60.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$60.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$61.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$61.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$62.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$62.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$63.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$63.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$64.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$64.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$65.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$65.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$66.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$66.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$67.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$67.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$68.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$68.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$69.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$69.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$70.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$70.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$71.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$71.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$72.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$72.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$73.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$73.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$74.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$74.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$75.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$75.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$76.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$76.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$77.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$77.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$78.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$78.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$79.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$79.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$80.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$80.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$81.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$81.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$82.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$82.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$83.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$83.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$84.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$84.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$85.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$85.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$86.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$86.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$87.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$87.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$88.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$88.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$89.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$89.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$90.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$90.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$91.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$91.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$92.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$92.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$93.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$93.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$94.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$94.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$95.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$95.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$96.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$96.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$97.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:19$97.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror3$func$formal/key_schedule_equiv.sv:21$98.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror3$func$formal/key_schedule_equiv.sv:21$98.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:22$99.$result' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+No latch inferred for signal `\key_schedule_equiv.\ror1$func$formal/key_schedule_equiv.sv:22$99.v' from process `\key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+
+2.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+
+2.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `key_schedule_equiv.$proc$formal/key_schedule_equiv.sv:14$105'.
+Cleaned up 0 empty switches.
+
+2.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module key_schedule_equiv.
+<suppressed ~106 debug messages>
+
+2.3. Executing FUTURE pass.
+
+2.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module key_schedule_equiv.
+
+2.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \key_schedule_equiv..
+Removed 2 unused cells and 452 unused wires.
+<suppressed ~3 debug messages>
+
+2.6. Executing CHECK pass (checking for obvious problems).
+Checking module key_schedule_equiv...
+Found and reported 0 problems.
+
+2.7. Executing OPT pass (performing simple optimizations).
+
+2.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module key_schedule_equiv.
+
+2.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\key_schedule_equiv'.
+<suppressed ~4 debug messages>
+Removed a total of 2 cells.
+
+2.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \key_schedule_equiv..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+2.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \key_schedule_equiv.
+Performed a total of 0 changes.
+
+2.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\key_schedule_equiv'.
+Removed a total of 0 cells.
+
+2.7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \key_schedule_equiv..
+Removed 0 unused cells and 2 unused wires.
+<suppressed ~2 debug messages>
+
+2.7.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module key_schedule_equiv.
+
+2.7.8. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.7.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \key_schedule_equiv..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+2.7.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \key_schedule_equiv.
+Performed a total of 0 changes.
+
+2.7.11. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\key_schedule_equiv'.
+Removed a total of 0 cells.
+
+2.7.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \key_schedule_equiv..
+
+2.7.13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module key_schedule_equiv.
+
+2.7.14. Finished OPT passes. (There is nothing left to do.)
+
+2.8. Executing WREDUCE pass (reducing word size of cells).
+
+2.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \key_schedule_equiv..
+
+2.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.11. Executing OPT pass (performing simple optimizations).
+
+2.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module key_schedule_equiv.
+
+2.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\key_schedule_equiv'.
+Removed a total of 0 cells.
+
+2.11.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \key_schedule_equiv..
+
+2.11.4. Finished fast OPT passes.
+
+2.12. Printing statistics.
+
+=== key_schedule_equiv ===
+
+   Number of wires:                240
+   Number of wire bits:           3648
+   Number of public wires:         109
+   Number of public wire bits:    3426
+   Number of ports:                  0
+   Number of port bits:              0
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                171
+     $anyconst                       4
+     $assert                         2
+     $eq                             1
+     $not                           31
+     $xor                          133
+
+2.13. Executing CHECK pass (checking for obvious problems).
+Checking module key_schedule_equiv...
+Found and reported 0 problems.
+
+3. Executing SAT pass (solving SAT problems in the circuit).
+
+Setting up SAT problem:
+Final constraint equation: { } = { }
+Imported 171 cells to SAT database.
+Import proof for assert: $eq$formal/key_schedule_equiv.sv:23$532_Y when 1'1.
+Import proof for assert: 1'1 when 1'1.
+Import show expression: $auto$rtlil.cc:2779:Not$620
+Import show expression: $eq$formal/key_schedule_equiv.sv:23$532_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$302_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$303_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$304_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$305_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$309_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$310_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$311_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$316_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$317_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$318_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$319_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$323_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$324_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$325_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$326_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$330_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$331_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$332_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$333_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$337_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$338_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$339_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$340_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$344_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$345_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$346_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$347_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$351_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$352_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$353_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$354_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$358_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$359_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$360_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$361_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$365_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$366_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$367_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$368_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$372_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$373_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$374_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$375_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$379_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$380_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$381_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$382_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$386_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$387_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$388_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$389_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$393_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$394_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$395_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$396_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$400_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$401_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$402_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$403_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$407_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$408_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$409_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$410_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$414_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$415_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$416_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$417_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$421_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$422_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$423_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$424_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$428_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$429_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$430_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$431_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$435_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$436_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$437_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$438_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$442_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$443_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$444_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$445_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$449_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$450_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$451_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$452_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$456_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$457_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$458_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$459_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$463_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$464_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$465_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$466_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$470_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$471_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$472_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$473_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$477_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$478_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$479_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$480_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$484_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$485_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$486_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$487_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$491_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$492_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$493_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$494_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$498_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$499_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$500_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$501_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$505_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$506_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$507_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$508_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$512_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$513_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$514_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$515_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$519_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$520_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$521_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:17$522_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:22$528_Y
+Import show expression: $xor$formal/key_schedule_equiv.sv:22$529_Y
+Import show expression: \expected
+Import show expression: \feedback
+Import show expression: \index
+Import show expression: \k0_input
+Import show expression: \k1_input
+Import show expression: \k3_input
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$10.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$11.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$12.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$13.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$14.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$15.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$16.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$17.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$18.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$19.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$2.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$20.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$21.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$22.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$23.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$24.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$25.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$26.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$27.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$28.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$29.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$3.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$30.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$31.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$32.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$33.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$34.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$35.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$36.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$37.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$38.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$39.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$4.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$40.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$41.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$42.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$43.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$44.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$45.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$46.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$47.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$48.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$49.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$5.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$50.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$51.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$52.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$53.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$54.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$55.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$56.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$57.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$58.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$59.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$6.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$60.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$61.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$62.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$63.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$64.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$65.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$66.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$67.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$68.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$69.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$7.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$70.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$71.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$72.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$73.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$74.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$75.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$76.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$77.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$78.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$79.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$8.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$80.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$81.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$82.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$83.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$84.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$85.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$86.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$87.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$88.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$89.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$9.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$90.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$91.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$92.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$93.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$94.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$95.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$96.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:19$97.v
+Import show expression: \ror1$func$formal/key_schedule_equiv.sv:22$99.v
+Import show expression: \ror3$func$formal/key_schedule_equiv.sv:21$98.v
+Import show expression: \s0
+Import show expression: \s1
+Import show expression: \s3
+Import show expression: \tmp
+Import show expression: \z_bit
+
+Solving problem with 2146 variables and 5539 clauses..
+SAT proof finished - no model found: SUCCESS!
+
+                  /$$$$$$      /$$$$$$$$     /$$$$$$$    
+                 /$$__  $$    | $$_____/    | $$__  $$   
+                | $$  \ $$    | $$          | $$  \ $$   
+                | $$  | $$    | $$$$$       | $$  | $$   
+                | $$  | $$    | $$__/       | $$  | $$   
+                | $$/$$ $$    | $$          | $$  | $$   
+                |  $$$$$$/ /$$| $$$$$$$$ /$$| $$$$$$$//$$
+                 \____ $$$|__/|________/|__/|_______/|__/
+                       \__/                              
+
+End of script. Logfile hash: 5414d3ffac, CPU: user 0.07s system 0.03s, MEM: 18.03 MB peak
+Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+Time spent: 32% 2x read_verilog (0 sec), 17% 1x sat (0 sec), ...

@@ -1,0 +1,4 @@
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_tt_um_rumcajs -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_tt_um_rumcajs.vvp src/sync2.v src/reset_release.v src/timebase.v src/kb.v src/regs.v src/szymon.v src/szymon_fixed.v src/serial_link.v src/auth_ctrl.v src/buzzer.v src/rumcajs.v src/project.v test/integration/tb_tt_um_rumcajs.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_tt_um_rumcajs.vvp
+PASS tb_tt_um_rumcajs single READY pin, fixed-wait response, BAD rejection, reserved pin mapping
+test/integration/tb_tt_um_rumcajs.sv:74: $finish called at 1227568000 (1ps)

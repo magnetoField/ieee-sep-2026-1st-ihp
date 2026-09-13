@@ -1,0 +1,3 @@
+/mnt/c/Users/user/Desktop/HACKATHON/.build/sg13g2_stdcell.iverilog.v:1855: warning: Timing checks are not supported and delayed signal "delayed_SCE" will not be driven.
+PASS gate-level mapped standard cells: reset/ena, malformed RX, GOOD, BAD, limit
+/mnt/c/Users/user/Desktop/HACKATHON/test/gatelevel/tb_tt_um_rumcajs_gl.sv:217: $finish called at 3720577000 (1ps)

@@ -1,0 +1,5 @@
+PASS tb_szymon_trace_abort all 44 round states and cancel in every phase/round
+- test/unit/tb_szymon_trace_abort.sv:94: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.032 2025-01-01
+- Verilator: $finish at 398us; walltime 0.076 s; speed 6.017 ms/s
+- Verilator: cpu 0.066 s on 1 threads; alloced 122 MB

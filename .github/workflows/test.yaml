@@ -1,0 +1,33 @@
+name: rtl-regression
+on: [push, workflow_dispatch]
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install pinned open-source RTL tools
+        uses: YosysHQ/setup-oss-cad-suite@853bb54f52246aa8fb4fab963f104cfb6676197a # v4
+        with:
+          version: '2026-09-12'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - name: Run deterministic regression
+        run: |
+          make lint
+          make test-model
+          make test-unit
+          make test-integration
+          make test-exhaustive
+          make test-params
+          make formal
+          make test-mutations
+          make synth
+      - name: Preserve regression logs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: chip-d6-rtl-logs
+          path: reports/logs/
+          if-no-files-found: error

@@ -1,0 +1,15 @@
+{
+  "algorithm": "SIMON64/128",
+  "rounds": 44,
+  "source": "NSA Simon and Speck Implementation Guide 1.1, section 10, printed page 24",
+  "representation": "Unsigned integers encoded as hex; block={x,y}; k0=least significant 32 bits; wire sends bit63 first",
+  "key_hex": "1b1a1918131211100b0a090803020100",
+  "plaintext_hex": "656b696c20646e75",
+  "ciphertext_hex": "44c8fc20b9dfa07a",
+  "round_1_state_hex": "fc8b8a84656b696c",
+  "round_key_4_hex": "70a011c3",
+  "round_key_43_hex": "15df4696",
+  "demo_bad_key_hex": "f0e1d2c3b4a5968778695a4b3c2d1e0f",
+  "computed_demo_bad_response_hex": "9350e3713d63ad28",
+  "computed_demo_bad_response_provenance": "Calculated in the attached Python arithmetic experiment; NOT an independently published KAT"
+}

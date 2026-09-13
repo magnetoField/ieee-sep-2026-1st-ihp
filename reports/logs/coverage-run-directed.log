@@ -1,0 +1,5 @@
+PASS tb_rumcajs 2 single-key E2E sessions: GOOD, BAD rejection, lock/reset/ena
+- test/integration/tb_rumcajs.sv:112: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.032 2025-01-01
+- Verilator: $finish at 459us; walltime 0.061 s; speed 8.240 ms/s
+- Verilator: cpu 0.056 s on 1 threads; alloced 122 MB

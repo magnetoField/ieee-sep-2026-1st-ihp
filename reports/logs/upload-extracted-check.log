@@ -1,0 +1,14 @@
+PASS ZIP inventory: 360 files
+release-check: PASS for required local checks; SDF unsupported, no remote submission
+PASS extracted release evidence
+INFO    -  Cleaning site directory
+INFO    -  Building documentation to directory: /tmp/door-sh-upload-xbndpnkq/D00RSH/wiki/site
+INFO    -  Documentation built in 1.49 seconds
+PASS: 12 generated HTML pages, 398 local references/anchors
+PASS: search index contains 56 entries including CHALLENGE_READY
+PASS: layout preserved, SHA256 cf927da714755491b2ef4d6d6779ea61e04e0efb358f7345c662081215852184
+PASS: no legacy product name in generated pages
+PASS tb_tt_um_rumcajs single READY pin, fixed-wait response, BAD rejection, reserved pin mapping
+/tmp/door-sh-upload-xbndpnkq/D00RSH/test/integration/tb_tt_um_rumcajs.sv:74: $finish called at 1227568000 (1ps)
+PASS extracted RTL pin-level wrapper; tool executables supplied by host, source only from ZIP
+Snapshot: /tmp/door-sh-upload-xbndpnkq/D00RSH

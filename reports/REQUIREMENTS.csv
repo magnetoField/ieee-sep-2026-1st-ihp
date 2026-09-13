@@ -1,0 +1,12 @@
+id,scope,evidence,status
+P0,target discovery and TT 1x1 manifest,reports/TARGET.md;info.yaml;src/config.json,PASS_WORKING_TARGET
+P1,independent SIMON model,test/model/test_simon64_128.py,PASS
+P1,keypad electrical model,test/model/test_keypad_network.py,PASS
+P1,safe and protocol model,test/model/test_protocol_and_sejf.py,PASS
+P2,SIM-01..SIM-15,test/unit/tb_szymon.sv;test/unit/tb_szymon_trace_abort.sv,PASS
+P3,peripheral unit verification,test/unit;reports/TEST_MATRIX.csv,PASS
+P4,end-to-end integration,test/integration,PASS
+P5,F-01..F-13,formal;reports/logs/formal-*.log;reports/TEST_MATRIX.csv,PASS_WITH_BOUNDED_QUALIFIERS
+P6,1x1 hardening,reports/full-physical-metrics.json;reports/full-precheck.xml,PASS_LOCAL_REQUIRED_CHECKS
+P7,gate-level smoke,test/gatelevel;reports/full-gatelevel.xml,PASS_WITHOUT_SDF_UNMODIFIED_MODELS_ACTION_ENTRY_LOCAL
+P8,final audit,reports/FINAL.md;MANIFEST.sha256,PASS_LOCAL_TECHNICAL_SUBMISSION_NOT_PERFORMED

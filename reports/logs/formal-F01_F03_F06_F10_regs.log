@@ -1,0 +1,637 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+
+-- Running command `read_verilog -formal -D FORMAL src/regs.v; chformal -lower; prep -top regs; flatten; async2sync; formalff -clk2ff; memory_map; opt_clean; sat -verify -prove-asserts -set-init-zero -set-def-formal -set-def-inputs -seq 20' --
+
+1. Executing Verilog-2005 frontend: src/regs.v
+Parsing formal Verilog input from `src/regs.v' to AST representation.
+Generating RTLIL representation for module `\regs'.
+Successfully finished Verilog frontend.
+
+2. Executing PREP pass.
+
+2.1. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1.1. Analyzing design hierarchy..
+Top module:  \regs
+
+2.1.2. Analyzing design hierarchy..
+Top module:  \regs
+Removed 0 unused modules.
+Module regs directly or indirectly contains formal properties -> setting "keep" attribute.
+
+2.2. Executing PROC pass (convert processes to netlists).
+
+2.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$src/regs.v:156$33 in module regs.
+Marked 4 switch rules as full_case in process $proc$src/regs.v:116$28 in module regs.
+Marked 1 switch rules as full_case in process $proc$src/regs.v:106$22 in module regs.
+Marked 1 switch rules as full_case in process $proc$src/regs.v:78$7 in module regs.
+Removed a total of 0 dead cases.
+
+2.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 3 assignments to connections.
+
+2.2.4. Executing PROC_INIT pass (extract init attributes).
+
+2.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \session_rst_n in `\regs.$proc$src/regs.v:116$28'.
+Found async reset \cold_rst_n in `\regs.$proc$src/regs.v:106$22'.
+
+2.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 1 switch.
+<suppressed ~14 debug messages>
+
+2.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\regs.$proc$src/regs.v:167$42'.
+     1/5: $assert$src/regs.v:176$55_EN
+     2/5: $assert$src/regs.v:174$51_EN
+     3/5: $assert$src/regs.v:172$48_EN
+     4/5: $assert$src/regs.v:170$45_EN
+     5/5: $assert$src/regs.v:169$43_EN
+Creating decoders for process `\regs.$proc$src/regs.v:156$33'.
+     1/5: $0\f_past_valid[0:0]
+     2/5: $0\f_prev_txn_stall[0:0]
+     3/5: $0\f_prev_submit_bad[0:0]
+     4/5: $0\f_prev_fail_count[1:0]
+     5/5: $0\f_prev_cold[0:0]
+Creating decoders for process `\regs.$proc$src/regs.v:116$28'.
+     1/4: $0\session_busy[0:0]
+     2/4: $0\digit_count[1:0]
+     3/4: $0\pin_shift[31:0]
+     4/4: $0\txn_valid[0:0]
+Creating decoders for process `\regs.$proc$src/regs.v:106$22'.
+     1/1: $0\fail_count[1:0]
+Creating decoders for process `\regs.$proc$src/regs.v:78$7'.
+     1/1: { $1\digit[3:0] $1\star_key[0:0] $1\digit_valid[0:0] }
+
+2.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\regs.\digit_valid' from process `\regs.$proc$src/regs.v:78$7'.
+No latch inferred for signal `\regs.\star_key' from process `\regs.$proc$src/regs.v:78$7'.
+No latch inferred for signal `\regs.\digit' from process `\regs.$proc$src/regs.v:78$7'.
+
+2.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\regs.\f_past_valid' using process `\regs.$proc$src/regs.v:156$33'.
+  created $dff cell `$procdff$181' with positive edge clock.
+Creating register for signal `\regs.\f_prev_cold' using process `\regs.$proc$src/regs.v:156$33'.
+  created $dff cell `$procdff$182' with positive edge clock.
+Creating register for signal `\regs.\f_prev_fail_count' using process `\regs.$proc$src/regs.v:156$33'.
+  created $dff cell `$procdff$183' with positive edge clock.
+Creating register for signal `\regs.\f_prev_submit_bad' using process `\regs.$proc$src/regs.v:156$33'.
+  created $dff cell `$procdff$184' with positive edge clock.
+Creating register for signal `\regs.\f_prev_txn_stall' using process `\regs.$proc$src/regs.v:156$33'.
+  created $dff cell `$procdff$185' with positive edge clock.
+Creating register for signal `\regs.\txn_valid' using process `\regs.$proc$src/regs.v:116$28'.
+  created $adff cell `$procdff$190' with positive edge clock and positive level reset.
+Creating register for signal `\regs.\pin_shift' using process `\regs.$proc$src/regs.v:116$28'.
+  created $adff cell `$procdff$195' with positive edge clock and positive level reset.
+Creating register for signal `\regs.\digit_count' using process `\regs.$proc$src/regs.v:116$28'.
+  created $adff cell `$procdff$200' with positive edge clock and positive level reset.
+Creating register for signal `\regs.\session_busy' using process `\regs.$proc$src/regs.v:116$28'.
+  created $adff cell `$procdff$205' with positive edge clock and positive level reset.
+Creating register for signal `\regs.\fail_count' using process `\regs.$proc$src/regs.v:106$22'.
+  created $adff cell `$procdff$210' with positive edge clock and positive level reset.
+
+2.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 5 empty switches in `\regs.$proc$src/regs.v:167$42'.
+Removing empty process `regs.$proc$src/regs.v:167$42'.
+Found and cleaned up 1 empty switch in `\regs.$proc$src/regs.v:156$33'.
+Removing empty process `regs.$proc$src/regs.v:156$33'.
+Found and cleaned up 6 empty switches in `\regs.$proc$src/regs.v:116$28'.
+Removing empty process `regs.$proc$src/regs.v:116$28'.
+Found and cleaned up 2 empty switches in `\regs.$proc$src/regs.v:106$22'.
+Removing empty process `regs.$proc$src/regs.v:106$22'.
+Found and cleaned up 1 empty switch in `\regs.$proc$src/regs.v:78$7'.
+Removing empty process `regs.$proc$src/regs.v:78$7'.
+Cleaned up 15 empty switches.
+
+2.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module regs.
+<suppressed ~18 debug messages>
+
+2.3. Executing FUTURE pass.
+
+2.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module regs.
+
+2.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \regs..
+Removed 17 unused cells and 93 unused wires.
+<suppressed ~18 debug messages>
+
+2.6. Executing CHECK pass (checking for obvious problems).
+Checking module regs...
+Found and reported 0 problems.
+
+2.7. Executing OPT pass (performing simple optimizations).
+
+2.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module regs.
+
+2.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\regs'.
+<suppressed ~18 debug messages>
+Removed a total of 6 cells.
+
+2.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \regs..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+      Replacing known input bits on port B of cell $procmux$120: \cold_rst_n -> 1'1
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~16 debug messages>
+
+2.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \regs.
+Performed a total of 0 changes.
+
+2.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\regs'.
+Removed a total of 0 cells.
+
+2.7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \regs..
+Removed 0 unused cells and 6 unused wires.
+<suppressed ~1 debug messages>
+
+2.7.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module regs.
+
+2.7.8. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.7.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \regs..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~16 debug messages>
+
+2.7.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \regs.
+Performed a total of 0 changes.
+
+2.7.11. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\regs'.
+Removed a total of 0 cells.
+
+2.7.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \regs..
+
+2.7.13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module regs.
+
+2.7.14. Finished OPT passes. (There is nothing left to do.)
+
+2.8. Executing WREDUCE pass (reducing word size of cells).
+Removed top 28 address bits (of 32) from memory init port regs.$auto$mem.cc:328:emit$84 ($auto$proc_rom.cc:155:do_switch$82).
+Removed top 3 bits (of 16) from port B of cell regs.$eq$src/regs.v:69$6 ($eq).
+Removed top 30 bits (of 32) from port B of cell regs.$ge$src/regs.v:98$8 ($ge).
+Removed top 30 bits (of 32) from port B of cell regs.$lt$src/regs.v:110$26 ($lt).
+Removed top 30 bits (of 32) from port B of cell regs.$le$src/regs.v:169$44 ($le).
+
+2.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \regs..
+
+2.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.11. Executing OPT pass (performing simple optimizations).
+
+2.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module regs.
+
+2.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\regs'.
+Removed a total of 0 cells.
+
+2.11.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \regs..
+
+2.11.4. Finished fast OPT passes.
+
+2.12. Printing statistics.
+
+=== regs ===
+
+   Number of wires:                 92
+   Number of wire bits:            328
+   Number of public wires:          30
+   Number of public wire bits:     101
+   Number of ports:                 14
+   Number of port bits:             17
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 85
+     $add                            2
+     $adff                           5
+     $assert                         5
+     $dff                            5
+     $eq                             2
+     $ge                             2
+     $gt                             1
+     $le                             1
+     $logic_and                     14
+     $logic_not                      6
+     $logic_or                       1
+     $lt                             1
+     $mem_v2                         1
+     $mux                           39
+
+2.13. Executing CHECK pass (checking for obvious problems).
+Checking module regs...
+Found and reported 0 problems.
+
+3. Executing FLATTEN pass (flatten design).
+
+4. Executing ASYNC2SYNC pass.
+Replacing regs.$procdff$190 ($adff): ARST=\session_rst_n, D=$0\txn_valid[0:0], Q=\txn_valid
+Replacing regs.$procdff$195 ($adff): ARST=\session_rst_n, D=$0\pin_shift[31:0], Q=\pin_shift
+Replacing regs.$procdff$200 ($adff): ARST=\session_rst_n, D=$0\digit_count[1:0], Q=\digit_count
+Replacing regs.$procdff$205 ($adff): ARST=\session_rst_n, D=$0\session_busy[0:0], Q=\session_busy
+Replacing regs.$procdff$210 ($adff): ARST=\cold_rst_n, D=$0\fail_count[1:0], Q=\fail_count
+
+5. Executing FORMALFF pass.
+
+6. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+Mapping memory $auto$proc_rom.cc:155:do_switch$82 in module \regs:
+  created 16 $dff cells and 0 static cells of width 6.
+  read interface: 0 $dff and 15 $mux cells.
+  write interface: 0 write mux blocks.
+
+7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \regs..
+Removed 0 unused cells and 16 unused wires.
+<suppressed ~1 debug messages>
+
+8. Executing SAT pass (solving SAT problems in the circuit).
+
+Setting up time step 1:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Final init constraint equation: { $auto$async2sync.cc:228:execute$219 $auto$async2sync.cc:228:execute$217 $auto$async2sync.cc:228:execute$215 $auto$async2sync.cc:228:execute$213 $auto$async2sync.cc:228:execute$211 \f_prev_txn_stall \f_prev_submit_bad \f_prev_fail_count \f_prev_cold \f_past_valid } = 44'00000000000000000000000000000000000000000000
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+Setting up time step 2:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+Setting up time step 3:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+Setting up time step 4:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+Setting up time step 5:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+Setting up time step 6:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+Setting up time step 7:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+Setting up time step 8:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+Setting up time step 9:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+Setting up time step 10:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+Setting up time step 11:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+Setting up time step 12:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+Setting up time step 13:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+Setting up time step 14:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+Setting up time step 15:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+Setting up time step 16:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+Setting up time step 17:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+Setting up time step 18:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+Setting up time step 19:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+Setting up time step 20:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+Solving problem with 193810 variables and 528709 clauses..
+SAT proof finished - no model found: SUCCESS!
+
+                  /$$$$$$      /$$$$$$$$     /$$$$$$$    
+                 /$$__  $$    | $$_____/    | $$__  $$   
+                | $$  \ $$    | $$          | $$  \ $$   
+                | $$  | $$    | $$$$$       | $$  | $$   
+                | $$  | $$    | $$__/       | $$  | $$   
+                | $$/$$ $$    | $$          | $$  | $$   
+                |  $$$$$$/ /$$| $$$$$$$$ /$$| $$$$$$$//$$
+                 \____ $$$|__/|________/|__/|_______/|__/
+                       \__/                              
+
+End of script. Logfile hash: d76f8b9ca0, CPU: user 0.82s system 0.14s, MEM: 156.21 MB peak
+Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+Time spent: 97% 1x sat (0 sec), 0% 6x opt_clean (0 sec), ...

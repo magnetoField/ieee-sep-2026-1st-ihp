@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<report-database>
+ <description>design rules: sg13g2_maximal | layout cell: tt_um_rumcajs</description>
+ <original-file/>
+ <generator>drc: script='/mnt/c/Users/user/Desktop/HACKATHON/.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.tech/klayout/tech/drc/sg13g2_maximal.lydrc'</generator>
+ <top-cell>tt_um_rumcajs</top-cell>
+ <tags>
+ </tags>
+ <categories>
+ </categories>
+ <cells>
+  <cell>
+   <name>tt_um_rumcajs</name>
+   <variant/>
+   <layout-name/>
+   <references>
+   </references>
+  </cell>
+ </cells>
+ <items>
+ </items>
+</report-database>

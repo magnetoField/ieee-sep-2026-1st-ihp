@@ -1,0 +1,245 @@
+[11:29:53] [I] Loading the design configuration file has generated config.py:736
+               the following warnings:                                          
+[11:29:53] [W] The configuration variable 'FP_PDN_MULTILAYER' is   config.py:740
+               deprecated. Please check the docs for the usage on               
+               the replacement variable 'PDN_MULTILAYER'.                       
+[11:29:53] [W] The configuration variable 'FP_PDN_VPITCH' is       config.py:740
+               deprecated. Please check the docs for the usage on               
+               the replacement variable 'PDN_VPITCH'.                           
+[11:29:53] [W] The configuration variable 'FP_IO_VLENGTH' is       config.py:740
+               deprecated. Please check the docs for the usage on               
+               the replacement variable 'IO_PIN_V_LENGTH'.                      
+[11:29:53] [W] The configuration variable 'FP_IO_HLENGTH' is       config.py:740
+               deprecated. Please check the docs for the usage on               
+               the replacement variable 'IO_PIN_H_LENGTH'.                      
+[11:29:53] [I] Starting a new run of the 'Classic' flow with the tag flow.py:654
+               'RUN_2026-09-12_11-29-53'.                                       
+[11:29:53] [I] Starting…                                       sequential.py:339
+[11:29:53] [V] Running 'Verilator.Lint' at                          step.py:1138
+               'runs/szymon_z_p80_h0/01-verilator-lint'…                        
+[11:29:53] [I] Logging subprocess to                                step.py:1336
+               'runs/szymon_z_p80_h0/01-verilator-lint/verilator-li             
+               nt.log'…                                                         
+[11:29:54] [V] Running 'Checker.LintTimingConstructs' at            step.py:1138
+               'runs/szymon_z_p80_h0/02-checker-linttimingconstruct             
+               s'…                                                              
+[11:29:54] [I] Check for Lint Timing Errors clear.                checker.py:412
+[11:29:54] [V] Running 'Checker.LintErrors' at                      step.py:1138
+               'runs/szymon_z_p80_h0/03-checker-linterrors'…                    
+[11:29:54] [I] Check for Lint errors clear.                       checker.py:131
+[11:29:54] [V] Running 'Checker.LintWarnings' at                    step.py:1138
+               'runs/szymon_z_p80_h0/04-checker-lintwarnings'…                  
+[11:29:54] [W] 84 Lint warnings found.                            checker.py:122
+[11:29:54] [V] Running 'Yosys.JsonHeader' at                        step.py:1138
+               'runs/szymon_z_p80_h0/05-yosys-jsonheader'…                      
+[11:29:54] [I] Logging subprocess to                                step.py:1336
+               'runs/szymon_z_p80_h0/05-yosys-jsonheader/yosys-json             
+               header.log'…                                                     
+[11:29:55] [V] Running 'Yosys.Synthesis' at                         step.py:1138
+               'runs/szymon_z_p80_h0/06-yosys-synthesis'…                       
+[11:29:55] [I] Logging subprocess to                                step.py:1336
+               'runs/szymon_z_p80_h0/06-yosys-synthesis/yosys-synth             
+               esis.log'…                                                       
+[11:29:58] [V] Parsing synthesis checks…                            pyosys.py:59
+[11:29:58] [V] Running 'Checker.YosysUnmappedCells' at              step.py:1138
+               'runs/szymon_z_p80_h0/07-checker-yosysunmappedcells'             
+               …                                                                
+[11:29:58] [I] Check for Unmapped Yosys instances clear.          checker.py:131
+[11:29:58] [V] Running 'Checker.YosysSynthChecks' at                step.py:1138
+               'runs/szymon_z_p80_h0/08-checker-yosyssynthchecks'…              
+[11:29:58] [I] Check for Yosys check errors clear.                checker.py:131
+[11:29:58] [V] Running 'Checker.NetlistAssignStatements' at         step.py:1138
+               'runs/szymon_z_p80_h0/09-checker-netlistassignstatem             
+               ents'…                                                           
+[11:29:59] [V] Running 'OpenROAD.CheckSDCFiles' at                  step.py:1138
+               'runs/szymon_z_p80_h0/10-openroad-checksdcfiles'…                
+[11:29:59] [W] 'PNR_SDC_FILE' is not defined. Using generic      openroad.py:184
+               fallback SDC for OpenROAD PnR steps.                             
+[11:29:59] [W] 'SIGNOFF_SDC_FILE' is not defined. Using generic  openroad.py:188
+               fallback SDC for OpenROAD PnR steps.                             
+[11:29:59] [V] Running 'OpenROAD.CheckMacroInstances' at            step.py:1138
+               'runs/szymon_z_p80_h0/11-openroad-checkmacroinstance             
+               s'…                                                              
+[11:29:59] [I] No macros found, skipping instance check…         openroad.py:692
+[11:29:59] [V] Running 'OpenROAD.STAPrePNR' at                      step.py:1138
+               'runs/szymon_z_p80_h0/12-openroad-staprepnr'…                    
+[11:29:59] [I] Starting STA for the nom_fast_1p32V_m40C timing   openroad.py:747
+               corner…                                                          
+[11:29:59] [I] Starting STA for the nom_slow_1p08V_125C timing   openroad.py:747
+               corner…                                                          
+[11:29:59] [I] Starting STA for the nom_typ_1p20V_25C timing     openroad.py:747
+               corner…                                                          
+[11:29:59] [I] Logging subprocess to                                step.py:1336
+               'runs/szymon_z_p80_h0/12-openroad-staprepnr/nom_fast             
+               _1p32V_m40C/sta.log'…                                            
+[11:29:59] [I] Logging subprocess to                                step.py:1336
+               'runs/szymon_z_p80_h0/12-openroad-staprepnr/nom_slow             
+               _1p08V_125C/sta.log'…                                            
+[11:29:59] [I] Logging subprocess to                                step.py:1336
+               'runs/szymon_z_p80_h0/12-openroad-staprepnr/nom_typ_             
+               1p20V_25C/sta.log'…                                              
+[11:29:59] [I] Finished STA for the nom_fast_1p32V_m40C timing   openroad.py:762
+               corner.                                                          
+[11:29:59] [I] Finished STA for the nom_slow_1p08V_125C timing   openroad.py:762
+               corner.                                                          
+[11:29:59] [I] Finished STA for the nom_typ_1p20V_25C timing     openroad.py:762
+               corner.                                                          
+[11:29:59] [V] Running 'OpenROAD.Floorplan' at                      step.py:1138
+               'runs/szymon_z_p80_h0/13-openroad-floorplan'…                    
+[11:30:00] [I] Logging subprocess to                                step.py:1336
+               'runs/szymon_z_p80_h0/13-openroad-floorplan/openroad             
+               -floorplan.log'…                                                 
+[11:30:01] [V] Running 'OpenROAD.DumpRCValues' at                   step.py:1138
+               'runs/szymon_z_p80_h0/14-openroad-dumprcvalues'…                 
+[11:30:01] [I] Logging subprocess to                                step.py:1336
+               'runs/szymon_z_p80_h0/14-openroad-dumprcvalues/openr             
+               oad-dumprcvalues.log'…                                           
+[11:30:01] [V] Running 'Odb.CheckMacroAntennaProperties' at         step.py:1138
+               'runs/szymon_z_p80_h0/15-odb-checkmacroantennaproper             
+               ties'…                                                           
+[11:30:01] [I] No cells provided, skipping                            odb.py:234
+               'Odb.CheckMacroAntennaProperties'…                               
+[11:30:01] [V] Running 'Odb.SetPowerConnections' at                 step.py:1138
+               'runs/szymon_z_p80_h0/16-odb-setpowerconnections'…               
+[11:30:01] [I] Logging subprocess to                                step.py:1336
+               'runs/szymon_z_p80_h0/16-odb-setpowerconnections/odb             
+               -setpowerconnections.log'…                                       
+[11:30:02] [V] Running 'Odb.ManualMacroPlacement' at                step.py:1138
+               'runs/szymon_z_p80_h0/17-odb-manualmacroplacement'…              
+[11:30:02] [I] No instances found, skipping                           odb.py:468
+               'Odb.ManualMacroPlacement'…                                      
+[11:30:02] [V] Running 'OpenROAD.CutRows' at                        step.py:1138
+               'runs/szymon_z_p80_h0/18-openroad-cutrows'…                      
+[11:30:02] [I] Logging subprocess to                                step.py:1336
+               'runs/szymon_z_p80_h0/18-openroad-cutrows/openroad-c             
+               utrows.log'…                                                     
+[11:30:03] [V] Running 'OpenROAD.TapEndcapInsertion' at             step.py:1138
+               'runs/szymon_z_p80_h0/19-openroad-tapendcapinsertion             
+               '…                                                               
+[11:30:03] [I] Logging subprocess to                                step.py:1336
+               'runs/szymon_z_p80_h0/19-openroad-tapendcapinsertion             
+               /openroad-tapendcapinsertion.log'…                               
+[11:30:03] [V] Running 'Odb.AddPDNObstructions' at                  step.py:1138
+               'runs/szymon_z_p80_h0/20-odb-addpdnobstructions'…                
+[11:30:03] [I] 'PDN_OBSTRUCTIONS' is not defined. Skipping            odb.py:589
+               'Odb.AddPDNObstructions'…                                        
+[11:30:03] [V] Running 'OpenROAD.GeneratePDN' at                    step.py:1138
+               'runs/szymon_z_p80_h0/21-openroad-generatepdn'…                  
+[11:30:03] [I] 'PDN_CFG' not explicitly set, setting it to      openroad.py:1481
+               /nix/store/ffl2vg3m80k0p74pyffnmai83fnv38mf-pyth                 
+               on3-3.13.9-env/lib/python3.13/site-packages/libr                 
+               elane/scripts/openroad/common/pdn_cfg.tcl…                       
+[11:30:03] [I] Logging subprocess to                                step.py:1336
+               'runs/szymon_z_p80_h0/21-openroad-generatepdn/openro             
+               ad-generatepdn.log'…                                             
+[11:30:04] [V] Running 'Odb.RemovePDNObstructions' at               step.py:1138
+               'runs/szymon_z_p80_h0/22-odb-removepdnobstructions'…             
+[11:30:04] [I] 'PDN_OBSTRUCTIONS' is not defined. Skipping            odb.py:589
+               'Odb.RemovePDNObstructions'…                                     
+[11:30:04] [V] Running 'Odb.AddRoutingObstructions' at              step.py:1138
+               'runs/szymon_z_p80_h0/23-odb-addroutingobstructions'             
+               …                                                                
+[11:30:04] [I] 'ROUTING_OBSTRUCTIONS' is not defined. Skipping        odb.py:589
+               'Odb.AddRoutingObstructions'…                                    
+[11:30:04] [V] Running 'OpenROAD.GlobalPlacementSkipIO' at          step.py:1138
+               'runs/szymon_z_p80_h0/24-openroad-globalplacementski             
+               pio'…                                                            
+[11:30:04] [I] I/O pins were loaded from                        openroad.py:1660
+               /mnt/c/Users/user/Desktop/HACKATHON/tt/tech/ihp-                 
+               sg13g2/def/tt_block_1x1_pgvdd.def. Returning                     
+               state unaltered…                                                 
+[11:30:04] [V] Running 'OpenROAD.IOPlacement' at                    step.py:1138
+               'runs/szymon_z_p80_h0/25-openroad-ioplacement'…                  
+[11:30:04] [I] I/O pins were loaded from                        openroad.py:1358
+               /mnt/c/Users/user/Desktop/HACKATHON/tt/tech/ihp-                 
+               sg13g2/def/tt_block_1x1_pgvdd.def. Skipping                      
+               OpenROAD.IOPlacement…                                            
+[11:30:04] [V] Running 'Odb.CustomIOPlacement' at                   step.py:1138
+               'runs/szymon_z_p80_h0/26-odb-customioplacement'…                 
+[11:30:04] [I] No custom I/O placement file configured, skipping      odb.py:718
+               'Odb.CustomIOPlacement'…                                         
+[11:30:04] [V] Running 'Odb.ApplyDEFTemplate' at                    step.py:1138
+               'runs/szymon_z_p80_h0/27-odb-applydeftemplate'…                  
+[11:30:04] [I] Logging subprocess to                                step.py:1336
+               'runs/szymon_z_p80_h0/27-odb-applydeftemplate/odb-ap             
+               plydeftemplate.log'…                                             
+[11:30:05] [W] Bterm VPWR is declared as a 'POWER' pin. It will be     odb.py:71
+               ignored.                                                         
+[11:30:05] [W] Bterm VGND is declared as a 'GROUND' pin. It will be    odb.py:71
+               ignored.                                                         
+[11:30:05] [V] Running 'OpenROAD.GlobalPlacement' at                step.py:1138
+               'runs/szymon_z_p80_h0/28-openroad-globalplacement'…              
+[11:30:05] [I] Logging subprocess to                                step.py:1336
+               'runs/szymon_z_p80_h0/28-openroad-globalplacement/op             
+               enroad-globalplacement.log'…                                     
+[11:30:05] [W] [GPL-0302] Target density 0.8000 is too low for   openroad.py:314
+               the available free area.                                         
+[11:30:06] [V] Running 'Odb.WriteVerilogHeader' at                  step.py:1138
+               'runs/szymon_z_p80_h0/29-odb-writeverilogheader'…                
+[11:30:06] [I] Logging subprocess to                                step.py:1336
+               'runs/szymon_z_p80_h0/29-odb-writeverilogheader/odb-             
+               writeverilogheader.log'…                                         
+[11:30:07] [V] Running 'Checker.PowerGridViolations' at             step.py:1138
+               'runs/szymon_z_p80_h0/30-checker-powergridviolations             
+               '…                                                               
+[11:30:07] [I] Check for power grid violations (as reported by    checker.py:131
+               OpenROAD PSM- you may ignore these if LVS passes)                
+               clear.                                                           
+[11:30:07] [V] Running 'OpenROAD.STAMidPNR' at                      step.py:1138
+               'runs/szymon_z_p80_h0/31-openroad-stamidpnr'…                    
+[11:30:07] [I] Logging subprocess to                                step.py:1336
+               'runs/szymon_z_p80_h0/31-openroad-stamidpnr/openroad             
+               -stamidpnr.log'…                                                 
+[11:30:08] [V] Running 'OpenROAD.RepairDesignPostGPL' at            step.py:1138
+               'runs/szymon_z_p80_h0/32-openroad-repairdesignpostgp             
+               l'…                                                              
+[11:30:08] [I] Logging subprocess to                                step.py:1336
+               'runs/szymon_z_p80_h0/32-openroad-repairdesignpostgp             
+               l/openroad-repairdesignpostgpl.log'…                             
+[11:30:09] [V] Running 'Odb.ManualGlobalPlacement' at               step.py:1138
+               'runs/szymon_z_p80_h0/33-odb-manualglobalplacement'…             
+[11:30:09] [I] 'MANUAL_GLOBAL_PLACEMENTS' not set. Skipping          odb.py:1031
+               'Odb.ManualGlobalPlacement'…                                     
+[11:30:09] [V] Running 'OpenROAD.DetailedPlacement' at              step.py:1138
+               'runs/szymon_z_p80_h0/34-openroad-detailedplacement'             
+               …                                                                
+[11:30:09] [I] Logging subprocess to                                step.py:1336
+               'runs/szymon_z_p80_h0/34-openroad-detailedplacement/             
+               openroad-detailedplacement.log'…                                 
+[11:30:10] [V] Running 'OpenROAD.CTS' at                            step.py:1138
+               'runs/szymon_z_p80_h0/35-openroad-cts'…                          
+[11:30:10] [I] Logging subprocess to                                step.py:1336
+               'runs/szymon_z_p80_h0/35-openroad-cts/openroad-cts.l             
+               og'…                                                             
+[11:30:16] [V] Running 'OpenROAD.STAMidPNR-1' at                    step.py:1138
+               'runs/szymon_z_p80_h0/36-openroad-stamidpnr-1'…                  
+[11:30:16] [I] Logging subprocess to                                step.py:1336
+               'runs/szymon_z_p80_h0/36-openroad-stamidpnr-1/openro             
+               ad-stamidpnr-1.log'…                                             
+[11:30:17] [V] Running 'OpenROAD.ResizerTimingPostCTS' at           step.py:1138
+               'runs/szymon_z_p80_h0/37-openroad-resizertimingpostc             
+               ts'…                                                             
+[11:30:17] [I] Logging subprocess to                                step.py:1336
+               'runs/szymon_z_p80_h0/37-openroad-resizertimingpostc             
+               ts/openroad-resizertimingpostcts.log'…                           
+[11:30:19] [E] [DPL-0036] Detailed placement failed.             openroad.py:312
+
+[11:30:19] [W] The following warnings were generated by the flow:    flow.py:699
+[11:30:19] [W] [Checker.LintWarnings] 84 Lint warnings found.        flow.py:701
+[11:30:19] [W] [OpenROAD.CheckSDCFiles] 'PNR_SDC_FILE' is not        flow.py:701
+               defined. Using generic fallback SDC for OpenROAD PnR             
+               steps.                                                           
+[11:30:19] [W] [OpenROAD.CheckSDCFiles] 'SIGNOFF_SDC_FILE' is not    flow.py:701
+               defined. Using generic fallback SDC for OpenROAD PnR             
+               steps.                                                           
+[11:30:19] [W] [Odb.ApplyDEFTemplate] Bterm VPWR is declared as a    flow.py:701
+               'POWER' pin. It will be ignored. (and 1 similar                  
+               warnings)                                                        
+[11:30:19] [W] [OpenROAD.GlobalPlacement] [GPL-0302] Target density  flow.py:701
+               0.8000 is too low for the available free area.                   
+[11:30:19] [E] The following error was encountered while running __main__.py:189
+               the flow:                                                        
+               OpenROAD.ResizerTimingPostCTS failed with the                    
+               following errors:                                                
+               [DPL-0036] Detailed placement failed.                            
+[11:30:19] [E] LibreLane will now quit.                          __main__.py:190

@@ -1,0 +1,14 @@
+2026-09-12 make test-unit MODULE=szymon
+PASS tb_szymon: KAT + 1024 seeded vectors, exact latency, backpressure, abort
+Wall 4.68 s; max RSS 15488 KiB.
+
+PASS tb_sync2 WIDTH=1,4
+PASS tb_reset_release stopped-clock assertion and 2-edge release
+PASS tb_timebase DIV=16, ms ratio=4, reset phase
+PASS tb_regs mapping, atomic attempts, resets, final token, ready-valid
+PASS tb_buzzer active/passive timing and busy trigger policy
+PASS tb_kb release emission, poison, no autorepeat, ready-valid, row safety
+
+2026-09-12 make test-unit MODULE=kb_exhaustive
+PASS tb_kb_exhaustive all 65536 physical masks on RTL
+User 105.97 s; wall 1:46.14; max RSS 15872 KiB.

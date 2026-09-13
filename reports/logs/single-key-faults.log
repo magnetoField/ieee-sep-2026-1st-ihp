@@ -1,0 +1,4 @@
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_fault_sessions -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_fault_sessions.vvp src/sync2.v src/reset_release.v src/timebase.v src/kb.v src/regs.v src/szymon.v src/szymon_fixed.v src/serial_link.v src/auth_ctrl.v src/buzzer.v src/rumcajs.v test/integration/tb_fault_sessions.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_fault_sessions.vvp
+PASS tb_fault_sessions idle/chord/hold/timeout/RX/CRYPT/replay/terminal-lock faults
+test/integration/tb_fault_sessions.sv:118: $finish called at 616805000 (1ps)

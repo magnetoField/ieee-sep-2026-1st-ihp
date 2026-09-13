@@ -1,0 +1,1956 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+
+-- Running command `read_liberty -lib -ignore_miss_func .tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib; read_verilog  src/auth_ctrl.v src/buzzer.v src/kb.v src/project.v src/regs.v src/reset_release.v src/rumcajs.v src/serial_link.v src/sync2.v src/szymon.v .build/eight-ideas/joint.v src/timebase.v; hierarchy -check -top tt_um_rumcajs; synth -top tt_um_rumcajs -flatten -noabc; dfflibmap -liberty .tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib; abc -liberty .tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib -script "+strash; &get -n; &fraig -x; &put; scorr; dc2; dretime; strash; &get -n; &dch -f; &nf -a -F 16 -A 8 -R 1000; &put"; clean; stat -liberty .tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib; check; write_verilog -noattr .build/eight-ideas/joint-tt_um_rumcajs.context-mapped.v' --
+
+1. Executing Liberty frontend: .tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib
+Imported 84 cell types from liberty file.
+
+2. Executing Verilog-2005 frontend: src/auth_ctrl.v
+Parsing Verilog input from `src/auth_ctrl.v' to AST representation.
+Generating RTLIL representation for module `\auth_ctrl'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: src/buzzer.v
+Parsing Verilog input from `src/buzzer.v' to AST representation.
+Generating RTLIL representation for module `\buzzer'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: src/kb.v
+Parsing Verilog input from `src/kb.v' to AST representation.
+Generating RTLIL representation for module `\kb'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: src/project.v
+Parsing Verilog input from `src/project.v' to AST representation.
+Generating RTLIL representation for module `\tt_um_rumcajs'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: src/regs.v
+Parsing Verilog input from `src/regs.v' to AST representation.
+Generating RTLIL representation for module `\regs'.
+Successfully finished Verilog frontend.
+
+7. Executing Verilog-2005 frontend: src/reset_release.v
+Parsing Verilog input from `src/reset_release.v' to AST representation.
+Generating RTLIL representation for module `\reset_release'.
+Successfully finished Verilog frontend.
+
+8. Executing Verilog-2005 frontend: src/rumcajs.v
+Parsing Verilog input from `src/rumcajs.v' to AST representation.
+Generating RTLIL representation for module `\rumcajs'.
+Successfully finished Verilog frontend.
+
+9. Executing Verilog-2005 frontend: src/serial_link.v
+Parsing Verilog input from `src/serial_link.v' to AST representation.
+Generating RTLIL representation for module `\serial_link'.
+Successfully finished Verilog frontend.
+
+10. Executing Verilog-2005 frontend: src/sync2.v
+Parsing Verilog input from `src/sync2.v' to AST representation.
+Generating RTLIL representation for module `\sync2'.
+Successfully finished Verilog frontend.
+
+11. Executing Verilog-2005 frontend: src/szymon.v
+Parsing Verilog input from `src/szymon.v' to AST representation.
+Generating RTLIL representation for module `\szymon'.
+Successfully finished Verilog frontend.
+
+12. Executing Verilog-2005 frontend: .build/eight-ideas/joint.v
+Parsing Verilog input from `.build/eight-ideas/joint.v' to AST representation.
+Generating RTLIL representation for module `\szymon_fixed'.
+Successfully finished Verilog frontend.
+
+13. Executing Verilog-2005 frontend: src/timebase.v
+Parsing Verilog input from `src/timebase.v' to AST representation.
+Generating RTLIL representation for module `\timebase'.
+Successfully finished Verilog frontend.
+
+14. Executing HIERARCHY pass (managing design hierarchy).
+
+14.1. Analyzing design hierarchy..
+Top module:  \tt_um_rumcajs
+Used module:     \rumcajs
+Used module:         \szymon_fixed
+Used module:         \buzzer
+Used module:         \auth_ctrl
+Used module:         \serial_link
+Used module:             \sync2
+Used module:         \regs
+Used module:         \kb
+Used module:         \timebase
+Used module:         \reset_release
+Parameter \WIDTH = 4
+
+14.2. Executing AST frontend in derive mode using pre-parsed AST for module `\sync2'.
+Parameter \WIDTH = 4
+Generating RTLIL representation for module `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100'.
+Parameter \KEY_GOOD = 128'00011011000110100001100100011000000100110001001000010001000100000000101100001010000010010000100000000011000000100000000100000000
+Parameter \KEY_BAD = 128'11110000111000011101001011000011101101001010010110010110100001110111100001101001010110100100101100111100001011010001111000001111
+
+14.3. Executing AST frontend in derive mode using pre-parsed AST for module `\szymon_fixed'.
+Parameter \KEY_GOOD = 128'00011011000110100001100100011000000100110001001000010001000100000000101100001010000010010000100000000011000000100000000100000000
+Parameter \KEY_BAD = 128'11110000111000011101001011000011101101001010010110010110100001110111100001101001010110100100101100111100001011010001111000001111
+Generating RTLIL representation for module `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed'.
+Parameter \ACTIVE_BUZZER = 1
+Parameter \BEEP_TICKS_MS = 50
+Parameter \TONE_HALF_TICKS = 1
+
+14.4. Executing AST frontend in derive mode using pre-parsed AST for module `\buzzer'.
+Parameter \ACTIVE_BUZZER = 1
+Parameter \BEEP_TICKS_MS = 50
+Parameter \TONE_HALF_TICKS = 1
+Generating RTLIL representation for module `$paramod$767f0ff6573fbb97079a623d848e6d2ee02ee9fa\buzzer'.
+Parameter \AUTH_TIMEOUT_MS = 5000
+
+14.5. Executing AST frontend in derive mode using pre-parsed AST for module `\auth_ctrl'.
+Parameter \AUTH_TIMEOUT_MS = 5000
+Generating RTLIL representation for module `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000001001110001000'.
+Parameter \PIN_LEN = 4
+Parameter \PIN_VALUE = 4660
+Parameter \MAX_FAILS = 3
+Parameter \KEY_GOOD = 128'00011011000110100001100100011000000100110001001000010001000100000000101100001010000010010000100000000011000000100000000100000000
+Parameter \KEY_BAD = 128'11110000111000011101001011000011101101001010010110010110100001110111100001101001010110100100101100111100001011010001111000001111
+
+14.6. Executing AST frontend in derive mode using pre-parsed AST for module `\regs'.
+Parameter \PIN_LEN = 4
+Parameter \PIN_VALUE = 4660
+Parameter \MAX_FAILS = 3
+Parameter \KEY_GOOD = 128'00011011000110100001100100011000000100110001001000010001000100000000101100001010000010010000100000000011000000100000000100000000
+Parameter \KEY_BAD = 128'11110000111000011101001011000011101101001010010110010110100001110111100001101001010110100100101100111100001011010001111000001111
+Generating RTLIL representation for module `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs'.
+Parameter \PRESS_FRAMES = 20
+Parameter \RELEASE_FRAMES = 20
+
+14.7. Executing AST frontend in derive mode using pre-parsed AST for module `\kb'.
+Parameter \PRESS_FRAMES = 20
+Parameter \RELEASE_FRAMES = 20
+Generating RTLIL representation for module `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb'.
+Parameter \CLK_HZ = 1000000
+Parameter \SCAN_HZ = 4000
+
+14.8. Executing AST frontend in derive mode using pre-parsed AST for module `\timebase'.
+Parameter \CLK_HZ = 1000000
+Parameter \SCAN_HZ = 4000
+Generating RTLIL representation for module `$paramod$189e5c5ece264226de8c0df8c90596b8bf71b942\timebase'.
+Parameter \WIDTH = 3
+
+14.9. Executing AST frontend in derive mode using pre-parsed AST for module `\sync2'.
+Parameter \WIDTH = 3
+Generating RTLIL representation for module `$paramod\sync2\WIDTH=s32'00000000000000000000000000000011'.
+
+14.10. Analyzing design hierarchy..
+Top module:  \tt_um_rumcajs
+Used module:     \rumcajs
+Used module:         $paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed
+Used module:         $paramod$767f0ff6573fbb97079a623d848e6d2ee02ee9fa\buzzer
+Used module:         $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000001001110001000
+Used module:         \serial_link
+Used module:             $paramod\sync2\WIDTH=s32'00000000000000000000000000000011
+Used module:         $paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs
+Used module:         $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb
+Used module:             \sync2
+Used module:         $paramod$189e5c5ece264226de8c0df8c90596b8bf71b942\timebase
+Used module:         \reset_release
+Parameter \WIDTH = 4
+Found cached RTLIL representation for module `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100'.
+
+14.11. Analyzing design hierarchy..
+Top module:  \tt_um_rumcajs
+Used module:     \rumcajs
+Used module:         $paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed
+Used module:         $paramod$767f0ff6573fbb97079a623d848e6d2ee02ee9fa\buzzer
+Used module:         $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000001001110001000
+Used module:         \serial_link
+Used module:             $paramod\sync2\WIDTH=s32'00000000000000000000000000000011
+Used module:         $paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs
+Used module:         $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb
+Used module:             $paramod\sync2\WIDTH=s32'00000000000000000000000000000100
+Used module:         $paramod$189e5c5ece264226de8c0df8c90596b8bf71b942\timebase
+Used module:         \reset_release
+
+14.12. Analyzing design hierarchy..
+Top module:  \tt_um_rumcajs
+Used module:     \rumcajs
+Used module:         $paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed
+Used module:         $paramod$767f0ff6573fbb97079a623d848e6d2ee02ee9fa\buzzer
+Used module:         $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000001001110001000
+Used module:         \serial_link
+Used module:             $paramod\sync2\WIDTH=s32'00000000000000000000000000000011
+Used module:         $paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs
+Used module:         $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb
+Used module:             $paramod\sync2\WIDTH=s32'00000000000000000000000000000100
+Used module:         $paramod$189e5c5ece264226de8c0df8c90596b8bf71b942\timebase
+Used module:         \reset_release
+Removing unused module `\timebase'.
+Removing unused module `\szymon_fixed'.
+Removing unused module `\szymon'.
+Removing unused module `\sync2'.
+Removing unused module `\regs'.
+Removing unused module `\kb'.
+Removing unused module `\buzzer'.
+Removing unused module `\auth_ctrl'.
+Removed 8 unused modules.
+
+15. Executing SYNTH pass.
+
+15.1. Executing HIERARCHY pass (managing design hierarchy).
+
+15.1.1. Analyzing design hierarchy..
+Top module:  \tt_um_rumcajs
+Used module:     \rumcajs
+Used module:         $paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed
+Used module:         $paramod$767f0ff6573fbb97079a623d848e6d2ee02ee9fa\buzzer
+Used module:         $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000001001110001000
+Used module:         \serial_link
+Used module:             $paramod\sync2\WIDTH=s32'00000000000000000000000000000011
+Used module:         $paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs
+Used module:         $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb
+Used module:             $paramod\sync2\WIDTH=s32'00000000000000000000000000000100
+Used module:         $paramod$189e5c5ece264226de8c0df8c90596b8bf71b942\timebase
+Used module:         \reset_release
+
+15.1.2. Analyzing design hierarchy..
+Top module:  \tt_um_rumcajs
+Used module:     \rumcajs
+Used module:         $paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed
+Used module:         $paramod$767f0ff6573fbb97079a623d848e6d2ee02ee9fa\buzzer
+Used module:         $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000001001110001000
+Used module:         \serial_link
+Used module:             $paramod\sync2\WIDTH=s32'00000000000000000000000000000011
+Used module:         $paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs
+Used module:         $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb
+Used module:             $paramod\sync2\WIDTH=s32'00000000000000000000000000000100
+Used module:         $paramod$189e5c5ece264226de8c0df8c90596b8bf71b942\timebase
+Used module:         \reset_release
+Removed 0 unused modules.
+
+15.2. Executing PROC pass (convert processes to netlists).
+
+15.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 2 empty switches in `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:96$600'.
+Cleaned up 2 empty switches.
+
+15.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$src/sync2.v:20$663 in module $paramod\sync2\WIDTH=s32'00000000000000000000000000000011.
+Marked 3 switch rules as full_case in process $proc$src/timebase.v:48$657 in module $paramod$189e5c5ece264226de8c0df8c90596b8bf71b942\timebase.
+Marked 4 switch rules as full_case in process $proc$src/kb.v:0$647 in module $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.
+Marked 17 switch rules as full_case in process $proc$src/kb.v:96$600 in module $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.
+Marked 4 switch rules as full_case in process $proc$src/regs.v:121$578 in module $paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.
+Marked 1 switch rules as full_case in process $proc$src/regs.v:111$572 in module $paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.
+Marked 1 switch rules as full_case in process $proc$src/regs.v:82$558 in module $paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.
+Marked 13 switch rules as full_case in process $proc$src/serial_link.v:80$216 in module serial_link.
+Marked 1 switch rules as full_case in process $proc$src/reset_release.v:12$176 in module reset_release.
+Marked 5 switch rules as full_case in process $proc$src/auth_ctrl.v:100$538 in module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000001001110001000.
+Marked 4 switch rules as full_case in process $proc$src/buzzer.v:49$484 in module $paramod$767f0ff6573fbb97079a623d848e6d2ee02ee9fa\buzzer.
+Marked 1 switch rules as full_case in process $proc$.build/eight-ideas/joint.v:251$481 in module $paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.
+Marked 7 switch rules as full_case in process $proc$.build/eight-ideas/joint.v:156$445 in module $paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.
+Marked 1 switch rules as full_case in process $proc$.build/eight-ideas/joint.v:123$414 in module $paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.
+Marked 1 switch rules as full_case in process $proc$.build/eight-ideas/joint.v:94$402 in module $paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.
+Marked 1 switch rules as full_case in process $proc$src/sync2.v:20$387 in module $paramod\sync2\WIDTH=s32'00000000000000000000000000000100.
+Removed a total of 0 dead cases.
+
+15.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 16 redundant assignments.
+Promoted 11 assignments to connections.
+
+15.2.4. Executing PROC_INIT pass (extract init attributes).
+
+15.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `$paramod\sync2\WIDTH=s32'00000000000000000000000000000011.$proc$src/sync2.v:20$663'.
+Found async reset \rst_n in `$paramod$189e5c5ece264226de8c0df8c90596b8bf71b942\timebase.$proc$src/timebase.v:48$657'.
+Found async reset \rst_n in `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:96$600'.
+Found async reset \session_rst_n in `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.$proc$src/regs.v:121$578'.
+Found async reset \cold_rst_n in `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.$proc$src/regs.v:111$572'.
+Found async reset \rst_n in `\serial_link.$proc$src/serial_link.v:80$216'.
+Found async reset \async_n in `\reset_release.$proc$src/reset_release.v:12$176'.
+Found async reset \rst_n in `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000001001110001000.$proc$src/auth_ctrl.v:100$538'.
+Found async reset \rst_n in `$paramod$767f0ff6573fbb97079a623d848e6d2ee02ee9fa\buzzer.$proc$src/buzzer.v:49$484'.
+Found async reset \rst_n in `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.$proc$.build/eight-ideas/joint.v:156$445'.
+Found async reset \rst_n in `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100.$proc$src/sync2.v:20$387'.
+
+15.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 1 switch.
+<suppressed ~96 debug messages>
+
+15.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `$paramod\sync2\WIDTH=s32'00000000000000000000000000000011.$proc$src/sync2.v:20$663'.
+     1/2: $0\sync_out[2:0]
+     2/2: $0\stage1[2:0]
+Creating decoders for process `$paramod$189e5c5ece264226de8c0df8c90596b8bf71b942\timebase.$proc$src/timebase.v:48$657'.
+     1/4: $0\scan_count[7:0]
+     2/4: $0\ms_tick[0:0]
+     3/4: $0\scan_tick[0:0]
+     4/4: $0\ms_count[1:0]
+Creating decoders for process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$647'.
+     1/4: $4\first_column$func$src/kb.v:66$591.$result[1:0]$654
+     2/4: $3\first_column$func$src/kb.v:66$591.$result[1:0]$653
+     3/4: $2\first_column$func$src/kb.v:66$591.$result[1:0]$652
+     4/4: $1\first_column$func$src/kb.v:66$591.$result[1:0]$651
+Creating decoders for process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$637'.
+Creating decoders for process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:96$600'.
+     1/12: $0\debounce_count[4:0]
+     2/12: $0\releasing[0:0]
+     3/12: $0\gesture_poisoned[0:0]
+     4/12: $0\gesture_qualified[0:0]
+     5/12: $0\gesture_active[0:0]
+     6/12: $0\armed[0:0]
+     7/12: $0\frame_first_id[3:0]
+     8/12: $0\frame_hits[1:0]
+     9/12: $0\blank_cycle[0:0]
+    10/12: $0\row_index[1:0]
+    11/12: $0\key_id[3:0]
+    12/12: $0\key_valid[0:0]
+Creating decoders for process `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.$proc$src/regs.v:121$578'.
+     1/6: $0\session_busy[0:0]
+     2/6: $0\digit_count[1:0]
+     3/6: $0\pin_shift[31:0]
+     4/6: $0\txn_terminal[0:0]
+     5/6: $0\txn_key_sel[0:0]
+     6/6: $0\txn_valid[0:0]
+Creating decoders for process `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.$proc$src/regs.v:111$572'.
+     1/1: $0\fail_count[1:0]
+Creating decoders for process `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.$proc$src/regs.v:82$558'.
+     1/1: { $1\digit[3:0] $1\star_key[0:0] $1\digit_valid[0:0] }
+Creating decoders for process `\serial_link.$proc$src/serial_link.v:80$216'.
+     1/16: $0\frame_start[0:0]
+     2/16: $0\protocol_error[0:0]
+     3/16: $0\tx_done[0:0]
+     4/16: $0\rx_done[0:0]
+     5/16: $0\sclk_d[0:0]
+     6/16: $0\cs_n_d[0:0]
+     7/16: $0\tx_last_sampled[0:0]
+     8/16: $0\tx_sampled_wait_fall[0:0]
+     9/16: $0\tx_hold_last[0:0]
+    10/16: $0\tx_hold_bit[0:0]
+    11/16: $0\tx_hold_valid[0:0]
+    12/16: $0\rx_bit_hold[0:0]
+    13/16: $0\rx_pending[0:0]
+    14/16: $0\bit_count[6:0]
+    15/16: $0\seen_cs_high[0:0]
+    16/16: $0\state[2:0]
+Creating decoders for process `\reset_release.$proc$src/reset_release.v:12$176'.
+     1/1: $0\release_pipe[1:0]
+Creating decoders for process `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000001001110001000.$proc$src/auth_ctrl.v:100$538'.
+     1/3: $0\timeout_count[12:0]
+     2/3: $0\timeout_active[0:0]
+     3/3: $0\state[3:0]
+Creating decoders for process `$paramod$767f0ff6573fbb97079a623d848e6d2ee02ee9fa\buzzer.$proc$src/buzzer.v:49$484'.
+     1/4: $0\tone_phase[0:0]
+     2/4: $0\tone_count[0:0]
+     3/4: $0\beep_count[5:0]
+     4/4: $0\busy[0:0]
+Creating decoders for process `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.$proc$.build/eight-ideas/joint.v:251$481'.
+     1/2: $0\b[31:0]
+     2/2: $0\a[31:0]
+Creating decoders for process `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.$proc$.build/eight-ideas/joint.v:156$445'.
+     1/4: $0\key_select[0:0]
+     2/4: $0\round_count[5:0]
+     3/4: $0\bit_count[5:0]
+     4/4: $0\state[2:0]
+Creating decoders for process `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.$proc$.build/eight-ideas/joint.v:123$414'.
+     1/3: $0\key_accumulator[0:0]
+     2/3: $0\key_phase[1:0]
+     3/3: $0\key_depth[2:0]
+Creating decoders for process `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.$proc$.build/eight-ideas/joint.v:94$402'.
+     1/1: $1\bit_offset[4:0]
+Creating decoders for process `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100.$proc$src/sync2.v:20$387'.
+     1/2: $0\sync_out[3:0]
+     2/2: $0\stage1[3:0]
+
+15.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\first_column$func$src/kb.v:66$589.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$647'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\first_column$func$src/kb.v:66$591.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$647'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\first_column$func$src/kb.v:66$591.hits' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$647'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$src/kb.v:63$588.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$637'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$src/kb.v:63$590.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$637'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$src/kb.v:63$590.hits' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$637'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$src/kb.v:63$590.count' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$637'.
+No latch inferred for signal `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.\digit_valid' from process `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.$proc$src/regs.v:82$558'.
+No latch inferred for signal `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.\star_key' from process `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.$proc$src/regs.v:82$558'.
+No latch inferred for signal `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.\digit' from process `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.$proc$src/regs.v:82$558'.
+No latch inferred for signal `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.\bit_offset' from process `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.$proc$.build/eight-ideas/joint.v:94$402'.
+
+15.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `$paramod\sync2\WIDTH=s32'00000000000000000000000000000011.\sync_out' using process `$paramod\sync2\WIDTH=s32'00000000000000000000000000000011.$proc$src/sync2.v:20$663'.
+  created $adff cell `$procdff$1720' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\sync2\WIDTH=s32'00000000000000000000000000000011.\stage1' using process `$paramod\sync2\WIDTH=s32'00000000000000000000000000000011.$proc$src/sync2.v:20$663'.
+  created $adff cell `$procdff$1725' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$189e5c5ece264226de8c0df8c90596b8bf71b942\timebase.\ms_tick' using process `$paramod$189e5c5ece264226de8c0df8c90596b8bf71b942\timebase.$proc$src/timebase.v:48$657'.
+  created $adff cell `$procdff$1730' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$189e5c5ece264226de8c0df8c90596b8bf71b942\timebase.\scan_tick' using process `$paramod$189e5c5ece264226de8c0df8c90596b8bf71b942\timebase.$proc$src/timebase.v:48$657'.
+  created $adff cell `$procdff$1735' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$189e5c5ece264226de8c0df8c90596b8bf71b942\timebase.\scan_count' using process `$paramod$189e5c5ece264226de8c0df8c90596b8bf71b942\timebase.$proc$src/timebase.v:48$657'.
+  created $adff cell `$procdff$1740' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$189e5c5ece264226de8c0df8c90596b8bf71b942\timebase.\ms_count' using process `$paramod$189e5c5ece264226de8c0df8c90596b8bf71b942\timebase.$proc$src/timebase.v:48$657'.
+  created $adff cell `$procdff$1745' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\key_valid' using process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:96$600'.
+  created $adff cell `$procdff$1750' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\key_id' using process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:96$600'.
+  created $adff cell `$procdff$1755' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\row_index' using process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:96$600'.
+  created $adff cell `$procdff$1760' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\blank_cycle' using process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:96$600'.
+  created $adff cell `$procdff$1765' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\frame_hits' using process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:96$600'.
+  created $adff cell `$procdff$1770' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\frame_first_id' using process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:96$600'.
+  created $adff cell `$procdff$1775' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\armed' using process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:96$600'.
+  created $adff cell `$procdff$1780' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\gesture_active' using process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:96$600'.
+  created $adff cell `$procdff$1785' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\gesture_qualified' using process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:96$600'.
+  created $adff cell `$procdff$1790' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\gesture_poisoned' using process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:96$600'.
+  created $adff cell `$procdff$1795' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\releasing' using process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:96$600'.
+  created $adff cell `$procdff$1800' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\debounce_count' using process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:96$600'.
+  created $adff cell `$procdff$1805' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.\txn_valid' using process `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.$proc$src/regs.v:121$578'.
+  created $adff cell `$procdff$1810' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.\txn_key_sel' using process `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.$proc$src/regs.v:121$578'.
+  created $adff cell `$procdff$1815' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.\txn_terminal' using process `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.$proc$src/regs.v:121$578'.
+  created $adff cell `$procdff$1820' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.\pin_shift' using process `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.$proc$src/regs.v:121$578'.
+  created $adff cell `$procdff$1825' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.\digit_count' using process `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.$proc$src/regs.v:121$578'.
+  created $adff cell `$procdff$1830' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.\session_busy' using process `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.$proc$src/regs.v:121$578'.
+  created $adff cell `$procdff$1835' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.\fail_count' using process `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.$proc$src/regs.v:111$572'.
+  created $adff cell `$procdff$1840' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\rx_done' using process `\serial_link.$proc$src/serial_link.v:80$216'.
+  created $adff cell `$procdff$1845' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\tx_done' using process `\serial_link.$proc$src/serial_link.v:80$216'.
+  created $adff cell `$procdff$1850' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\protocol_error' using process `\serial_link.$proc$src/serial_link.v:80$216'.
+  created $adff cell `$procdff$1855' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\frame_start' using process `\serial_link.$proc$src/serial_link.v:80$216'.
+  created $adff cell `$procdff$1860' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\state' using process `\serial_link.$proc$src/serial_link.v:80$216'.
+  created $adff cell `$procdff$1865' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\cs_n_d' using process `\serial_link.$proc$src/serial_link.v:80$216'.
+  created $adff cell `$procdff$1870' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\sclk_d' using process `\serial_link.$proc$src/serial_link.v:80$216'.
+  created $adff cell `$procdff$1875' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\seen_cs_high' using process `\serial_link.$proc$src/serial_link.v:80$216'.
+  created $adff cell `$procdff$1880' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\bit_count' using process `\serial_link.$proc$src/serial_link.v:80$216'.
+  created $adff cell `$procdff$1885' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\rx_pending' using process `\serial_link.$proc$src/serial_link.v:80$216'.
+  created $adff cell `$procdff$1890' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\rx_bit_hold' using process `\serial_link.$proc$src/serial_link.v:80$216'.
+  created $adff cell `$procdff$1895' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\tx_hold_valid' using process `\serial_link.$proc$src/serial_link.v:80$216'.
+  created $adff cell `$procdff$1900' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\tx_hold_bit' using process `\serial_link.$proc$src/serial_link.v:80$216'.
+  created $adff cell `$procdff$1905' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\tx_hold_last' using process `\serial_link.$proc$src/serial_link.v:80$216'.
+  created $adff cell `$procdff$1910' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\tx_sampled_wait_fall' using process `\serial_link.$proc$src/serial_link.v:80$216'.
+  created $adff cell `$procdff$1915' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\tx_last_sampled' using process `\serial_link.$proc$src/serial_link.v:80$216'.
+  created $adff cell `$procdff$1920' with positive edge clock and positive level reset.
+Creating register for signal `\reset_release.\release_pipe' using process `\reset_release.$proc$src/reset_release.v:12$176'.
+  created $adff cell `$procdff$1925' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000001001110001000.\state' using process `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000001001110001000.$proc$src/auth_ctrl.v:100$538'.
+  created $adff cell `$procdff$1930' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000001001110001000.\timeout_active' using process `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000001001110001000.$proc$src/auth_ctrl.v:100$538'.
+  created $adff cell `$procdff$1935' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000001001110001000.\timeout_count' using process `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000001001110001000.$proc$src/auth_ctrl.v:100$538'.
+  created $adff cell `$procdff$1940' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$767f0ff6573fbb97079a623d848e6d2ee02ee9fa\buzzer.\busy' using process `$paramod$767f0ff6573fbb97079a623d848e6d2ee02ee9fa\buzzer.$proc$src/buzzer.v:49$484'.
+  created $adff cell `$procdff$1945' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$767f0ff6573fbb97079a623d848e6d2ee02ee9fa\buzzer.\beep_count' using process `$paramod$767f0ff6573fbb97079a623d848e6d2ee02ee9fa\buzzer.$proc$src/buzzer.v:49$484'.
+  created $adff cell `$procdff$1950' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$767f0ff6573fbb97079a623d848e6d2ee02ee9fa\buzzer.\tone_count' using process `$paramod$767f0ff6573fbb97079a623d848e6d2ee02ee9fa\buzzer.$proc$src/buzzer.v:49$484'.
+  created $adff cell `$procdff$1955' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$767f0ff6573fbb97079a623d848e6d2ee02ee9fa\buzzer.\tone_phase' using process `$paramod$767f0ff6573fbb97079a623d848e6d2ee02ee9fa\buzzer.$proc$src/buzzer.v:49$484'.
+  created $adff cell `$procdff$1960' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.\a' using process `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.$proc$.build/eight-ideas/joint.v:251$481'.
+  created $dff cell `$procdff$1961' with positive edge clock.
+Creating register for signal `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.\b' using process `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.$proc$.build/eight-ideas/joint.v:251$481'.
+  created $dff cell `$procdff$1962' with positive edge clock.
+Creating register for signal `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.\state' using process `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.$proc$.build/eight-ideas/joint.v:156$445'.
+  created $adff cell `$procdff$1967' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.\bit_count' using process `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.$proc$.build/eight-ideas/joint.v:156$445'.
+  created $adff cell `$procdff$1972' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.\round_count' using process `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.$proc$.build/eight-ideas/joint.v:156$445'.
+  created $adff cell `$procdff$1977' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.\key_select' using process `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.$proc$.build/eight-ideas/joint.v:156$445'.
+  created $adff cell `$procdff$1982' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.\key_phase' using process `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.$proc$.build/eight-ideas/joint.v:123$414'.
+  created $dff cell `$procdff$1983' with positive edge clock.
+Creating register for signal `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.\key_depth' using process `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.$proc$.build/eight-ideas/joint.v:123$414'.
+  created $dff cell `$procdff$1984' with positive edge clock.
+Creating register for signal `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.\key_accumulator' using process `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.$proc$.build/eight-ideas/joint.v:123$414'.
+  created $dff cell `$procdff$1985' with positive edge clock.
+Creating register for signal `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100.\sync_out' using process `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100.$proc$src/sync2.v:20$387'.
+  created $adff cell `$procdff$1990' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100.\stage1' using process `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100.$proc$src/sync2.v:20$387'.
+  created $adff cell `$procdff$1995' with positive edge clock and positive level reset.
+
+15.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+15.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `$paramod\sync2\WIDTH=s32'00000000000000000000000000000011.$proc$src/sync2.v:20$663'.
+Found and cleaned up 2 empty switches in `$paramod$189e5c5ece264226de8c0df8c90596b8bf71b942\timebase.$proc$src/timebase.v:48$657'.
+Removing empty process `$paramod$189e5c5ece264226de8c0df8c90596b8bf71b942\timebase.$proc$src/timebase.v:48$657'.
+Found and cleaned up 4 empty switches in `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$647'.
+Removing empty process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$647'.
+Removing empty process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$637'.
+Found and cleaned up 22 empty switches in `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:96$600'.
+Removing empty process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:96$600'.
+Found and cleaned up 6 empty switches in `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.$proc$src/regs.v:121$578'.
+Removing empty process `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.$proc$src/regs.v:121$578'.
+Found and cleaned up 2 empty switches in `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.$proc$src/regs.v:111$572'.
+Removing empty process `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.$proc$src/regs.v:111$572'.
+Found and cleaned up 1 empty switch in `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.$proc$src/regs.v:82$558'.
+Removing empty process `$paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.$proc$src/regs.v:82$558'.
+Found and cleaned up 24 empty switches in `\serial_link.$proc$src/serial_link.v:80$216'.
+Removing empty process `serial_link.$proc$src/serial_link.v:80$216'.
+Removing empty process `reset_release.$proc$src/reset_release.v:12$176'.
+Found and cleaned up 14 empty switches in `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000001001110001000.$proc$src/auth_ctrl.v:100$538'.
+Removing empty process `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000001001110001000.$proc$src/auth_ctrl.v:100$538'.
+Found and cleaned up 6 empty switches in `$paramod$767f0ff6573fbb97079a623d848e6d2ee02ee9fa\buzzer.$proc$src/buzzer.v:49$484'.
+Removing empty process `$paramod$767f0ff6573fbb97079a623d848e6d2ee02ee9fa\buzzer.$proc$src/buzzer.v:49$484'.
+Found and cleaned up 2 empty switches in `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.$proc$.build/eight-ideas/joint.v:251$481'.
+Removing empty process `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.$proc$.build/eight-ideas/joint.v:251$481'.
+Found and cleaned up 11 empty switches in `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.$proc$.build/eight-ideas/joint.v:156$445'.
+Removing empty process `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.$proc$.build/eight-ideas/joint.v:156$445'.
+Found and cleaned up 2 empty switches in `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.$proc$.build/eight-ideas/joint.v:123$414'.
+Removing empty process `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.$proc$.build/eight-ideas/joint.v:123$414'.
+Found and cleaned up 1 empty switch in `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.$proc$.build/eight-ideas/joint.v:94$402'.
+Removing empty process `$paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.$proc$.build/eight-ideas/joint.v:94$402'.
+Removing empty process `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100.$proc$src/sync2.v:20$387'.
+Cleaned up 97 empty switches.
+
+15.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\sync2\WIDTH=s32'00000000000000000000000000000011.
+<suppressed ~4 debug messages>
+Optimizing module $paramod$189e5c5ece264226de8c0df8c90596b8bf71b942\timebase.
+<suppressed ~8 debug messages>
+Optimizing module $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.
+<suppressed ~64 debug messages>
+Optimizing module $paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.
+<suppressed ~16 debug messages>
+Optimizing module serial_link.
+<suppressed ~40 debug messages>
+Optimizing module rumcajs.
+<suppressed ~2 debug messages>
+Optimizing module reset_release.
+<suppressed ~2 debug messages>
+Optimizing module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000001001110001000.
+<suppressed ~12 debug messages>
+Optimizing module tt_um_rumcajs.
+<suppressed ~1 debug messages>
+Optimizing module $paramod$767f0ff6573fbb97079a623d848e6d2ee02ee9fa\buzzer.
+<suppressed ~15 debug messages>
+Optimizing module $paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.
+<suppressed ~20 debug messages>
+Optimizing module $paramod\sync2\WIDTH=s32'00000000000000000000000000000100.
+<suppressed ~4 debug messages>
+
+15.3. Executing FLATTEN pass (flatten design).
+Deleting now unused module $paramod\sync2\WIDTH=s32'00000000000000000000000000000011.
+Deleting now unused module $paramod$189e5c5ece264226de8c0df8c90596b8bf71b942\timebase.
+Deleting now unused module $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.
+Deleting now unused module $paramod$0364c1ccedc0d05452e0ae70d8d9432d78217908\regs.
+Deleting now unused module serial_link.
+Deleting now unused module rumcajs.
+Deleting now unused module reset_release.
+Deleting now unused module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000001001110001000.
+Deleting now unused module $paramod$767f0ff6573fbb97079a623d848e6d2ee02ee9fa\buzzer.
+Deleting now unused module $paramod$1479f886ef35fc6a184a64ad2b502e6d54d6dae3\szymon_fixed.
+Deleting now unused module $paramod\sync2\WIDTH=s32'00000000000000000000000000000100.
+<suppressed ~12 debug messages>
+
+15.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_rumcajs.
+
+15.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_rumcajs..
+Removed 104 unused cells and 663 unused wires.
+<suppressed ~111 debug messages>
+
+15.6. Executing CHECK pass (checking for obvious problems).
+Checking module tt_um_rumcajs...
+Found and reported 0 problems.
+
+15.7. Executing OPT pass (performing simple optimizations).
+
+15.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_rumcajs.
+
+15.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_rumcajs'.
+<suppressed ~333 debug messages>
+Removed a total of 111 cells.
+
+15.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \tt_um_rumcajs..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+      Replacing known input bits on port A of cell $flatten\u_rumcajs.\u_buzzer.$procmux$1584: \u_rumcajs.u_buzzer.busy -> 1'1
+      Replacing known input bits on port A of cell $flatten\u_rumcajs.\u_buzzer.$procmux$1582: \u_rumcajs.u_buzzer.busy -> 1'1
+      Replacing known input bits on port A of cell $flatten\u_rumcajs.\u_buzzer.$procmux$1587: \u_rumcajs.u_buzzer.busy -> 1'0
+      Replacing known input bits on port A of cell $flatten\u_rumcajs.\u_kb.$procmux$1010: \u_rumcajs.u_kb.blank_cycle -> 1'0
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $flatten\u_rumcajs.\u_kb.$procmux$691.
+    dead port 1/2 on $mux $flatten\u_rumcajs.\u_kb.$procmux$694.
+    dead port 1/2 on $mux $flatten\u_rumcajs.\u_kb.$procmux$697.
+    dead port 1/2 on $mux $flatten\u_rumcajs.\u_kb.$procmux$703.
+    dead port 1/2 on $mux $flatten\u_rumcajs.\u_kb.$procmux$706.
+    dead port 1/2 on $mux $flatten\u_rumcajs.\u_kb.$procmux$712.
+Removed 6 multiplexer ports.
+<suppressed ~74 debug messages>
+
+15.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \tt_um_rumcajs.
+    New ctrl vector for $pmux cell $flatten\u_rumcajs.\u_link.$procmux$1190: { $auto$opt_reduce.cc:137:opt_pmux$2009 \u_rumcajs.rx_active $flatten\u_rumcajs.\u_link.$eq$src/serial_link.v:75$202_Y $flatten\u_rumcajs.\u_link.$eq$src/serial_link.v:72$199_Y $flatten\u_rumcajs.\u_link.$eq$src/serial_link.v:72$200_Y }
+    New ctrl vector for $pmux cell $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$procmux$1607: { \u_rumcajs.g_fixed_key_core.u_szymon.cmd_ready $auto$opt_reduce.cc:137:opt_pmux$2011 \u_rumcajs.g_fixed_key_core.u_szymon.m_valid }
+  Optimizing cells in module \tt_um_rumcajs.
+Performed a total of 2 changes.
+
+15.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_rumcajs'.
+<suppressed ~12 debug messages>
+Removed a total of 4 cells.
+
+15.7.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.7.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_rumcajs..
+Removed 0 unused cells and 122 unused wires.
+<suppressed ~6 debug messages>
+
+15.7.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_rumcajs.
+
+15.7.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+15.7.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \tt_um_rumcajs..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~76 debug messages>
+
+15.7.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \tt_um_rumcajs.
+    New ctrl vector for $pmux cell $flatten\u_rumcajs.\u_link.$procmux$1416: { $flatten\u_rumcajs.\u_link.$procmux$1224_CMP $auto$opt_reduce.cc:137:opt_pmux$2013 }
+  Optimizing cells in module \tt_um_rumcajs.
+Performed a total of 1 changes.
+
+15.7.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_rumcajs'.
+Removed a total of 0 cells.
+
+15.7.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.7.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_rumcajs..
+
+15.7.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_rumcajs.
+
+15.7.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+15.7.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \tt_um_rumcajs..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~76 debug messages>
+
+15.7.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \tt_um_rumcajs.
+Performed a total of 0 changes.
+
+15.7.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_rumcajs'.
+Removed a total of 0 cells.
+
+15.7.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.7.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_rumcajs..
+
+15.7.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_rumcajs.
+
+15.7.23. Finished OPT passes. (There is nothing left to do.)
+
+15.8. Executing FSM pass (extract and optimize FSM).
+
+15.8.1. Executing FSM_DETECT pass (finding FSMs in design).
+Found FSM state register tt_um_rumcajs.u_rumcajs.g_fixed_key_core.u_szymon.state.
+Not marking tt_um_rumcajs.u_rumcajs.u_auth.state as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Found FSM state register tt_um_rumcajs.u_rumcajs.u_link.state.
+
+15.8.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+Extracting FSM `\u_rumcajs.g_fixed_key_core.u_szymon.state' from module `\tt_um_rumcajs'.
+  found $adff cell for state register: $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$procdff$1967
+  root of input selection tree: $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$0\state[2:0]
+  found reset state: 3'000 (from async reset)
+  found ctrl input: \u_rumcajs.g_fixed_key_core.u_szymon.abort
+  found ctrl input: \u_rumcajs.g_fixed_key_core.u_szymon.m_valid
+  found ctrl input: $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$eq$.build/eight-ideas/joint.v:240$459_Y
+  found ctrl input: \u_rumcajs.g_fixed_key_core.u_szymon.seal_ready
+  found ctrl input: \u_rumcajs.g_fixed_key_core.u_szymon.s_ready
+  found ctrl input: \u_rumcajs.g_fixed_key_core.u_szymon.cmd_ready
+  found ctrl input: \u_rumcajs.g_fixed_key_core.u_szymon.output_step
+  found ctrl input: $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$eq$.build/eight-ideas/joint.v:148$443_Y
+  found ctrl input: \u_rumcajs.g_fixed_key_core.u_szymon.reconstruct
+  found ctrl input: $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$eq$.build/eight-ideas/joint.v:199$452_Y
+  found ctrl input: $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$eq$.build/eight-ideas/joint.v:201$453_Y
+  found state code: 3'100
+  found ctrl input: $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$logic_and$.build/eight-ideas/joint.v:191$451_Y
+  found state code: 3'011
+  found ctrl input: \u_rumcajs.g_fixed_key_core.u_szymon.load_step
+  found state code: 3'010
+  found ctrl input: $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$logic_and$.build/eight-ideas/joint.v:173$447_Y
+  found state code: 3'001
+  found ctrl output: $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$ne$.build/eight-ideas/joint.v:124$417_Y
+  found ctrl output: \u_rumcajs.g_fixed_key_core.u_szymon.cmd_ready
+  found ctrl output: \u_rumcajs.g_fixed_key_core.u_szymon.s_ready
+  found ctrl output: \u_rumcajs.g_fixed_key_core.u_szymon.seal_ready
+  found ctrl output: \u_rumcajs.g_fixed_key_core.u_szymon.m_valid
+  found ctrl output: $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$eq$.build/eight-ideas/joint.v:240$459_Y
+  found ctrl output: $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$gt$.build/eight-ideas/joint.v:245$472_Y
+  ctrl inputs: { $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$eq$.build/eight-ideas/joint.v:201$453_Y $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$eq$.build/eight-ideas/joint.v:199$452_Y $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$logic_and$.build/eight-ideas/joint.v:191$451_Y $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$logic_and$.build/eight-ideas/joint.v:173$447_Y $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$eq$.build/eight-ideas/joint.v:148$443_Y \u_rumcajs.g_fixed_key_core.u_szymon.output_step \u_rumcajs.g_fixed_key_core.u_szymon.load_step \u_rumcajs.g_fixed_key_core.u_szymon.reconstruct \u_rumcajs.g_fixed_key_core.u_szymon.abort }
+  ctrl outputs: { $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$gt$.build/eight-ideas/joint.v:245$472_Y $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$eq$.build/eight-ideas/joint.v:240$459_Y $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$0\state[2:0] $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$ne$.build/eight-ideas/joint.v:124$417_Y \u_rumcajs.g_fixed_key_core.u_szymon.m_valid \u_rumcajs.g_fixed_key_core.u_szymon.seal_ready \u_rumcajs.g_fixed_key_core.u_szymon.s_ready \u_rumcajs.g_fixed_key_core.u_szymon.cmd_ready }
+  transition:      3'000 9'---0----0 ->      3'000 10'0000010001
+  transition:      3'000 9'---1----0 ->      3'001 10'0000110001
+  transition:      3'000 9'--------1 ->      3'000 10'0000010001
+  transition:      3'100 9'-----0--0 ->      3'100 10'0010011000
+  transition:      3'100 9'----01--0 ->      3'100 10'0010011000
+  transition:      3'100 9'----11--0 ->      3'000 10'0000011000
+  transition:      3'100 9'--------1 ->      3'000 10'0000011000
+  transition:      3'010 9'--0-----0 ->      3'010 10'0001010100
+  transition:      3'010 9'--1-----0 ->      3'011 10'0001110100
+  transition:      3'010 9'--------1 ->      3'000 10'0000010100
+  transition:      3'001 9'------0-0 ->      3'001 10'0000110010
+  transition:      3'001 9'----0-1-0 ->      3'001 10'0000110010
+  transition:      3'001 9'----1-1-0 ->      3'010 10'0001010010
+  transition:      3'001 9'--------1 ->      3'000 10'0000010010
+  transition:      3'011 9'-0-----00 ->      3'011 10'0101100000
+  transition:      3'011 9'01-----00 ->      3'011 10'0101100000
+  transition:      3'011 9'11-----00 ->      3'100 10'0110000000
+  transition:      3'011 9'-------10 ->      3'011 10'0101100000
+  transition:      3'011 9'--------1 ->      3'000 10'0100000000
+Extracting FSM `\u_rumcajs.u_link.state' from module `\tt_um_rumcajs'.
+  found $adff cell for state register: $flatten\u_rumcajs.\u_link.$procdff$1865
+  root of input selection tree: $flatten\u_rumcajs.\u_link.$0\state[2:0]
+  found reset state: 3'000 (from async reset)
+  found ctrl input: \u_rumcajs.g_fixed_key_core.u_szymon.abort
+  found ctrl input: $flatten\u_rumcajs.\u_link.$eq$src/serial_link.v:72$200_Y
+  found ctrl input: $flatten\u_rumcajs.\u_link.$eq$src/serial_link.v:72$199_Y
+  found ctrl input: $flatten\u_rumcajs.\u_link.$eq$src/serial_link.v:75$202_Y
+  found ctrl input: \u_rumcajs.rx_active
+  found ctrl input: $flatten\u_rumcajs.\u_link.$procmux$1223_CMP
+  found ctrl input: $flatten\u_rumcajs.\u_link.$procmux$1224_CMP
+  found ctrl input: \u_rumcajs.u_link.cs_rise
+  found ctrl input: \u_rumcajs.u_link.sclk_rise
+  found ctrl input: $flatten\u_rumcajs.\u_link.$logic_and$src/serial_link.v:219$236_Y
+  found ctrl input: \u_rumcajs.u_link.tx_last_sampled
+  found state code: 3'101
+  found ctrl input: $flatten\u_rumcajs.\u_link.$logic_or$src/serial_link.v:207$233_Y
+  found ctrl input: $flatten\u_rumcajs.\u_link.$logic_and$src/serial_link.v:151$218_Y
+  found ctrl input: $flatten\u_rumcajs.\u_link.$logic_or$src/serial_link.v:190$228_Y
+  found state code: 3'100
+  found ctrl input: $flatten\u_rumcajs.\u_link.$ge$src/serial_link.v:170$223_Y
+  found ctrl input: $flatten\u_rumcajs.\u_link.$logic_and$src/serial_link.v:174$225_Y
+  found state code: 3'010
+  found ctrl input: \u_rumcajs.rx_arm
+  found ctrl input: \u_rumcajs.tx_arm
+  found state code: 3'011
+  found state code: 3'001
+  found ctrl output: \u_rumcajs.rx_active
+  found ctrl output: $flatten\u_rumcajs.\u_link.$eq$src/serial_link.v:72$199_Y
+  found ctrl output: $flatten\u_rumcajs.\u_link.$eq$src/serial_link.v:72$200_Y
+  found ctrl output: $flatten\u_rumcajs.\u_link.$eq$src/serial_link.v:75$202_Y
+  found ctrl output: $flatten\u_rumcajs.\u_link.$procmux$1223_CMP
+  found ctrl output: $flatten\u_rumcajs.\u_link.$procmux$1224_CMP
+  ctrl inputs: { \u_rumcajs.rx_arm \u_rumcajs.tx_arm \u_rumcajs.g_fixed_key_core.u_szymon.abort $flatten\u_rumcajs.\u_link.$logic_and$src/serial_link.v:219$236_Y $flatten\u_rumcajs.\u_link.$logic_or$src/serial_link.v:207$233_Y $flatten\u_rumcajs.\u_link.$logic_or$src/serial_link.v:190$228_Y $flatten\u_rumcajs.\u_link.$logic_and$src/serial_link.v:174$225_Y $flatten\u_rumcajs.\u_link.$ge$src/serial_link.v:170$223_Y $flatten\u_rumcajs.\u_link.$logic_and$src/serial_link.v:151$218_Y \u_rumcajs.u_link.tx_last_sampled \u_rumcajs.u_link.sclk_rise \u_rumcajs.u_link.cs_rise }
+  ctrl outputs: { \u_rumcajs.rx_active $flatten\u_rumcajs.\u_link.$procmux$1224_CMP $flatten\u_rumcajs.\u_link.$procmux$1223_CMP $flatten\u_rumcajs.\u_link.$0\state[2:0] $flatten\u_rumcajs.\u_link.$eq$src/serial_link.v:75$202_Y $flatten\u_rumcajs.\u_link.$eq$src/serial_link.v:72$200_Y $flatten\u_rumcajs.\u_link.$eq$src/serial_link.v:72$199_Y }
+  transition:      3'000 12'000--------- ->      3'000 9'010000000
+  transition:      3'000 12'-1---------- ->      3'011 9'010011000
+  transition:      3'000 12'1----------- ->      3'001 9'010001000
+  transition:      3'000 12'--1--------- ->      3'000 9'010000000
+  transition:      3'100 12'--00------00 ->      3'100 9'000100001
+  transition:      3'100 12'--01-----000 ->      3'100 9'000100001
+  transition:      3'100 12'--01-----100 ->      3'101 9'000101001
+  transition:      3'100 12'--0-0-----10 ->      3'100 9'000100001
+  transition:      3'100 12'--0-1-----10 ->      3'000 9'000000001
+  transition:      3'100 12'--0--------1 ->      3'000 9'000000001
+  transition:      3'100 12'--1--------- ->      3'000 9'000000001
+  transition:      3'010 12'--0-------00 ->      3'010 9'100010000
+  transition:      3'010 12'--0---00--10 ->      3'010 9'100010000
+  transition:      3'010 12'--0---10--10 ->      3'000 9'100000000
+  transition:      3'010 12'--0----1--10 ->      3'000 9'100000000
+  transition:      3'010 12'--0--------1 ->      3'000 9'100000000
+  transition:      3'010 12'--1--------- ->      3'000 9'100000000
+  transition:      3'001 12'--0-----0--- ->      3'001 9'001001000
+  transition:      3'001 12'--0-----1--- ->      3'010 9'001010000
+  transition:      3'001 12'--1--------- ->      3'000 9'001000000
+  transition:      3'101 12'--0-------00 ->      3'101 9'000101010
+  transition:      3'101 12'--0-------10 ->      3'000 9'000000010
+  transition:      3'101 12'--0--------1 ->      3'000 9'000000010
+  transition:      3'101 12'--1--------- ->      3'000 9'000000010
+  transition:      3'011 12'--0-----0--- ->      3'011 9'000011100
+  transition:      3'011 12'--0--0--1--- ->      3'000 9'000000100
+  transition:      3'011 12'--0--1--1--- ->      3'100 9'000100100
+  transition:      3'011 12'--1--------- ->      3'000 9'000000100
+
+15.8.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\u_rumcajs.u_link.state$2023' from module `\tt_um_rumcajs'.
+Optimizing FSM `$fsm$\u_rumcajs.g_fixed_key_core.u_szymon.state$2014' from module `\tt_um_rumcajs'.
+
+15.8.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_rumcajs..
+Removed 44 unused cells and 44 unused wires.
+<suppressed ~45 debug messages>
+
+15.8.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\u_rumcajs.g_fixed_key_core.u_szymon.state$2014' from module `\tt_um_rumcajs'.
+  Removing unused output signal $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$0\state[2:0] [0].
+  Removing unused output signal $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$0\state[2:0] [1].
+  Removing unused output signal $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$0\state[2:0] [2].
+Optimizing FSM `$fsm$\u_rumcajs.u_link.state$2023' from module `\tt_um_rumcajs'.
+  Removing unused output signal $flatten\u_rumcajs.\u_link.$0\state[2:0] [0].
+  Removing unused output signal $flatten\u_rumcajs.\u_link.$0\state[2:0] [1].
+  Removing unused output signal $flatten\u_rumcajs.\u_link.$0\state[2:0] [2].
+
+15.8.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+Recoding FSM `$fsm$\u_rumcajs.g_fixed_key_core.u_szymon.state$2014' from module `\tt_um_rumcajs' using `auto' encoding:
+  mapping auto encoding to `one-hot` for this FSM.
+  000 -> ----1
+  100 -> ---1-
+  010 -> --1--
+  001 -> -1---
+  011 -> 1----
+Recoding FSM `$fsm$\u_rumcajs.u_link.state$2023' from module `\tt_um_rumcajs' using `auto' encoding:
+  mapping auto encoding to `one-hot` for this FSM.
+  000 -> -----1
+  100 -> ----1-
+  010 -> ---1--
+  001 -> --1---
+  101 -> -1----
+  011 -> 1-----
+
+15.8.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+FSM `$fsm$\u_rumcajs.g_fixed_key_core.u_szymon.state$2014' from module `tt_um_rumcajs':
+-------------------------------------
+
+  Information on FSM $fsm$\u_rumcajs.g_fixed_key_core.u_szymon.state$2014 (\u_rumcajs.g_fixed_key_core.u_szymon.state):
+
+  Number of input signals:    9
+  Number of output signals:   7
+  Number of state bits:       5
+
+  Input signals:
+    0: \u_rumcajs.g_fixed_key_core.u_szymon.abort
+    1: \u_rumcajs.g_fixed_key_core.u_szymon.reconstruct
+    2: \u_rumcajs.g_fixed_key_core.u_szymon.load_step
+    3: \u_rumcajs.g_fixed_key_core.u_szymon.output_step
+    4: $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$eq$.build/eight-ideas/joint.v:148$443_Y
+    5: $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$logic_and$.build/eight-ideas/joint.v:173$447_Y
+    6: $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$logic_and$.build/eight-ideas/joint.v:191$451_Y
+    7: $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$eq$.build/eight-ideas/joint.v:199$452_Y
+    8: $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$eq$.build/eight-ideas/joint.v:201$453_Y
+
+  Output signals:
+    0: \u_rumcajs.g_fixed_key_core.u_szymon.cmd_ready
+    1: \u_rumcajs.g_fixed_key_core.u_szymon.s_ready
+    2: \u_rumcajs.g_fixed_key_core.u_szymon.seal_ready
+    3: \u_rumcajs.g_fixed_key_core.u_szymon.m_valid
+    4: $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$ne$.build/eight-ideas/joint.v:124$417_Y
+    5: $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$eq$.build/eight-ideas/joint.v:240$459_Y
+    6: $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$gt$.build/eight-ideas/joint.v:245$472_Y
+
+  State encoding:
+    0:    5'----1  <RESET STATE>
+    1:    5'---1-
+    2:    5'--1--
+    3:    5'-1---
+    4:    5'1----
+
+  Transition Table (state_in, ctrl_in, state_out, ctrl_out):
+      0:     0 9'---0----0   ->     0 7'0010001
+      1:     0 9'--------1   ->     0 7'0010001
+      2:     0 9'---1----0   ->     3 7'0010001
+      3:     1 9'----11--0   ->     0 7'0011000
+      4:     1 9'--------1   ->     0 7'0011000
+      5:     1 9'-----0--0   ->     1 7'0011000
+      6:     1 9'----01--0   ->     1 7'0011000
+      7:     2 9'--------1   ->     0 7'0010100
+      8:     2 9'--0-----0   ->     2 7'0010100
+      9:     2 9'--1-----0   ->     4 7'0010100
+     10:     3 9'--------1   ->     0 7'0010010
+     11:     3 9'----1-1-0   ->     2 7'0010010
+     12:     3 9'------0-0   ->     3 7'0010010
+     13:     3 9'----0-1-0   ->     3 7'0010010
+     14:     4 9'--------1   ->     0 7'0100000
+     15:     4 9'11-----00   ->     1 7'0100000
+     16:     4 9'-0-----00   ->     4 7'0100000
+     17:     4 9'01-----00   ->     4 7'0100000
+     18:     4 9'-------10   ->     4 7'0100000
+
+-------------------------------------
+
+FSM `$fsm$\u_rumcajs.u_link.state$2023' from module `tt_um_rumcajs':
+-------------------------------------
+
+  Information on FSM $fsm$\u_rumcajs.u_link.state$2023 (\u_rumcajs.u_link.state):
+
+  Number of input signals:   12
+  Number of output signals:   6
+  Number of state bits:       6
+
+  Input signals:
+    0: \u_rumcajs.u_link.cs_rise
+    1: \u_rumcajs.u_link.sclk_rise
+    2: \u_rumcajs.u_link.tx_last_sampled
+    3: $flatten\u_rumcajs.\u_link.$logic_and$src/serial_link.v:151$218_Y
+    4: $flatten\u_rumcajs.\u_link.$ge$src/serial_link.v:170$223_Y
+    5: $flatten\u_rumcajs.\u_link.$logic_and$src/serial_link.v:174$225_Y
+    6: $flatten\u_rumcajs.\u_link.$logic_or$src/serial_link.v:190$228_Y
+    7: $flatten\u_rumcajs.\u_link.$logic_or$src/serial_link.v:207$233_Y
+    8: $flatten\u_rumcajs.\u_link.$logic_and$src/serial_link.v:219$236_Y
+    9: \u_rumcajs.g_fixed_key_core.u_szymon.abort
+   10: \u_rumcajs.tx_arm
+   11: \u_rumcajs.rx_arm
+
+  Output signals:
+    0: $flatten\u_rumcajs.\u_link.$eq$src/serial_link.v:72$199_Y
+    1: $flatten\u_rumcajs.\u_link.$eq$src/serial_link.v:72$200_Y
+    2: $flatten\u_rumcajs.\u_link.$eq$src/serial_link.v:75$202_Y
+    3: $flatten\u_rumcajs.\u_link.$procmux$1223_CMP
+    4: $flatten\u_rumcajs.\u_link.$procmux$1224_CMP
+    5: \u_rumcajs.rx_active
+
+  State encoding:
+    0:   6'-----1  <RESET STATE>
+    1:   6'----1-
+    2:   6'---1--
+    3:   6'--1---
+    4:   6'-1----
+    5:   6'1-----
+
+  Transition Table (state_in, ctrl_in, state_out, ctrl_out):
+      0:     0 12'000---------   ->     0 6'010000
+      1:     0 12'--1---------   ->     0 6'010000
+      2:     0 12'1-----------   ->     3 6'010000
+      3:     0 12'-1----------   ->     5 6'010000
+      4:     1 12'--0-1-----10   ->     0 6'000001
+      5:     1 12'--0--------1   ->     0 6'000001
+      6:     1 12'--1---------   ->     0 6'000001
+      7:     1 12'--01-----000   ->     1 6'000001
+      8:     1 12'--00------00   ->     1 6'000001
+      9:     1 12'--0-0-----10   ->     1 6'000001
+     10:     1 12'--01-----100   ->     4 6'000001
+     11:     2 12'--0---10--10   ->     0 6'100000
+     12:     2 12'--0----1--10   ->     0 6'100000
+     13:     2 12'--0--------1   ->     0 6'100000
+     14:     2 12'--1---------   ->     0 6'100000
+     15:     2 12'--0-------00   ->     2 6'100000
+     16:     2 12'--0---00--10   ->     2 6'100000
+     17:     3 12'--1---------   ->     0 6'001000
+     18:     3 12'--0-----1---   ->     2 6'001000
+     19:     3 12'--0-----0---   ->     3 6'001000
+     20:     4 12'--0-------10   ->     0 6'000010
+     21:     4 12'--0--------1   ->     0 6'000010
+     22:     4 12'--1---------   ->     0 6'000010
+     23:     4 12'--0-------00   ->     4 6'000010
+     24:     5 12'--0--0--1---   ->     0 6'000100
+     25:     5 12'--1---------   ->     0 6'000100
+     26:     5 12'--0--1--1---   ->     1 6'000100
+     27:     5 12'--0-----0---   ->     5 6'000100
+
+-------------------------------------
+
+15.8.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+Mapping FSM `$fsm$\u_rumcajs.g_fixed_key_core.u_szymon.state$2014' from module `\tt_um_rumcajs'.
+Mapping FSM `$fsm$\u_rumcajs.u_link.state$2023' from module `\tt_um_rumcajs'.
+
+15.9. Executing OPT pass (performing simple optimizations).
+
+15.9.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_rumcajs.
+<suppressed ~16 debug messages>
+
+15.9.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_rumcajs'.
+<suppressed ~6 debug messages>
+Removed a total of 2 cells.
+
+15.9.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \tt_um_rumcajs..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~74 debug messages>
+
+15.9.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \tt_um_rumcajs.
+Performed a total of 0 changes.
+
+15.9.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_rumcajs'.
+Removed a total of 0 cells.
+
+15.9.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $flatten\u_rumcajs.\u_timebase.$procdff$1745 ($adff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\u_timebase.$procmux$683_Y, Q = \u_rumcajs.u_timebase.ms_count).
+Adding EN signal on $flatten\u_rumcajs.\u_regs.$procdff$1840 ($adff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\u_regs.$add$src/regs.v:116$577_Y, Q = \u_rumcajs.u_regs.fail_count).
+Adding EN signal on $flatten\u_rumcajs.\u_regs.$procdff$1835 ($adff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\u_regs.$0\session_busy[0:0], Q = \u_rumcajs.u_regs.session_busy).
+Adding EN signal on $flatten\u_rumcajs.\u_regs.$procdff$1830 ($adff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\u_regs.$0\digit_count[1:0], Q = \u_rumcajs.u_regs.digit_count).
+Adding EN signal on $flatten\u_rumcajs.\u_regs.$procdff$1825 ($adff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\u_regs.$0\pin_shift[31:0], Q = \u_rumcajs.u_regs.pin_shift).
+Adding EN signal on $flatten\u_rumcajs.\u_regs.$procdff$1815 ($adff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\u_regs.$0\txn_key_sel[0:0], Q = \u_rumcajs.u_regs.txn_key_sel).
+Adding EN signal on $flatten\u_rumcajs.\u_link.$procdff$1920 ($adff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\u_link.$0\tx_last_sampled[0:0], Q = \u_rumcajs.u_link.tx_last_sampled).
+Adding EN signal on $flatten\u_rumcajs.\u_link.$procdff$1915 ($adff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\u_link.$0\tx_sampled_wait_fall[0:0], Q = \u_rumcajs.u_link.tx_sampled_wait_fall).
+Adding EN signal on $flatten\u_rumcajs.\u_link.$procdff$1910 ($adff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\u_link.$0\tx_hold_last[0:0], Q = \u_rumcajs.u_link.tx_hold_last).
+Adding EN signal on $flatten\u_rumcajs.\u_link.$procdff$1905 ($adff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\u_link.$0\tx_hold_bit[0:0], Q = \u_rumcajs.u_link.tx_hold_bit).
+Adding EN signal on $flatten\u_rumcajs.\u_link.$procdff$1895 ($adff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\u_link.$0\rx_bit_hold[0:0], Q = \u_rumcajs.u_link.rx_bit_hold).
+Adding EN signal on $flatten\u_rumcajs.\u_link.$procdff$1885 ($adff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\u_link.$0\bit_count[6:0], Q = \u_rumcajs.u_link.bit_count).
+Adding EN signal on $flatten\u_rumcajs.\u_link.$procdff$1880 ($adff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\u_link.$0\seen_cs_high[0:0], Q = \u_rumcajs.u_link.seen_cs_high).
+Adding EN signal on $flatten\u_rumcajs.\u_kb.$procdff$1775 ($adff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\u_kb.$0\frame_first_id[3:0], Q = \u_rumcajs.u_kb.frame_first_id).
+Adding EN signal on $flatten\u_rumcajs.\u_kb.$procdff$1770 ($adff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\u_kb.$0\frame_hits[1:0], Q = \u_rumcajs.u_kb.frame_hits).
+Adding EN signal on $flatten\u_rumcajs.\u_kb.$procdff$1760 ($adff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\u_kb.$0\row_index[1:0], Q = \u_rumcajs.u_kb.row_index).
+Adding EN signal on $flatten\u_rumcajs.\u_kb.$procdff$1755 ($adff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\u_kb.$0\key_id[3:0], Q = \u_rumcajs.u_kb.key_id).
+Adding EN signal on $flatten\u_rumcajs.\u_buzzer.$procdff$1950 ($adff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\u_buzzer.$0\beep_count[5:0], Q = \u_rumcajs.u_buzzer.beep_count).
+Adding EN signal on $flatten\u_rumcajs.\u_auth.$procdff$1930 ($adff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\u_auth.$0\state[3:0], Q = \u_rumcajs.u_auth.state).
+Adding SRST signal on $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$procdff$1985 ($dff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$xor$.build/eight-ideas/joint.v:132$426_Y, Q = \u_rumcajs.g_fixed_key_core.u_szymon.key_accumulator, rval = 1'0).
+Adding SRST signal on $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$procdff$1984 ($dff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$procmux$1706_Y, Q = \u_rumcajs.g_fixed_key_core.u_szymon.key_depth, rval = 3'000).
+Adding EN signal on $auto$ff.cc:266:slice$2371 ($sdff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$add$.build/eight-ideas/joint.v:131$422_Y, Q = \u_rumcajs.g_fixed_key_core.u_szymon.key_depth).
+Adding SRST signal on $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$procdff$1983 ($dff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$add$.build/eight-ideas/joint.v:129$420_Y, Q = \u_rumcajs.g_fixed_key_core.u_szymon.key_phase, rval = 2'00).
+Adding EN signal on $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$procdff$1982 ($adff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$0\key_select[0:0], Q = \u_rumcajs.g_fixed_key_core.u_szymon.key_select).
+Adding EN signal on $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$procdff$1977 ($adff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$0\round_count[5:0], Q = \u_rumcajs.g_fixed_key_core.u_szymon.round_count).
+Adding EN signal on $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$procdff$1972 ($adff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$0\bit_count[5:0], Q = \u_rumcajs.g_fixed_key_core.u_szymon.bit_count).
+Adding SRST signal on $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$procdff$1962 ($dff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$procmux$1591_Y, Q = \u_rumcajs.g_fixed_key_core.u_szymon.b, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$2409 ($sdff) from module tt_um_rumcajs (D = { \u_rumcajs.g_fixed_key_core.u_szymon.b [30:0] \u_rumcajs.g_fixed_key_core.u_szymon.b_input }, Q = \u_rumcajs.g_fixed_key_core.u_szymon.b).
+Adding SRST signal on $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$procdff$1961 ($dff) from module tt_um_rumcajs (D = $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$procmux$1596_Y, Q = \u_rumcajs.g_fixed_key_core.u_szymon.a, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$2411 ($sdff) from module tt_um_rumcajs (D = { \u_rumcajs.g_fixed_key_core.u_szymon.a [30:0] \u_rumcajs.g_fixed_key_core.u_szymon.a_input }, Q = \u_rumcajs.g_fixed_key_core.u_szymon.a).
+
+15.9.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_rumcajs..
+Removed 11 unused cells and 31 unused wires.
+<suppressed ~12 debug messages>
+
+15.9.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_rumcajs.
+<suppressed ~12 debug messages>
+
+15.9.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+15.9.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \tt_um_rumcajs..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~70 debug messages>
+
+15.9.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \tt_um_rumcajs.
+Performed a total of 0 changes.
+
+15.9.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_rumcajs'.
+<suppressed ~90 debug messages>
+Removed a total of 30 cells.
+
+15.9.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.9.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_rumcajs..
+Removed 0 unused cells and 30 unused wires.
+<suppressed ~1 debug messages>
+
+15.9.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_rumcajs.
+
+15.9.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+15.9.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \tt_um_rumcajs..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~71 debug messages>
+
+15.9.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \tt_um_rumcajs.
+Performed a total of 0 changes.
+
+15.9.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_rumcajs'.
+Removed a total of 0 cells.
+
+15.9.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.9.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_rumcajs..
+
+15.9.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_rumcajs.
+
+15.9.23. Finished OPT passes. (There is nothing left to do.)
+
+15.10. Executing WREDUCE pass (reducing word size of cells).
+Removed top 28 address bits (of 32) from memory init port tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$auto$mem.cc:328:emit$668 ($flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666).
+Removed top 1 bits (of 4) from port B of cell tt_um_rumcajs.$auto$opt_dff.cc:195:make_patterns_logic$2365 ($ne).
+Removed top 2 bits (of 4) from port B of cell tt_um_rumcajs.$auto$fsm_map.cc:77:implement_pattern_cache$2145 ($eq).
+Removed top 1 bits (of 3) from port B of cell tt_um_rumcajs.$auto$fsm_map.cc:77:implement_pattern_cache$2149 ($eq).
+Removed top 3 bits (of 5) from port B of cell tt_um_rumcajs.$auto$fsm_map.cc:77:implement_pattern_cache$2158 ($eq).
+Removed top 2 bits (of 5) from port B of cell tt_um_rumcajs.$auto$opt_dff.cc:195:make_patterns_logic$2201 ($ne).
+Removed top 1 bits (of 3) from port B of cell tt_um_rumcajs.$auto$opt_dff.cc:195:make_patterns_logic$2203 ($ne).
+Removed top 1 bits (of 4) from port B of cell tt_um_rumcajs.$auto$opt_dff.cc:195:make_patterns_logic$2199 ($ne).
+Removed top 1 bits (of 2) from port B of cell tt_um_rumcajs.$auto$fsm_map.cc:77:implement_pattern_cache$2162 ($eq).
+Removed top 1 bits (of 5) from port B of cell tt_um_rumcajs.$auto$fsm_map.cc:77:implement_pattern_cache$2176 ($eq).
+Removed top 1 bits (of 3) from port B of cell tt_um_rumcajs.$auto$fsm_map.cc:77:implement_pattern_cache$2073 ($eq).
+Removed top 1 bits (of 2) from port B of cell tt_um_rumcajs.$auto$fsm_map.cc:77:implement_pattern_cache$2120 ($eq).
+Removed top 2 bits (of 3) from port B of cell tt_um_rumcajs.$auto$fsm_map.cc:77:implement_pattern_cache$2126 ($eq).
+Removed top 1 bits (of 3) from port B of cell tt_um_rumcajs.$auto$fsm_map.cc:77:implement_pattern_cache$2055 ($eq).
+Removed top 1 bits (of 5) from port B of cell tt_um_rumcajs.$auto$fsm_map.cc:77:implement_pattern_cache$2137 ($eq).
+Removed top 1 bits (of 4) from port B of cell tt_um_rumcajs.$auto$opt_dff.cc:195:make_patterns_logic$2367 ($ne).
+Removed top 2 bits (of 4) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_auth.$ne$src/auth_ctrl.v:75$501 ($ne).
+Removed top 1 bits (of 4) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_auth.$ne$src/auth_ctrl.v:75$503 ($ne).
+Removed top 3 bits (of 4) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_auth.$eq$src/auth_ctrl.v:85$512 ($eq).
+Removed top 1 bits (of 4) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_auth.$eq$src/auth_ctrl.v:89$514 ($eq).
+Removed top 2 bits (of 4) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_auth.$eq$src/auth_ctrl.v:90$515 ($eq).
+Removed top 1 bits (of 4) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_auth.$eq$src/auth_ctrl.v:91$516 ($eq).
+Removed top 2 bits (of 4) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_auth.$eq$src/auth_ctrl.v:95$520 ($eq).
+Removed top 1 bits (of 4) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_auth.$eq$src/auth_ctrl.v:95$521 ($eq).
+Removed top 1 bits (of 4) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_auth.$eq$src/auth_ctrl.v:96$525 ($eq).
+Removed top 2 bits (of 3) from port B of cell tt_um_rumcajs.$auto$opt_dff.cc:195:make_patterns_logic$2301 ($ne).
+Removed top 1 bits (of 3) from port B of cell tt_um_rumcajs.$auto$fsm_map.cc:77:implement_pattern_cache$2116 ($eq).
+Removed top 1 bits (of 7) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_link.$eq$src/serial_link.v:208$231 ($eq).
+Removed top 1 bits (of 4) from port B of cell tt_um_rumcajs.$auto$fsm_map.cc:77:implement_pattern_cache$2112 ($eq).
+Removed top 1 bits (of 3) from port B of cell tt_um_rumcajs.$auto$opt_dff.cc:195:make_patterns_logic$2271 ($ne).
+Removed top 1 bits (of 5) from port B of cell tt_um_rumcajs.$auto$opt_dff.cc:195:make_patterns_logic$2269 ($ne).
+Removed top 1 bits (of 6) from port B of cell tt_um_rumcajs.$auto$opt_dff.cc:195:make_patterns_logic$2267 ($ne).
+Removed top 3 bits (of 4) from port B of cell tt_um_rumcajs.$auto$opt_dff.cc:195:make_patterns_logic$2265 ($ne).
+Removed top 4 bits (of 5) from port B of cell tt_um_rumcajs.$auto$opt_dff.cc:195:make_patterns_logic$2252 ($ne).
+Removed top 1 bits (of 4) from port B of cell tt_um_rumcajs.$auto$fsm_map.cc:77:implement_pattern_cache$2108 ($eq).
+Removed top 1 bits (of 5) from port B of cell tt_um_rumcajs.$auto$fsm_map.cc:77:implement_pattern_cache$2104 ($eq).
+Removed top 2 bits (of 3) from port B of cell tt_um_rumcajs.$auto$opt_dff.cc:195:make_patterns_logic$2245 ($ne).
+Removed top 3 bits (of 16) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$eq$src/regs.v:73$557 ($eq).
+Removed top 30 bits (of 32) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$ge$src/regs.v:102$559 ($ge).
+Removed top 30 bits (of 32) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$lt$src/regs.v:115$576 ($lt).
+Removed top 1 bits (of 5) from port B of cell tt_um_rumcajs.$auto$opt_dff.cc:195:make_patterns_logic$2241 ($ne).
+Removed top 1 bits (of 3) from port B of cell tt_um_rumcajs.$auto$opt_dff.cc:195:make_patterns_logic$2243 ($ne).
+Removed top 4 bits (of 32) from FF cell tt_um_rumcajs.$auto$ff.cc:266:slice$2215 ($adffe).
+Removed top 30 bits (of 32) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$ge$src/kb.v:65$594 ($ge).
+Removed top 3 bits (of 4) from port A of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$shl$src/kb.v:94$598 ($shl).
+Removed top 1 bits (of 2) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$eq$src/kb.v:171$614 ($eq).
+Removed top 30 bits (of 32) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$ge$src/kb.v:183$615 ($ge).
+Removed top 2 bits (of 4) from port B of cell tt_um_rumcajs.$auto$opt_dff.cc:195:make_patterns_logic$2294 ($ne).
+Removed top 2 bits (of 3) from port B of cell tt_um_rumcajs.$auto$opt_dff.cc:195:make_patterns_logic$2292 ($ne).
+Removed top 2 bits (of 3) from port B of cell tt_um_rumcajs.$auto$opt_dff.cc:195:make_patterns_logic$2290 ($ne).
+Removed top 31 bits (of 32) from port A of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$add$src/kb.v:38$642 ($add).
+Removed top 31 bits (of 32) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$add$src/kb.v:38$642 ($add).
+Removed top 30 bits (of 32) from port Y of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$add$src/kb.v:38$642 ($add).
+Removed top 30 bits (of 32) from port A of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$add$src/kb.v:38$643 ($add).
+Removed top 31 bits (of 32) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$add$src/kb.v:38$643 ($add).
+Removed top 29 bits (of 32) from port Y of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$add$src/kb.v:38$643 ($add).
+Removed top 29 bits (of 32) from port A of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$add$src/kb.v:38$644 ($add).
+Removed top 31 bits (of 32) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$add$src/kb.v:38$644 ($add).
+Removed top 28 bits (of 32) from port Y of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$add$src/kb.v:38$644 ($add).
+Removed top 27 bits (of 32) from port A of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$ge$src/kb.v:40$645 ($ge).
+Removed top 29 bits (of 32) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$ge$src/kb.v:40$645 ($ge).
+Converting cell tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$ge$src/kb.v:40$645 ($ge) from signed to unsigned.
+Removed top 1 bits (of 5) from port A of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$ge$src/kb.v:40$645 ($ge).
+Removed top 1 bits (of 3) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$ge$src/kb.v:40$645 ($ge).
+Removed top 3 bits (of 6) from port B of cell tt_um_rumcajs.$auto$opt_dff.cc:195:make_patterns_logic$2239 ($ne).
+Removed top 3 bits (of 4) from port B of cell tt_um_rumcajs.$auto$opt_dff.cc:195:make_patterns_logic$2237 ($ne).
+Removed top 4 bits (of 6) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$ternary$.build/eight-ideas/joint.v:92$399 ($mux).
+Removed top 4 bits (of 6) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$sub$.build/eight-ideas/joint.v:92$400 ($sub).
+Removed top 3 bits (of 6) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$sub$.build/eight-ideas/joint.v:120$410 ($sub).
+Removed top 3 bits (of 4) from port B of cell tt_um_rumcajs.$auto$opt_dff.cc:195:make_patterns_logic$2359 ($ne).
+Removed top 1 bits (of 6) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$eq$.build/eight-ideas/joint.v:199$452 ($eq).
+Removed top 3 bits (of 4) from port B of cell tt_um_rumcajs.$auto$opt_dff.cc:195:make_patterns_logic$2357 ($ne).
+Removed top 3 bits (of 4) from port B of cell tt_um_rumcajs.$auto$opt_dff.cc:195:make_patterns_logic$2361 ($ne).
+Removed top 3 bits (of 4) from port B of cell tt_um_rumcajs.$auto$opt_dff.cc:195:make_patterns_logic$2355 ($ne).
+Removed top 1 bits (of 2) from port B of cell tt_um_rumcajs.$auto$opt_dff.cc:195:make_patterns_logic$2350 ($ne).
+Removed top 2 bits (of 4) from port B of cell tt_um_rumcajs.$auto$opt_dff.cc:195:make_patterns_logic$2353 ($ne).
+Removed top 1 bits (of 4) from port B of cell tt_um_rumcajs.$auto$fsm_map.cc:77:implement_pattern_cache$2086 ($eq).
+Removed top 2 bits (of 5) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$procmux$1712 ($pmux).
+Removed top 1 bits (of 2) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$procmux$1714_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$sub$.build/eight-ideas/joint.v:88$394 ($sub).
+Removed top 3 bits (of 4) from port B of cell tt_um_rumcajs.$auto$opt_dff.cc:195:make_patterns_logic$2363 ($ne).
+Removed top 4 bits (of 32) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1133 ($mux).
+Removed top 4 bits (of 32) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1130 ($mux).
+Removed top 4 bits (of 32) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1128 ($mux).
+Removed top 4 bits (of 32) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1125 ($mux).
+Removed top 4 bits (of 32) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1123 ($mux).
+Removed top 4 bits (of 28) from FF cell tt_um_rumcajs.$auto$ff.cc:266:slice$2215 ($adffe).
+Removed top 4 bits (of 28) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1133 ($mux).
+Removed top 4 bits (of 28) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1130 ($mux).
+Removed top 4 bits (of 28) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1128 ($mux).
+Removed top 4 bits (of 28) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1125 ($mux).
+Removed top 4 bits (of 28) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1123 ($mux).
+Removed top 4 bits (of 24) from FF cell tt_um_rumcajs.$auto$ff.cc:266:slice$2215 ($adffe).
+Removed top 4 bits (of 24) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1133 ($mux).
+Removed top 4 bits (of 24) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1130 ($mux).
+Removed top 4 bits (of 24) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1128 ($mux).
+Removed top 4 bits (of 24) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1125 ($mux).
+Removed top 4 bits (of 24) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1123 ($mux).
+Removed top 4 bits (of 20) from FF cell tt_um_rumcajs.$auto$ff.cc:266:slice$2215 ($adffe).
+Removed top 4 bits (of 20) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1133 ($mux).
+Removed top 4 bits (of 20) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1130 ($mux).
+Removed top 4 bits (of 20) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1128 ($mux).
+Removed top 4 bits (of 20) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1125 ($mux).
+Removed top 4 bits (of 20) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1123 ($mux).
+Removed top 4 bits (of 16) from FF cell tt_um_rumcajs.$auto$ff.cc:266:slice$2215 ($adffe).
+Removed top 4 bits (of 16) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1133 ($mux).
+Removed top 4 bits (of 16) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1130 ($mux).
+Removed top 4 bits (of 16) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1128 ($mux).
+Removed top 4 bits (of 16) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1125 ($mux).
+Removed top 4 bits (of 16) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1123 ($mux).
+Removed top 4 bits (of 6) from wire tt_um_rumcajs.$flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$ternary$.build/eight-ideas/joint.v:92$399_Y.
+Removed top 28 bits (of 32) from wire tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$0\hit_count$func$src/kb.v:63$590.count[31:0]$641.
+Removed top 30 bits (of 32) from wire tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$add$src/kb.v:38$642_Y.
+Removed top 29 bits (of 32) from wire tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$add$src/kb.v:38$643_Y.
+Removed top 20 bits (of 32) from wire tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$0\pin_shift[31:0].
+Removed top 1 bits (of 2) from wire tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$add$src/regs.v:116$577_Y.
+Removed top 20 bits (of 32) from wire tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1123_Y.
+Removed top 20 bits (of 32) from wire tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1125_Y.
+Removed top 20 bits (of 32) from wire tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1128_Y.
+Removed top 20 bits (of 32) from wire tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1130_Y.
+
+15.11. Executing PEEPOPT pass (run peephole optimizers).
+
+15.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_rumcajs..
+Removed 0 unused cells and 10 unused wires.
+<suppressed ~1 debug messages>
+
+15.13. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module tt_um_rumcajs:
+  creating $macc model for $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$add$.build/eight-ideas/joint.v:102$405 ($add).
+  creating $macc model for $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$add$.build/eight-ideas/joint.v:129$420 ($add).
+  creating $macc model for $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$add$.build/eight-ideas/joint.v:131$422 ($add).
+  creating $macc model for $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$add$.build/eight-ideas/joint.v:185$450 ($add).
+  creating $macc model for $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$add$.build/eight-ideas/joint.v:205$454 ($add).
+  creating $macc model for $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$sub$.build/eight-ideas/joint.v:120$410 ($sub).
+  creating $macc model for $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$sub$.build/eight-ideas/joint.v:88$394 ($sub).
+  creating $macc model for $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$sub$.build/eight-ideas/joint.v:92$400 ($sub).
+  creating $macc model for $flatten\u_rumcajs.\u_auth.$add$src/auth_ctrl.v:111$542 ($add).
+  creating $macc model for $flatten\u_rumcajs.\u_buzzer.$add$src/buzzer.v:70$488 ($add).
+  creating $macc model for $flatten\u_rumcajs.\u_kb.$add$src/kb.v:165$612 ($add).
+  creating $macc model for $flatten\u_rumcajs.\u_kb.$add$src/kb.v:241$632 ($add).
+  creating $macc model for $flatten\u_rumcajs.\u_kb.$add$src/kb.v:38$642 ($add).
+  creating $macc model for $flatten\u_rumcajs.\u_kb.$add$src/kb.v:38$643 ($add).
+  creating $macc model for $flatten\u_rumcajs.\u_kb.$add$src/kb.v:38$644 ($add).
+  creating $macc model for $flatten\u_rumcajs.\u_kb.$add$src/kb.v:64$593 ($add).
+  creating $macc model for $flatten\u_rumcajs.\u_link.$add$src/serial_link.v:181$226 ($add).
+  creating $macc model for $flatten\u_rumcajs.\u_regs.$add$src/regs.v:116$577 ($add).
+  creating $macc model for $flatten\u_rumcajs.\u_regs.$add$src/regs.v:154$585 ($add).
+  creating $macc model for $flatten\u_rumcajs.\u_timebase.$add$src/timebase.v:64$661 ($add).
+  creating $macc model for $flatten\u_rumcajs.\u_timebase.$add$src/timebase.v:67$662 ($add).
+  merging $macc model for $flatten\u_rumcajs.\u_kb.$add$src/kb.v:38$643 into $flatten\u_rumcajs.\u_kb.$add$src/kb.v:38$644.
+  merging $macc model for $flatten\u_rumcajs.\u_kb.$add$src/kb.v:38$642 into $flatten\u_rumcajs.\u_kb.$add$src/kb.v:38$644.
+  creating $alu model for $macc $flatten\u_rumcajs.\u_regs.$add$src/regs.v:154$585.
+  creating $alu model for $macc $flatten\u_rumcajs.\u_regs.$add$src/regs.v:116$577.
+  creating $alu model for $macc $flatten\u_rumcajs.\u_link.$add$src/serial_link.v:181$226.
+  creating $alu model for $macc $flatten\u_rumcajs.\u_kb.$add$src/kb.v:64$593.
+  creating $alu model for $macc $flatten\u_rumcajs.\u_timebase.$add$src/timebase.v:64$661.
+  creating $alu model for $macc $flatten\u_rumcajs.\u_timebase.$add$src/timebase.v:67$662.
+  creating $alu model for $macc $flatten\u_rumcajs.\u_kb.$add$src/kb.v:241$632.
+  creating $alu model for $macc $flatten\u_rumcajs.\u_kb.$add$src/kb.v:165$612.
+  creating $alu model for $macc $flatten\u_rumcajs.\u_buzzer.$add$src/buzzer.v:70$488.
+  creating $alu model for $macc $flatten\u_rumcajs.\u_auth.$add$src/auth_ctrl.v:111$542.
+  creating $alu model for $macc $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$sub$.build/eight-ideas/joint.v:92$400.
+  creating $alu model for $macc $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$sub$.build/eight-ideas/joint.v:88$394.
+  creating $alu model for $macc $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$sub$.build/eight-ideas/joint.v:120$410.
+  creating $alu model for $macc $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$add$.build/eight-ideas/joint.v:205$454.
+  creating $alu model for $macc $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$add$.build/eight-ideas/joint.v:185$450.
+  creating $alu model for $macc $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$add$.build/eight-ideas/joint.v:131$422.
+  creating $alu model for $macc $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$add$.build/eight-ideas/joint.v:129$420.
+  creating $alu model for $macc $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$add$.build/eight-ideas/joint.v:102$405.
+  creating $macc cell for $flatten\u_rumcajs.\u_kb.$add$src/kb.v:38$644: $auto$alumacc.cc:365:replace_macc$2423
+  creating $alu model for $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$lt$.build/eight-ideas/joint.v:119$408 ($lt): new $alu
+  creating $alu model for $flatten\u_rumcajs.\u_kb.$ge$src/kb.v:183$615 ($ge): new $alu
+  creating $alu model for $flatten\u_rumcajs.\u_kb.$ge$src/kb.v:40$645 ($ge): new $alu
+  creating $alu model for $flatten\u_rumcajs.\u_kb.$ge$src/kb.v:65$594 ($ge): new $alu
+  creating $alu model for $flatten\u_rumcajs.\u_link.$ge$src/serial_link.v:170$223 ($ge): new $alu
+  creating $alu model for $flatten\u_rumcajs.\u_regs.$ge$src/regs.v:102$559 ($ge): new $alu
+  creating $alu model for $flatten\u_rumcajs.\u_regs.$lt$src/regs.v:115$576 ($lt): merged with $flatten\u_rumcajs.\u_regs.$ge$src/regs.v:102$559.
+  creating $alu model for $flatten\u_rumcajs.\u_link.$eq$src/serial_link.v:160$219 ($eq): merged with $flatten\u_rumcajs.\u_link.$ge$src/serial_link.v:170$223.
+  creating $alu cell for $flatten\u_rumcajs.\u_regs.$ge$src/regs.v:102$559, $flatten\u_rumcajs.\u_regs.$lt$src/regs.v:115$576: $auto$alumacc.cc:495:replace_alu$2430
+  creating $alu cell for $flatten\u_rumcajs.\u_link.$ge$src/serial_link.v:170$223, $flatten\u_rumcajs.\u_link.$eq$src/serial_link.v:160$219: $auto$alumacc.cc:495:replace_alu$2443
+  creating $alu cell for $flatten\u_rumcajs.\u_kb.$ge$src/kb.v:65$594: $auto$alumacc.cc:495:replace_alu$2456
+  creating $alu cell for $flatten\u_rumcajs.\u_kb.$ge$src/kb.v:40$645: $auto$alumacc.cc:495:replace_alu$2469
+  creating $alu cell for $flatten\u_rumcajs.\u_kb.$ge$src/kb.v:183$615: $auto$alumacc.cc:495:replace_alu$2482
+  creating $alu cell for $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$lt$.build/eight-ideas/joint.v:119$408: $auto$alumacc.cc:495:replace_alu$2495
+  creating $alu cell for $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$add$.build/eight-ideas/joint.v:102$405: $auto$alumacc.cc:495:replace_alu$2500
+  creating $alu cell for $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$add$.build/eight-ideas/joint.v:129$420: $auto$alumacc.cc:495:replace_alu$2503
+  creating $alu cell for $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$add$.build/eight-ideas/joint.v:131$422: $auto$alumacc.cc:495:replace_alu$2506
+  creating $alu cell for $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$add$.build/eight-ideas/joint.v:185$450: $auto$alumacc.cc:495:replace_alu$2509
+  creating $alu cell for $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$add$.build/eight-ideas/joint.v:205$454: $auto$alumacc.cc:495:replace_alu$2512
+  creating $alu cell for $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$sub$.build/eight-ideas/joint.v:120$410: $auto$alumacc.cc:495:replace_alu$2515
+  creating $alu cell for $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$sub$.build/eight-ideas/joint.v:88$394: $auto$alumacc.cc:495:replace_alu$2518
+  creating $alu cell for $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$sub$.build/eight-ideas/joint.v:92$400: $auto$alumacc.cc:495:replace_alu$2521
+  creating $alu cell for $flatten\u_rumcajs.\u_auth.$add$src/auth_ctrl.v:111$542: $auto$alumacc.cc:495:replace_alu$2524
+  creating $alu cell for $flatten\u_rumcajs.\u_buzzer.$add$src/buzzer.v:70$488: $auto$alumacc.cc:495:replace_alu$2527
+  creating $alu cell for $flatten\u_rumcajs.\u_kb.$add$src/kb.v:165$612: $auto$alumacc.cc:495:replace_alu$2530
+  creating $alu cell for $flatten\u_rumcajs.\u_kb.$add$src/kb.v:241$632: $auto$alumacc.cc:495:replace_alu$2533
+  creating $alu cell for $flatten\u_rumcajs.\u_timebase.$add$src/timebase.v:67$662: $auto$alumacc.cc:495:replace_alu$2536
+  creating $alu cell for $flatten\u_rumcajs.\u_timebase.$add$src/timebase.v:64$661: $auto$alumacc.cc:495:replace_alu$2539
+  creating $alu cell for $flatten\u_rumcajs.\u_kb.$add$src/kb.v:64$593: $auto$alumacc.cc:495:replace_alu$2542
+  creating $alu cell for $flatten\u_rumcajs.\u_link.$add$src/serial_link.v:181$226: $auto$alumacc.cc:495:replace_alu$2545
+  creating $alu cell for $flatten\u_rumcajs.\u_regs.$add$src/regs.v:116$577: $auto$alumacc.cc:495:replace_alu$2548
+  creating $alu cell for $flatten\u_rumcajs.\u_regs.$add$src/regs.v:154$585: $auto$alumacc.cc:495:replace_alu$2551
+  created 24 $alu and 1 $macc cells.
+
+15.14. Executing SHARE pass (SAT-based resource sharing).
+
+15.15. Executing OPT pass (performing simple optimizations).
+
+15.15.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_rumcajs.
+
+15.15.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_rumcajs'.
+Removed a total of 0 cells.
+
+15.15.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \tt_um_rumcajs..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~71 debug messages>
+
+15.15.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \tt_um_rumcajs.
+Performed a total of 0 changes.
+
+15.15.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_rumcajs'.
+Removed a total of 0 cells.
+
+15.15.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.15.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_rumcajs..
+Removed 2 unused cells and 10 unused wires.
+<suppressed ~3 debug messages>
+
+15.15.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_rumcajs.
+
+15.15.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+15.15.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \tt_um_rumcajs..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~71 debug messages>
+
+15.15.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \tt_um_rumcajs.
+Performed a total of 0 changes.
+
+15.15.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_rumcajs'.
+Removed a total of 0 cells.
+
+15.15.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.15.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_rumcajs..
+
+15.15.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_rumcajs.
+
+15.15.16. Finished OPT passes. (There is nothing left to do.)
+
+15.16. Executing MEMORY pass.
+
+15.16.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+15.16.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+15.16.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+15.16.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+15.16.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+Checking read port `$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666'[0] in module `\tt_um_rumcajs': no output FF found.
+Checking read port address `$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666'[0] in module `\tt_um_rumcajs': address FF has async set and/or reset, not supported.
+
+15.16.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_rumcajs..
+
+15.16.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+15.16.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+15.16.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_rumcajs..
+
+15.16.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+15.17. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_rumcajs..
+
+15.18. Executing OPT pass (performing simple optimizations).
+
+15.18.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_rumcajs.
+<suppressed ~152 debug messages>
+
+15.18.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_rumcajs'.
+<suppressed ~6 debug messages>
+Removed a total of 2 cells.
+
+15.18.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.18.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_rumcajs..
+Removed 3 unused cells and 93 unused wires.
+<suppressed ~4 debug messages>
+
+15.18.5. Finished fast OPT passes.
+
+15.19. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+Mapping memory $flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666 in module \tt_um_rumcajs:
+  created 16 $dff cells and 0 static cells of width 6.
+  read interface: 0 $dff and 15 $mux cells.
+  write interface: 0 write mux blocks.
+
+15.20. Executing OPT pass (performing simple optimizations).
+
+15.20.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_rumcajs.
+<suppressed ~4 debug messages>
+
+15.20.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_rumcajs'.
+Removed a total of 0 cells.
+
+15.20.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \tt_um_rumcajs..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~69 debug messages>
+
+15.20.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \tt_um_rumcajs.
+    Consolidated identical input bits for $mux cell $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][3][5]$2620:
+      Old ports: A=6'100101, B=6'000000, Y=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][2]$b$2601
+      New ports: A=1'1, B=1'0, Y=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][2]$b$2601 [0]
+      New connections: $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][2]$b$2601 [5:1] = { $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][2]$b$2601 [0] 2'00 $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][2]$b$2601 [0] 1'0 }
+    Consolidated identical input bits for $mux cell $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][3][4]$2617:
+      Old ports: A=6'011101, B=6'100001, Y=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][2]$a$2600
+      New ports: A=2'01, B=2'10, Y={ $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][2]$a$2600 [5] $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][2]$a$2600 [2] }
+      New connections: { $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][2]$a$2600 [4:3] $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][2]$a$2600 [1:0] } = { $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][2]$a$2600 [2] $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][2]$a$2600 [2] 2'01 }
+    Consolidated identical input bits for $mux cell $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][3][3]$2614:
+      Old ports: A=6'011001, B=6'000000, Y=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][1]$b$2598
+      New ports: A=1'1, B=1'0, Y=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][1]$b$2598 [0]
+      New connections: $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][1]$b$2598 [5:1] = { 1'0 $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][1]$b$2598 [0] $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][1]$b$2598 [0] 2'00 }
+    Consolidated identical input bits for $mux cell $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][3][2]$2611:
+      Old ports: A=6'010001, B=6'010101, Y=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][1]$a$2597
+      New ports: A=1'0, B=1'1, Y=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][1]$a$2597 [2]
+      New connections: { $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][1]$a$2597 [5:3] $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][1]$a$2597 [1:0] } = 5'01001
+    Consolidated identical input bits for $mux cell $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][3][1]$2608:
+      Old ports: A=6'001101, B=6'000000, Y=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][0]$b$2595
+      New ports: A=1'1, B=1'0, Y=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][0]$b$2595 [0]
+      New connections: $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][0]$b$2595 [5:1] = { 2'00 $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][0]$b$2595 [0] $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][0]$b$2595 [0] 1'0 }
+    Consolidated identical input bits for $mux cell $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][3][0]$2605:
+      Old ports: A=6'000101, B=6'001001, Y=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][0]$a$2594
+      New ports: A=2'01, B=2'10, Y=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][0]$a$2594 [3:2]
+      New connections: { $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][0]$a$2594 [5:4] $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][0]$a$2594 [1:0] } = 4'0001
+    New ctrl vector for $pmux cell $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$procmux$1607: \u_rumcajs.g_fixed_key_core.u_szymon.state [0]
+    New ctrl vector for $pmux cell $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$procmux$1624: \u_rumcajs.g_fixed_key_core.u_szymon.state [4]
+    New ctrl vector for $pmux cell $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$procmux$1648: { \u_rumcajs.g_fixed_key_core.u_szymon.state [4] $auto$opt_reduce.cc:137:opt_pmux$2630 }
+    Consolidated identical input bits for $mux cell $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$ternary$.build/eight-ideas/joint.v:103$404:
+      Old ports: A=5'00000, B={ 2'00 \u_rumcajs.g_fixed_key_core.u_szymon.bit_offset [2:0] }, Y=$flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$ternary$.build/eight-ideas/joint.v:103$404_Y
+      New ports: A=3'000, B=\u_rumcajs.g_fixed_key_core.u_szymon.bit_offset [2:0], Y=$flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$ternary$.build/eight-ideas/joint.v:103$404_Y [2:0]
+      New connections: $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$ternary$.build/eight-ideas/joint.v:103$404_Y [4:3] = 2'00
+    Consolidated identical input bits for $mux cell $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$ternary$.build/eight-ideas/joint.v:92$399:
+      Old ports: A=2'01, B=2'11, Y=$auto$wreduce.cc:514:run$2413 [1:0]
+      New ports: A=1'0, B=1'1, Y=$auto$wreduce.cc:514:run$2413 [1]
+      New connections: $auto$wreduce.cc:514:run$2413 [0] = 1'1
+    New ctrl vector for $pmux cell $flatten\u_rumcajs.\u_auth.$procmux$1513: { $flatten\u_rumcajs.\u_auth.$eq$src/auth_ctrl.v:84$509_Y \u_rumcajs.g_fixed_key_core.u_szymon.cmd_valid \u_rumcajs.rx_arm $flatten\u_rumcajs.\u_auth.$eq$src/auth_ctrl.v:95$520_Y $flatten\u_rumcajs.\u_auth.$eq$src/auth_ctrl.v:95$521_Y \u_rumcajs.g_fixed_key_core.u_szymon.seal_valid $flatten\u_rumcajs.\u_auth.$eq$src/auth_ctrl.v:96$525_Y \u_rumcajs.tx_arm $flatten\u_rumcajs.\u_auth.$eq$src/auth_ctrl.v:97$529_Y \u_rumcajs.g_fixed_key_core.u_szymon.abort }
+    Consolidated identical input bits for $mux cell $flatten\u_rumcajs.\u_kb.$procmux$688:
+      Old ports: A=2'00, B=2'11, Y=$flatten\u_rumcajs.\u_kb.$4\first_column$func$src/kb.v:66$591.$result[1:0]$654
+      New ports: A=1'0, B=1'1, Y=$flatten\u_rumcajs.\u_kb.$4\first_column$func$src/kb.v:66$591.$result[1:0]$654 [0]
+      New connections: $flatten\u_rumcajs.\u_kb.$4\first_column$func$src/kb.v:66$591.$result[1:0]$654 [1] = $flatten\u_rumcajs.\u_kb.$4\first_column$func$src/kb.v:66$591.$result[1:0]$654 [0]
+    New ctrl vector for $pmux cell $flatten\u_rumcajs.\u_link.$procmux$1260: \u_rumcajs.u_link.state [1]
+    New ctrl vector for $pmux cell $flatten\u_rumcajs.\u_link.$procmux$1384: \u_rumcajs.u_link.state [2:1]
+    Consolidated identical input bits for $mux cell $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][3][6]$2623:
+      Old ports: A=6'000010, B=6'000001, Y=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][3]$a$2603
+      New ports: A=2'10, B=2'01, Y=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][3]$a$2603 [1:0]
+      New connections: $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][3]$a$2603 [5:2] = 4'0000
+  Optimizing cells in module \tt_um_rumcajs.
+    Consolidated identical input bits for $mux cell $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][3]$2602:
+      Old ports: A=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][3]$a$2603, B=6'000000, Y=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][1]$b$2592
+      New ports: A=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][3]$a$2603 [1:0], B=2'00, Y=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][1]$b$2592 [1:0]
+      New connections: $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][1]$b$2592 [5:2] = 4'0000
+    Consolidated identical input bits for $mux cell $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][2]$2599:
+      Old ports: A=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][2]$a$2600, B=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][2]$b$2601, Y=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][1]$a$2591
+      New ports: A={ $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][2]$a$2600 [5] $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][2]$a$2600 [2] $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][2]$a$2600 [2] 1'1 }, B={ $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][2]$b$2601 [0] 1'0 $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][2]$b$2601 [0] $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][2]$b$2601 [0] }, Y={ $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][1]$a$2591 [5] $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][1]$a$2591 [3:2] $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][1]$a$2591 [0] }
+      New connections: { $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][1]$a$2591 [4] $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][1]$a$2591 [1] } = { $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][1]$a$2591 [3] 1'0 }
+    Consolidated identical input bits for $mux cell $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][1]$2596:
+      Old ports: A=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][1]$a$2597, B=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][1]$b$2598, Y=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][0]$b$2589
+      New ports: A={ 1'0 $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][1]$a$2597 [2] 1'1 }, B={ $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][1]$b$2598 [0] 1'0 $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][1]$b$2598 [0] }, Y={ $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][0]$b$2589 [3:2] $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][0]$b$2589 [0] }
+      New connections: { $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][0]$b$2589 [5:4] $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][0]$b$2589 [1] } = { 1'0 $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][0]$b$2589 [0] 1'0 }
+    Consolidated identical input bits for $mux cell $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][0]$2593:
+      Old ports: A=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][0]$a$2594, B=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][0]$b$2595, Y=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][0]$a$2588
+      New ports: A={ $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][0]$a$2594 [3:2] 1'1 }, B={ $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][0]$b$2595 [0] $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][0]$b$2595 [0] $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][2][0]$b$2595 [0] }, Y={ $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][0]$a$2588 [3:2] $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][0]$a$2588 [0] }
+      New connections: { $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][0]$a$2588 [5:4] $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][0]$a$2588 [1] } = 3'000
+  Optimizing cells in module \tt_um_rumcajs.
+    Consolidated identical input bits for $mux cell $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][1]$2590:
+      Old ports: A=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][1]$a$2591, B=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][1]$b$2592, Y=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][0][0]$b$2586
+      New ports: A={ $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][1]$a$2591 [5] $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][1]$a$2591 [3:2] 1'0 $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][1]$a$2591 [0] }, B={ 3'000 $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][1]$b$2592 [1:0] }, Y={ $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][0][0]$b$2586 [5] $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][0][0]$b$2586 [3:0] }
+      New connections: $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][0][0]$b$2586 [4] = $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][0][0]$b$2586 [3]
+    Consolidated identical input bits for $mux cell $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][0]$2587:
+      Old ports: A=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][0]$a$2588, B=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][0]$b$2589, Y=$memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][0][0]$a$2585
+      New ports: A={ 1'0 $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][0]$a$2588 [3:2] $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][0]$a$2588 [0] }, B={ $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][0]$b$2589 [0] $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][0]$b$2589 [3:2] $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][1][0]$b$2589 [0] }, Y={ $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][0][0]$a$2585 [4:2] $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][0][0]$a$2585 [0] }
+      New connections: { $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][0][0]$a$2585 [5] $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$666$rdmux[0][0][0]$a$2585 [1] } = 2'00
+  Optimizing cells in module \tt_um_rumcajs.
+Performed a total of 22 changes.
+
+15.20.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_rumcajs'.
+<suppressed ~9 debug messages>
+Removed a total of 3 cells.
+
+15.20.6. Executing OPT_SHARE pass.
+
+15.20.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.20.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_rumcajs..
+Removed 0 unused cells and 20 unused wires.
+<suppressed ~1 debug messages>
+
+15.20.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_rumcajs.
+<suppressed ~6 debug messages>
+
+15.20.10. Rerunning OPT passes. (Maybe there is more to do..)
+
+15.20.11. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \tt_um_rumcajs..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~69 debug messages>
+
+15.20.12. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \tt_um_rumcajs.
+Performed a total of 0 changes.
+
+15.20.13. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_rumcajs'.
+Removed a total of 0 cells.
+
+15.20.14. Executing OPT_SHARE pass.
+
+15.20.15. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.20.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_rumcajs..
+Removed 0 unused cells and 4 unused wires.
+<suppressed ~1 debug messages>
+
+15.20.17. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_rumcajs.
+
+15.20.18. Rerunning OPT passes. (Maybe there is more to do..)
+
+15.20.19. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \tt_um_rumcajs..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~69 debug messages>
+
+15.20.20. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \tt_um_rumcajs.
+Performed a total of 0 changes.
+
+15.20.21. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_rumcajs'.
+Removed a total of 0 cells.
+
+15.20.22. Executing OPT_SHARE pass.
+
+15.20.23. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.20.24. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_rumcajs..
+
+15.20.25. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_rumcajs.
+
+15.20.26. Finished OPT passes. (There is nothing left to do.)
+
+15.21. Executing TECHMAP pass (map to technology primitives).
+
+15.21.1. Executing Verilog-2005 frontend: /mnt/c/Users/user/Desktop/HACKATHON/.tools/root/usr/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/mnt/c/Users/user/Desktop/HACKATHON/.tools/root/usr/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+15.21.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $adffe.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $or.
+Using template $paramod$7e708ae28ab761f11d0fb59d3ffc72f6a4baf5d9\_90_alu for cells of type $alu.
+Using extmapper maccmap for cells of type $macc_v2.
+  add \u_rumcajs.u_kb.sample_hits [0] (1 bits, unsigned)
+  add \u_rumcajs.u_kb.sample_hits [3] (1 bits, unsigned)
+  add \u_rumcajs.u_kb.sample_hits [2] (1 bits, unsigned)
+  add \u_rumcajs.u_kb.sample_hits [1] (1 bits, unsigned)
+  packed 1 (1) bits / 1 words into adder tree
+Using extmapper simplemap for cells of type $adff.
+Using template $paramod$672a140277c71df8314410f22acc08d55222c3c7\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $logic_or.
+Using template $paramod$32efbfac1c4dc57230cf86180788fdfd12e3b511\_90_alu for cells of type $alu.
+Using template $paramod$274c8d34472ef950383656115be6e1c8ace5024c\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $sdff.
+Using template $paramod$649fc39eef2451024566705288528c8671211199\_90_alu for cells of type $alu.
+Using template $paramod$ba698a254f9a5947e85cbe7beae6b161eefc5386\_90_alu for cells of type $alu.
+Using template $paramod$175e67c02b86e96b1288b9dc100122520d7240d8\_90_alu for cells of type $alu.
+Using template $paramod$2407ada40cc3dda6c6015be2b49b748cddb5a800\_90_pmux for cells of type $pmux.
+Using template $paramod$c5c783b17ab1d780abfad8cfe6563a0a7b47a3b0\_90_pmux for cells of type $pmux.
+Using template $paramod$103b4016182df467cceab67bcf3e18e6361ec0fd\_90_alu for cells of type $alu.
+Using template $paramod$b756e651b7db7aeb455331d9a2df073db93fcc2e\_90_pmux for cells of type $pmux.
+Using template $paramod$fc972a7a46956c1788f3cb5257b53c8f1df2d0cc\_90_alu for cells of type $alu.
+Using template $paramod$b8c0a997bce700f23568a5ada79cc6781d1f5ca0\_90_alu for cells of type $alu.
+Using template $paramod$constmap:66d421c313e4e958be776b99540ac2de3b59fdbc$paramod$77562a466236eb4a6d905351a0995599b75075cb\_90_shift_ops_shr_shl_sshl_sshr for cells of type $shl.
+Using template $paramod$740b056ede97228d3eae64ea2fdc81f0a33e0fe7\_90_alu for cells of type $alu.
+Using template $paramod$c3cd1564c35d873179656addd6052d7ea8b6d991\_90_alu for cells of type $alu.
+Using template $paramod$215440792383f7884e57d9c95f84e9552d0bf4ac\_90_alu for cells of type $alu.
+Using template $paramod$b18e16801adf491a64caa0542270798e5d4ac6b6\_90_alu for cells of type $alu.
+Using template $paramod$constmap:c2bd98a18a0fbe9e4eda21941c187799afbfb36f$paramod$b42652864a113c052b7e4ee7b3b668b1dd839d30\_90_shift_shiftx for cells of type $shiftx.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod$f956edc9fe4df758d9fdb10bfc518a364c99e75e\_90_alu for cells of type $alu.
+Using template $paramod$8742280fdebca84e1c87f2a86ed84f62d558f4cc\_90_alu for cells of type $alu.
+Using template $paramod$constmap:c1a8fb521397bdb25685af64f8a75addca38b68a$paramod$05fd02ee8975e559bee57b6e5e564b3ecd2ab687\_90_shift_shiftx for cells of type $shiftx.
+Using template $paramod$3ef7d3dd227da7627a99c5e5a6a4deb817573e39\_90_alu for cells of type $alu.
+Using template $paramod$ed0bb9616228df1e6c226f91f8133e751815f1b1\_90_pmux for cells of type $pmux.
+Using template $paramod$85df5dc01c7df96a7d8e5f1fdf76ce9ac452af63\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $sdffe.
+Using template $paramod$75108d6e8d490ab2eec24aee458e87cb2a6c124c\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000110 for cells of type $lcu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000010 for cells of type $lcu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000111 for cells of type $lcu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000011 for cells of type $lcu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000100 for cells of type $lcu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000101 for cells of type $lcu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000001101 for cells of type $lcu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000001 for cells of type $lcu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000001000 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000001 for cells of type $fa.
+No more expansions possible.
+<suppressed ~6067 debug messages>
+
+15.22. Executing OPT pass (performing simple optimizations).
+
+15.22.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tt_um_rumcajs.
+<suppressed ~7739 debug messages>
+
+15.22.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tt_um_rumcajs'.
+<suppressed ~11235 debug messages>
+Removed a total of 3745 cells.
+
+15.22.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.22.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tt_um_rumcajs..
+Removed 23885 unused cells and 1440 unused wires.
+<suppressed ~23886 debug messages>
+
+15.22.5. Finished fast OPT passes.
+
+15.23. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `tt_um_rumcajs'. Setting top module to tt_um_rumcajs.
+
+15.23.1. Analyzing design hierarchy..
+Top module:  \tt_um_rumcajs
+
+15.23.2. Analyzing design hierarchy..
+Top module:  \tt_um_rumcajs
+Removed 0 unused modules.
+
+15.24. Printing statistics.
+
+=== tt_um_rumcajs ===
+
+   Number of wires:               1141
+   Number of wire bits:          36535
+   Number of public wires:         277
+   Number of public wire bits:     634
+   Number of ports:                  8
+   Number of port bits:             43
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               2122
+     $_AND_                        289
+     $_DFFE_PN0N_                    2
+     $_DFFE_PN0P_                   66
+     $_DFF_PN0_                     71
+     $_DFF_PN1_                      4
+     $_MUX_                        909
+     $_NOT_                        194
+     $_OR_                         411
+     $_SDFFE_PP0N_                   3
+     $_SDFFE_PP0P_                  64
+     $_SDFF_PP0_                     3
+     $_XOR_                         94
+     $scopeinfo                     12
+
+15.25. Executing CHECK pass (checking for obvious problems).
+Checking module tt_um_rumcajs...
+Found and reported 0 problems.
+
+16. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell sg13g2_dfrbpq_1 (noninv, pins=4, area=48.99) is a direct match for cell type $_DFF_PN0_.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    unmapped dff cell: $_DFF_P_
+    unmapped dff cell: $_DFF_NN0_
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \sg13g2_dfrbpq_1 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RESET_B( R));
+    unmapped dff cell: $_DFF_PN1_
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    unmapped dff cell: $_DFFE_NN_
+    unmapped dff cell: $_DFFE_NP_
+    unmapped dff cell: $_DFFE_PN_
+    unmapped dff cell: $_DFFE_PP_
+    unmapped dff cell: $_DFFSR_NNN_
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    unmapped dff cell: $_DFFSR_PNN_
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+16.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+<suppressed ~4 debug messages>
+Mapping DFF cells in module `\tt_um_rumcajs':
+  mapped 213 $_DFF_PN0_ cells to \sg13g2_dfrbpq_1 cells.
+
+17. Executing ABC pass (technology mapping using ABC).
+
+17.1. Extracting gate netlist of module `\tt_um_rumcajs' to `<abc-temp-dir>/input.blif'..
+Replacing 20 occurrences of constant undef bits with constant zero bits
+Extracted 2110 gates and 2318 wires to a netlist network with 205 inputs and 203 outputs.
+
+17.1.1. Executing ABC.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /mnt/c/Users/user/Desktop/HACKATHON/.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.02 sec
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_antennanp" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_decap_4" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_decap_8" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dfrbpq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dfrbpq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dlhq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dlhr_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dlhrq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dllr_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dllrq_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_ebufn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_ebufn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_ebufn_8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_einvn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_einvn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_einvn_8".
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_fill_1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_fill_2" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_fill_4" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_fill_8" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_lgcp_1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfbbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfrbpq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfrbpq_2".
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_sighold" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_slgcp_1" due to dont_use attribute.
+ABC: Library "sg13g2_stdcell_typ_1p20V_25C" from "/mnt/c/Users/user/Desktop/HACKATHON/.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib" has 54 cells (20 skipped: 14 seq; 6 tri-state; 0 no func; 10 dont_use).  Time =     0.02 sec
+ABC: Memory =    2.85 MB. Time =     0.02 sec
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf -a -F 16 -A 8 -R 1000 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+17.1.2. Re-integrating ABC results.
+ABC RESULTS:     sg13g2_a21o_1 cells:       15
+ABC RESULTS:    sg13g2_a21oi_1 cells:      217
+ABC RESULTS:   sg13g2_a221oi_1 cells:       25
+ABC RESULTS:    sg13g2_a22oi_1 cells:       21
+ABC RESULTS:     sg13g2_and2_1 cells:       38
+ABC RESULTS:     sg13g2_and3_1 cells:       12
+ABC RESULTS:     sg13g2_and4_1 cells:        3
+ABC RESULTS:      sg13g2_inv_1 cells:       64
+ABC RESULTS:     sg13g2_mux2_1 cells:        6
+ABC RESULTS:     sg13g2_mux4_1 cells:        1
+ABC RESULTS:    sg13g2_nand2_1 cells:      249
+ABC RESULTS:   sg13g2_nand2b_1 cells:       33
+ABC RESULTS:    sg13g2_nand3_1 cells:       57
+ABC RESULTS:   sg13g2_nand3b_1 cells:        5
+ABC RESULTS:    sg13g2_nand4_1 cells:       20
+ABC RESULTS:     sg13g2_nor2_1 cells:      161
+ABC RESULTS:    sg13g2_nor2b_1 cells:       31
+ABC RESULTS:     sg13g2_nor3_1 cells:       80
+ABC RESULTS:     sg13g2_nor4_1 cells:       20
+ABC RESULTS:    sg13g2_o21ai_1 cells:      153
+ABC RESULTS:      sg13g2_or2_1 cells:       14
+ABC RESULTS:      sg13g2_or3_1 cells:        5
+ABC RESULTS:      sg13g2_or4_1 cells:        1
+ABC RESULTS:    sg13g2_xnor2_1 cells:       22
+ABC RESULTS:     sg13g2_xor2_1 cells:       29
+ABC RESULTS:        internal signals:     1910
+ABC RESULTS:           input signals:      205
+ABC RESULTS:          output signals:      203
+Removing temp directory.
+Removed 0 unused cells and 1385 unused wires.
+
+18. Printing statistics.
+
+=== tt_um_rumcajs ===
+
+   Number of wires:               1456
+   Number of wire bits:           1774
+   Number of public wires:         179
+   Number of public wire bits:     497
+   Number of ports:                  8
+   Number of port bits:             43
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               1507
+     $scopeinfo                     12
+     sg13g2_a21o_1                  15
+     sg13g2_a21oi_1                217
+     sg13g2_a221oi_1                25
+     sg13g2_a22oi_1                 21
+     sg13g2_and2_1                  38
+     sg13g2_and3_1                  12
+     sg13g2_and4_1                   3
+     sg13g2_dfrbpq_1               213
+     sg13g2_inv_1                   64
+     sg13g2_mux2_1                   6
+     sg13g2_mux4_1                   1
+     sg13g2_nand2_1                249
+     sg13g2_nand2b_1                33
+     sg13g2_nand3_1                 57
+     sg13g2_nand3b_1                 5
+     sg13g2_nand4_1                 20
+     sg13g2_nor2_1                 161
+     sg13g2_nor2b_1                 31
+     sg13g2_nor3_1                  80
+     sg13g2_nor4_1                  20
+     sg13g2_o21ai_1                153
+     sg13g2_or2_1                   14
+     sg13g2_or3_1                    5
+     sg13g2_or4_1                    1
+     sg13g2_xnor2_1                 22
+     sg13g2_xor2_1                  29
+
+   Area for cell type $scopeinfo is unknown!
+
+   Chip area for module '\tt_um_rumcajs': 21851.839800
+     of which used for sequential elements: 10434.614400 (47.75%)
+
+19. Executing CHECK pass (checking for obvious problems).
+Checking module tt_um_rumcajs...
+Found and reported 0 problems.
+
+20. Executing Verilog backend.
+
+20.1. Executing BMUXMAP pass.
+
+20.2. Executing DEMUXMAP pass.
+Dumping module `\tt_um_rumcajs'.
+
+End of script. Logfile hash: fe58221a37, CPU: user 2.02s system 0.13s, MEM: 97.20 MB peak
+Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+Time spent: 26% 43x opt_expr (0 sec), 11% 1x abc (0 sec), ...

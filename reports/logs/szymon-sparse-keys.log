@@ -1,0 +1,31 @@
+== unit:szymon_fixed ==
++ /usr/bin/python3 scripts/gen_fixed_round_keys.py /mnt/c/Users/user/Desktop/HACKATHON/.build/fixed_round_keys_default.mem 0x1b1a1918131211100b0a090803020100 0xf0e1d2c3b4a5968778695a4b3c2d1e0f
+generated 44 fixed-key pairs: /mnt/c/Users/user/Desktop/HACKATHON/.build/fixed_round_keys_default.mem
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_szymon_fixed -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_fixed_default.vvp src/szymon_fixed.v test/unit/tb_szymon_fixed.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_fixed_default.vvp +ROUND_KEYS=/mnt/c/Users/user/Desktop/HACKATHON/.build/fixed_round_keys_default.mem
+PASS tb_szymon_fixed: GOOD/BAD KAT, 9344 cycles, key bits, data hold, 28 abort phases, rearm
++ /usr/bin/python3 scripts/gen_fixed_round_keys.py /mnt/c/Users/user/Desktop/HACKATHON/.build/fixed_round_keys_alternate.mem 0x00000000000000000000000000000000 0xffffffffffffffffffffffffffffffff
+generated 44 fixed-key pairs: /mnt/c/Users/user/Desktop/HACKATHON/.build/fixed_round_keys_alternate.mem
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_szymon_fixed -Ptb_szymon_fixed.TEST_KEY_GOOD=128'h00000000000000000000000000000000 -Ptb_szymon_fixed.TEST_KEY_BAD=128'hffffffffffffffffffffffffffffffff -Ptb_szymon_fixed.EXPECT_GOOD=64'h2add22b74aaedac1 -Ptb_szymon_fixed.EXPECT_BAD=64'h0c60d513bb08041d -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_fixed_alternate.vvp src/szymon_fixed.v test/unit/tb_szymon_fixed.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_fixed_alternate.vvp +ROUND_KEYS=/mnt/c/Users/user/Desktop/HACKATHON/.build/fixed_round_keys_alternate.mem
+PASS tb_szymon_fixed: GOOD/BAD KAT, 9344 cycles, key bits, data hold, 28 abort phases, rearm
++ /usr/bin/python3 scripts/gen_fixed_round_keys.py /mnt/c/Users/user/Desktop/HACKATHON/.build/fixed_round_keys_random_0.mem 0x24d322e8325b1c77900285da2d71002d 0xa6d02f4e7e4417620311d65b620607e
+generated 44 fixed-key pairs: /mnt/c/Users/user/Desktop/HACKATHON/.build/fixed_round_keys_random_0.mem
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_szymon_fixed -Ptb_szymon_fixed.TEST_KEY_GOOD=128'h24d322e8325b1c77900285da2d71002d -Ptb_szymon_fixed.TEST_KEY_BAD=128'h0a6d02f4e7e4417620311d65b620607e -Ptb_szymon_fixed.EXPECT_GOOD=64'h1cb6abd601ad7eb4 -Ptb_szymon_fixed.EXPECT_BAD=64'h8aa5210613f61e58 -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_fixed_random_0.vvp src/szymon_fixed.v test/unit/tb_szymon_fixed.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_fixed_random_0.vvp +ROUND_KEYS=/mnt/c/Users/user/Desktop/HACKATHON/.build/fixed_round_keys_random_0.mem
+PASS tb_szymon_fixed: GOOD/BAD KAT, 9344 cycles, key bits, data hold, 28 abort phases, rearm
++ /usr/bin/python3 scripts/gen_fixed_round_keys.py /mnt/c/Users/user/Desktop/HACKATHON/.build/fixed_round_keys_random_1.mem 0x3d35924af7e10d4b6cd96d0d494b3796 0xdf4b84b744f6a8ec8ac03351acb52059
+generated 44 fixed-key pairs: /mnt/c/Users/user/Desktop/HACKATHON/.build/fixed_round_keys_random_1.mem
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_szymon_fixed -Ptb_szymon_fixed.TEST_KEY_GOOD=128'h3d35924af7e10d4b6cd96d0d494b3796 -Ptb_szymon_fixed.TEST_KEY_BAD=128'hdf4b84b744f6a8ec8ac03351acb52059 -Ptb_szymon_fixed.EXPECT_GOOD=64'h5cddf336078d145f -Ptb_szymon_fixed.EXPECT_BAD=64'h23d70d46d050eb32 -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_fixed_random_1.vvp src/szymon_fixed.v test/unit/tb_szymon_fixed.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_fixed_random_1.vvp +ROUND_KEYS=/mnt/c/Users/user/Desktop/HACKATHON/.build/fixed_round_keys_random_1.mem
+PASS tb_szymon_fixed: GOOD/BAD KAT, 9344 cycles, key bits, data hold, 28 abort phases, rearm
++ /usr/bin/python3 scripts/gen_fixed_round_keys.py /mnt/c/Users/user/Desktop/HACKATHON/.build/fixed_round_keys_random_2.mem 0xd1c530f6273523cfc1dde0527b7f7cac 0xaa0beb29a21efdcd0543a80ff53cf1d7
+generated 44 fixed-key pairs: /mnt/c/Users/user/Desktop/HACKATHON/.build/fixed_round_keys_random_2.mem
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_szymon_fixed -Ptb_szymon_fixed.TEST_KEY_GOOD=128'hd1c530f6273523cfc1dde0527b7f7cac -Ptb_szymon_fixed.TEST_KEY_BAD=128'haa0beb29a21efdcd0543a80ff53cf1d7 -Ptb_szymon_fixed.EXPECT_GOOD=64'h5fcd1ef869ed2453 -Ptb_szymon_fixed.EXPECT_BAD=64'hb4e91c0cdb44d529 -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_fixed_random_2.vvp src/szymon_fixed.v test/unit/tb_szymon_fixed.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_fixed_random_2.vvp +ROUND_KEYS=/mnt/c/Users/user/Desktop/HACKATHON/.build/fixed_round_keys_random_2.mem
+PASS tb_szymon_fixed: GOOD/BAD KAT, 9344 cycles, key bits, data hold, 28 abort phases, rearm
++ /usr/bin/python3 scripts/gen_fixed_round_keys.py /mnt/c/Users/user/Desktop/HACKATHON/.build/fixed_round_keys_random_3.mem 0xa28fec54b2e1fa10eec3ecab74fa2e64 0x1056ff2c096c7b266160e3ee5c87dcb6
+generated 44 fixed-key pairs: /mnt/c/Users/user/Desktop/HACKATHON/.build/fixed_round_keys_random_3.mem
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_szymon_fixed -Ptb_szymon_fixed.TEST_KEY_GOOD=128'ha28fec54b2e1fa10eec3ecab74fa2e64 -Ptb_szymon_fixed.TEST_KEY_BAD=128'h1056ff2c096c7b266160e3ee5c87dcb6 -Ptb_szymon_fixed.EXPECT_GOOD=64'he4dd2bdc0d4bd3e1 -Ptb_szymon_fixed.EXPECT_BAD=64'hdd6ff66c70d53036 -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_fixed_random_3.vvp src/szymon_fixed.v test/unit/tb_szymon_fixed.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_fixed_random_3.vvp +ROUND_KEYS=/mnt/c/Users/user/Desktop/HACKATHON/.build/fixed_round_keys_random_3.mem
+PASS tb_szymon_fixed: GOOD/BAD KAT, 9344 cycles, key bits, data hold, 28 abort phases, rearm

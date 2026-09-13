@@ -1,0 +1,958 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+
+-- Running command `read_verilog -formal -D FORMAL src/sync2.v src/serial_link.v; chformal -lower; prep -top serial_link; flatten; async2sync; formalff -clk2ff; memory_map; opt_clean; sat -verify -prove-asserts -set-init-zero -set-def-formal -set-def-inputs -seq 20' --
+
+1. Executing Verilog-2005 frontend: src/sync2.v
+Parsing formal Verilog input from `src/sync2.v' to AST representation.
+Generating RTLIL representation for module `\sync2'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: src/serial_link.v
+Parsing formal Verilog input from `src/serial_link.v' to AST representation.
+Generating RTLIL representation for module `\serial_link'.
+Successfully finished Verilog frontend.
+
+3. Executing PREP pass.
+
+3.1. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1.1. Analyzing design hierarchy..
+Top module:  \serial_link
+Used module:     \sync2
+Parameter \WIDTH = 3
+
+3.1.2. Executing AST frontend in derive mode using pre-parsed AST for module `\sync2'.
+Parameter \WIDTH = 3
+Generating RTLIL representation for module `$paramod\sync2\WIDTH=s32'00000000000000000000000000000011'.
+
+3.1.3. Analyzing design hierarchy..
+Top module:  \serial_link
+Used module:     $paramod\sync2\WIDTH=s32'00000000000000000000000000000011
+
+3.1.4. Analyzing design hierarchy..
+Top module:  \serial_link
+Used module:     $paramod\sync2\WIDTH=s32'00000000000000000000000000000011
+Removing unused module `\sync2'.
+Removed 1 unused modules.
+Module serial_link directly or indirectly contains formal properties -> setting "keep" attribute.
+
+3.2. Executing PROC pass (convert processes to netlists).
+
+3.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+3.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$src/serial_link.v:250$52 in module serial_link.
+Marked 13 switch rules as full_case in process $proc$src/serial_link.v:80$31 in module serial_link.
+Marked 1 switch rules as full_case in process $proc$src/sync2.v:20$133 in module $paramod\sync2\WIDTH=s32'00000000000000000000000000000011.
+Removed a total of 0 dead cases.
+
+3.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 9 redundant assignments.
+Promoted 0 assignments to connections.
+
+3.2.4. Executing PROC_INIT pass (extract init attributes).
+
+3.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\serial_link.$proc$src/serial_link.v:80$31'.
+Found async reset \rst_n in `$paramod\sync2\WIDTH=s32'00000000000000000000000000000011.$proc$src/sync2.v:20$133'.
+
+3.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~32 debug messages>
+
+3.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\serial_link.$proc$src/serial_link.v:260$64'.
+     1/9: $assert$src/serial_link.v:272$86_EN
+     2/9: $assert$src/serial_link.v:271$85_EN
+     3/9: $assert$src/serial_link.v:269$80_EN
+     4/9: $assert$src/serial_link.v:268$78_EN
+     5/9: $assert$src/serial_link.v:267$73_EN
+     6/9: $assert$src/serial_link.v:265$71_EN
+     7/9: $assert$src/serial_link.v:264$69_EN
+     8/9: $assert$src/serial_link.v:263$67_EN
+     9/9: $assert$src/serial_link.v:262$65_EN
+Creating decoders for process `\serial_link.$proc$src/serial_link.v:250$52'.
+     1/3: $0\f_past_valid[0:0]
+     2/3: $0\f_prev_s_bit[0:0]
+     3/3: $0\f_prev_s_stall[0:0]
+Creating decoders for process `\serial_link.$proc$src/serial_link.v:80$31'.
+     1/16: $0\frame_start[0:0]
+     2/16: $0\protocol_error[0:0]
+     3/16: $0\tx_done[0:0]
+     4/16: $0\rx_done[0:0]
+     5/16: $0\sclk_d[0:0]
+     6/16: $0\cs_n_d[0:0]
+     7/16: $0\tx_last_sampled[0:0]
+     8/16: $0\tx_sampled_wait_fall[0:0]
+     9/16: $0\tx_hold_last[0:0]
+    10/16: $0\tx_hold_bit[0:0]
+    11/16: $0\tx_hold_valid[0:0]
+    12/16: $0\rx_bit_hold[0:0]
+    13/16: $0\rx_pending[0:0]
+    14/16: $0\bit_count[6:0]
+    15/16: $0\seen_cs_high[0:0]
+    16/16: $0\state[2:0]
+Creating decoders for process `$paramod\sync2\WIDTH=s32'00000000000000000000000000000011.$proc$src/sync2.v:20$133'.
+     1/2: $0\sync_out[2:0]
+     2/2: $0\stage1[2:0]
+
+3.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+3.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\serial_link.\f_past_valid' using process `\serial_link.$proc$src/serial_link.v:250$52'.
+  created $dff cell `$procdff$479' with positive edge clock.
+Creating register for signal `\serial_link.\f_prev_s_stall' using process `\serial_link.$proc$src/serial_link.v:250$52'.
+  created $dff cell `$procdff$480' with positive edge clock.
+Creating register for signal `\serial_link.\f_prev_s_bit' using process `\serial_link.$proc$src/serial_link.v:250$52'.
+  created $dff cell `$procdff$481' with positive edge clock.
+Creating register for signal `\serial_link.\rx_done' using process `\serial_link.$proc$src/serial_link.v:80$31'.
+  created $adff cell `$procdff$486' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\tx_done' using process `\serial_link.$proc$src/serial_link.v:80$31'.
+  created $adff cell `$procdff$491' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\protocol_error' using process `\serial_link.$proc$src/serial_link.v:80$31'.
+  created $adff cell `$procdff$496' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\frame_start' using process `\serial_link.$proc$src/serial_link.v:80$31'.
+  created $adff cell `$procdff$501' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\cs_n_d' using process `\serial_link.$proc$src/serial_link.v:80$31'.
+  created $adff cell `$procdff$506' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\sclk_d' using process `\serial_link.$proc$src/serial_link.v:80$31'.
+  created $adff cell `$procdff$511' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\state' using process `\serial_link.$proc$src/serial_link.v:80$31'.
+  created $adff cell `$procdff$516' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\seen_cs_high' using process `\serial_link.$proc$src/serial_link.v:80$31'.
+  created $adff cell `$procdff$521' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\bit_count' using process `\serial_link.$proc$src/serial_link.v:80$31'.
+  created $adff cell `$procdff$526' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\rx_pending' using process `\serial_link.$proc$src/serial_link.v:80$31'.
+  created $adff cell `$procdff$531' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\rx_bit_hold' using process `\serial_link.$proc$src/serial_link.v:80$31'.
+  created $adff cell `$procdff$536' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\tx_hold_valid' using process `\serial_link.$proc$src/serial_link.v:80$31'.
+  created $adff cell `$procdff$541' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\tx_hold_bit' using process `\serial_link.$proc$src/serial_link.v:80$31'.
+  created $adff cell `$procdff$546' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\tx_hold_last' using process `\serial_link.$proc$src/serial_link.v:80$31'.
+  created $adff cell `$procdff$551' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\tx_sampled_wait_fall' using process `\serial_link.$proc$src/serial_link.v:80$31'.
+  created $adff cell `$procdff$556' with positive edge clock and positive level reset.
+Creating register for signal `\serial_link.\tx_last_sampled' using process `\serial_link.$proc$src/serial_link.v:80$31'.
+  created $adff cell `$procdff$561' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\sync2\WIDTH=s32'00000000000000000000000000000011.\sync_out' using process `$paramod\sync2\WIDTH=s32'00000000000000000000000000000011.$proc$src/sync2.v:20$133'.
+  created $adff cell `$procdff$566' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\sync2\WIDTH=s32'00000000000000000000000000000011.\stage1' using process `$paramod\sync2\WIDTH=s32'00000000000000000000000000000011.$proc$src/sync2.v:20$133'.
+  created $adff cell `$procdff$571' with positive edge clock and positive level reset.
+
+3.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+3.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 7 empty switches in `\serial_link.$proc$src/serial_link.v:260$64'.
+Removing empty process `serial_link.$proc$src/serial_link.v:260$64'.
+Found and cleaned up 1 empty switch in `\serial_link.$proc$src/serial_link.v:250$52'.
+Removing empty process `serial_link.$proc$src/serial_link.v:250$52'.
+Found and cleaned up 24 empty switches in `\serial_link.$proc$src/serial_link.v:80$31'.
+Removing empty process `serial_link.$proc$src/serial_link.v:80$31'.
+Removing empty process `$paramod\sync2\WIDTH=s32'00000000000000000000000000000011.$proc$src/sync2.v:20$133'.
+Cleaned up 32 empty switches.
+
+3.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module serial_link.
+<suppressed ~46 debug messages>
+Optimizing module $paramod\sync2\WIDTH=s32'00000000000000000000000000000011.
+<suppressed ~4 debug messages>
+
+3.3. Executing FUTURE pass.
+
+3.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module serial_link.
+Optimizing module $paramod\sync2\WIDTH=s32'00000000000000000000000000000011.
+
+3.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \serial_link..
+Finding unused cells or wires in module $paramod\sync2\WIDTH=s32'00000000000000000000000000000011..
+Removed 38 unused cells and 200 unused wires.
+<suppressed ~40 debug messages>
+
+3.6. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod\sync2\WIDTH=s32'00000000000000000000000000000011...
+Checking module serial_link...
+Found and reported 0 problems.
+
+3.7. Executing OPT pass (performing simple optimizations).
+
+3.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\sync2\WIDTH=s32'00000000000000000000000000000011.
+Optimizing module serial_link.
+
+3.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\sync2\WIDTH=s32'00000000000000000000000000000011'.
+Finding identical cells in module `\serial_link'.
+<suppressed ~135 debug messages>
+Removed a total of 45 cells.
+
+3.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod\sync2\WIDTH=s32'00000000000000000000000000000011..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \serial_link..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~29 debug messages>
+
+3.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod\sync2\WIDTH=s32'00000000000000000000000000000011.
+  Optimizing cells in module \serial_link.
+    New ctrl vector for $pmux cell $procmux$185: { $auto$opt_reduce.cc:137:opt_pmux$573 $eq$src/serial_link.v:264$70_Y $eq$src/serial_link.v:75$17_Y $eq$src/serial_link.v:265$72_Y $eq$src/serial_link.v:267$75_Y }
+  Optimizing cells in module \serial_link.
+Performed a total of 1 changes.
+
+3.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\sync2\WIDTH=s32'00000000000000000000000000000011'.
+Finding identical cells in module `\serial_link'.
+<suppressed ~12 debug messages>
+Removed a total of 4 cells.
+
+3.7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\sync2\WIDTH=s32'00000000000000000000000000000011..
+Finding unused cells or wires in module \serial_link..
+Removed 0 unused cells and 49 unused wires.
+<suppressed ~1 debug messages>
+
+3.7.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\sync2\WIDTH=s32'00000000000000000000000000000011.
+Optimizing module serial_link.
+
+3.7.8. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.7.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod\sync2\WIDTH=s32'00000000000000000000000000000011..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \serial_link..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~27 debug messages>
+
+3.7.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod\sync2\WIDTH=s32'00000000000000000000000000000011.
+  Optimizing cells in module \serial_link.
+    New ctrl vector for $pmux cell $procmux$411: { $procmux$219_CMP $auto$opt_reduce.cc:137:opt_pmux$575 }
+  Optimizing cells in module \serial_link.
+Performed a total of 1 changes.
+
+3.7.11. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\sync2\WIDTH=s32'00000000000000000000000000000011'.
+Finding identical cells in module `\serial_link'.
+Removed a total of 0 cells.
+
+3.7.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\sync2\WIDTH=s32'00000000000000000000000000000011..
+Finding unused cells or wires in module \serial_link..
+
+3.7.13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\sync2\WIDTH=s32'00000000000000000000000000000011.
+Optimizing module serial_link.
+
+3.7.14. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.7.15. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod\sync2\WIDTH=s32'00000000000000000000000000000011..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \serial_link..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~27 debug messages>
+
+3.7.16. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod\sync2\WIDTH=s32'00000000000000000000000000000011.
+  Optimizing cells in module \serial_link.
+Performed a total of 0 changes.
+
+3.7.17. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\sync2\WIDTH=s32'00000000000000000000000000000011'.
+Finding identical cells in module `\serial_link'.
+Removed a total of 0 cells.
+
+3.7.18. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\sync2\WIDTH=s32'00000000000000000000000000000011..
+Finding unused cells or wires in module \serial_link..
+
+3.7.19. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\sync2\WIDTH=s32'00000000000000000000000000000011.
+Optimizing module serial_link.
+
+3.7.20. Finished OPT passes. (There is nothing left to do.)
+
+3.8. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 3) from port B of cell serial_link.$eq$src/serial_link.v:75$17 ($eq).
+Removed top 1 bits (of 7) from port B of cell serial_link.$eq$src/serial_link.v:208$46 ($eq).
+Removed top 1 bits (of 3) from port B of cell serial_link.$eq$src/serial_link.v:264$70 ($eq).
+Removed top 2 bits (of 3) from port B of cell serial_link.$procmux$218_CMP0 ($eq).
+
+3.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\sync2\WIDTH=s32'00000000000000000000000000000011..
+Finding unused cells or wires in module \serial_link..
+
+3.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+3.11. Executing OPT pass (performing simple optimizations).
+
+3.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\sync2\WIDTH=s32'00000000000000000000000000000011.
+Optimizing module serial_link.
+
+3.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\sync2\WIDTH=s32'00000000000000000000000000000011'.
+Finding identical cells in module `\serial_link'.
+Removed a total of 0 cells.
+
+3.11.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\sync2\WIDTH=s32'00000000000000000000000000000011..
+Finding unused cells or wires in module \serial_link..
+
+3.11.4. Finished fast OPT passes.
+
+3.12. Printing statistics.
+
+=== $paramod\sync2\WIDTH=s32'00000000000000000000000000000011 ===
+
+   Number of wires:                  5
+   Number of wire bits:             11
+   Number of public wires:           5
+   Number of public wire bits:      11
+   Number of ports:                  4
+   Number of port bits:              8
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  2
+     $adff                           2
+
+=== serial_link ===
+
+   Number of wires:                207
+   Number of wire bits:            331
+   Number of public wires:          47
+   Number of public wire bits:      57
+   Number of ports:                 22
+   Number of port bits:             22
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                199
+     $add                            1
+     $adff                          16
+     $assert                         9
+     $dff                            3
+     $eq                             8
+     $ge                             1
+     $le                             2
+     $logic_and                     21
+     $logic_not                     15
+     $logic_or                       6
+     $mux                          103
+     $ne                             2
+     $not                            1
+     $paramod\sync2\WIDTH=s32'00000000000000000000000000000011      1
+     $pmux                           8
+     $reduce_or                      2
+
+=== design hierarchy ===
+
+   serial_link                       1
+     $paramod\sync2\WIDTH=s32'00000000000000000000000000000011      1
+
+   Number of wires:                212
+   Number of wire bits:            342
+   Number of public wires:          52
+   Number of public wire bits:      68
+   Number of ports:                 26
+   Number of port bits:             30
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                200
+     $add                            1
+     $adff                          18
+     $assert                         9
+     $dff                            3
+     $eq                             8
+     $ge                             1
+     $le                             2
+     $logic_and                     21
+     $logic_not                     15
+     $logic_or                       6
+     $mux                          103
+     $ne                             2
+     $not                            1
+     $pmux                           8
+     $reduce_or                      2
+
+3.13. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod\sync2\WIDTH=s32'00000000000000000000000000000011...
+Checking module serial_link...
+Found and reported 0 problems.
+
+4. Executing FLATTEN pass (flatten design).
+Deleting now unused module $paramod\sync2\WIDTH=s32'00000000000000000000000000000011.
+<suppressed ~1 debug messages>
+
+5. Executing ASYNC2SYNC pass.
+Replacing serial_link.$flatten\u_serial_sync.$procdff$566 ($adff): ARST=\u_serial_sync.rst_n, D=\u_serial_sync.stage1, Q=\u_serial_sync.sync_out
+Replacing serial_link.$procdff$486 ($adff): ARST=\rst_n, D=$0\rx_done[0:0], Q=\rx_done
+Replacing serial_link.$procdff$491 ($adff): ARST=\rst_n, D=$0\tx_done[0:0], Q=\tx_done
+Replacing serial_link.$procdff$496 ($adff): ARST=\rst_n, D=$0\protocol_error[0:0], Q=\protocol_error
+Replacing serial_link.$procdff$501 ($adff): ARST=\rst_n, D=$0\frame_start[0:0], Q=\frame_start
+Replacing serial_link.$procdff$506 ($adff): ARST=\rst_n, D=\serial_sync [2], Q=\cs_n_d
+Replacing serial_link.$procdff$511 ($adff): ARST=\rst_n, D=\serial_sync [1], Q=\sclk_d
+Replacing serial_link.$procdff$516 ($adff): ARST=\rst_n, D=$0\state[2:0], Q=\state
+Replacing serial_link.$procdff$521 ($adff): ARST=\rst_n, D=$0\seen_cs_high[0:0], Q=\seen_cs_high
+Replacing serial_link.$procdff$526 ($adff): ARST=\rst_n, D=$0\bit_count[6:0], Q=\bit_count
+Replacing serial_link.$procdff$531 ($adff): ARST=\rst_n, D=$0\rx_pending[0:0], Q=\rx_pending
+Replacing serial_link.$procdff$536 ($adff): ARST=\rst_n, D=$0\rx_bit_hold[0:0], Q=\rx_bit_hold
+Replacing serial_link.$procdff$541 ($adff): ARST=\rst_n, D=$0\tx_hold_valid[0:0], Q=\tx_hold_valid
+Replacing serial_link.$procdff$546 ($adff): ARST=\rst_n, D=$0\tx_hold_bit[0:0], Q=\tx_hold_bit
+Replacing serial_link.$procdff$551 ($adff): ARST=\rst_n, D=$0\tx_hold_last[0:0], Q=\tx_hold_last
+Replacing serial_link.$procdff$556 ($adff): ARST=\rst_n, D=$0\tx_sampled_wait_fall[0:0], Q=\tx_sampled_wait_fall
+Replacing serial_link.$procdff$561 ($adff): ARST=\rst_n, D=$0\tx_last_sampled[0:0], Q=\tx_last_sampled
+Replacing serial_link.$flatten\u_serial_sync.$procdff$571 ($adff): ARST=\u_serial_sync.rst_n, D=\u_serial_sync.async_in, Q=\u_serial_sync.stage1
+
+6. Executing FORMALFF pass.
+
+7. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \serial_link..
+
+9. Executing SAT pass (solving SAT problems in the circuit).
+
+Setting up time step 1:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \tx_arm
+Import def constraint for this timestep: \cancel
+Import def constraint for this timestep: \m_bit
+Import def constraint for this timestep: \m_last
+Import def constraint for this timestep: \serial_cs_n
+Import def constraint for this timestep: \s_ready
+Import def constraint for this timestep: \rx_arm
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \m_valid
+Import def constraint for this timestep: \serial_sdi
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \serial_sclk
+Imported 237 cells to SAT database.
+Final init constraint equation: { $auto$async2sync.cc:228:execute$609 $auto$async2sync.cc:228:execute$607 $auto$async2sync.cc:228:execute$605 $auto$async2sync.cc:228:execute$603 $auto$async2sync.cc:228:execute$601 $auto$async2sync.cc:228:execute$599 $auto$async2sync.cc:228:execute$597 $auto$async2sync.cc:228:execute$595 $auto$async2sync.cc:228:execute$593 $auto$async2sync.cc:228:execute$591 $auto$async2sync.cc:228:execute$589 $auto$async2sync.cc:228:execute$587 $auto$async2sync.cc:228:execute$585 $auto$async2sync.cc:228:execute$583 $auto$async2sync.cc:228:execute$581 $auto$async2sync.cc:228:execute$579 \f_prev_s_bit \f_prev_s_stall \f_past_valid $auto$async2sync.cc:228:execute$611 $auto$async2sync.cc:228:execute$577 } = 33'000000000000000000000000000000000
+Import proof for assert: $le$src/serial_link.v:262$66_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: $le$src/serial_link.v:263$68_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: \rx_active when $assert$src/serial_link.v:264$69_EN.
+Import proof for assert: $eq$src/serial_link.v:265$72_Y when $assert$src/serial_link.v:265$71_EN.
+Import proof for assert: \tx_active when $assert$src/serial_link.v:267$73_EN.
+Import proof for assert: $eq$src/serial_link.v:268$79_Y when $assert$src/serial_link.v:268$78_EN.
+Import proof for assert: $eq$src/serial_link.v:269$81_Y when $assert$src/serial_link.v:269$80_EN.
+Import proof for assert: \rx_pending when $assert$src/serial_link.v:271$85_EN.
+Import proof for assert: $eq$src/serial_link.v:272$87_Y when $assert$src/serial_link.v:271$85_EN.
+
+Setting up time step 2:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \tx_arm
+Import def constraint for this timestep: \cancel
+Import def constraint for this timestep: \m_bit
+Import def constraint for this timestep: \m_last
+Import def constraint for this timestep: \serial_cs_n
+Import def constraint for this timestep: \s_ready
+Import def constraint for this timestep: \rx_arm
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \m_valid
+Import def constraint for this timestep: \serial_sdi
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \serial_sclk
+Imported 237 cells to SAT database.
+Import proof for assert: $le$src/serial_link.v:262$66_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: $le$src/serial_link.v:263$68_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: \rx_active when $assert$src/serial_link.v:264$69_EN.
+Import proof for assert: $eq$src/serial_link.v:265$72_Y when $assert$src/serial_link.v:265$71_EN.
+Import proof for assert: \tx_active when $assert$src/serial_link.v:267$73_EN.
+Import proof for assert: $eq$src/serial_link.v:268$79_Y when $assert$src/serial_link.v:268$78_EN.
+Import proof for assert: $eq$src/serial_link.v:269$81_Y when $assert$src/serial_link.v:269$80_EN.
+Import proof for assert: \rx_pending when $assert$src/serial_link.v:271$85_EN.
+Import proof for assert: $eq$src/serial_link.v:272$87_Y when $assert$src/serial_link.v:271$85_EN.
+
+Setting up time step 3:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \tx_arm
+Import def constraint for this timestep: \cancel
+Import def constraint for this timestep: \m_bit
+Import def constraint for this timestep: \m_last
+Import def constraint for this timestep: \serial_cs_n
+Import def constraint for this timestep: \s_ready
+Import def constraint for this timestep: \rx_arm
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \m_valid
+Import def constraint for this timestep: \serial_sdi
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \serial_sclk
+Imported 237 cells to SAT database.
+Import proof for assert: $le$src/serial_link.v:262$66_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: $le$src/serial_link.v:263$68_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: \rx_active when $assert$src/serial_link.v:264$69_EN.
+Import proof for assert: $eq$src/serial_link.v:265$72_Y when $assert$src/serial_link.v:265$71_EN.
+Import proof for assert: \tx_active when $assert$src/serial_link.v:267$73_EN.
+Import proof for assert: $eq$src/serial_link.v:268$79_Y when $assert$src/serial_link.v:268$78_EN.
+Import proof for assert: $eq$src/serial_link.v:269$81_Y when $assert$src/serial_link.v:269$80_EN.
+Import proof for assert: \rx_pending when $assert$src/serial_link.v:271$85_EN.
+Import proof for assert: $eq$src/serial_link.v:272$87_Y when $assert$src/serial_link.v:271$85_EN.
+
+Setting up time step 4:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \tx_arm
+Import def constraint for this timestep: \cancel
+Import def constraint for this timestep: \m_bit
+Import def constraint for this timestep: \m_last
+Import def constraint for this timestep: \serial_cs_n
+Import def constraint for this timestep: \s_ready
+Import def constraint for this timestep: \rx_arm
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \m_valid
+Import def constraint for this timestep: \serial_sdi
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \serial_sclk
+Imported 237 cells to SAT database.
+Import proof for assert: $le$src/serial_link.v:262$66_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: $le$src/serial_link.v:263$68_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: \rx_active when $assert$src/serial_link.v:264$69_EN.
+Import proof for assert: $eq$src/serial_link.v:265$72_Y when $assert$src/serial_link.v:265$71_EN.
+Import proof for assert: \tx_active when $assert$src/serial_link.v:267$73_EN.
+Import proof for assert: $eq$src/serial_link.v:268$79_Y when $assert$src/serial_link.v:268$78_EN.
+Import proof for assert: $eq$src/serial_link.v:269$81_Y when $assert$src/serial_link.v:269$80_EN.
+Import proof for assert: \rx_pending when $assert$src/serial_link.v:271$85_EN.
+Import proof for assert: $eq$src/serial_link.v:272$87_Y when $assert$src/serial_link.v:271$85_EN.
+
+Setting up time step 5:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \tx_arm
+Import def constraint for this timestep: \cancel
+Import def constraint for this timestep: \m_bit
+Import def constraint for this timestep: \m_last
+Import def constraint for this timestep: \serial_cs_n
+Import def constraint for this timestep: \s_ready
+Import def constraint for this timestep: \rx_arm
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \m_valid
+Import def constraint for this timestep: \serial_sdi
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \serial_sclk
+Imported 237 cells to SAT database.
+Import proof for assert: $le$src/serial_link.v:262$66_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: $le$src/serial_link.v:263$68_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: \rx_active when $assert$src/serial_link.v:264$69_EN.
+Import proof for assert: $eq$src/serial_link.v:265$72_Y when $assert$src/serial_link.v:265$71_EN.
+Import proof for assert: \tx_active when $assert$src/serial_link.v:267$73_EN.
+Import proof for assert: $eq$src/serial_link.v:268$79_Y when $assert$src/serial_link.v:268$78_EN.
+Import proof for assert: $eq$src/serial_link.v:269$81_Y when $assert$src/serial_link.v:269$80_EN.
+Import proof for assert: \rx_pending when $assert$src/serial_link.v:271$85_EN.
+Import proof for assert: $eq$src/serial_link.v:272$87_Y when $assert$src/serial_link.v:271$85_EN.
+
+Setting up time step 6:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \tx_arm
+Import def constraint for this timestep: \cancel
+Import def constraint for this timestep: \m_bit
+Import def constraint for this timestep: \m_last
+Import def constraint for this timestep: \serial_cs_n
+Import def constraint for this timestep: \s_ready
+Import def constraint for this timestep: \rx_arm
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \m_valid
+Import def constraint for this timestep: \serial_sdi
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \serial_sclk
+Imported 237 cells to SAT database.
+Import proof for assert: $le$src/serial_link.v:262$66_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: $le$src/serial_link.v:263$68_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: \rx_active when $assert$src/serial_link.v:264$69_EN.
+Import proof for assert: $eq$src/serial_link.v:265$72_Y when $assert$src/serial_link.v:265$71_EN.
+Import proof for assert: \tx_active when $assert$src/serial_link.v:267$73_EN.
+Import proof for assert: $eq$src/serial_link.v:268$79_Y when $assert$src/serial_link.v:268$78_EN.
+Import proof for assert: $eq$src/serial_link.v:269$81_Y when $assert$src/serial_link.v:269$80_EN.
+Import proof for assert: \rx_pending when $assert$src/serial_link.v:271$85_EN.
+Import proof for assert: $eq$src/serial_link.v:272$87_Y when $assert$src/serial_link.v:271$85_EN.
+
+Setting up time step 7:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \tx_arm
+Import def constraint for this timestep: \cancel
+Import def constraint for this timestep: \m_bit
+Import def constraint for this timestep: \m_last
+Import def constraint for this timestep: \serial_cs_n
+Import def constraint for this timestep: \s_ready
+Import def constraint for this timestep: \rx_arm
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \m_valid
+Import def constraint for this timestep: \serial_sdi
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \serial_sclk
+Imported 237 cells to SAT database.
+Import proof for assert: $le$src/serial_link.v:262$66_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: $le$src/serial_link.v:263$68_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: \rx_active when $assert$src/serial_link.v:264$69_EN.
+Import proof for assert: $eq$src/serial_link.v:265$72_Y when $assert$src/serial_link.v:265$71_EN.
+Import proof for assert: \tx_active when $assert$src/serial_link.v:267$73_EN.
+Import proof for assert: $eq$src/serial_link.v:268$79_Y when $assert$src/serial_link.v:268$78_EN.
+Import proof for assert: $eq$src/serial_link.v:269$81_Y when $assert$src/serial_link.v:269$80_EN.
+Import proof for assert: \rx_pending when $assert$src/serial_link.v:271$85_EN.
+Import proof for assert: $eq$src/serial_link.v:272$87_Y when $assert$src/serial_link.v:271$85_EN.
+
+Setting up time step 8:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \tx_arm
+Import def constraint for this timestep: \cancel
+Import def constraint for this timestep: \m_bit
+Import def constraint for this timestep: \m_last
+Import def constraint for this timestep: \serial_cs_n
+Import def constraint for this timestep: \s_ready
+Import def constraint for this timestep: \rx_arm
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \m_valid
+Import def constraint for this timestep: \serial_sdi
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \serial_sclk
+Imported 237 cells to SAT database.
+Import proof for assert: $le$src/serial_link.v:262$66_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: $le$src/serial_link.v:263$68_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: \rx_active when $assert$src/serial_link.v:264$69_EN.
+Import proof for assert: $eq$src/serial_link.v:265$72_Y when $assert$src/serial_link.v:265$71_EN.
+Import proof for assert: \tx_active when $assert$src/serial_link.v:267$73_EN.
+Import proof for assert: $eq$src/serial_link.v:268$79_Y when $assert$src/serial_link.v:268$78_EN.
+Import proof for assert: $eq$src/serial_link.v:269$81_Y when $assert$src/serial_link.v:269$80_EN.
+Import proof for assert: \rx_pending when $assert$src/serial_link.v:271$85_EN.
+Import proof for assert: $eq$src/serial_link.v:272$87_Y when $assert$src/serial_link.v:271$85_EN.
+
+Setting up time step 9:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \tx_arm
+Import def constraint for this timestep: \cancel
+Import def constraint for this timestep: \m_bit
+Import def constraint for this timestep: \m_last
+Import def constraint for this timestep: \serial_cs_n
+Import def constraint for this timestep: \s_ready
+Import def constraint for this timestep: \rx_arm
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \m_valid
+Import def constraint for this timestep: \serial_sdi
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \serial_sclk
+Imported 237 cells to SAT database.
+Import proof for assert: $le$src/serial_link.v:262$66_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: $le$src/serial_link.v:263$68_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: \rx_active when $assert$src/serial_link.v:264$69_EN.
+Import proof for assert: $eq$src/serial_link.v:265$72_Y when $assert$src/serial_link.v:265$71_EN.
+Import proof for assert: \tx_active when $assert$src/serial_link.v:267$73_EN.
+Import proof for assert: $eq$src/serial_link.v:268$79_Y when $assert$src/serial_link.v:268$78_EN.
+Import proof for assert: $eq$src/serial_link.v:269$81_Y when $assert$src/serial_link.v:269$80_EN.
+Import proof for assert: \rx_pending when $assert$src/serial_link.v:271$85_EN.
+Import proof for assert: $eq$src/serial_link.v:272$87_Y when $assert$src/serial_link.v:271$85_EN.
+
+Setting up time step 10:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \tx_arm
+Import def constraint for this timestep: \cancel
+Import def constraint for this timestep: \m_bit
+Import def constraint for this timestep: \m_last
+Import def constraint for this timestep: \serial_cs_n
+Import def constraint for this timestep: \s_ready
+Import def constraint for this timestep: \rx_arm
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \m_valid
+Import def constraint for this timestep: \serial_sdi
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \serial_sclk
+Imported 237 cells to SAT database.
+Import proof for assert: $le$src/serial_link.v:262$66_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: $le$src/serial_link.v:263$68_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: \rx_active when $assert$src/serial_link.v:264$69_EN.
+Import proof for assert: $eq$src/serial_link.v:265$72_Y when $assert$src/serial_link.v:265$71_EN.
+Import proof for assert: \tx_active when $assert$src/serial_link.v:267$73_EN.
+Import proof for assert: $eq$src/serial_link.v:268$79_Y when $assert$src/serial_link.v:268$78_EN.
+Import proof for assert: $eq$src/serial_link.v:269$81_Y when $assert$src/serial_link.v:269$80_EN.
+Import proof for assert: \rx_pending when $assert$src/serial_link.v:271$85_EN.
+Import proof for assert: $eq$src/serial_link.v:272$87_Y when $assert$src/serial_link.v:271$85_EN.
+
+Setting up time step 11:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \tx_arm
+Import def constraint for this timestep: \cancel
+Import def constraint for this timestep: \m_bit
+Import def constraint for this timestep: \m_last
+Import def constraint for this timestep: \serial_cs_n
+Import def constraint for this timestep: \s_ready
+Import def constraint for this timestep: \rx_arm
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \m_valid
+Import def constraint for this timestep: \serial_sdi
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \serial_sclk
+Imported 237 cells to SAT database.
+Import proof for assert: $le$src/serial_link.v:262$66_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: $le$src/serial_link.v:263$68_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: \rx_active when $assert$src/serial_link.v:264$69_EN.
+Import proof for assert: $eq$src/serial_link.v:265$72_Y when $assert$src/serial_link.v:265$71_EN.
+Import proof for assert: \tx_active when $assert$src/serial_link.v:267$73_EN.
+Import proof for assert: $eq$src/serial_link.v:268$79_Y when $assert$src/serial_link.v:268$78_EN.
+Import proof for assert: $eq$src/serial_link.v:269$81_Y when $assert$src/serial_link.v:269$80_EN.
+Import proof for assert: \rx_pending when $assert$src/serial_link.v:271$85_EN.
+Import proof for assert: $eq$src/serial_link.v:272$87_Y when $assert$src/serial_link.v:271$85_EN.
+
+Setting up time step 12:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \tx_arm
+Import def constraint for this timestep: \cancel
+Import def constraint for this timestep: \m_bit
+Import def constraint for this timestep: \m_last
+Import def constraint for this timestep: \serial_cs_n
+Import def constraint for this timestep: \s_ready
+Import def constraint for this timestep: \rx_arm
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \m_valid
+Import def constraint for this timestep: \serial_sdi
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \serial_sclk
+Imported 237 cells to SAT database.
+Import proof for assert: $le$src/serial_link.v:262$66_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: $le$src/serial_link.v:263$68_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: \rx_active when $assert$src/serial_link.v:264$69_EN.
+Import proof for assert: $eq$src/serial_link.v:265$72_Y when $assert$src/serial_link.v:265$71_EN.
+Import proof for assert: \tx_active when $assert$src/serial_link.v:267$73_EN.
+Import proof for assert: $eq$src/serial_link.v:268$79_Y when $assert$src/serial_link.v:268$78_EN.
+Import proof for assert: $eq$src/serial_link.v:269$81_Y when $assert$src/serial_link.v:269$80_EN.
+Import proof for assert: \rx_pending when $assert$src/serial_link.v:271$85_EN.
+Import proof for assert: $eq$src/serial_link.v:272$87_Y when $assert$src/serial_link.v:271$85_EN.
+
+Setting up time step 13:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \tx_arm
+Import def constraint for this timestep: \cancel
+Import def constraint for this timestep: \m_bit
+Import def constraint for this timestep: \m_last
+Import def constraint for this timestep: \serial_cs_n
+Import def constraint for this timestep: \s_ready
+Import def constraint for this timestep: \rx_arm
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \m_valid
+Import def constraint for this timestep: \serial_sdi
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \serial_sclk
+Imported 237 cells to SAT database.
+Import proof for assert: $le$src/serial_link.v:262$66_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: $le$src/serial_link.v:263$68_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: \rx_active when $assert$src/serial_link.v:264$69_EN.
+Import proof for assert: $eq$src/serial_link.v:265$72_Y when $assert$src/serial_link.v:265$71_EN.
+Import proof for assert: \tx_active when $assert$src/serial_link.v:267$73_EN.
+Import proof for assert: $eq$src/serial_link.v:268$79_Y when $assert$src/serial_link.v:268$78_EN.
+Import proof for assert: $eq$src/serial_link.v:269$81_Y when $assert$src/serial_link.v:269$80_EN.
+Import proof for assert: \rx_pending when $assert$src/serial_link.v:271$85_EN.
+Import proof for assert: $eq$src/serial_link.v:272$87_Y when $assert$src/serial_link.v:271$85_EN.
+
+Setting up time step 14:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \tx_arm
+Import def constraint for this timestep: \cancel
+Import def constraint for this timestep: \m_bit
+Import def constraint for this timestep: \m_last
+Import def constraint for this timestep: \serial_cs_n
+Import def constraint for this timestep: \s_ready
+Import def constraint for this timestep: \rx_arm
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \m_valid
+Import def constraint for this timestep: \serial_sdi
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \serial_sclk
+Imported 237 cells to SAT database.
+Import proof for assert: $le$src/serial_link.v:262$66_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: $le$src/serial_link.v:263$68_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: \rx_active when $assert$src/serial_link.v:264$69_EN.
+Import proof for assert: $eq$src/serial_link.v:265$72_Y when $assert$src/serial_link.v:265$71_EN.
+Import proof for assert: \tx_active when $assert$src/serial_link.v:267$73_EN.
+Import proof for assert: $eq$src/serial_link.v:268$79_Y when $assert$src/serial_link.v:268$78_EN.
+Import proof for assert: $eq$src/serial_link.v:269$81_Y when $assert$src/serial_link.v:269$80_EN.
+Import proof for assert: \rx_pending when $assert$src/serial_link.v:271$85_EN.
+Import proof for assert: $eq$src/serial_link.v:272$87_Y when $assert$src/serial_link.v:271$85_EN.
+
+Setting up time step 15:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \tx_arm
+Import def constraint for this timestep: \cancel
+Import def constraint for this timestep: \m_bit
+Import def constraint for this timestep: \m_last
+Import def constraint for this timestep: \serial_cs_n
+Import def constraint for this timestep: \s_ready
+Import def constraint for this timestep: \rx_arm
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \m_valid
+Import def constraint for this timestep: \serial_sdi
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \serial_sclk
+Imported 237 cells to SAT database.
+Import proof for assert: $le$src/serial_link.v:262$66_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: $le$src/serial_link.v:263$68_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: \rx_active when $assert$src/serial_link.v:264$69_EN.
+Import proof for assert: $eq$src/serial_link.v:265$72_Y when $assert$src/serial_link.v:265$71_EN.
+Import proof for assert: \tx_active when $assert$src/serial_link.v:267$73_EN.
+Import proof for assert: $eq$src/serial_link.v:268$79_Y when $assert$src/serial_link.v:268$78_EN.
+Import proof for assert: $eq$src/serial_link.v:269$81_Y when $assert$src/serial_link.v:269$80_EN.
+Import proof for assert: \rx_pending when $assert$src/serial_link.v:271$85_EN.
+Import proof for assert: $eq$src/serial_link.v:272$87_Y when $assert$src/serial_link.v:271$85_EN.
+
+Setting up time step 16:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \tx_arm
+Import def constraint for this timestep: \cancel
+Import def constraint for this timestep: \m_bit
+Import def constraint for this timestep: \m_last
+Import def constraint for this timestep: \serial_cs_n
+Import def constraint for this timestep: \s_ready
+Import def constraint for this timestep: \rx_arm
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \m_valid
+Import def constraint for this timestep: \serial_sdi
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \serial_sclk
+Imported 237 cells to SAT database.
+Import proof for assert: $le$src/serial_link.v:262$66_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: $le$src/serial_link.v:263$68_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: \rx_active when $assert$src/serial_link.v:264$69_EN.
+Import proof for assert: $eq$src/serial_link.v:265$72_Y when $assert$src/serial_link.v:265$71_EN.
+Import proof for assert: \tx_active when $assert$src/serial_link.v:267$73_EN.
+Import proof for assert: $eq$src/serial_link.v:268$79_Y when $assert$src/serial_link.v:268$78_EN.
+Import proof for assert: $eq$src/serial_link.v:269$81_Y when $assert$src/serial_link.v:269$80_EN.
+Import proof for assert: \rx_pending when $assert$src/serial_link.v:271$85_EN.
+Import proof for assert: $eq$src/serial_link.v:272$87_Y when $assert$src/serial_link.v:271$85_EN.
+
+Setting up time step 17:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \tx_arm
+Import def constraint for this timestep: \cancel
+Import def constraint for this timestep: \m_bit
+Import def constraint for this timestep: \m_last
+Import def constraint for this timestep: \serial_cs_n
+Import def constraint for this timestep: \s_ready
+Import def constraint for this timestep: \rx_arm
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \m_valid
+Import def constraint for this timestep: \serial_sdi
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \serial_sclk
+Imported 237 cells to SAT database.
+Import proof for assert: $le$src/serial_link.v:262$66_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: $le$src/serial_link.v:263$68_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: \rx_active when $assert$src/serial_link.v:264$69_EN.
+Import proof for assert: $eq$src/serial_link.v:265$72_Y when $assert$src/serial_link.v:265$71_EN.
+Import proof for assert: \tx_active when $assert$src/serial_link.v:267$73_EN.
+Import proof for assert: $eq$src/serial_link.v:268$79_Y when $assert$src/serial_link.v:268$78_EN.
+Import proof for assert: $eq$src/serial_link.v:269$81_Y when $assert$src/serial_link.v:269$80_EN.
+Import proof for assert: \rx_pending when $assert$src/serial_link.v:271$85_EN.
+Import proof for assert: $eq$src/serial_link.v:272$87_Y when $assert$src/serial_link.v:271$85_EN.
+
+Setting up time step 18:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \tx_arm
+Import def constraint for this timestep: \cancel
+Import def constraint for this timestep: \m_bit
+Import def constraint for this timestep: \m_last
+Import def constraint for this timestep: \serial_cs_n
+Import def constraint for this timestep: \s_ready
+Import def constraint for this timestep: \rx_arm
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \m_valid
+Import def constraint for this timestep: \serial_sdi
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \serial_sclk
+Imported 237 cells to SAT database.
+Import proof for assert: $le$src/serial_link.v:262$66_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: $le$src/serial_link.v:263$68_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: \rx_active when $assert$src/serial_link.v:264$69_EN.
+Import proof for assert: $eq$src/serial_link.v:265$72_Y when $assert$src/serial_link.v:265$71_EN.
+Import proof for assert: \tx_active when $assert$src/serial_link.v:267$73_EN.
+Import proof for assert: $eq$src/serial_link.v:268$79_Y when $assert$src/serial_link.v:268$78_EN.
+Import proof for assert: $eq$src/serial_link.v:269$81_Y when $assert$src/serial_link.v:269$80_EN.
+Import proof for assert: \rx_pending when $assert$src/serial_link.v:271$85_EN.
+Import proof for assert: $eq$src/serial_link.v:272$87_Y when $assert$src/serial_link.v:271$85_EN.
+
+Setting up time step 19:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \tx_arm
+Import def constraint for this timestep: \cancel
+Import def constraint for this timestep: \m_bit
+Import def constraint for this timestep: \m_last
+Import def constraint for this timestep: \serial_cs_n
+Import def constraint for this timestep: \s_ready
+Import def constraint for this timestep: \rx_arm
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \m_valid
+Import def constraint for this timestep: \serial_sdi
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \serial_sclk
+Imported 237 cells to SAT database.
+Import proof for assert: $le$src/serial_link.v:262$66_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: $le$src/serial_link.v:263$68_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: \rx_active when $assert$src/serial_link.v:264$69_EN.
+Import proof for assert: $eq$src/serial_link.v:265$72_Y when $assert$src/serial_link.v:265$71_EN.
+Import proof for assert: \tx_active when $assert$src/serial_link.v:267$73_EN.
+Import proof for assert: $eq$src/serial_link.v:268$79_Y when $assert$src/serial_link.v:268$78_EN.
+Import proof for assert: $eq$src/serial_link.v:269$81_Y when $assert$src/serial_link.v:269$80_EN.
+Import proof for assert: \rx_pending when $assert$src/serial_link.v:271$85_EN.
+Import proof for assert: $eq$src/serial_link.v:272$87_Y when $assert$src/serial_link.v:271$85_EN.
+
+Setting up time step 20:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \tx_arm
+Import def constraint for this timestep: \cancel
+Import def constraint for this timestep: \m_bit
+Import def constraint for this timestep: \m_last
+Import def constraint for this timestep: \serial_cs_n
+Import def constraint for this timestep: \s_ready
+Import def constraint for this timestep: \rx_arm
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \m_valid
+Import def constraint for this timestep: \serial_sdi
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \serial_sclk
+Imported 237 cells to SAT database.
+Import proof for assert: $le$src/serial_link.v:262$66_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: $le$src/serial_link.v:263$68_Y when $assert$src/serial_link.v:262$65_EN.
+Import proof for assert: \rx_active when $assert$src/serial_link.v:264$69_EN.
+Import proof for assert: $eq$src/serial_link.v:265$72_Y when $assert$src/serial_link.v:265$71_EN.
+Import proof for assert: \tx_active when $assert$src/serial_link.v:267$73_EN.
+Import proof for assert: $eq$src/serial_link.v:268$79_Y when $assert$src/serial_link.v:268$78_EN.
+Import proof for assert: $eq$src/serial_link.v:269$81_Y when $assert$src/serial_link.v:269$80_EN.
+Import proof for assert: \rx_pending when $assert$src/serial_link.v:271$85_EN.
+Import proof for assert: $eq$src/serial_link.v:272$87_Y when $assert$src/serial_link.v:271$85_EN.
+
+Solving problem with 167738 variables and 459111 clauses..
+SAT proof finished - no model found: SUCCESS!
+
+                  /$$$$$$      /$$$$$$$$     /$$$$$$$    
+                 /$$__  $$    | $$_____/    | $$__  $$   
+                | $$  \ $$    | $$          | $$  \ $$   
+                | $$  | $$    | $$$$$       | $$  | $$   
+                | $$  | $$    | $$__/       | $$  | $$   
+                | $$/$$ $$    | $$          | $$  | $$   
+                |  $$$$$$/ /$$| $$$$$$$$ /$$| $$$$$$$//$$
+                 \____ $$$|__/|________/|__/|_______/|__/
+                       \__/                              
+
+End of script. Logfile hash: 1ff7e87072, CPU: user 2.00s system 0.12s, MEM: 148.00 MB peak
+Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+Time spent: 97% 1x sat (2 sec), 0% 7x opt_clean (0 sec), ...

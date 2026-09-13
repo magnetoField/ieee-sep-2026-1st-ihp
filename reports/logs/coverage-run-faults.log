@@ -1,0 +1,5 @@
+PASS tb_fault_sessions idle/chord/hold/timeout/RX/CRYPT/replay/terminal-lock faults
+- test/integration/tb_fault_sessions.sv:118: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.032 2025-01-01
+- Verilator: $finish at 617us; walltime 0.085 s; speed 7.669 ms/s
+- Verilator: cpu 0.080 s on 1 threads; alloced 121 MB

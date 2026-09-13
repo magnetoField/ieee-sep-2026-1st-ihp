@@ -1,0 +1,8 @@
+KILLED authorize_bad_pin: FATAL: test/unit/tb_regs.sv:48: BAD1 wrong
+KILLED remove_final_simon_round: FATAL: test/unit/tb_szymon.sv:189: tb_szymon regression failed
+KILLED shift_simon_output_bit: FATAL: test/unit/tb_szymon.sv:189: tb_szymon regression failed
+KILLED remove_final_fixed_simon_round: FATAL: test/unit/tb_szymon_fixed.sv:90: fixed core latency was not 9344 cycles
+KILLED shift_fixed_simon_output_bit: FATAL: test/unit/tb_szymon_fixed.sv:104: fixed core mismatch got=8991f84173bf40f4 expected=44c8fc20b9dfa07a
+KILLED erase_attempts_on_session_end: FATAL: test/unit/tb_regs.sv:53: success cleared attempts
+KILLED disable_keypad_poison: FATAL: test/unit/tb_kb.sv:70: poisoned gesture accepted
+PASS mutation score 7/7

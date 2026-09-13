@@ -1,0 +1,23 @@
+test_all_static_masks (test_keypad_network.KeypadNetworkTests.test_all_static_masks) ... ok
+test_manual_electrical_cases (test_keypad_network.KeypadNetworkTests.test_manual_electrical_cases) ... ok
+test_single_key_classification (test_keypad_network.KeypadNetworkTests.test_single_key_classification) ... ok
+test_attempt_is_counted_before_token_and_never_rolled_back (test_protocol_and_sejf.ProtocolTests.test_attempt_is_counted_before_token_and_never_rolled_back) ... ok
+test_shift64_exact_length_and_order (test_protocol_and_sejf.ProtocolTests.test_shift64_exact_length_and_order) ... ok
+test_success_does_not_clear_failures (test_protocol_and_sejf.ProtocolTests.test_success_does_not_clear_failures) ... ok
+test_good_bad_reject_and_single_use (test_protocol_and_sejf.SejfTests.test_good_bad_reject_and_single_use) ... ok
+test_no_challenge_without_ready (test_protocol_and_sejf.SejfTests.test_no_challenge_without_ready) ... ok
+test_repeated_rng_candidates_are_not_reused (test_protocol_and_sejf.SejfTests.test_repeated_rng_candidates_are_not_reused) ... ok
+test_exact_status_not_prefix (test_release_gate.ReleaseGateTests.test_exact_status_not_prefix) ... ok
+test_xml_rejects_empty_failure_and_skipped (test_release_gate.ReleaseGateTests.test_xml_rejects_empty_failure_and_skipped) ... ok
+test_1024_seeded_vectors_have_full_traces (test_simon64_128.SimonReferenceTests.test_1024_seeded_vectors_have_full_traces) ... ok
+test_demo_bad_key_response (test_simon64_128.SimonReferenceTests.test_demo_bad_key_response) ... ok
+test_published_kat_and_landmarks (test_simon64_128.SimonReferenceTests.test_published_kat_and_landmarks) ... ok
+test_wire_serialization_round_trip (test_simon64_128.SimonReferenceTests.test_wire_serialization_round_trip) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.690s
+
+OK
+- V e r i l a t i o n   R e p o r t: Verilator 5.032 2025-01-01 rev (Debian 5.032-1)
+- Verilator: Built from 0.561 MB sources in 20 modules, into 0.145 MB in 5 C++ files needing 0.000 MB
+- Verilator: Walltime 0.120 s (elab=0.015, cvt=0.021, bld=0.000); cpu 0.043 s on 1 threads; alloced 10.371 MB

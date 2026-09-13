@@ -1,0 +1,18 @@
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_rumcajs -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_rumcajs.vvp src/sync2.v src/reset_release.v src/timebase.v src/kb.v src/regs.v src/szymon.v src/szymon_fixed.v src/serial_link.v src/auth_ctrl.v src/buzzer.v src/rumcajs.v test/integration/tb_rumcajs.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_rumcajs.vvp
+PASS tb_rumcajs 2 single-key E2E sessions: GOOD, BAD rejection, lock/reset/ena
+test/integration/tb_rumcajs.sv:112: $finish called at 459185000 (1ps)
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_tt_um_rumcajs -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_tt_um_rumcajs.vvp src/sync2.v src/reset_release.v src/timebase.v src/kb.v src/regs.v src/szymon.v src/szymon_fixed.v src/serial_link.v src/auth_ctrl.v src/buzzer.v src/rumcajs.v src/project.v test/integration/tb_tt_um_rumcajs.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_tt_um_rumcajs.vvp
+PASS tb_tt_um_rumcajs single READY pin, fixed-wait response, BAD rejection, reserved pin mapping
+test/integration/tb_tt_um_rumcajs.sv:74: $finish called at 1227568000 (1ps)
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_fault_sessions -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_fault_sessions.vvp src/sync2.v src/reset_release.v src/timebase.v src/kb.v src/regs.v src/szymon.v src/szymon_fixed.v src/serial_link.v src/auth_ctrl.v src/buzzer.v src/rumcajs.v test/integration/tb_fault_sessions.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_fault_sessions.vvp
+PASS tb_fault_sessions idle/chord/hold/timeout/RX/CRYPT/replay/terminal-lock faults
+test/integration/tb_fault_sessions.sv:118: $finish called at 616805000 (1ps)
++ /usr/bin/python3 scripts/gen_session_vectors.py /mnt/c/Users/user/Desktop/HACKATHON/.build/session_vectors.mem --count 256 --seed 0xE2E52517
+generated 256 sessions seed=0xe2e52517 good=129 bad=127 cold_resets=50
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_random_sessions -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_random_sessions.vvp src/sync2.v src/reset_release.v src/timebase.v src/kb.v src/regs.v src/szymon.v src/szymon_fixed.v src/serial_link.v src/auth_ctrl.v src/buzzer.v src/rumcajs.v test/integration/tb_random_sessions.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_random_sessions.vvp +VECTORS=/mnt/c/Users/user/Desktop/HACKATHON/.build/session_vectors.mem +COUNT=256
+PASS tb_random_sessions count=256 cold_resets=51 handshakes=129
+test/integration/tb_random_sessions.sv:132: $finish called at 43488325000 (1ps)

@@ -1,0 +1,4 @@
+PASS formal F-11 and F-12: exhaustive SAT over arbitrary inputs
+PASS bounded formal control checks: depth 20; F-13 scaled periodic-tick harness depth 12 (not induction)
+PASS temporal induction: regs, kb, szymon and szymon_fixed safety invariants
+PASS formal reachability: authorized GOOD, rejected terminal BAD, cmd, seal and successful cleanup

@@ -1,0 +1,5 @@
+Published SIMON64/128 KAT: PASS
+Proposed bit-serial arithmetic vs word reference: 1024 random pairs, all 44 round states: PASS
+These are Python arithmetic checks only; no RTL, synthesis, layout or hardware has been tested.
+Core round cycles: 1408
+Demo bad-key response to KAT challenge: 9350e3713d63ad28

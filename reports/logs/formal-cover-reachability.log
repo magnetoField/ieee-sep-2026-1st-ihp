@@ -1,0 +1,740 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+
+-- Running command `read_verilog -sv src/regs.v src/auth_ctrl.v formal/reachability.sv; prep -top reachability; flatten; async2sync; formalff -clk2ff; memory_map; opt_clean; sat -seq 20 -set-init-zero -set-def-inputs -set-at 20 cover_goal 1 -show cover_goal' --
+
+1. Executing Verilog-2005 frontend: src/regs.v
+Parsing SystemVerilog input from `src/regs.v' to AST representation.
+Generating RTLIL representation for module `\regs'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: src/auth_ctrl.v
+Parsing SystemVerilog input from `src/auth_ctrl.v' to AST representation.
+Generating RTLIL representation for module `\auth_ctrl'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: formal/reachability.sv
+Parsing SystemVerilog input from `formal/reachability.sv' to AST representation.
+Generating RTLIL representation for module `\reachability'.
+Successfully finished Verilog frontend.
+
+4. Executing PREP pass.
+
+4.1. Executing HIERARCHY pass (managing design hierarchy).
+
+4.1.1. Analyzing design hierarchy..
+Top module:  \reachability
+Used module:     \auth_ctrl
+Used module:     \regs
+Parameter \AUTH_TIMEOUT_MS = 20
+
+4.1.2. Executing AST frontend in derive mode using pre-parsed AST for module `\auth_ctrl'.
+Parameter \AUTH_TIMEOUT_MS = 20
+Generating RTLIL representation for module `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100'.
+Parameter \PIN_LEN = 1
+Parameter \PIN_VALUE = 0
+Parameter \MAX_FAILS = 1
+
+4.1.3. Executing AST frontend in derive mode using pre-parsed AST for module `\regs'.
+Parameter \PIN_LEN = 1
+Parameter \PIN_VALUE = 0
+Parameter \MAX_FAILS = 1
+Generating RTLIL representation for module `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs'.
+Parameter \PIN_LEN = 1
+Parameter \PIN_VALUE = 1
+Parameter \MAX_FAILS = 1
+
+4.1.4. Executing AST frontend in derive mode using pre-parsed AST for module `\regs'.
+Parameter \PIN_LEN = 1
+Parameter \PIN_VALUE = 1
+Parameter \MAX_FAILS = 1
+Generating RTLIL representation for module `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs'.
+
+4.1.5. Analyzing design hierarchy..
+Top module:  \reachability
+Used module:     $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100
+Used module:     $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs
+Used module:     $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs
+
+4.1.6. Analyzing design hierarchy..
+Top module:  \reachability
+Used module:     $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100
+Used module:     $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs
+Used module:     $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs
+Removing unused module `\auth_ctrl'.
+Removing unused module `\regs'.
+Removed 2 unused modules.
+
+4.2. Executing PROC pass (convert processes to netlists).
+
+4.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+4.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 5 switch rules as full_case in process $proc$src/auth_ctrl.v:89$124 in module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.
+Marked 1 switch rules as full_case in process $proc$formal/reachability.sv:39$82 in module reachability.
+Marked 4 switch rules as full_case in process $proc$src/regs.v:116$197 in module $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.
+Marked 1 switch rules as full_case in process $proc$src/regs.v:106$191 in module $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.
+Marked 1 switch rules as full_case in process $proc$src/regs.v:78$176 in module $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.
+Marked 4 switch rules as full_case in process $proc$src/regs.v:116$166 in module $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.
+Marked 1 switch rules as full_case in process $proc$src/regs.v:106$160 in module $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.
+Marked 1 switch rules as full_case in process $proc$src/regs.v:78$145 in module $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.
+Removed a total of 0 dead cases.
+
+4.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 6 assignments to connections.
+
+4.2.4. Executing PROC_INIT pass (extract init attributes).
+
+4.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.$proc$src/auth_ctrl.v:89$124'.
+Found async reset \session_rst_n in `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.$proc$src/regs.v:116$197'.
+Found async reset \cold_rst_n in `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.$proc$src/regs.v:106$191'.
+Found async reset \session_rst_n in `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.$proc$src/regs.v:116$166'.
+Found async reset \cold_rst_n in `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.$proc$src/regs.v:106$160'.
+
+4.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 2 switches.
+<suppressed ~35 debug messages>
+
+4.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.$proc$src/auth_ctrl.v:89$124'.
+     1/3: $0\timeout_count[4:0]
+     2/3: $0\timeout_active[0:0]
+     3/3: $0\state[3:0]
+Creating decoders for process `\reachability.$proc$formal/reachability.sv:39$82'.
+     1/4: $0\success_seen[0:0]
+     2/4: $0\seal_seen[0:0]
+     3/4: $0\cmd_seen[0:0]
+     4/4: $0\step[4:0]
+Creating decoders for process `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.$proc$src/regs.v:116$197'.
+     1/4: $0\session_busy[0:0]
+     2/4: $0\digit_count[0:0]
+     3/4: $0\pin_shift[31:0]
+     4/4: $0\txn_valid[0:0]
+Creating decoders for process `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.$proc$src/regs.v:106$191'.
+     1/1: $0\fail_count[0:0]
+Creating decoders for process `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.$proc$src/regs.v:78$176'.
+     1/1: { $1\digit[3:0] $1\star_key[0:0] $1\digit_valid[0:0] }
+Creating decoders for process `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.$proc$src/regs.v:116$166'.
+     1/4: $0\session_busy[0:0]
+     2/4: $0\digit_count[0:0]
+     3/4: $0\pin_shift[31:0]
+     4/4: $0\txn_valid[0:0]
+Creating decoders for process `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.$proc$src/regs.v:106$160'.
+     1/1: $0\fail_count[0:0]
+Creating decoders for process `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.$proc$src/regs.v:78$145'.
+     1/1: { $1\digit[3:0] $1\star_key[0:0] $1\digit_valid[0:0] }
+
+4.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.\digit_valid' from process `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.$proc$src/regs.v:78$176'.
+No latch inferred for signal `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.\star_key' from process `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.$proc$src/regs.v:78$176'.
+No latch inferred for signal `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.\digit' from process `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.$proc$src/regs.v:78$176'.
+No latch inferred for signal `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.\digit_valid' from process `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.$proc$src/regs.v:78$145'.
+No latch inferred for signal `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.\star_key' from process `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.$proc$src/regs.v:78$145'.
+No latch inferred for signal `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.\digit' from process `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.$proc$src/regs.v:78$145'.
+
+4.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.\state' using process `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.$proc$src/auth_ctrl.v:89$124'.
+  created $adff cell `$procdff$412' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.\timeout_active' using process `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.$proc$src/auth_ctrl.v:89$124'.
+  created $adff cell `$procdff$417' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.\timeout_count' using process `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.$proc$src/auth_ctrl.v:89$124'.
+  created $adff cell `$procdff$422' with positive edge clock and positive level reset.
+Creating register for signal `\reachability.\step' using process `\reachability.$proc$formal/reachability.sv:39$82'.
+  created $dff cell `$procdff$423' with positive edge clock.
+Creating register for signal `\reachability.\cmd_seen' using process `\reachability.$proc$formal/reachability.sv:39$82'.
+  created $dff cell `$procdff$424' with positive edge clock.
+Creating register for signal `\reachability.\seal_seen' using process `\reachability.$proc$formal/reachability.sv:39$82'.
+  created $dff cell `$procdff$425' with positive edge clock.
+Creating register for signal `\reachability.\success_seen' using process `\reachability.$proc$formal/reachability.sv:39$82'.
+  created $dff cell `$procdff$426' with positive edge clock.
+Creating register for signal `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.\txn_valid' using process `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.$proc$src/regs.v:116$197'.
+  created $adff cell `$procdff$431' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.\pin_shift' using process `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.$proc$src/regs.v:116$197'.
+  created $adff cell `$procdff$436' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.\digit_count' using process `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.$proc$src/regs.v:116$197'.
+  created $adff cell `$procdff$441' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.\session_busy' using process `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.$proc$src/regs.v:116$197'.
+  created $adff cell `$procdff$446' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.\fail_count' using process `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.$proc$src/regs.v:106$191'.
+  created $adff cell `$procdff$451' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.\txn_valid' using process `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.$proc$src/regs.v:116$166'.
+  created $adff cell `$procdff$456' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.\pin_shift' using process `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.$proc$src/regs.v:116$166'.
+  created $adff cell `$procdff$461' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.\digit_count' using process `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.$proc$src/regs.v:116$166'.
+  created $adff cell `$procdff$466' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.\session_busy' using process `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.$proc$src/regs.v:116$166'.
+  created $adff cell `$procdff$471' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.\fail_count' using process `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.$proc$src/regs.v:106$160'.
+  created $adff cell `$procdff$476' with positive edge clock and positive level reset.
+
+4.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+4.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 14 empty switches in `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.$proc$src/auth_ctrl.v:89$124'.
+Removing empty process `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.$proc$src/auth_ctrl.v:89$124'.
+Found and cleaned up 5 empty switches in `\reachability.$proc$formal/reachability.sv:39$82'.
+Removing empty process `reachability.$proc$formal/reachability.sv:39$82'.
+Found and cleaned up 6 empty switches in `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.$proc$src/regs.v:116$197'.
+Removing empty process `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.$proc$src/regs.v:116$197'.
+Found and cleaned up 2 empty switches in `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.$proc$src/regs.v:106$191'.
+Removing empty process `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.$proc$src/regs.v:106$191'.
+Found and cleaned up 1 empty switch in `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.$proc$src/regs.v:78$176'.
+Removing empty process `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.$proc$src/regs.v:78$176'.
+Found and cleaned up 6 empty switches in `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.$proc$src/regs.v:116$166'.
+Removing empty process `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.$proc$src/regs.v:116$166'.
+Found and cleaned up 2 empty switches in `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.$proc$src/regs.v:106$160'.
+Removing empty process `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.$proc$src/regs.v:106$160'.
+Found and cleaned up 1 empty switch in `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.$proc$src/regs.v:78$145'.
+Removing empty process `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.$proc$src/regs.v:78$145'.
+Cleaned up 37 empty switches.
+
+4.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.
+<suppressed ~10 debug messages>
+Optimizing module reachability.
+<suppressed ~4 debug messages>
+Optimizing module $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.
+<suppressed ~18 debug messages>
+Optimizing module $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.
+<suppressed ~19 debug messages>
+
+4.3. Executing FUTURE pass.
+
+4.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.
+Optimizing module reachability.
+Optimizing module $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.
+Optimizing module $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.
+
+4.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100..
+Finding unused cells or wires in module \reachability..
+Finding unused cells or wires in module $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs..
+Finding unused cells or wires in module $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs..
+Removed 34 unused cells and 181 unused wires.
+<suppressed ~38 debug messages>
+
+4.6. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs...
+Checking module $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs...
+Checking module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100...
+Checking module reachability...
+Found and reported 0 problems.
+
+4.7. Executing OPT pass (performing simple optimizations).
+
+4.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.
+Optimizing module $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.
+Optimizing module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.
+Optimizing module reachability.
+
+4.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs'.
+<suppressed ~6 debug messages>
+Finding identical cells in module `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs'.
+<suppressed ~6 debug messages>
+Finding identical cells in module `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100'.
+<suppressed ~51 debug messages>
+Finding identical cells in module `\reachability'.
+<suppressed ~3 debug messages>
+Removed a total of 22 cells.
+
+4.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \reachability..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~19 debug messages>
+
+4.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.
+  Optimizing cells in module $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.
+  Optimizing cells in module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.
+  Optimizing cells in module \reachability.
+Performed a total of 0 changes.
+
+4.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs'.
+Finding identical cells in module `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs'.
+Finding identical cells in module `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100'.
+Finding identical cells in module `\reachability'.
+Removed a total of 0 cells.
+
+4.7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs..
+Finding unused cells or wires in module $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs..
+Finding unused cells or wires in module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100..
+Finding unused cells or wires in module \reachability..
+Removed 0 unused cells and 19 unused wires.
+<suppressed ~3 debug messages>
+
+4.7.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.
+Optimizing module $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.
+Optimizing module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.
+Optimizing module reachability.
+
+4.7.8. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.7.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \reachability..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~19 debug messages>
+
+4.7.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.
+  Optimizing cells in module $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.
+  Optimizing cells in module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.
+  Optimizing cells in module \reachability.
+Performed a total of 0 changes.
+
+4.7.11. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs'.
+Finding identical cells in module `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs'.
+Finding identical cells in module `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100'.
+Finding identical cells in module `\reachability'.
+Removed a total of 0 cells.
+
+4.7.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs..
+Finding unused cells or wires in module $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs..
+Finding unused cells or wires in module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100..
+Finding unused cells or wires in module \reachability..
+
+4.7.13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.
+Optimizing module $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.
+Optimizing module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.
+Optimizing module reachability.
+
+4.7.14. Finished OPT passes. (There is nothing left to do.)
+
+4.8. Executing WREDUCE pass (reducing word size of cells).
+Removed top 28 address bits (of 32) from memory init port $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.$auto$mem.cc:328:emit$209 ($auto$proc_rom.cc:155:do_switch$207).
+Removed top 31 bits (of 32) from port B of cell $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.$ge$src/regs.v:98$146 ($ge).
+Removed top 31 bits (of 32) from port B of cell $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.$lt$src/regs.v:110$164 ($lt).
+Removed top 28 address bits (of 32) from memory init port $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.$auto$mem.cc:328:emit$205 ($auto$proc_rom.cc:155:do_switch$203).
+Removed top 3 bits (of 4) from port B of cell $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.$eq$src/regs.v:69$175 ($eq).
+Removed top 31 bits (of 32) from port B of cell $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.$ge$src/regs.v:98$177 ($ge).
+Removed top 31 bits (of 32) from port B of cell $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.$lt$src/regs.v:110$195 ($lt).
+Removed top 1 bits (of 4) from port B of cell $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.$procmux$256_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.$procmux$250_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.$ne$src/auth_ctrl.v:69$98 ($ne).
+Removed top 1 bits (of 4) from port B of cell $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.$ne$src/auth_ctrl.v:69$100 ($ne).
+Removed top 3 bits (of 4) from port B of cell $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.$eq$src/auth_ctrl.v:79$109 ($eq).
+Removed top 1 bits (of 4) from port B of cell $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.$eq$src/auth_ctrl.v:80$110 ($eq).
+Removed top 2 bits (of 4) from port B of cell $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.$eq$src/auth_ctrl.v:81$111 ($eq).
+Removed top 1 bits (of 4) from port B of cell $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.$eq$src/auth_ctrl.v:82$112 ($eq).
+Removed top 2 bits (of 4) from port B of cell $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.$eq$src/auth_ctrl.v:86$116 ($eq).
+Removed top 3 bits (of 5) from port B of cell reachability.$eq$formal/reachability.sv:26$81 ($eq).
+
+4.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs..
+Finding unused cells or wires in module $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs..
+Finding unused cells or wires in module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100..
+Finding unused cells or wires in module \reachability..
+
+4.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+4.11. Executing OPT pass (performing simple optimizations).
+
+4.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.
+Optimizing module $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.
+Optimizing module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.
+Optimizing module reachability.
+
+4.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs'.
+Finding identical cells in module `$paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs'.
+Finding identical cells in module `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100'.
+Finding identical cells in module `\reachability'.
+Removed a total of 0 cells.
+
+4.11.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs..
+Finding unused cells or wires in module $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs..
+Finding unused cells or wires in module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100..
+Finding unused cells or wires in module \reachability..
+
+4.11.4. Finished fast OPT passes.
+
+4.12. Printing statistics.
+
+=== $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs ===
+
+   Number of wires:                 54
+   Number of wire bits:            122
+   Number of public wires:          25
+   Number of public wire bits:      93
+   Number of ports:                 14
+   Number of port bits:             17
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 41
+     $add                            2
+     $adff                           4
+     $ge                             1
+     $logic_and                      8
+     $logic_not                      4
+     $logic_or                       1
+     $lt                             1
+     $mem_v2                         1
+     $mux                           18
+     $not                            1
+
+=== $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs ===
+
+   Number of wires:                 54
+   Number of wire bits:            122
+   Number of public wires:          25
+   Number of public wire bits:      93
+   Number of ports:                 14
+   Number of port bits:             17
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 41
+     $add                            2
+     $adff                           4
+     $eq                             1
+     $ge                             1
+     $logic_and                      8
+     $logic_not                      3
+     $logic_or                       1
+     $lt                             1
+     $mem_v2                         1
+     $mux                           18
+     $not                            1
+
+=== $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100 ===
+
+   Number of wires:                 77
+   Number of wire bits:            145
+   Number of public wires:          28
+   Number of public wire bits:      35
+   Number of ports:                 23
+   Number of port bits:             23
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 62
+     $add                            1
+     $adff                           3
+     $eq                            11
+     $logic_and                     14
+     $logic_not                      3
+     $logic_or                       3
+     $mux                           20
+     $ne                             5
+     $pmux                           1
+     $reduce_bool                    1
+
+=== reachability ===
+
+   Number of wires:                 37
+   Number of wire bits:             49
+   Number of public wires:          21
+   Number of public wire bits:      25
+   Number of ports:                  2
+   Number of port bits:              2
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 26
+     $add                            1
+     $dff                            4
+     $eq                             1
+     $logic_and                      6
+     $logic_not                      2
+     $mux                            7
+     $ne                             1
+     $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs      1
+     $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs      1
+     $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100      1
+     $reduce_bool                    1
+
+=== design hierarchy ===
+
+   reachability                      1
+     $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs      1
+     $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs      1
+     $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100      1
+
+   Number of wires:                222
+   Number of wire bits:            438
+   Number of public wires:          99
+   Number of public wire bits:     246
+   Number of ports:                 53
+   Number of port bits:             59
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                167
+     $add                            6
+     $adff                          11
+     $dff                            4
+     $eq                            13
+     $ge                             2
+     $logic_and                     36
+     $logic_not                     12
+     $logic_or                       5
+     $lt                             2
+     $mem_v2                         2
+     $mux                           63
+     $ne                             6
+     $not                            2
+     $pmux                           1
+     $reduce_bool                    2
+
+4.13. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs...
+Checking module $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs...
+Checking module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100...
+Checking module reachability...
+Found and reported 0 problems.
+
+5. Executing FLATTEN pass (flatten design).
+Deleting now unused module $paramod$1c3b1a4c7098e2a81306269450c836b0a13955f3\regs.
+Deleting now unused module $paramod$5dec1422d6f0380d3a59a72f2fe4cf9b1823486c\regs.
+Deleting now unused module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000010100.
+<suppressed ~3 debug messages>
+
+6. Executing ASYNC2SYNC pass.
+Replacing reachability.$flatten\auth.$procdff$422 ($adff): ARST=\auth.rst_n, D=$flatten\auth.$0\timeout_count[4:0], Q=\auth.timeout_count
+Replacing reachability.$flatten\auth.$procdff$417 ($adff): ARST=\auth.rst_n, D=$flatten\auth.$0\timeout_active[0:0], Q=\auth.timeout_active
+Replacing reachability.$flatten\auth.$procdff$412 ($adff): ARST=\auth.rst_n, D=$flatten\auth.$0\state[3:0], Q=\auth.state
+Replacing reachability.$flatten\bad_regs.$procdff$476 ($adff): ARST=\bad_regs.cold_rst_n, D=$flatten\bad_regs.$0\fail_count[0:0], Q=\bad_regs.fail_count
+Replacing reachability.$flatten\bad_regs.$procdff$471 ($adff): ARST=\bad_regs.session_rst_n, D=$flatten\bad_regs.$0\session_busy[0:0], Q=\bad_regs.session_busy
+Replacing reachability.$flatten\bad_regs.$procdff$466 ($adff): ARST=\bad_regs.session_rst_n, D=$flatten\bad_regs.$0\digit_count[0:0], Q=\bad_regs.digit_count
+Replacing reachability.$flatten\bad_regs.$procdff$456 ($adff): ARST=\bad_regs.session_rst_n, D=$flatten\bad_regs.$0\txn_valid[0:0], Q=\bad_regs.txn_valid
+Replacing reachability.$flatten\good_regs.$procdff$451 ($adff): ARST=\good_regs.cold_rst_n, D=$flatten\good_regs.$0\fail_count[0:0], Q=\good_regs.fail_count
+Replacing reachability.$flatten\good_regs.$procdff$446 ($adff): ARST=\good_regs.session_rst_n, D=$flatten\good_regs.$0\session_busy[0:0], Q=\good_regs.session_busy
+Replacing reachability.$flatten\good_regs.$procdff$441 ($adff): ARST=\good_regs.session_rst_n, D=$flatten\good_regs.$0\digit_count[0:0], Q=\good_regs.digit_count
+Replacing reachability.$flatten\good_regs.$procdff$431 ($adff): ARST=\good_regs.session_rst_n, D=$flatten\good_regs.$0\txn_valid[0:0], Q=\good_regs.txn_valid
+
+7. Executing FORMALFF pass.
+
+8. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+Mapping memory $flatten\bad_regs.$auto$proc_rom.cc:155:do_switch$207 in module \reachability:
+  created 16 $dff cells and 0 static cells of width 6.
+  read interface: 0 $dff and 15 $mux cells.
+  write interface: 0 write mux blocks.
+Mapping memory $flatten\good_regs.$auto$proc_rom.cc:155:do_switch$203 in module \reachability:
+  created 16 $dff cells and 0 static cells of width 6.
+  read interface: 0 $dff and 15 $mux cells.
+  write interface: 0 write mux blocks.
+
+9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \reachability..
+Removed 8 unused cells and 42 unused wires.
+<suppressed ~15 debug messages>
+
+10. Executing SAT pass (solving SAT problems in the circuit).
+
+Setting up time step 1:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Imported 212 cells to SAT database.
+Final init constraint equation: { \success_seen \seal_seen \cmd_seen \step $auto$async2sync.cc:228:execute$494 $auto$async2sync.cc:228:execute$496 $auto$async2sync.cc:228:execute$498 $auto$async2sync.cc:228:execute$500 $auto$async2sync.cc:228:execute$486 $auto$async2sync.cc:228:execute$488 $auto$async2sync.cc:228:execute$490 $auto$async2sync.cc:228:execute$492 $auto$async2sync.cc:228:execute$480 $auto$async2sync.cc:228:execute$482 $auto$async2sync.cc:228:execute$484 } = 26'00000000000000000000000000
+
+Setting up time step 2:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Imported 212 cells to SAT database.
+
+Setting up time step 3:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Imported 212 cells to SAT database.
+
+Setting up time step 4:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Imported 212 cells to SAT database.
+
+Setting up time step 5:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Imported 212 cells to SAT database.
+
+Setting up time step 6:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Imported 212 cells to SAT database.
+
+Setting up time step 7:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Imported 212 cells to SAT database.
+
+Setting up time step 8:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Imported 212 cells to SAT database.
+
+Setting up time step 9:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Imported 212 cells to SAT database.
+
+Setting up time step 10:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Imported 212 cells to SAT database.
+
+Setting up time step 11:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Imported 212 cells to SAT database.
+
+Setting up time step 12:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Imported 212 cells to SAT database.
+
+Setting up time step 13:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Imported 212 cells to SAT database.
+
+Setting up time step 14:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Imported 212 cells to SAT database.
+
+Setting up time step 15:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Imported 212 cells to SAT database.
+
+Setting up time step 16:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Imported 212 cells to SAT database.
+
+Setting up time step 17:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Imported 212 cells to SAT database.
+
+Setting up time step 18:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Imported 212 cells to SAT database.
+
+Setting up time step 19:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Imported 212 cells to SAT database.
+
+Setting up time step 20:
+Import set-constraint for this timestep: \cover_goal = 1'1
+Final constraint equation: \cover_goal = 1'1
+Import def constraint for this timestep: \clk
+Imported 212 cells to SAT database.
+Import show expression: \cover_goal
+
+Solving problem with 155481 variables and 415106 clauses..
+SAT solving finished - model found:
+
+  Time Signal Name                                      Dec       Hex           Bin
+  ---- ---------------------------------------- ----------- --------- -------------
+  init $auto$async2sync.cc:228:execute$480                0         0         00000
+  init $auto$async2sync.cc:228:execute$482                0         0             0
+  init $auto$async2sync.cc:228:execute$484                0         0          0000
+  init $auto$async2sync.cc:228:execute$486                0         0             0
+  init $auto$async2sync.cc:228:execute$488                0         0             0
+  init $auto$async2sync.cc:228:execute$490                0         0             0
+  init $auto$async2sync.cc:228:execute$492                0         0             0
+  init $auto$async2sync.cc:228:execute$494                0         0             0
+  init $auto$async2sync.cc:228:execute$496                0         0             0
+  init $auto$async2sync.cc:228:execute$498                0         0             0
+  init $auto$async2sync.cc:228:execute$500                0         0             0
+  init \cmd_seen                                          0         0             0
+  init \seal_seen                                         0         0             0
+  init \step                                              0         0         00000
+  init \success_seen                                      0         0             0
+  ---- ---------------------------------------- ----------- --------- -------------
+     1 \cover_goal                                        0         0             0
+  ---- ---------------------------------------- ----------- --------- -------------
+     2 \cover_goal                                        0         0             0
+  ---- ---------------------------------------- ----------- --------- -------------
+     3 \cover_goal                                        0         0             0
+  ---- ---------------------------------------- ----------- --------- -------------
+     4 \cover_goal                                        0         0             0
+  ---- ---------------------------------------- ----------- --------- -------------
+     5 \cover_goal                                        0         0             0
+  ---- ---------------------------------------- ----------- --------- -------------
+     6 \cover_goal                                        0         0             0
+  ---- ---------------------------------------- ----------- --------- -------------
+     7 \cover_goal                                        0         0             0
+  ---- ---------------------------------------- ----------- --------- -------------
+     8 \cover_goal                                        0         0             0
+  ---- ---------------------------------------- ----------- --------- -------------
+     9 \cover_goal                                        0         0             0
+  ---- ---------------------------------------- ----------- --------- -------------
+    10 \cover_goal                                        0         0             0
+  ---- ---------------------------------------- ----------- --------- -------------
+    11 \cover_goal                                        0         0             0
+  ---- ---------------------------------------- ----------- --------- -------------
+    12 \cover_goal                                        0         0             0
+  ---- ---------------------------------------- ----------- --------- -------------
+    13 \cover_goal                                        0         0             0
+  ---- ---------------------------------------- ----------- --------- -------------
+    14 \cover_goal                                        1         1             1
+  ---- ---------------------------------------- ----------- --------- -------------
+    15 \cover_goal                                        1         1             1
+  ---- ---------------------------------------- ----------- --------- -------------
+    16 \cover_goal                                        1         1             1
+  ---- ---------------------------------------- ----------- --------- -------------
+    17 \cover_goal                                        1         1             1
+  ---- ---------------------------------------- ----------- --------- -------------
+    18 \cover_goal                                        1         1             1
+  ---- ---------------------------------------- ----------- --------- -------------
+    19 \cover_goal                                        1         1             1
+  ---- ---------------------------------------- ----------- --------- -------------
+    20 \cover_goal                                        1         1             1
+
+End of script. Logfile hash: 3c92f1764b, CPU: user 0.44s system 0.11s, MEM: 127.25 MB peak
+Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+Time spent: 90% 1x sat (0 sec), 1% 6x opt_clean (0 sec), ...

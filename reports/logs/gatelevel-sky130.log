@@ -1,0 +1,7 @@
+netlist_sha256=2cab51740f0424bb05e4bda42ac8d47ceee4efa2d442be342c20c78184ab72ee
+library_commit=ac7fb61f06e6470b94e8afdf7c25268f62fbd7b1
+/mnt/c/Users/user/Desktop/HACKATHON/.tools/sky130_fd_sc_hd/cells/dfrtp/sky130_fd_sc_hd__dfrtp.functional.v:55: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+/mnt/c/Users/user/Desktop/HACKATHON/.tools/sky130_fd_sc_hd/cells/dfstp/sky130_fd_sc_hd__dfstp.functional.v:55: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+/mnt/c/Users/user/Desktop/HACKATHON/.tools/sky130_fd_sc_hd/cells/dfxtp/sky130_fd_sc_hd__dfxtp.functional.v:51: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+PASS gate-level mapped SKY130: reset/ena, malformed RX, GOOD, BAD, limit
+/mnt/c/Users/user/Desktop/HACKATHON/test/gatelevel/tb_tt_um_rumcajs_gl.sv:217: $finish called at 3657089000 (1ps)

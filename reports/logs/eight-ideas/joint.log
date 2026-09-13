@@ -1,0 +1,1030 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+
+-- Running command `read_liberty -lib -ignore_miss_func .tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib; read_verilog .build/eight-ideas/joint.v; hierarchy -check -top szymon_fixed; synth -top szymon_fixed -flatten -noabc; dfflibmap -liberty .tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib; abc -liberty .tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib -script "+strash; &get -n; &fraig -x; &put; scorr; dc2; dretime; strash; &get -n; &dch -f; &nf -a -F 16 -A 8 -R 1000; &put"; clean; stat -liberty .tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib; check; write_verilog -noattr .build/eight-ideas/joint.mapped.v' --
+
+1. Executing Liberty frontend: .tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib
+Imported 84 cell types from liberty file.
+
+2. Executing Verilog-2005 frontend: .build/eight-ideas/joint.v
+Parsing Verilog input from `.build/eight-ideas/joint.v' to AST representation.
+Generating RTLIL representation for module `\szymon_fixed'.
+Successfully finished Verilog frontend.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1. Analyzing design hierarchy..
+Top module:  \szymon_fixed
+
+3.2. Analyzing design hierarchy..
+Top module:  \szymon_fixed
+Removed 0 unused modules.
+
+4. Executing SYNTH pass.
+
+4.1. Executing HIERARCHY pass (managing design hierarchy).
+
+4.1.1. Analyzing design hierarchy..
+Top module:  \szymon_fixed
+
+4.1.2. Analyzing design hierarchy..
+Top module:  \szymon_fixed
+Removed 0 unused modules.
+
+4.2. Executing PROC pass (convert processes to netlists).
+
+4.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+4.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$.build/eight-ideas/joint.v:251$96 in module szymon_fixed.
+Marked 7 switch rules as full_case in process $proc$.build/eight-ideas/joint.v:156$60 in module szymon_fixed.
+Marked 1 switch rules as full_case in process $proc$.build/eight-ideas/joint.v:123$29 in module szymon_fixed.
+Marked 1 switch rules as full_case in process $proc$.build/eight-ideas/joint.v:94$17 in module szymon_fixed.
+Removed a total of 0 dead cases.
+
+4.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 2 redundant assignments.
+Promoted 1 assignment to connection.
+
+4.2.4. Executing PROC_INIT pass (extract init attributes).
+
+4.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\szymon_fixed.$proc$.build/eight-ideas/joint.v:156$60'.
+
+4.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~16 debug messages>
+
+4.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\szymon_fixed.$proc$.build/eight-ideas/joint.v:251$96'.
+     1/2: $0\b[31:0]
+     2/2: $0\a[31:0]
+Creating decoders for process `\szymon_fixed.$proc$.build/eight-ideas/joint.v:156$60'.
+     1/4: $0\key_select[0:0]
+     2/4: $0\round_count[5:0]
+     3/4: $0\bit_count[5:0]
+     4/4: $0\state[2:0]
+Creating decoders for process `\szymon_fixed.$proc$.build/eight-ideas/joint.v:123$29'.
+     1/3: $0\key_accumulator[0:0]
+     2/3: $0\key_phase[1:0]
+     3/3: $0\key_depth[2:0]
+Creating decoders for process `\szymon_fixed.$proc$.build/eight-ideas/joint.v:94$17'.
+     1/1: $1\bit_offset[4:0]
+
+4.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\szymon_fixed.\bit_offset' from process `\szymon_fixed.$proc$.build/eight-ideas/joint.v:94$17'.
+
+4.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\szymon_fixed.\a' using process `\szymon_fixed.$proc$.build/eight-ideas/joint.v:251$96'.
+  created $dff cell `$procdff$222' with positive edge clock.
+Creating register for signal `\szymon_fixed.\b' using process `\szymon_fixed.$proc$.build/eight-ideas/joint.v:251$96'.
+  created $dff cell `$procdff$223' with positive edge clock.
+Creating register for signal `\szymon_fixed.\state' using process `\szymon_fixed.$proc$.build/eight-ideas/joint.v:156$60'.
+  created $adff cell `$procdff$228' with positive edge clock and positive level reset.
+Creating register for signal `\szymon_fixed.\bit_count' using process `\szymon_fixed.$proc$.build/eight-ideas/joint.v:156$60'.
+  created $adff cell `$procdff$233' with positive edge clock and positive level reset.
+Creating register for signal `\szymon_fixed.\round_count' using process `\szymon_fixed.$proc$.build/eight-ideas/joint.v:156$60'.
+  created $adff cell `$procdff$238' with positive edge clock and positive level reset.
+Creating register for signal `\szymon_fixed.\key_select' using process `\szymon_fixed.$proc$.build/eight-ideas/joint.v:156$60'.
+  created $adff cell `$procdff$243' with positive edge clock and positive level reset.
+Creating register for signal `\szymon_fixed.\key_phase' using process `\szymon_fixed.$proc$.build/eight-ideas/joint.v:123$29'.
+  created $dff cell `$procdff$244' with positive edge clock.
+Creating register for signal `\szymon_fixed.\key_depth' using process `\szymon_fixed.$proc$.build/eight-ideas/joint.v:123$29'.
+  created $dff cell `$procdff$245' with positive edge clock.
+Creating register for signal `\szymon_fixed.\key_accumulator' using process `\szymon_fixed.$proc$.build/eight-ideas/joint.v:123$29'.
+  created $dff cell `$procdff$246' with positive edge clock.
+
+4.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+4.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 2 empty switches in `\szymon_fixed.$proc$.build/eight-ideas/joint.v:251$96'.
+Removing empty process `szymon_fixed.$proc$.build/eight-ideas/joint.v:251$96'.
+Found and cleaned up 11 empty switches in `\szymon_fixed.$proc$.build/eight-ideas/joint.v:156$60'.
+Removing empty process `szymon_fixed.$proc$.build/eight-ideas/joint.v:156$60'.
+Found and cleaned up 2 empty switches in `\szymon_fixed.$proc$.build/eight-ideas/joint.v:123$29'.
+Removing empty process `szymon_fixed.$proc$.build/eight-ideas/joint.v:123$29'.
+Found and cleaned up 1 empty switch in `\szymon_fixed.$proc$.build/eight-ideas/joint.v:94$17'.
+Removing empty process `szymon_fixed.$proc$.build/eight-ideas/joint.v:94$17'.
+Cleaned up 16 empty switches.
+
+4.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module szymon_fixed.
+<suppressed ~20 debug messages>
+
+4.3. Executing FLATTEN pass (flatten design).
+
+4.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module szymon_fixed.
+
+4.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \szymon_fixed..
+Removed 6 unused cells and 83 unused wires.
+<suppressed ~8 debug messages>
+
+4.6. Executing CHECK pass (checking for obvious problems).
+Checking module szymon_fixed...
+Found and reported 0 problems.
+
+4.7. Executing OPT pass (performing simple optimizations).
+
+4.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module szymon_fixed.
+
+4.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\szymon_fixed'.
+<suppressed ~102 debug messages>
+Removed a total of 34 cells.
+
+4.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \szymon_fixed..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~13 debug messages>
+
+4.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \szymon_fixed.
+    New ctrl vector for $pmux cell $procmux$113: { \cmd_ready $auto$opt_reduce.cc:137:opt_pmux$248 \m_valid }
+  Optimizing cells in module \szymon_fixed.
+Performed a total of 1 changes.
+
+4.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\szymon_fixed'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+4.7.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.7.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \szymon_fixed..
+Removed 0 unused cells and 35 unused wires.
+<suppressed ~1 debug messages>
+
+4.7.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module szymon_fixed.
+
+4.7.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.7.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \szymon_fixed..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~14 debug messages>
+
+4.7.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \szymon_fixed.
+Performed a total of 0 changes.
+
+4.7.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\szymon_fixed'.
+Removed a total of 0 cells.
+
+4.7.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.7.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \szymon_fixed..
+
+4.7.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module szymon_fixed.
+
+4.7.16. Finished OPT passes. (There is nothing left to do.)
+
+4.8. Executing FSM pass (extract and optimize FSM).
+
+4.8.1. Executing FSM_DETECT pass (finding FSMs in design).
+Found FSM state register szymon_fixed.state.
+
+4.8.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+Extracting FSM `\state' from module `\szymon_fixed'.
+  found $adff cell for state register: $procdff$228
+  root of input selection tree: $0\state[2:0]
+  found reset state: 3'000 (from async reset)
+  found ctrl input: \abort
+  found ctrl input: \m_valid
+  found ctrl input: $eq$.build/eight-ideas/joint.v:240$74_Y
+  found ctrl input: \seal_ready
+  found ctrl input: \s_ready
+  found ctrl input: \cmd_ready
+  found ctrl input: \output_step
+  found ctrl input: $eq$.build/eight-ideas/joint.v:148$58_Y
+  found ctrl input: \reconstruct
+  found ctrl input: $eq$.build/eight-ideas/joint.v:199$67_Y
+  found ctrl input: $eq$.build/eight-ideas/joint.v:201$68_Y
+  found state code: 3'100
+  found ctrl input: $logic_and$.build/eight-ideas/joint.v:191$66_Y
+  found state code: 3'011
+  found ctrl input: \load_step
+  found state code: 3'010
+  found ctrl input: $logic_and$.build/eight-ideas/joint.v:173$62_Y
+  found state code: 3'001
+  found ctrl output: $ne$.build/eight-ideas/joint.v:124$32_Y
+  found ctrl output: \cmd_ready
+  found ctrl output: \s_ready
+  found ctrl output: \seal_ready
+  found ctrl output: \m_valid
+  found ctrl output: $eq$.build/eight-ideas/joint.v:240$74_Y
+  found ctrl output: $gt$.build/eight-ideas/joint.v:245$87_Y
+  ctrl inputs: { $eq$.build/eight-ideas/joint.v:201$68_Y $eq$.build/eight-ideas/joint.v:199$67_Y $logic_and$.build/eight-ideas/joint.v:191$66_Y $logic_and$.build/eight-ideas/joint.v:173$62_Y $eq$.build/eight-ideas/joint.v:148$58_Y \output_step \load_step \reconstruct \abort }
+  ctrl outputs: { $gt$.build/eight-ideas/joint.v:245$87_Y $eq$.build/eight-ideas/joint.v:240$74_Y $0\state[2:0] $ne$.build/eight-ideas/joint.v:124$32_Y \m_valid \seal_ready \s_ready \cmd_ready }
+  transition:      3'000 9'---0----0 ->      3'000 10'0000010001
+  transition:      3'000 9'---1----0 ->      3'001 10'0000110001
+  transition:      3'000 9'--------1 ->      3'000 10'0000010001
+  transition:      3'100 9'-----0--0 ->      3'100 10'0010011000
+  transition:      3'100 9'----01--0 ->      3'100 10'0010011000
+  transition:      3'100 9'----11--0 ->      3'000 10'0000011000
+  transition:      3'100 9'--------1 ->      3'000 10'0000011000
+  transition:      3'010 9'--0-----0 ->      3'010 10'0001010100
+  transition:      3'010 9'--1-----0 ->      3'011 10'0001110100
+  transition:      3'010 9'--------1 ->      3'000 10'0000010100
+  transition:      3'001 9'------0-0 ->      3'001 10'0000110010
+  transition:      3'001 9'----0-1-0 ->      3'001 10'0000110010
+  transition:      3'001 9'----1-1-0 ->      3'010 10'0001010010
+  transition:      3'001 9'--------1 ->      3'000 10'0000010010
+  transition:      3'011 9'-0-----00 ->      3'011 10'0101100000
+  transition:      3'011 9'01-----00 ->      3'011 10'0101100000
+  transition:      3'011 9'11-----00 ->      3'100 10'0110000000
+  transition:      3'011 9'-------10 ->      3'011 10'0101100000
+  transition:      3'011 9'--------1 ->      3'000 10'0100000000
+
+4.8.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\state$249' from module `\szymon_fixed'.
+
+4.8.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \szymon_fixed..
+Removed 19 unused cells and 19 unused wires.
+<suppressed ~20 debug messages>
+
+4.8.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\state$249' from module `\szymon_fixed'.
+  Removing unused output signal $0\state[2:0] [0].
+  Removing unused output signal $0\state[2:0] [1].
+  Removing unused output signal $0\state[2:0] [2].
+
+4.8.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+Recoding FSM `$fsm$\state$249' from module `\szymon_fixed' using `auto' encoding:
+  mapping auto encoding to `one-hot` for this FSM.
+  000 -> ----1
+  100 -> ---1-
+  010 -> --1--
+  001 -> -1---
+  011 -> 1----
+
+4.8.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+FSM `$fsm$\state$249' from module `szymon_fixed':
+-------------------------------------
+
+  Information on FSM $fsm$\state$249 (\state):
+
+  Number of input signals:    9
+  Number of output signals:   7
+  Number of state bits:       5
+
+  Input signals:
+    0: \abort
+    1: \reconstruct
+    2: \load_step
+    3: \output_step
+    4: $eq$.build/eight-ideas/joint.v:148$58_Y
+    5: $logic_and$.build/eight-ideas/joint.v:173$62_Y
+    6: $logic_and$.build/eight-ideas/joint.v:191$66_Y
+    7: $eq$.build/eight-ideas/joint.v:199$67_Y
+    8: $eq$.build/eight-ideas/joint.v:201$68_Y
+
+  Output signals:
+    0: \cmd_ready
+    1: \s_ready
+    2: \seal_ready
+    3: \m_valid
+    4: $ne$.build/eight-ideas/joint.v:124$32_Y
+    5: $eq$.build/eight-ideas/joint.v:240$74_Y
+    6: $gt$.build/eight-ideas/joint.v:245$87_Y
+
+  State encoding:
+    0:    5'----1  <RESET STATE>
+    1:    5'---1-
+    2:    5'--1--
+    3:    5'-1---
+    4:    5'1----
+
+  Transition Table (state_in, ctrl_in, state_out, ctrl_out):
+      0:     0 9'---0----0   ->     0 7'0010001
+      1:     0 9'--------1   ->     0 7'0010001
+      2:     0 9'---1----0   ->     3 7'0010001
+      3:     1 9'----11--0   ->     0 7'0011000
+      4:     1 9'--------1   ->     0 7'0011000
+      5:     1 9'-----0--0   ->     1 7'0011000
+      6:     1 9'----01--0   ->     1 7'0011000
+      7:     2 9'--------1   ->     0 7'0010100
+      8:     2 9'--0-----0   ->     2 7'0010100
+      9:     2 9'--1-----0   ->     4 7'0010100
+     10:     3 9'--------1   ->     0 7'0010010
+     11:     3 9'----1-1-0   ->     2 7'0010010
+     12:     3 9'------0-0   ->     3 7'0010010
+     13:     3 9'----0-1-0   ->     3 7'0010010
+     14:     4 9'--------1   ->     0 7'0100000
+     15:     4 9'11-----00   ->     1 7'0100000
+     16:     4 9'-0-----00   ->     4 7'0100000
+     17:     4 9'01-----00   ->     4 7'0100000
+     18:     4 9'-------10   ->     4 7'0100000
+
+-------------------------------------
+
+4.8.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+Mapping FSM `$fsm$\state$249' from module `\szymon_fixed'.
+
+4.9. Executing OPT pass (performing simple optimizations).
+
+4.9.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module szymon_fixed.
+<suppressed ~7 debug messages>
+
+4.9.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\szymon_fixed'.
+Removed a total of 0 cells.
+
+4.9.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \szymon_fixed..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~13 debug messages>
+
+4.9.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \szymon_fixed.
+Performed a total of 0 changes.
+
+4.9.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\szymon_fixed'.
+Removed a total of 0 cells.
+
+4.9.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$246 ($dff) from module szymon_fixed (D = $xor$.build/eight-ideas/joint.v:132$41_Y, Q = \key_accumulator, rval = 1'0).
+Adding SRST signal on $procdff$245 ($dff) from module szymon_fixed (D = $procmux$212_Y, Q = \key_depth, rval = 3'000).
+Adding EN signal on $auto$ff.cc:266:slice$327 ($sdff) from module szymon_fixed (D = $add$.build/eight-ideas/joint.v:131$37_Y, Q = \key_depth).
+Adding SRST signal on $procdff$244 ($dff) from module szymon_fixed (D = $add$.build/eight-ideas/joint.v:129$35_Y, Q = \key_phase, rval = 2'00).
+Adding EN signal on $procdff$243 ($adff) from module szymon_fixed (D = $0\key_select[0:0], Q = \key_select).
+Adding EN signal on $procdff$238 ($adff) from module szymon_fixed (D = $0\round_count[5:0], Q = \round_count).
+Adding EN signal on $procdff$233 ($adff) from module szymon_fixed (D = $0\bit_count[5:0], Q = \bit_count).
+Adding SRST signal on $procdff$223 ($dff) from module szymon_fixed (D = $procmux$97_Y, Q = \b, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$365 ($sdff) from module szymon_fixed (D = { \b [30:0] \b_input }, Q = \b).
+Adding SRST signal on $procdff$222 ($dff) from module szymon_fixed (D = $procmux$102_Y, Q = \a, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$367 ($sdff) from module szymon_fixed (D = { \a [30:0] \a_input }, Q = \a).
+
+4.9.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \szymon_fixed..
+Removed 8 unused cells and 15 unused wires.
+<suppressed ~9 debug messages>
+
+4.9.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module szymon_fixed.
+
+4.9.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.9.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \szymon_fixed..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~10 debug messages>
+
+4.9.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \szymon_fixed.
+Performed a total of 0 changes.
+
+4.9.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\szymon_fixed'.
+<suppressed ~18 debug messages>
+Removed a total of 6 cells.
+
+4.9.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.9.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \szymon_fixed..
+Removed 0 unused cells and 6 unused wires.
+<suppressed ~1 debug messages>
+
+4.9.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module szymon_fixed.
+
+4.9.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.9.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \szymon_fixed..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~11 debug messages>
+
+4.9.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \szymon_fixed.
+Performed a total of 0 changes.
+
+4.9.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\szymon_fixed'.
+Removed a total of 0 cells.
+
+4.9.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.9.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \szymon_fixed..
+
+4.9.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module szymon_fixed.
+
+4.9.23. Finished OPT passes. (There is nothing left to do.)
+
+4.10. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 6) from port B of cell szymon_fixed.$sub$.build/eight-ideas/joint.v:88$9 ($sub).
+Removed top 4 bits (of 6) from mux cell szymon_fixed.$ternary$.build/eight-ideas/joint.v:92$14 ($mux).
+Removed top 4 bits (of 6) from port B of cell szymon_fixed.$sub$.build/eight-ideas/joint.v:92$15 ($sub).
+Removed top 3 bits (of 6) from port B of cell szymon_fixed.$sub$.build/eight-ideas/joint.v:120$25 ($sub).
+Removed top 1 bits (of 6) from port B of cell szymon_fixed.$eq$.build/eight-ideas/joint.v:199$67 ($eq).
+Removed top 1 bits (of 3) from port B of cell szymon_fixed.$auto$fsm_map.cc:77:implement_pattern_cache$300 ($eq).
+Removed top 1 bits (of 4) from port B of cell szymon_fixed.$auto$fsm_map.cc:77:implement_pattern_cache$313 ($eq).
+Removed top 1 bits (of 3) from port B of cell szymon_fixed.$auto$fsm_map.cc:77:implement_pattern_cache$282 ($eq).
+Removed top 2 bits (of 5) from mux cell szymon_fixed.$procmux$218 ($pmux).
+Removed top 1 bits (of 2) from port B of cell szymon_fixed.$procmux$220_CMP0 ($eq).
+Removed top 4 bits (of 6) from wire szymon_fixed.$ternary$.build/eight-ideas/joint.v:92$14_Y.
+Removed top 2 bits (of 5) from wire szymon_fixed.bit_offset.
+
+4.11. Executing PEEPOPT pass (run peephole optimizers).
+
+4.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \szymon_fixed..
+Removed 0 unused cells and 2 unused wires.
+<suppressed ~1 debug messages>
+
+4.13. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module szymon_fixed:
+  creating $macc model for $add$.build/eight-ideas/joint.v:102$20 ($add).
+  creating $macc model for $add$.build/eight-ideas/joint.v:129$35 ($add).
+  creating $macc model for $add$.build/eight-ideas/joint.v:131$37 ($add).
+  creating $macc model for $add$.build/eight-ideas/joint.v:185$65 ($add).
+  creating $macc model for $add$.build/eight-ideas/joint.v:205$69 ($add).
+  creating $macc model for $sub$.build/eight-ideas/joint.v:120$25 ($sub).
+  creating $macc model for $sub$.build/eight-ideas/joint.v:88$9 ($sub).
+  creating $macc model for $sub$.build/eight-ideas/joint.v:92$15 ($sub).
+  creating $alu model for $macc $sub$.build/eight-ideas/joint.v:92$15.
+  creating $alu model for $macc $sub$.build/eight-ideas/joint.v:88$9.
+  creating $alu model for $macc $sub$.build/eight-ideas/joint.v:120$25.
+  creating $alu model for $macc $add$.build/eight-ideas/joint.v:205$69.
+  creating $alu model for $macc $add$.build/eight-ideas/joint.v:185$65.
+  creating $alu model for $macc $add$.build/eight-ideas/joint.v:131$37.
+  creating $alu model for $macc $add$.build/eight-ideas/joint.v:129$35.
+  creating $alu model for $macc $add$.build/eight-ideas/joint.v:102$20.
+  creating $alu model for $lt$.build/eight-ideas/joint.v:119$23 ($lt): new $alu
+  creating $alu cell for $lt$.build/eight-ideas/joint.v:119$23: $auto$alumacc.cc:495:replace_alu$372
+  creating $alu cell for $add$.build/eight-ideas/joint.v:102$20: $auto$alumacc.cc:495:replace_alu$377
+  creating $alu cell for $add$.build/eight-ideas/joint.v:129$35: $auto$alumacc.cc:495:replace_alu$380
+  creating $alu cell for $add$.build/eight-ideas/joint.v:131$37: $auto$alumacc.cc:495:replace_alu$383
+  creating $alu cell for $add$.build/eight-ideas/joint.v:185$65: $auto$alumacc.cc:495:replace_alu$386
+  creating $alu cell for $add$.build/eight-ideas/joint.v:205$69: $auto$alumacc.cc:495:replace_alu$389
+  creating $alu cell for $sub$.build/eight-ideas/joint.v:120$25: $auto$alumacc.cc:495:replace_alu$392
+  creating $alu cell for $sub$.build/eight-ideas/joint.v:88$9: $auto$alumacc.cc:495:replace_alu$395
+  creating $alu cell for $sub$.build/eight-ideas/joint.v:92$15: $auto$alumacc.cc:495:replace_alu$398
+  created 9 $alu and 0 $macc cells.
+
+4.14. Executing SHARE pass (SAT-based resource sharing).
+
+4.15. Executing OPT pass (performing simple optimizations).
+
+4.15.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module szymon_fixed.
+
+4.15.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\szymon_fixed'.
+Removed a total of 0 cells.
+
+4.15.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \szymon_fixed..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~11 debug messages>
+
+4.15.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \szymon_fixed.
+Performed a total of 0 changes.
+
+4.15.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\szymon_fixed'.
+Removed a total of 0 cells.
+
+4.15.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.15.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \szymon_fixed..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+4.15.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module szymon_fixed.
+
+4.15.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.15.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \szymon_fixed..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~11 debug messages>
+
+4.15.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \szymon_fixed.
+Performed a total of 0 changes.
+
+4.15.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\szymon_fixed'.
+Removed a total of 0 cells.
+
+4.15.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.15.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \szymon_fixed..
+
+4.15.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module szymon_fixed.
+
+4.15.16. Finished OPT passes. (There is nothing left to do.)
+
+4.16. Executing MEMORY pass.
+
+4.16.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+4.16.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+4.16.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+4.16.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+4.16.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+4.16.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \szymon_fixed..
+
+4.16.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+4.16.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+4.16.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \szymon_fixed..
+
+4.16.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+4.17. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \szymon_fixed..
+
+4.18. Executing OPT pass (performing simple optimizations).
+
+4.18.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module szymon_fixed.
+<suppressed ~17 debug messages>
+
+4.18.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\szymon_fixed'.
+<suppressed ~6 debug messages>
+Removed a total of 2 cells.
+
+4.18.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.18.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \szymon_fixed..
+Removed 3 unused cells and 15 unused wires.
+<suppressed ~4 debug messages>
+
+4.18.5. Finished fast OPT passes.
+
+4.19. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+4.20. Executing OPT pass (performing simple optimizations).
+
+4.20.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module szymon_fixed.
+
+4.20.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\szymon_fixed'.
+Removed a total of 0 cells.
+
+4.20.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \szymon_fixed..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~8 debug messages>
+
+4.20.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \szymon_fixed.
+    New ctrl vector for $pmux cell $procmux$113: \state [0]
+    New ctrl vector for $pmux cell $procmux$130: \state [4]
+    New ctrl vector for $pmux cell $procmux$154: { \state [4] $auto$opt_reduce.cc:137:opt_pmux$412 }
+    Consolidated identical input bits for $mux cell $ternary$.build/eight-ideas/joint.v:103$19:
+      Old ports: A=5'00000, B={ 2'00 \bit_offset }, Y=$ternary$.build/eight-ideas/joint.v:103$19_Y
+      New ports: A=3'000, B=\bit_offset, Y=$ternary$.build/eight-ideas/joint.v:103$19_Y [2:0]
+      New connections: $ternary$.build/eight-ideas/joint.v:103$19_Y [4:3] = 2'00
+    Consolidated identical input bits for $mux cell $ternary$.build/eight-ideas/joint.v:92$14:
+      Old ports: A=2'01, B=2'11, Y=$auto$wreduce.cc:514:run$369 [1:0]
+      New ports: A=1'0, B=1'1, Y=$auto$wreduce.cc:514:run$369 [1]
+      New connections: $auto$wreduce.cc:514:run$369 [0] = 1'1
+  Optimizing cells in module \szymon_fixed.
+Performed a total of 5 changes.
+
+4.20.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\szymon_fixed'.
+Removed a total of 0 cells.
+
+4.20.6. Executing OPT_SHARE pass.
+
+4.20.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.20.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \szymon_fixed..
+
+4.20.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module szymon_fixed.
+<suppressed ~2 debug messages>
+
+4.20.10. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.20.11. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \szymon_fixed..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~7 debug messages>
+
+4.20.12. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \szymon_fixed.
+Performed a total of 0 changes.
+
+4.20.13. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\szymon_fixed'.
+Removed a total of 0 cells.
+
+4.20.14. Executing OPT_SHARE pass.
+
+4.20.15. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.20.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \szymon_fixed..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+4.20.17. Executing OPT_EXPR pass (perform const folding).
+Optimizing module szymon_fixed.
+
+4.20.18. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.20.19. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \szymon_fixed..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~7 debug messages>
+
+4.20.20. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \szymon_fixed.
+Performed a total of 0 changes.
+
+4.20.21. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\szymon_fixed'.
+Removed a total of 0 cells.
+
+4.20.22. Executing OPT_SHARE pass.
+
+4.20.23. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.20.24. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \szymon_fixed..
+
+4.20.25. Executing OPT_EXPR pass (perform const folding).
+Optimizing module szymon_fixed.
+
+4.20.26. Finished OPT passes. (There is nothing left to do.)
+
+4.21. Executing TECHMAP pass (map to technology primitives).
+
+4.21.1. Executing Verilog-2005 frontend: /mnt/c/Users/user/Desktop/HACKATHON/.tools/root/usr/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/mnt/c/Users/user/Desktop/HACKATHON/.tools/root/usr/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+4.21.2. Continuing TECHMAP pass.
+Using template $paramod$f956edc9fe4df758d9fdb10bfc518a364c99e75e\_90_alu for cells of type $alu.
+Using template $paramod$75108d6e8d490ab2eec24aee458e87cb2a6c124c\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $logic_and.
+Using template $paramod$740b056ede97228d3eae64ea2fdc81f0a33e0fe7\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $not.
+Using template $paramod$175e67c02b86e96b1288b9dc100122520d7240d8\_90_alu for cells of type $alu.
+Using template $paramod$b18e16801adf491a64caa0542270798e5d4ac6b6\_90_alu for cells of type $alu.
+Using template $paramod$constmap:c2bd98a18a0fbe9e4eda21941c187799afbfb36f$paramod$b42652864a113c052b7e4ee7b3b668b1dd839d30\_90_shift_shiftx for cells of type $shiftx.
+Using extmapper simplemap for cells of type $xor.
+Using extmapper simplemap for cells of type $eq.
+Using template $paramod$8742280fdebca84e1c87f2a86ed84f62d558f4cc\_90_alu for cells of type $alu.
+Using template $paramod$constmap:c1a8fb521397bdb25685af64f8a75addca38b68a$paramod$05fd02ee8975e559bee57b6e5e564b3ecd2ab687\_90_shift_shiftx for cells of type $shiftx.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $logic_or.
+Using extmapper simplemap for cells of type $reduce_or.
+Using template $paramod$3ef7d3dd227da7627a99c5e5a6a4deb817573e39\_90_alu for cells of type $alu.
+Using template $paramod$32efbfac1c4dc57230cf86180788fdfd12e3b511\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $adff.
+Using extmapper simplemap for cells of type $reduce_and.
+Using template $paramod$ed0bb9616228df1e6c226f91f8133e751815f1b1\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $sdff.
+Using template $paramod$85df5dc01c7df96a7d8e5f1fdf76ce9ac452af63\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $sdffe.
+Using extmapper simplemap for cells of type $adffe.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000100 for cells of type $lcu.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000110 for cells of type $lcu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000010 for cells of type $lcu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000101 for cells of type $lcu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000011 for cells of type $lcu.
+Using extmapper simplemap for cells of type $or.
+No more expansions possible.
+<suppressed ~4370 debug messages>
+
+4.22. Executing OPT pass (performing simple optimizations).
+
+4.22.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module szymon_fixed.
+<suppressed ~6799 debug messages>
+
+4.22.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\szymon_fixed'.
+<suppressed ~10605 debug messages>
+Removed a total of 3535 cells.
+
+4.22.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.22.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \szymon_fixed..
+Removed 23852 unused cells and 463 unused wires.
+<suppressed ~23853 debug messages>
+
+4.22.5. Finished fast OPT passes.
+
+4.23. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `szymon_fixed'. Setting top module to szymon_fixed.
+
+4.23.1. Analyzing design hierarchy..
+Top module:  \szymon_fixed
+
+4.23.2. Analyzing design hierarchy..
+Top module:  \szymon_fixed
+Removed 0 unused modules.
+
+4.24. Printing statistics.
+
+=== szymon_fixed ===
+
+   Number of wires:                248
+   Number of wire bits:          34647
+   Number of public wires:          43
+   Number of public wire bits:     148
+   Number of ports:                 15
+   Number of port bits:             15
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                821
+     $_AND_                         86
+     $_DFFE_PN0P_                   13
+     $_DFF_PN0_                      4
+     $_DFF_PN1_                      1
+     $_MUX_                        458
+     $_NOT_                         54
+     $_OR_                          91
+     $_SDFFE_PP0N_                   3
+     $_SDFFE_PP0P_                  64
+     $_SDFF_PP0_                     3
+     $_XOR_                         44
+
+4.25. Executing CHECK pass (checking for obvious problems).
+Checking module szymon_fixed...
+Found and reported 0 problems.
+
+5. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell sg13g2_dfrbpq_1 (noninv, pins=4, area=48.99) is a direct match for cell type $_DFF_PN0_.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    unmapped dff cell: $_DFF_P_
+    unmapped dff cell: $_DFF_NN0_
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \sg13g2_dfrbpq_1 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RESET_B( R));
+    unmapped dff cell: $_DFF_PN1_
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    unmapped dff cell: $_DFFE_NN_
+    unmapped dff cell: $_DFFE_NP_
+    unmapped dff cell: $_DFFE_PN_
+    unmapped dff cell: $_DFFE_PP_
+    unmapped dff cell: $_DFFSR_NNN_
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    unmapped dff cell: $_DFFSR_PNN_
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+5.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+<suppressed ~4 debug messages>
+Mapping DFF cells in module `\szymon_fixed':
+  mapped 88 $_DFF_PN0_ cells to \sg13g2_dfrbpq_1 cells.
+
+6. Executing ABC pass (technology mapping using ABC).
+
+6.1. Extracting gate netlist of module `\szymon_fixed' to `<abc-temp-dir>/input.blif'..
+Replacing 20 occurrences of constant undef bits with constant zero bits
+Extracted 885 gates and 984 wires to a netlist network with 96 inputs and 91 outputs.
+
+6.1.1. Executing ABC.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /mnt/c/Users/user/Desktop/HACKATHON/.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.03 sec
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_antennanp" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_decap_4" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_decap_8" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dfrbpq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dfrbpq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dlhq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dlhr_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dlhrq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dllr_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dllrq_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_ebufn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_ebufn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_ebufn_8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_einvn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_einvn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_einvn_8".
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_fill_1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_fill_2" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_fill_4" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_fill_8" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_lgcp_1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfbbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfrbpq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfrbpq_2".
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_sighold" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_slgcp_1" due to dont_use attribute.
+ABC: Library "sg13g2_stdcell_typ_1p20V_25C" from "/mnt/c/Users/user/Desktop/HACKATHON/.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib" has 54 cells (20 skipped: 14 seq; 6 tri-state; 0 no func; 10 dont_use).  Time =     0.03 sec
+ABC: Memory =    2.85 MB. Time =     0.03 sec
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf -a -F 16 -A 8 -R 1000 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+6.1.2. Re-integrating ABC results.
+ABC RESULTS:     sg13g2_a21o_1 cells:        6
+ABC RESULTS:    sg13g2_a21oi_1 cells:      154
+ABC RESULTS:   sg13g2_a221oi_1 cells:       18
+ABC RESULTS:    sg13g2_a22oi_1 cells:       24
+ABC RESULTS:     sg13g2_and2_1 cells:       14
+ABC RESULTS:     sg13g2_and3_1 cells:        7
+ABC RESULTS:     sg13g2_and4_1 cells:        1
+ABC RESULTS:      sg13g2_inv_1 cells:       19
+ABC RESULTS:     sg13g2_mux2_1 cells:        5
+ABC RESULTS:     sg13g2_mux4_1 cells:        4
+ABC RESULTS:    sg13g2_nand2_1 cells:      171
+ABC RESULTS:   sg13g2_nand2b_1 cells:       17
+ABC RESULTS:    sg13g2_nand3_1 cells:       15
+ABC RESULTS:    sg13g2_nand4_1 cells:        2
+ABC RESULTS:     sg13g2_nor2_1 cells:       77
+ABC RESULTS:    sg13g2_nor2b_1 cells:       22
+ABC RESULTS:     sg13g2_nor3_1 cells:       22
+ABC RESULTS:     sg13g2_nor4_1 cells:        4
+ABC RESULTS:    sg13g2_o21ai_1 cells:       90
+ABC RESULTS:      sg13g2_or2_1 cells:       10
+ABC RESULTS:      sg13g2_or3_1 cells:        5
+ABC RESULTS:    sg13g2_xnor2_1 cells:       17
+ABC RESULTS:     sg13g2_xor2_1 cells:       16
+ABC RESULTS:        internal signals:      797
+ABC RESULTS:           input signals:       96
+ABC RESULTS:          output signals:       91
+Removing temp directory.
+Removed 0 unused cells and 473 unused wires.
+
+7. Printing statistics.
+
+=== szymon_fixed ===
+
+   Number of wires:                743
+   Number of wire bits:            827
+   Number of public wires:          25
+   Number of public wire bits:     109
+   Number of ports:                 15
+   Number of port bits:             15
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                808
+     sg13g2_a21o_1                   6
+     sg13g2_a21oi_1                154
+     sg13g2_a221oi_1                18
+     sg13g2_a22oi_1                 24
+     sg13g2_and2_1                  14
+     sg13g2_and3_1                   7
+     sg13g2_and4_1                   1
+     sg13g2_dfrbpq_1                88
+     sg13g2_inv_1                   19
+     sg13g2_mux2_1                   5
+     sg13g2_mux4_1                   4
+     sg13g2_nand2_1                171
+     sg13g2_nand2b_1                17
+     sg13g2_nand3_1                 15
+     sg13g2_nand4_1                  2
+     sg13g2_nor2_1                  77
+     sg13g2_nor2b_1                 22
+     sg13g2_nor3_1                  22
+     sg13g2_nor4_1                   4
+     sg13g2_o21ai_1                 90
+     sg13g2_or2_1                   10
+     sg13g2_or3_1                    5
+     sg13g2_xnor2_1                 17
+     sg13g2_xor2_1                  16
+
+   Chip area for module '\szymon_fixed': 10887.307200
+     of which used for sequential elements: 4311.014400 (39.60%)
+
+8. Executing CHECK pass (checking for obvious problems).
+Checking module szymon_fixed...
+Found and reported 0 problems.
+
+9. Executing Verilog backend.
+
+9.1. Executing BMUXMAP pass.
+
+9.2. Executing DEMUXMAP pass.
+Dumping module `\szymon_fixed'.
+
+End of script. Logfile hash: 6b6c0d1538, CPU: user 2.00s system 0.22s, MEM: 196.40 MB peak
+Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+Time spent: 25% 32x opt_expr (0 sec), 14% 5x clean (0 sec), ...

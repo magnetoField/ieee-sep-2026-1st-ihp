@@ -1,0 +1,21 @@
+PASS tb_regs_params PIN_LEN=1 MAX_FAILS=1
+test/unit/tb_regs_params.sv:36: $finish called at 100000 (1ps)
+PASS tb_regs_params PIN_LEN=4 MAX_FAILS=3
+test/unit/tb_regs_params.sv:36: $finish called at 420000 (1ps)
+PASS tb_regs_params PIN_LEN=6 MAX_FAILS=4
+test/unit/tb_regs_params.sv:36: $finish called at 720000 (1ps)
+PASS tb_regs_params PIN_LEN=8 MAX_FAILS=7
+test/unit/tb_regs_params.sv:36: $finish called at 1460000 (1ps)
+PASS invalid configuration rejected: sync_width
+PASS invalid configuration rejected: time_div
+PASS invalid configuration rejected: time_small_div
+PASS invalid configuration rejected: kb_zero
+PASS invalid configuration rejected: regs_pin_zero
+PASS invalid configuration rejected: regs_bad_bcd
+PASS invalid configuration rejected: regs_pin_long
+PASS invalid configuration rejected: regs_fail_zero
+PASS invalid configuration rejected: buzzer_zero
+PASS invalid configuration rejected: buzzer_half_zero
+PASS invalid configuration rejected: buzzer_mode
+PASS invalid configuration rejected: auth_zero
+PASS invalid configuration rejected: core_mode

@@ -1,0 +1,750 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+
+-- Running command `read_verilog -formal -D FORMAL src/sync2.v src/kb.v; chformal -lower; prep -top kb; flatten; async2sync; formalff -clk2ff; memory_map; opt_clean; sat -verify -prove-asserts -set-init-zero -set-def-formal -set-def-inputs -seq 20' --
+
+1. Executing Verilog-2005 frontend: src/sync2.v
+Parsing formal Verilog input from `src/sync2.v' to AST representation.
+Generating RTLIL representation for module `\sync2'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: src/kb.v
+Parsing formal Verilog input from `src/kb.v' to AST representation.
+Generating RTLIL representation for module `\kb'.
+Successfully finished Verilog frontend.
+
+3. Executing PREP pass.
+
+3.1. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1.1. Analyzing design hierarchy..
+Top module:  \kb
+Used module:     \sync2
+Parameter \WIDTH = 4
+
+3.1.2. Executing AST frontend in derive mode using pre-parsed AST for module `\sync2'.
+Parameter \WIDTH = 4
+Generating RTLIL representation for module `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100'.
+
+3.1.3. Analyzing design hierarchy..
+Top module:  \kb
+Used module:     $paramod\sync2\WIDTH=s32'00000000000000000000000000000100
+
+3.1.4. Analyzing design hierarchy..
+Top module:  \kb
+Used module:     $paramod\sync2\WIDTH=s32'00000000000000000000000000000100
+Removing unused module `\sync2'.
+Removed 1 unused modules.
+Module kb directly or indirectly contains formal properties -> setting "keep" attribute.
+
+3.2. Executing PROC pass (convert processes to netlists).
+
+3.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 2 empty switches in `\kb.$proc$src/kb.v:96$17'.
+Cleaned up 2 empty switches.
+
+3.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 4 switch rules as full_case in process $proc$src/kb.v:0$83 in module kb.
+Marked 1 switch rules as full_case in process $proc$src/kb.v:258$54 in module kb.
+Marked 17 switch rules as full_case in process $proc$src/kb.v:96$17 in module kb.
+Marked 1 switch rules as full_case in process $proc$src/sync2.v:20$111 in module $paramod\sync2\WIDTH=s32'00000000000000000000000000000100.
+Removed a total of 0 dead cases.
+
+3.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 3 redundant assignments.
+Promoted 7 assignments to connections.
+
+3.2.4. Executing PROC_INIT pass (extract init attributes).
+
+3.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\kb.$proc$src/kb.v:96$17'.
+Found async reset \rst_n in `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100.$proc$src/sync2.v:20$111'.
+
+3.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~30 debug messages>
+
+3.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\kb.$proc$src/kb.v:0$83'.
+     1/4: $4\first_column$func$src/kb.v:66$8.$result[1:0]$90
+     2/4: $3\first_column$func$src/kb.v:66$8.$result[1:0]$89
+     3/4: $2\first_column$func$src/kb.v:66$8.$result[1:0]$88
+     4/4: $1\first_column$func$src/kb.v:66$8.$result[1:0]$87
+Creating decoders for process `\kb.$proc$src/kb.v:0$73'.
+Creating decoders for process `\kb.$proc$src/kb.v:267$60'.
+     1/4: $assert$src/kb.v:273$71_EN
+     2/4: $assert$src/kb.v:272$70_EN
+     3/4: $assert$src/kb.v:270$65_EN
+     4/4: $assert$src/kb.v:269$61_EN
+Creating decoders for process `\kb.$proc$src/kb.v:258$54'.
+     1/3: $0\f_past_valid[0:0]
+     2/3: $0\f_prev_key_id[3:0]
+     3/3: $0\f_prev_key_stall[0:0]
+Creating decoders for process `\kb.$proc$src/kb.v:96$17'.
+     1/12: $0\debounce_count[4:0]
+     2/12: $0\releasing[0:0]
+     3/12: $0\gesture_poisoned[0:0]
+     4/12: $0\gesture_qualified[0:0]
+     5/12: $0\gesture_active[0:0]
+     6/12: $0\armed[0:0]
+     7/12: $0\frame_first_id[3:0]
+     8/12: $0\frame_hits[1:0]
+     9/12: $0\blank_cycle[0:0]
+    10/12: $0\row_index[1:0]
+    11/12: $0\key_id[3:0]
+    12/12: $0\key_valid[0:0]
+Creating decoders for process `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100.$proc$src/sync2.v:20$111'.
+     1/2: $0\sync_out[3:0]
+     2/2: $0\stage1[3:0]
+
+3.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\kb.\first_column$func$src/kb.v:66$6.$result' from process `\kb.$proc$src/kb.v:0$83'.
+No latch inferred for signal `\kb.\first_column$func$src/kb.v:66$8.$result' from process `\kb.$proc$src/kb.v:0$83'.
+No latch inferred for signal `\kb.\first_column$func$src/kb.v:66$8.hits' from process `\kb.$proc$src/kb.v:0$83'.
+No latch inferred for signal `\kb.\hit_count$func$src/kb.v:63$5.$result' from process `\kb.$proc$src/kb.v:0$73'.
+No latch inferred for signal `\kb.\hit_count$func$src/kb.v:63$7.$result' from process `\kb.$proc$src/kb.v:0$73'.
+No latch inferred for signal `\kb.\hit_count$func$src/kb.v:63$7.hits' from process `\kb.$proc$src/kb.v:0$73'.
+No latch inferred for signal `\kb.\hit_count$func$src/kb.v:63$7.count' from process `\kb.$proc$src/kb.v:0$73'.
+
+3.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\kb.\f_past_valid' using process `\kb.$proc$src/kb.v:258$54'.
+  created $dff cell `$procdff$545' with positive edge clock.
+Creating register for signal `\kb.\f_prev_key_stall' using process `\kb.$proc$src/kb.v:258$54'.
+  created $dff cell `$procdff$546' with positive edge clock.
+Creating register for signal `\kb.\f_prev_key_id' using process `\kb.$proc$src/kb.v:258$54'.
+  created $dff cell `$procdff$547' with positive edge clock.
+Creating register for signal `\kb.\key_valid' using process `\kb.$proc$src/kb.v:96$17'.
+  created $adff cell `$procdff$552' with positive edge clock and positive level reset.
+Creating register for signal `\kb.\key_id' using process `\kb.$proc$src/kb.v:96$17'.
+  created $adff cell `$procdff$557' with positive edge clock and positive level reset.
+Creating register for signal `\kb.\row_index' using process `\kb.$proc$src/kb.v:96$17'.
+  created $adff cell `$procdff$562' with positive edge clock and positive level reset.
+Creating register for signal `\kb.\blank_cycle' using process `\kb.$proc$src/kb.v:96$17'.
+  created $adff cell `$procdff$567' with positive edge clock and positive level reset.
+Creating register for signal `\kb.\frame_hits' using process `\kb.$proc$src/kb.v:96$17'.
+  created $adff cell `$procdff$572' with positive edge clock and positive level reset.
+Creating register for signal `\kb.\frame_first_id' using process `\kb.$proc$src/kb.v:96$17'.
+  created $adff cell `$procdff$577' with positive edge clock and positive level reset.
+Creating register for signal `\kb.\armed' using process `\kb.$proc$src/kb.v:96$17'.
+  created $adff cell `$procdff$582' with positive edge clock and positive level reset.
+Creating register for signal `\kb.\gesture_active' using process `\kb.$proc$src/kb.v:96$17'.
+  created $adff cell `$procdff$587' with positive edge clock and positive level reset.
+Creating register for signal `\kb.\gesture_qualified' using process `\kb.$proc$src/kb.v:96$17'.
+  created $adff cell `$procdff$592' with positive edge clock and positive level reset.
+Creating register for signal `\kb.\gesture_poisoned' using process `\kb.$proc$src/kb.v:96$17'.
+  created $adff cell `$procdff$597' with positive edge clock and positive level reset.
+Creating register for signal `\kb.\releasing' using process `\kb.$proc$src/kb.v:96$17'.
+  created $adff cell `$procdff$602' with positive edge clock and positive level reset.
+Creating register for signal `\kb.\debounce_count' using process `\kb.$proc$src/kb.v:96$17'.
+  created $adff cell `$procdff$607' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100.\sync_out' using process `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100.$proc$src/sync2.v:20$111'.
+  created $adff cell `$procdff$612' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100.\stage1' using process `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100.$proc$src/sync2.v:20$111'.
+  created $adff cell `$procdff$617' with positive edge clock and positive level reset.
+
+3.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+3.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 4 empty switches in `\kb.$proc$src/kb.v:0$83'.
+Removing empty process `kb.$proc$src/kb.v:0$83'.
+Removing empty process `kb.$proc$src/kb.v:0$73'.
+Found and cleaned up 3 empty switches in `\kb.$proc$src/kb.v:267$60'.
+Removing empty process `kb.$proc$src/kb.v:267$60'.
+Found and cleaned up 1 empty switch in `\kb.$proc$src/kb.v:258$54'.
+Removing empty process `kb.$proc$src/kb.v:258$54'.
+Found and cleaned up 22 empty switches in `\kb.$proc$src/kb.v:96$17'.
+Removing empty process `kb.$proc$src/kb.v:96$17'.
+Removing empty process `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100.$proc$src/sync2.v:20$111'.
+Cleaned up 30 empty switches.
+
+3.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module kb.
+<suppressed ~69 debug messages>
+Optimizing module $paramod\sync2\WIDTH=s32'00000000000000000000000000000100.
+<suppressed ~4 debug messages>
+
+3.3. Executing FUTURE pass.
+
+3.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module kb.
+Optimizing module $paramod\sync2\WIDTH=s32'00000000000000000000000000000100.
+
+3.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \kb..
+Finding unused cells or wires in module $paramod\sync2\WIDTH=s32'00000000000000000000000000000100..
+Removed 28 unused cells and 243 unused wires.
+<suppressed ~30 debug messages>
+
+3.6. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod\sync2\WIDTH=s32'00000000000000000000000000000100...
+Checking module kb...
+Found and reported 0 problems.
+
+3.7. Executing OPT pass (performing simple optimizations).
+
+3.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\sync2\WIDTH=s32'00000000000000000000000000000100.
+Optimizing module kb.
+
+3.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100'.
+Finding identical cells in module `\kb'.
+<suppressed ~36 debug messages>
+Removed a total of 12 cells.
+
+3.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod\sync2\WIDTH=s32'00000000000000000000000000000100..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \kb..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+      Replacing known input bits on port A of cell $procmux$459: \blank_cycle -> 1'0
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $procmux$117.
+    dead port 1/2 on $mux $procmux$120.
+    dead port 1/2 on $mux $procmux$123.
+    dead port 1/2 on $mux $procmux$129.
+    dead port 1/2 on $mux $procmux$132.
+    dead port 1/2 on $mux $procmux$138.
+Removed 6 multiplexer ports.
+<suppressed ~31 debug messages>
+
+3.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod\sync2\WIDTH=s32'00000000000000000000000000000100.
+  Optimizing cells in module \kb.
+Performed a total of 0 changes.
+
+3.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100'.
+Finding identical cells in module `\kb'.
+<suppressed ~12 debug messages>
+Removed a total of 4 cells.
+
+3.7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\sync2\WIDTH=s32'00000000000000000000000000000100..
+Finding unused cells or wires in module \kb..
+Removed 0 unused cells and 22 unused wires.
+<suppressed ~1 debug messages>
+
+3.7.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\sync2\WIDTH=s32'00000000000000000000000000000100.
+Optimizing module kb.
+
+3.7.8. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.7.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod\sync2\WIDTH=s32'00000000000000000000000000000100..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \kb..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~31 debug messages>
+
+3.7.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod\sync2\WIDTH=s32'00000000000000000000000000000100.
+  Optimizing cells in module \kb.
+Performed a total of 0 changes.
+
+3.7.11. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100'.
+Finding identical cells in module `\kb'.
+Removed a total of 0 cells.
+
+3.7.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\sync2\WIDTH=s32'00000000000000000000000000000100..
+Finding unused cells or wires in module \kb..
+
+3.7.13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\sync2\WIDTH=s32'00000000000000000000000000000100.
+Optimizing module kb.
+
+3.7.14. Finished OPT passes. (There is nothing left to do.)
+
+3.8. Executing WREDUCE pass (reducing word size of cells).
+Removed top 30 bits (of 32) from port B of cell kb.$ge$src/kb.v:65$11 ($ge).
+Removed top 3 bits (of 4) from port A of cell kb.$shl$src/kb.v:94$15 ($shl).
+Removed top 1 bits (of 2) from port B of cell kb.$eq$src/kb.v:171$31 ($eq).
+Removed top 30 bits (of 32) from port B of cell kb.$ge$src/kb.v:183$32 ($ge).
+Removed top 27 bits (of 32) from port Y of cell kb.$sub$src/kb.v:269$62 ($sub).
+Removed top 31 bits (of 32) from port A of cell kb.$add$src/kb.v:38$78 ($add).
+Removed top 31 bits (of 32) from port B of cell kb.$add$src/kb.v:38$78 ($add).
+Removed top 30 bits (of 32) from port Y of cell kb.$add$src/kb.v:38$78 ($add).
+Removed top 30 bits (of 32) from port A of cell kb.$add$src/kb.v:38$79 ($add).
+Removed top 31 bits (of 32) from port B of cell kb.$add$src/kb.v:38$79 ($add).
+Removed top 29 bits (of 32) from port Y of cell kb.$add$src/kb.v:38$79 ($add).
+Removed top 29 bits (of 32) from port A of cell kb.$add$src/kb.v:38$80 ($add).
+Removed top 31 bits (of 32) from port B of cell kb.$add$src/kb.v:38$80 ($add).
+Removed top 28 bits (of 32) from port Y of cell kb.$add$src/kb.v:38$80 ($add).
+Removed top 27 bits (of 32) from port A of cell kb.$ge$src/kb.v:40$81 ($ge).
+Removed top 29 bits (of 32) from port B of cell kb.$ge$src/kb.v:40$81 ($ge).
+Converting cell kb.$ge$src/kb.v:40$81 ($ge) from signed to unsigned.
+Removed top 1 bits (of 5) from port A of cell kb.$ge$src/kb.v:40$81 ($ge).
+Removed top 1 bits (of 3) from port B of cell kb.$ge$src/kb.v:40$81 ($ge).
+Removed top 28 bits (of 32) from wire kb.$0\hit_count$func$src/kb.v:63$7.count[31:0]$77.
+Removed top 30 bits (of 32) from wire kb.$add$src/kb.v:38$78_Y.
+Removed top 29 bits (of 32) from wire kb.$add$src/kb.v:38$79_Y.
+Removed top 1 bits (of 32) from wire kb.$and$src/kb.v:269$63_Y.
+
+3.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\sync2\WIDTH=s32'00000000000000000000000000000100..
+Finding unused cells or wires in module \kb..
+Removed 0 unused cells and 3 unused wires.
+<suppressed ~1 debug messages>
+
+3.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+3.11. Executing OPT pass (performing simple optimizations).
+
+3.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\sync2\WIDTH=s32'00000000000000000000000000000100.
+Optimizing module kb.
+
+3.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\sync2\WIDTH=s32'00000000000000000000000000000100'.
+Finding identical cells in module `\kb'.
+Removed a total of 0 cells.
+
+3.11.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\sync2\WIDTH=s32'00000000000000000000000000000100..
+Finding unused cells or wires in module \kb..
+
+3.11.4. Finished fast OPT passes.
+
+3.12. Printing statistics.
+
+=== $paramod\sync2\WIDTH=s32'00000000000000000000000000000100 ===
+
+   Number of wires:                  5
+   Number of wire bits:             14
+   Number of public wires:           5
+   Number of public wire bits:      14
+   Number of ports:                  4
+   Number of port bits:             10
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  2
+     $adff                           2
+
+=== kb ===
+
+   Number of wires:                220
+   Number of wire bits:            534
+   Number of public wires:          34
+   Number of public wire bits:     109
+   Number of ports:                 10
+   Number of port bits:             19
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                212
+     $add                            6
+     $adff                          12
+     $and                            1
+     $assert                         4
+     $dff                            3
+     $eq                             4
+     $ge                             3
+     $logic_and                     10
+     $logic_not                      9
+     $logic_or                       1
+     $mux                          152
+     $ne                             1
+     $not                            1
+     $paramod\sync2\WIDTH=s32'00000000000000000000000000000100      1
+     $reduce_bool                    2
+     $shl                            1
+     $sub                            1
+
+=== design hierarchy ===
+
+   kb                                1
+     $paramod\sync2\WIDTH=s32'00000000000000000000000000000100      1
+
+   Number of wires:                225
+   Number of wire bits:            548
+   Number of public wires:          39
+   Number of public wire bits:     123
+   Number of ports:                 14
+   Number of port bits:             29
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                213
+     $add                            6
+     $adff                          14
+     $and                            1
+     $assert                         4
+     $dff                            3
+     $eq                             4
+     $ge                             3
+     $logic_and                     10
+     $logic_not                      9
+     $logic_or                       1
+     $mux                          152
+     $ne                             1
+     $not                            1
+     $reduce_bool                    2
+     $shl                            1
+     $sub                            1
+
+3.13. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod\sync2\WIDTH=s32'00000000000000000000000000000100...
+Checking module kb...
+Found and reported 0 problems.
+
+4. Executing FLATTEN pass (flatten design).
+Deleting now unused module $paramod\sync2\WIDTH=s32'00000000000000000000000000000100.
+<suppressed ~1 debug messages>
+
+5. Executing ASYNC2SYNC pass.
+Replacing kb.$flatten\u_col_sync.$procdff$612 ($adff): ARST=\u_col_sync.rst_n, D=\u_col_sync.stage1, Q=\u_col_sync.sync_out
+Replacing kb.$procdff$552 ($adff): ARST=\rst_n, D=$0\key_valid[0:0], Q=\key_valid
+Replacing kb.$procdff$557 ($adff): ARST=\rst_n, D=$0\key_id[3:0], Q=\key_id
+Replacing kb.$procdff$562 ($adff): ARST=\rst_n, D=$0\row_index[1:0], Q=\row_index
+Replacing kb.$procdff$567 ($adff): ARST=\rst_n, D=$0\blank_cycle[0:0], Q=\blank_cycle
+Replacing kb.$procdff$572 ($adff): ARST=\rst_n, D=$0\frame_hits[1:0], Q=\frame_hits
+Replacing kb.$procdff$577 ($adff): ARST=\rst_n, D=$0\frame_first_id[3:0], Q=\frame_first_id
+Replacing kb.$procdff$582 ($adff): ARST=\rst_n, D=$0\armed[0:0], Q=\armed
+Replacing kb.$procdff$587 ($adff): ARST=\rst_n, D=$0\gesture_active[0:0], Q=\gesture_active
+Replacing kb.$procdff$592 ($adff): ARST=\rst_n, D=$0\gesture_qualified[0:0], Q=\gesture_qualified
+Replacing kb.$procdff$597 ($adff): ARST=\rst_n, D=$0\gesture_poisoned[0:0], Q=\gesture_poisoned
+Replacing kb.$procdff$602 ($adff): ARST=\rst_n, D=$0\releasing[0:0], Q=\releasing
+Replacing kb.$procdff$607 ($adff): ARST=\rst_n, D=$0\debounce_count[4:0], Q=\debounce_count
+Replacing kb.$flatten\u_col_sync.$procdff$617 ($adff): ARST=\u_col_sync.rst_n, D=\u_col_sync.async_in, Q=\u_col_sync.stage1
+
+6. Executing FORMALFF pass.
+
+7. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \kb..
+
+9. Executing SAT pass (solving SAT problems in the circuit).
+
+Setting up time step 1:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \scan_tick
+Import def constraint for this timestep: \key_ready
+Import def constraint for this timestep: \enable
+Import def constraint for this timestep: \flush
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \col_n
+Imported 242 cells to SAT database.
+Final init constraint equation: { $auto$async2sync.cc:228:execute$647 $auto$async2sync.cc:228:execute$645 $auto$async2sync.cc:228:execute$643 $auto$async2sync.cc:228:execute$641 $auto$async2sync.cc:228:execute$639 $auto$async2sync.cc:228:execute$637 $auto$async2sync.cc:228:execute$635 $auto$async2sync.cc:228:execute$633 $auto$async2sync.cc:228:execute$631 $auto$async2sync.cc:228:execute$629 $auto$async2sync.cc:228:execute$627 $auto$async2sync.cc:228:execute$625 \f_prev_key_id \f_prev_key_stall \f_past_valid $auto$async2sync.cc:228:execute$649 $auto$async2sync.cc:228:execute$623 } = 38'00000000000000000000000000000000000000
+Import proof for assert: $eq$src/kb.v:269$64_Y when $assert$src/kb.v:269$61_EN.
+Import proof for assert: $logic_not$src/kb.v:158$22_Y when $assert$src/kb.v:270$65_EN.
+Import proof for assert: \key_valid when $assert$src/kb.v:272$70_EN.
+Import proof for assert: $eq$src/kb.v:273$72_Y when $assert$src/kb.v:272$70_EN.
+
+Setting up time step 2:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \scan_tick
+Import def constraint for this timestep: \key_ready
+Import def constraint for this timestep: \enable
+Import def constraint for this timestep: \flush
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \col_n
+Imported 242 cells to SAT database.
+Import proof for assert: $eq$src/kb.v:269$64_Y when $assert$src/kb.v:269$61_EN.
+Import proof for assert: $logic_not$src/kb.v:158$22_Y when $assert$src/kb.v:270$65_EN.
+Import proof for assert: \key_valid when $assert$src/kb.v:272$70_EN.
+Import proof for assert: $eq$src/kb.v:273$72_Y when $assert$src/kb.v:272$70_EN.
+
+Setting up time step 3:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \scan_tick
+Import def constraint for this timestep: \key_ready
+Import def constraint for this timestep: \enable
+Import def constraint for this timestep: \flush
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \col_n
+Imported 242 cells to SAT database.
+Import proof for assert: $eq$src/kb.v:269$64_Y when $assert$src/kb.v:269$61_EN.
+Import proof for assert: $logic_not$src/kb.v:158$22_Y when $assert$src/kb.v:270$65_EN.
+Import proof for assert: \key_valid when $assert$src/kb.v:272$70_EN.
+Import proof for assert: $eq$src/kb.v:273$72_Y when $assert$src/kb.v:272$70_EN.
+
+Setting up time step 4:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \scan_tick
+Import def constraint for this timestep: \key_ready
+Import def constraint for this timestep: \enable
+Import def constraint for this timestep: \flush
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \col_n
+Imported 242 cells to SAT database.
+Import proof for assert: $eq$src/kb.v:269$64_Y when $assert$src/kb.v:269$61_EN.
+Import proof for assert: $logic_not$src/kb.v:158$22_Y when $assert$src/kb.v:270$65_EN.
+Import proof for assert: \key_valid when $assert$src/kb.v:272$70_EN.
+Import proof for assert: $eq$src/kb.v:273$72_Y when $assert$src/kb.v:272$70_EN.
+
+Setting up time step 5:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \scan_tick
+Import def constraint for this timestep: \key_ready
+Import def constraint for this timestep: \enable
+Import def constraint for this timestep: \flush
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \col_n
+Imported 242 cells to SAT database.
+Import proof for assert: $eq$src/kb.v:269$64_Y when $assert$src/kb.v:269$61_EN.
+Import proof for assert: $logic_not$src/kb.v:158$22_Y when $assert$src/kb.v:270$65_EN.
+Import proof for assert: \key_valid when $assert$src/kb.v:272$70_EN.
+Import proof for assert: $eq$src/kb.v:273$72_Y when $assert$src/kb.v:272$70_EN.
+
+Setting up time step 6:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \scan_tick
+Import def constraint for this timestep: \key_ready
+Import def constraint for this timestep: \enable
+Import def constraint for this timestep: \flush
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \col_n
+Imported 242 cells to SAT database.
+Import proof for assert: $eq$src/kb.v:269$64_Y when $assert$src/kb.v:269$61_EN.
+Import proof for assert: $logic_not$src/kb.v:158$22_Y when $assert$src/kb.v:270$65_EN.
+Import proof for assert: \key_valid when $assert$src/kb.v:272$70_EN.
+Import proof for assert: $eq$src/kb.v:273$72_Y when $assert$src/kb.v:272$70_EN.
+
+Setting up time step 7:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \scan_tick
+Import def constraint for this timestep: \key_ready
+Import def constraint for this timestep: \enable
+Import def constraint for this timestep: \flush
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \col_n
+Imported 242 cells to SAT database.
+Import proof for assert: $eq$src/kb.v:269$64_Y when $assert$src/kb.v:269$61_EN.
+Import proof for assert: $logic_not$src/kb.v:158$22_Y when $assert$src/kb.v:270$65_EN.
+Import proof for assert: \key_valid when $assert$src/kb.v:272$70_EN.
+Import proof for assert: $eq$src/kb.v:273$72_Y when $assert$src/kb.v:272$70_EN.
+
+Setting up time step 8:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \scan_tick
+Import def constraint for this timestep: \key_ready
+Import def constraint for this timestep: \enable
+Import def constraint for this timestep: \flush
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \col_n
+Imported 242 cells to SAT database.
+Import proof for assert: $eq$src/kb.v:269$64_Y when $assert$src/kb.v:269$61_EN.
+Import proof for assert: $logic_not$src/kb.v:158$22_Y when $assert$src/kb.v:270$65_EN.
+Import proof for assert: \key_valid when $assert$src/kb.v:272$70_EN.
+Import proof for assert: $eq$src/kb.v:273$72_Y when $assert$src/kb.v:272$70_EN.
+
+Setting up time step 9:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \scan_tick
+Import def constraint for this timestep: \key_ready
+Import def constraint for this timestep: \enable
+Import def constraint for this timestep: \flush
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \col_n
+Imported 242 cells to SAT database.
+Import proof for assert: $eq$src/kb.v:269$64_Y when $assert$src/kb.v:269$61_EN.
+Import proof for assert: $logic_not$src/kb.v:158$22_Y when $assert$src/kb.v:270$65_EN.
+Import proof for assert: \key_valid when $assert$src/kb.v:272$70_EN.
+Import proof for assert: $eq$src/kb.v:273$72_Y when $assert$src/kb.v:272$70_EN.
+
+Setting up time step 10:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \scan_tick
+Import def constraint for this timestep: \key_ready
+Import def constraint for this timestep: \enable
+Import def constraint for this timestep: \flush
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \col_n
+Imported 242 cells to SAT database.
+Import proof for assert: $eq$src/kb.v:269$64_Y when $assert$src/kb.v:269$61_EN.
+Import proof for assert: $logic_not$src/kb.v:158$22_Y when $assert$src/kb.v:270$65_EN.
+Import proof for assert: \key_valid when $assert$src/kb.v:272$70_EN.
+Import proof for assert: $eq$src/kb.v:273$72_Y when $assert$src/kb.v:272$70_EN.
+
+Setting up time step 11:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \scan_tick
+Import def constraint for this timestep: \key_ready
+Import def constraint for this timestep: \enable
+Import def constraint for this timestep: \flush
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \col_n
+Imported 242 cells to SAT database.
+Import proof for assert: $eq$src/kb.v:269$64_Y when $assert$src/kb.v:269$61_EN.
+Import proof for assert: $logic_not$src/kb.v:158$22_Y when $assert$src/kb.v:270$65_EN.
+Import proof for assert: \key_valid when $assert$src/kb.v:272$70_EN.
+Import proof for assert: $eq$src/kb.v:273$72_Y when $assert$src/kb.v:272$70_EN.
+
+Setting up time step 12:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \scan_tick
+Import def constraint for this timestep: \key_ready
+Import def constraint for this timestep: \enable
+Import def constraint for this timestep: \flush
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \col_n
+Imported 242 cells to SAT database.
+Import proof for assert: $eq$src/kb.v:269$64_Y when $assert$src/kb.v:269$61_EN.
+Import proof for assert: $logic_not$src/kb.v:158$22_Y when $assert$src/kb.v:270$65_EN.
+Import proof for assert: \key_valid when $assert$src/kb.v:272$70_EN.
+Import proof for assert: $eq$src/kb.v:273$72_Y when $assert$src/kb.v:272$70_EN.
+
+Setting up time step 13:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \scan_tick
+Import def constraint for this timestep: \key_ready
+Import def constraint for this timestep: \enable
+Import def constraint for this timestep: \flush
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \col_n
+Imported 242 cells to SAT database.
+Import proof for assert: $eq$src/kb.v:269$64_Y when $assert$src/kb.v:269$61_EN.
+Import proof for assert: $logic_not$src/kb.v:158$22_Y when $assert$src/kb.v:270$65_EN.
+Import proof for assert: \key_valid when $assert$src/kb.v:272$70_EN.
+Import proof for assert: $eq$src/kb.v:273$72_Y when $assert$src/kb.v:272$70_EN.
+
+Setting up time step 14:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \scan_tick
+Import def constraint for this timestep: \key_ready
+Import def constraint for this timestep: \enable
+Import def constraint for this timestep: \flush
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \col_n
+Imported 242 cells to SAT database.
+Import proof for assert: $eq$src/kb.v:269$64_Y when $assert$src/kb.v:269$61_EN.
+Import proof for assert: $logic_not$src/kb.v:158$22_Y when $assert$src/kb.v:270$65_EN.
+Import proof for assert: \key_valid when $assert$src/kb.v:272$70_EN.
+Import proof for assert: $eq$src/kb.v:273$72_Y when $assert$src/kb.v:272$70_EN.
+
+Setting up time step 15:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \scan_tick
+Import def constraint for this timestep: \key_ready
+Import def constraint for this timestep: \enable
+Import def constraint for this timestep: \flush
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \col_n
+Imported 242 cells to SAT database.
+Import proof for assert: $eq$src/kb.v:269$64_Y when $assert$src/kb.v:269$61_EN.
+Import proof for assert: $logic_not$src/kb.v:158$22_Y when $assert$src/kb.v:270$65_EN.
+Import proof for assert: \key_valid when $assert$src/kb.v:272$70_EN.
+Import proof for assert: $eq$src/kb.v:273$72_Y when $assert$src/kb.v:272$70_EN.
+
+Setting up time step 16:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \scan_tick
+Import def constraint for this timestep: \key_ready
+Import def constraint for this timestep: \enable
+Import def constraint for this timestep: \flush
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \col_n
+Imported 242 cells to SAT database.
+Import proof for assert: $eq$src/kb.v:269$64_Y when $assert$src/kb.v:269$61_EN.
+Import proof for assert: $logic_not$src/kb.v:158$22_Y when $assert$src/kb.v:270$65_EN.
+Import proof for assert: \key_valid when $assert$src/kb.v:272$70_EN.
+Import proof for assert: $eq$src/kb.v:273$72_Y when $assert$src/kb.v:272$70_EN.
+
+Setting up time step 17:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \scan_tick
+Import def constraint for this timestep: \key_ready
+Import def constraint for this timestep: \enable
+Import def constraint for this timestep: \flush
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \col_n
+Imported 242 cells to SAT database.
+Import proof for assert: $eq$src/kb.v:269$64_Y when $assert$src/kb.v:269$61_EN.
+Import proof for assert: $logic_not$src/kb.v:158$22_Y when $assert$src/kb.v:270$65_EN.
+Import proof for assert: \key_valid when $assert$src/kb.v:272$70_EN.
+Import proof for assert: $eq$src/kb.v:273$72_Y when $assert$src/kb.v:272$70_EN.
+
+Setting up time step 18:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \scan_tick
+Import def constraint for this timestep: \key_ready
+Import def constraint for this timestep: \enable
+Import def constraint for this timestep: \flush
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \col_n
+Imported 242 cells to SAT database.
+Import proof for assert: $eq$src/kb.v:269$64_Y when $assert$src/kb.v:269$61_EN.
+Import proof for assert: $logic_not$src/kb.v:158$22_Y when $assert$src/kb.v:270$65_EN.
+Import proof for assert: \key_valid when $assert$src/kb.v:272$70_EN.
+Import proof for assert: $eq$src/kb.v:273$72_Y when $assert$src/kb.v:272$70_EN.
+
+Setting up time step 19:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \scan_tick
+Import def constraint for this timestep: \key_ready
+Import def constraint for this timestep: \enable
+Import def constraint for this timestep: \flush
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \col_n
+Imported 242 cells to SAT database.
+Import proof for assert: $eq$src/kb.v:269$64_Y when $assert$src/kb.v:269$61_EN.
+Import proof for assert: $logic_not$src/kb.v:158$22_Y when $assert$src/kb.v:270$65_EN.
+Import proof for assert: \key_valid when $assert$src/kb.v:272$70_EN.
+Import proof for assert: $eq$src/kb.v:273$72_Y when $assert$src/kb.v:272$70_EN.
+
+Setting up time step 20:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \scan_tick
+Import def constraint for this timestep: \key_ready
+Import def constraint for this timestep: \enable
+Import def constraint for this timestep: \flush
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \col_n
+Imported 242 cells to SAT database.
+Import proof for assert: $eq$src/kb.v:269$64_Y when $assert$src/kb.v:269$61_EN.
+Import proof for assert: $logic_not$src/kb.v:158$22_Y when $assert$src/kb.v:270$65_EN.
+Import proof for assert: \key_valid when $assert$src/kb.v:272$70_EN.
+Import proof for assert: $eq$src/kb.v:273$72_Y when $assert$src/kb.v:272$70_EN.
+
+Solving problem with 215448 variables and 589545 clauses..
+SAT proof finished - no model found: SUCCESS!
+
+                  /$$$$$$      /$$$$$$$$     /$$$$$$$    
+                 /$$__  $$    | $$_____/    | $$__  $$   
+                | $$  \ $$    | $$          | $$  \ $$   
+                | $$  | $$    | $$$$$       | $$  | $$   
+                | $$  | $$    | $$__/       | $$  | $$   
+                | $$/$$ $$    | $$          | $$  | $$   
+                |  $$$$$$/ /$$| $$$$$$$$ /$$| $$$$$$$//$$
+                 \____ $$$|__/|________/|__/|_______/|__/
+                       \__/                              
+
+End of script. Logfile hash: ce7cf25980, CPU: user 0.95s system 0.16s, MEM: 169.19 MB peak
+Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+Time spent: 96% 1x sat (1 sec), 0% 6x opt_clean (0 sec), ...

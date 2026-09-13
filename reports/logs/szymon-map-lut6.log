@@ -1,0 +1,186 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+
+-- Running command `read_liberty -lib -ignore_miss_func .tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib; read_rtlil .build/szymon-opt/premap.il; dfflibmap -liberty .tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib; abc -liberty .tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib -script "+strash; if -K 6; mfs2; lutpack; strash; &get -n; &dch -f; &nf -a -F 16 -A 8 -R 1000; &put"; clean; stat -liberty .tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib; check' --
+
+1. Executing Liberty frontend: .tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib
+Imported 84 cell types from liberty file.
+
+2. Executing RTLIL frontend.
+Input filename: .build/szymon-opt/premap.il
+
+3. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell sg13g2_dfrbpq_1 (noninv, pins=4, area=48.99) is a direct match for cell type $_DFF_PN0_.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    unmapped dff cell: $_DFF_P_
+    unmapped dff cell: $_DFF_NN0_
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \sg13g2_dfrbpq_1 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RESET_B( R));
+    unmapped dff cell: $_DFF_PN1_
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    unmapped dff cell: $_DFFE_NN_
+    unmapped dff cell: $_DFFE_NP_
+    unmapped dff cell: $_DFFE_PN_
+    unmapped dff cell: $_DFFE_PP_
+    unmapped dff cell: $_DFFSR_NNN_
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    unmapped dff cell: $_DFFSR_PNN_
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+3.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+<suppressed ~4 debug messages>
+Mapping DFF cells in module `\szymon_fixed':
+  mapped 82 $_DFF_PN0_ cells to \sg13g2_dfrbpq_1 cells.
+
+4. Executing ABC pass (technology mapping using ABC).
+
+4.1. Extracting gate netlist of module `\szymon_fixed' to `<abc-temp-dir>/input.blif'..
+Replacing 4 occurrences of constant undef bits with constant zero bits
+Extracted 912 gates and 1005 wires to a netlist network with 90 inputs and 85 outputs.
+
+4.1.1. Executing ABC.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /mnt/c/Users/user/Desktop/HACKATHON/.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.02 sec
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_antennanp" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_decap_4" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_decap_8" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dfrbpq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dfrbpq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dlhq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dlhr_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dlhrq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dllr_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_dllrq_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_ebufn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_ebufn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_ebufn_8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_einvn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_einvn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sg13g2_einvn_8".
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_fill_1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_fill_2" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_fill_4" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_fill_8" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_lgcp_1" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfbbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfrbpq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfrbpq_2".
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_sighold" due to dont_use attribute.
+ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_slgcp_1" due to dont_use attribute.
+ABC: Library "sg13g2_stdcell_typ_1p20V_25C" from "/mnt/c/Users/user/Desktop/HACKATHON/.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib" has 54 cells (20 skipped: 14 seq; 6 tri-state; 0 no func; 10 dont_use).  Time =     0.02 sec
+ABC: Memory =    2.85 MB. Time =     0.02 sec
+ABC: + strash 
+ABC: + if -K 6 
+ABC: + mfs2 
+ABC: + lutpack 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf -a -F 16 -A 8 -R 1000 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+4.1.2. Re-integrating ABC results.
+ABC RESULTS:     sg13g2_a21o_1 cells:        5
+ABC RESULTS:    sg13g2_a21oi_1 cells:      142
+ABC RESULTS:   sg13g2_a221oi_1 cells:       34
+ABC RESULTS:    sg13g2_a22oi_1 cells:       39
+ABC RESULTS:     sg13g2_and2_1 cells:       10
+ABC RESULTS:     sg13g2_and3_1 cells:        1
+ABC RESULTS:     sg13g2_and4_1 cells:        2
+ABC RESULTS:      sg13g2_inv_1 cells:       26
+ABC RESULTS:     sg13g2_mux2_1 cells:        3
+ABC RESULTS:     sg13g2_mux4_1 cells:        3
+ABC RESULTS:    sg13g2_nand2_1 cells:      215
+ABC RESULTS:   sg13g2_nand2b_1 cells:       23
+ABC RESULTS:    sg13g2_nand3_1 cells:       31
+ABC RESULTS:   sg13g2_nand3b_1 cells:        2
+ABC RESULTS:    sg13g2_nand4_1 cells:       10
+ABC RESULTS:     sg13g2_nor2_1 cells:      111
+ABC RESULTS:    sg13g2_nor2b_1 cells:       13
+ABC RESULTS:     sg13g2_nor3_1 cells:       44
+ABC RESULTS:     sg13g2_nor4_1 cells:       18
+ABC RESULTS:    sg13g2_o21ai_1 cells:      135
+ABC RESULTS:      sg13g2_or2_1 cells:       12
+ABC RESULTS:      sg13g2_or3_1 cells:        2
+ABC RESULTS:      sg13g2_or4_1 cells:        1
+ABC RESULTS:    sg13g2_xnor2_1 cells:        4
+ABC RESULTS:     sg13g2_xor2_1 cells:        3
+ABC RESULTS:        internal signals:      830
+ABC RESULTS:           input signals:       90
+ABC RESULTS:          output signals:       85
+Removing temp directory.
+Removed 0 unused cells and 393 unused wires.
+
+5. Printing statistics.
+
+=== szymon_fixed ===
+
+   Number of wires:                910
+   Number of wire bits:            996
+   Number of public wires:          23
+   Number of public wire bits:     109
+   Number of ports:                 15
+   Number of port bits:             15
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                971
+     sg13g2_a21o_1                   5
+     sg13g2_a21oi_1                142
+     sg13g2_a221oi_1                34
+     sg13g2_a22oi_1                 39
+     sg13g2_and2_1                  10
+     sg13g2_and3_1                   1
+     sg13g2_and4_1                   2
+     sg13g2_dfrbpq_1                82
+     sg13g2_inv_1                   26
+     sg13g2_mux2_1                   3
+     sg13g2_mux4_1                   3
+     sg13g2_nand2_1                215
+     sg13g2_nand2b_1                23
+     sg13g2_nand3_1                 31
+     sg13g2_nand3b_1                 2
+     sg13g2_nand4_1                 10
+     sg13g2_nor2_1                 111
+     sg13g2_nor2b_1                 13
+     sg13g2_nor3_1                  44
+     sg13g2_nor4_1                  18
+     sg13g2_o21ai_1                135
+     sg13g2_or2_1                   12
+     sg13g2_or3_1                    2
+     sg13g2_or4_1                    1
+     sg13g2_xnor2_1                  4
+     sg13g2_xor2_1                   3
+
+   Chip area for module '\szymon_fixed': 11906.433000
+     of which used for sequential elements: 4017.081600 (33.74%)
+
+6. Executing CHECK pass (checking for obvious problems).
+Checking module szymon_fixed...
+Found and reported 0 problems.
+
+End of script. Logfile hash: 45ecc7c4a3, CPU: user 0.08s system 0.04s, MEM: 183.68 MB peak
+Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+Time spent: 77% 1x abc (0 sec), 5% 1x dfflibmap (0 sec), ...

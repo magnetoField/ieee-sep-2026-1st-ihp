@@ -1,0 +1,15 @@
+PASS coverage case directed
+PASS coverage case faults
+PASS coverage case wrapper
+PASS coverage case kb_edges
+PASS coverage case serial_lengths
+PASS coverage case serial_unit
+PASS coverage case auth_states
+PASS coverage case szymon_trace
+PASS coverage case szymon_fixed
+PASS coverage case regs_matrix
+PASS coverage case buzzer_params
+PASS coverage case timebase_params
+Total coverage (1463/1764) 82.00%
+See lines with '%00' in /mnt/c/Users/user/Desktop/HACKATHON/reports/coverage
+RTL unique line coverage (876/986) 88.8%

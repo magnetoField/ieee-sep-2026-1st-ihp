@@ -1,0 +1,30 @@
+<testsuites>
+  <testsuite name="Tiny Tapeout Prechecks">
+    <testcase name="KLayout pin label overlapping drawing" time="2.36" />
+    <testcase name="KLayout SG13G2 DRC" time="1.6">
+      <error message="Klayout sg13g2 failed">Traceback (most recent call last):
+  File "/mnt/c/Users/user/Desktop/HACKATHON/tt/precheck/precheck.py", line 576, in main
+    check["check"]()
+  File "/mnt/c/Users/user/Desktop/HACKATHON/tt/precheck/precheck.py", line 512, in &lt;lambda&gt;
+    "check": lambda: klayout_sg13g2(gds_file),
+                     ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/user/Desktop/HACKATHON/tt/precheck/precheck.py", line 125, in klayout_sg13g2
+    return klayout_drc(
+           ^^^^^^^^^^^^
+  File "/mnt/c/Users/user/Desktop/HACKATHON/tt/precheck/precheck.py", line 117, in klayout_drc
+    klayout_custom_drc(check, script, script_vars, ["report", "report_file"])
+  File "/mnt/c/Users/user/Desktop/HACKATHON/tt/precheck/precheck.py", line 96, in klayout_custom_drc
+    raise PrecheckFailure(f"Klayout {check} failed")
+precheck_failure.PrecheckFailure: Klayout sg13g2 failed
+</error>
+    </testcase>
+    <testcase name="KLayout zero area" time="1.94" />
+    <testcase name="KLayout Checks" time="0.07" />
+    <testcase name="Pin check" time="0.13" />
+    <testcase name="Boundary check" time="0.11" />
+    <testcase name="Layer check" time="0.11" />
+    <testcase name="Cell name check" time="0.08" />
+    <testcase name="Analog pin check" time="0.0" />
+    <testcase name="Verilog syntax check" time="6.7" />
+  </testsuite>
+</testsuites>

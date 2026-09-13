@@ -1,0 +1,116 @@
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:490: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:491: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:492: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:493: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:494: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:495: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:526: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:527: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:528: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:529: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:530: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:531: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:557: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:558: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:559: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:560: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:561: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:562: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:588: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:589: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:590: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:591: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:592: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:593: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:617: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:618: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:619: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:650: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:651: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:652: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:653: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:654: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:680: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:681: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:682: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:683: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:684: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:717: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:718: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:719: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:720: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:721: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:749: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:750: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:751: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:752: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:753: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1064: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1065: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1066: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1067: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1653: sorry: ifnone with an edge-sensitive path is not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1658: sorry: ifnone with an edge-sensitive path is not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1659: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1660: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1661: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1662: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1663: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1664: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1665: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1666: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1667: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1668: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1669: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1670: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1671: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1702: sorry: ifnone with an edge-sensitive path is not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1706: sorry: ifnone with an edge-sensitive path is not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1707: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1708: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1709: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1710: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1711: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1712: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1713: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1714: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1715: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1746: sorry: ifnone with an edge-sensitive path is not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1750: sorry: ifnone with an edge-sensitive path is not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1751: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1752: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1753: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1754: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1755: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1756: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1757: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1758: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1759: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1790: sorry: ifnone with an edge-sensitive path is not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1791: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1792: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1793: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1794: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1795: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1796: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1797: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1798: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1799: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1800: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1831: sorry: ifnone with an edge-sensitive path is not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1832: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1833: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1834: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1835: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1836: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1837: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1838: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1839: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1840: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1841: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1878: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1879: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1880: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1881: warning: Timing checks are not supported. Delayed reference and data signals become copies of the original reference and data signals.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1882: warning: Timing checks are not supported.
+.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1883: warning: Timing checks are not supported.

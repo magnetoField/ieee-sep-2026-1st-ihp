@@ -1,0 +1,650 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+
+-- Running command `read_verilog -formal -sv src/auth_ctrl.v formal/auth_liveness.sv; chformal -lower; prep -top auth_liveness; flatten; async2sync; formalff -clk2ff; memory_map; opt_clean; sat -verify -prove-asserts -set-init-zero -set-def-formal -set-def-inputs -seq 12' --
+
+1. Executing Verilog-2005 frontend: src/auth_ctrl.v
+Parsing formal SystemVerilog input from `src/auth_ctrl.v' to AST representation.
+Generating RTLIL representation for module `\auth_ctrl'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: formal/auth_liveness.sv
+Parsing formal SystemVerilog input from `formal/auth_liveness.sv' to AST representation.
+Generating RTLIL representation for module `\auth_liveness'.
+Successfully finished Verilog frontend.
+
+3. Executing PREP pass.
+
+3.1. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1.1. Analyzing design hierarchy..
+Top module:  \auth_liveness
+Used module:     \auth_ctrl
+Parameter \AUTH_TIMEOUT_MS = 3
+
+3.1.2. Executing AST frontend in derive mode using pre-parsed AST for module `\auth_ctrl'.
+Parameter \AUTH_TIMEOUT_MS = 3
+Generating RTLIL representation for module `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011'.
+
+3.1.3. Analyzing design hierarchy..
+Top module:  \auth_liveness
+Used module:     $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011
+
+3.1.4. Analyzing design hierarchy..
+Top module:  \auth_liveness
+Used module:     $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011
+Removing unused module `\auth_ctrl'.
+Removed 1 unused modules.
+Module auth_liveness directly or indirectly contains formal properties -> setting "keep" attribute.
+Module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011 directly or indirectly contains formal properties -> setting "keep" attribute.
+
+3.2. Executing PROC pass (convert processes to netlists).
+
+3.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+3.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$formal/auth_liveness.sv:39$113 in module auth_liveness.
+Marked 1 switch rules as full_case in process $proc$src/auth_ctrl.v:160$245 in module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.
+Marked 5 switch rules as full_case in process $proc$src/auth_ctrl.v:89$229 in module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.
+Removed a total of 0 dead cases.
+
+3.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 3 redundant assignments.
+Promoted 0 assignments to connections.
+
+3.2.4. Executing PROC_INIT pass (extract init attributes).
+
+3.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$proc$src/auth_ctrl.v:89$229'.
+
+3.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~36 debug messages>
+
+3.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\auth_liveness.$proc$formal/auth_liveness.sv:53$118'.
+     1/2: $assert$formal/auth_liveness.sv:57$122_EN
+     2/2: $assert$formal/auth_liveness.sv:55$120_EN
+Creating decoders for process `\auth_liveness.$proc$formal/auth_liveness.sv:39$113'.
+     1/3: $0\ended[0:0]
+     2/3: $0\accepted[0:0]
+     3/3: $0\step[3:0]
+Creating decoders for process `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$proc$src/auth_ctrl.v:191$252'.
+     1/13: $assert$src/auth_ctrl.v:212$296_EN
+     2/13: $assert$src/auth_ctrl.v:211$293_EN
+     3/13: $assert$src/auth_ctrl.v:210$291_EN
+     4/13: $assert$src/auth_ctrl.v:208$285_EN
+     5/13: $assert$src/auth_ctrl.v:206$281_EN
+     6/13: $assert$src/auth_ctrl.v:205$278_EN
+     7/13: $assert$src/auth_ctrl.v:204$276_EN
+     8/13: $assert$src/auth_ctrl.v:202$272_EN
+     9/13: $assert$src/auth_ctrl.v:200$268_EN
+    10/13: $assert$src/auth_ctrl.v:198$264_EN
+    11/13: $assert$src/auth_ctrl.v:196$259_EN
+    12/13: $assert$src/auth_ctrl.v:194$256_EN
+    13/13: $assert$src/auth_ctrl.v:193$254_EN
+Creating decoders for process `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$proc$src/auth_ctrl.v:160$245'.
+     1/7: $0\f_prev_state[3:0]
+     2/7: $0\f_prev_timeout_now[0:0]
+     3/7: $0\f_past_valid[0:0]
+     4/7: $0\f_rx_complete[0:0]
+     5/7: $0\f_seal_seen[0:0]
+     6/7: $0\f_cmd_seen[0:0]
+     7/7: $0\f_token[0:0]
+Creating decoders for process `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$proc$src/auth_ctrl.v:89$229'.
+     1/3: $0\timeout_count[1:0]
+     2/3: $0\timeout_active[0:0]
+     3/3: $0\state[3:0]
+
+3.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+3.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\auth_liveness.\step' using process `\auth_liveness.$proc$formal/auth_liveness.sv:39$113'.
+  created $dff cell `$procdff$461' with positive edge clock.
+Creating register for signal `\auth_liveness.\accepted' using process `\auth_liveness.$proc$formal/auth_liveness.sv:39$113'.
+  created $dff cell `$procdff$462' with positive edge clock.
+Creating register for signal `\auth_liveness.\ended' using process `\auth_liveness.$proc$formal/auth_liveness.sv:39$113'.
+  created $dff cell `$procdff$463' with positive edge clock.
+Creating register for signal `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.\f_token' using process `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$proc$src/auth_ctrl.v:160$245'.
+  created $dff cell `$procdff$464' with positive edge clock.
+Creating register for signal `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.\f_cmd_seen' using process `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$proc$src/auth_ctrl.v:160$245'.
+  created $dff cell `$procdff$465' with positive edge clock.
+Creating register for signal `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.\f_seal_seen' using process `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$proc$src/auth_ctrl.v:160$245'.
+  created $dff cell `$procdff$466' with positive edge clock.
+Creating register for signal `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.\f_rx_complete' using process `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$proc$src/auth_ctrl.v:160$245'.
+  created $dff cell `$procdff$467' with positive edge clock.
+Creating register for signal `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.\f_past_valid' using process `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$proc$src/auth_ctrl.v:160$245'.
+  created $dff cell `$procdff$468' with positive edge clock.
+Creating register for signal `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.\f_prev_timeout_now' using process `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$proc$src/auth_ctrl.v:160$245'.
+  created $dff cell `$procdff$469' with positive edge clock.
+Creating register for signal `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.\f_prev_state' using process `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$proc$src/auth_ctrl.v:160$245'.
+  created $dff cell `$procdff$470' with positive edge clock.
+Creating register for signal `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.\state' using process `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$proc$src/auth_ctrl.v:89$229'.
+  created $adff cell `$procdff$475' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.\timeout_active' using process `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$proc$src/auth_ctrl.v:89$229'.
+  created $adff cell `$procdff$480' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.\timeout_count' using process `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$proc$src/auth_ctrl.v:89$229'.
+  created $adff cell `$procdff$485' with positive edge clock and positive level reset.
+
+3.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+3.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 2 empty switches in `\auth_liveness.$proc$formal/auth_liveness.sv:53$118'.
+Removing empty process `auth_liveness.$proc$formal/auth_liveness.sv:53$118'.
+Found and cleaned up 4 empty switches in `\auth_liveness.$proc$formal/auth_liveness.sv:39$113'.
+Removing empty process `auth_liveness.$proc$formal/auth_liveness.sv:39$113'.
+Found and cleaned up 10 empty switches in `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$proc$src/auth_ctrl.v:191$252'.
+Removing empty process `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$proc$src/auth_ctrl.v:191$252'.
+Found and cleaned up 6 empty switches in `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$proc$src/auth_ctrl.v:160$245'.
+Removing empty process `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$proc$src/auth_ctrl.v:160$245'.
+Found and cleaned up 14 empty switches in `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$proc$src/auth_ctrl.v:89$229'.
+Removing empty process `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$proc$src/auth_ctrl.v:89$229'.
+Cleaned up 36 empty switches.
+
+3.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module auth_liveness.
+<suppressed ~3 debug messages>
+Optimizing module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.
+<suppressed ~18 debug messages>
+
+3.3. Executing FUTURE pass.
+
+3.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module auth_liveness.
+Optimizing module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.
+
+3.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \auth_liveness..
+Finding unused cells or wires in module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011..
+Removed 11 unused cells and 129 unused wires.
+<suppressed ~13 debug messages>
+
+3.6. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011...
+Checking module auth_liveness...
+Found and reported 0 problems.
+
+3.7. Executing OPT pass (performing simple optimizations).
+
+3.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.
+Optimizing module auth_liveness.
+
+3.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011'.
+<suppressed ~93 debug messages>
+Finding identical cells in module `\auth_liveness'.
+Removed a total of 31 cells.
+
+3.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \auth_liveness..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~30 debug messages>
+
+3.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.
+  Optimizing cells in module \auth_liveness.
+Performed a total of 0 changes.
+
+3.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011'.
+<suppressed ~9 debug messages>
+Finding identical cells in module `\auth_liveness'.
+Removed a total of 3 cells.
+
+3.7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011..
+Finding unused cells or wires in module \auth_liveness..
+Removed 0 unused cells and 32 unused wires.
+<suppressed ~1 debug messages>
+
+3.7.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.
+Optimizing module auth_liveness.
+
+3.7.8. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.7.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \auth_liveness..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~27 debug messages>
+
+3.7.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.
+  Optimizing cells in module \auth_liveness.
+Performed a total of 0 changes.
+
+3.7.11. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011'.
+Finding identical cells in module `\auth_liveness'.
+Removed a total of 0 cells.
+
+3.7.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011..
+Finding unused cells or wires in module \auth_liveness..
+
+3.7.13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.
+Optimizing module auth_liveness.
+
+3.7.14. Finished OPT passes. (There is nothing left to do.)
+
+3.8. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 4) from port B of cell $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$procmux$438_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$ne$src/auth_ctrl.v:69$203 ($ne).
+Removed top 1 bits (of 4) from port B of cell $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$ne$src/auth_ctrl.v:69$205 ($ne).
+Removed top 3 bits (of 4) from port B of cell $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$eq$src/auth_ctrl.v:79$214 ($eq).
+Removed top 1 bits (of 4) from port B of cell $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$eq$src/auth_ctrl.v:80$215 ($eq).
+Removed top 2 bits (of 4) from port B of cell $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$eq$src/auth_ctrl.v:81$216 ($eq).
+Removed top 1 bits (of 4) from port B of cell $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$eq$src/auth_ctrl.v:82$217 ($eq).
+Removed top 2 bits (of 4) from port B of cell $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$eq$src/auth_ctrl.v:86$221 ($eq).
+Removed top 1 bits (of 4) from port B of cell $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$eq$src/auth_ctrl.v:180$250 ($eq).
+Removed top 30 bits (of 32) from port B of cell $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$lt$src/auth_ctrl.v:194$257 ($lt).
+Removed top 3 bits (of 4) from port B of cell $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$ge$src/auth_ctrl.v:197$261 ($ge).
+Removed top 2 bits (of 4) from port B of cell $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$ge$src/auth_ctrl.v:199$265 ($ge).
+Removed top 1 bits (of 4) from port B of cell $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$ge$src/auth_ctrl.v:201$269 ($ge).
+Removed top 1 bits (of 4) from port B of cell $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.$ge$src/auth_ctrl.v:203$273 ($ge).
+Removed top 2 bits (of 4) from port B of cell auth_liveness.$eq$formal/auth_liveness.sv:12$103 ($eq).
+Removed top 1 bits (of 4) from port B of cell auth_liveness.$ge$formal/auth_liveness.sv:54$119 ($ge).
+
+3.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011..
+Finding unused cells or wires in module \auth_liveness..
+
+3.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+3.11. Executing OPT pass (performing simple optimizations).
+
+3.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.
+Optimizing module auth_liveness.
+
+3.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011'.
+Finding identical cells in module `\auth_liveness'.
+Removed a total of 0 cells.
+
+3.11.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011..
+Finding unused cells or wires in module \auth_liveness..
+
+3.11.4. Finished fast OPT passes.
+
+3.12. Printing statistics.
+
+=== $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011 ===
+
+   Number of wires:                143
+   Number of wire bits:            193
+   Number of public wires:          35
+   Number of public wire bits:      42
+   Number of ports:                 23
+   Number of port bits:             23
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                141
+     $add                            1
+     $adff                           3
+     $check                         13
+     $dff                            7
+     $eq                            11
+     $ge                             4
+     $le                             2
+     $logic_and                     24
+     $logic_not                      7
+     $logic_or                       5
+     $lt                             1
+     $mux                           55
+     $ne                             6
+     $pmux                           1
+     $reduce_bool                    1
+
+=== auth_liveness ===
+
+   Number of wires:                 38
+   Number of wire bits:             47
+   Number of public wires:          25
+   Number of public wire bits:      28
+   Number of ports:                  0
+   Number of port bits:              0
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 31
+     $add                            1
+     $anyseq                        10
+     $assert                         2
+     $dff                            3
+     $eq                             1
+     $ge                             2
+     $logic_and                      1
+     $logic_or                       1
+     $mux                            7
+     $ne                             1
+     $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011      1
+     $reduce_bool                    1
+
+=== design hierarchy ===
+
+   auth_liveness                     1
+     $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011      1
+
+   Number of wires:                181
+   Number of wire bits:            240
+   Number of public wires:          60
+   Number of public wire bits:      70
+   Number of ports:                 23
+   Number of port bits:             23
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                171
+     $add                            2
+     $adff                           3
+     $anyseq                        10
+     $assert                         2
+     $check                         13
+     $dff                           10
+     $eq                            12
+     $ge                             6
+     $le                             2
+     $logic_and                     25
+     $logic_not                      7
+     $logic_or                       6
+     $lt                             1
+     $mux                           62
+     $ne                             7
+     $pmux                           1
+     $reduce_bool                    2
+
+3.13. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011...
+Checking module auth_liveness...
+Found and reported 0 problems.
+
+4. Executing FLATTEN pass (flatten design).
+Deleting now unused module $paramod\auth_ctrl\AUTH_TIMEOUT_MS=s32'00000000000000000000000000000011.
+<suppressed ~1 debug messages>
+
+5. Executing ASYNC2SYNC pass.
+Replacing auth_liveness.$flatten\dut.$procdff$485 ($adff): ARST=\dut.rst_n, D=$flatten\dut.$0\timeout_count[1:0], Q=\dut.timeout_count
+Replacing auth_liveness.$flatten\dut.$procdff$480 ($adff): ARST=\dut.rst_n, D=$flatten\dut.$0\timeout_active[0:0], Q=\dut.timeout_active
+Replacing auth_liveness.$flatten\dut.$procdff$475 ($adff): ARST=\dut.rst_n, D=$flatten\dut.$0\state[3:0], Q=\dut.state
+
+6. Executing FORMALFF pass.
+
+7. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \auth_liveness..
+Removed 30 unused cells and 32 unused wires.
+<suppressed ~35 debug messages>
+
+9. Executing SAT pass (solving SAT problems in the circuit).
+
+Setting up time step 1:
+Final constraint equation: { } = { }
+Imported 174 cells to SAT database.
+Final init constraint equation: { \ended \accepted \step $auto$async2sync.cc:228:execute$487 $auto$async2sync.cc:228:execute$489 $auto$async2sync.cc:228:execute$491 \dut.f_prev_state \dut.f_prev_timeout_now \dut.f_past_valid \dut.f_rx_complete \dut.f_seal_seen \dut.f_cmd_seen \dut.f_token } = 23'00000000000000000000000
+Import proof for assert: \accepted when $assert$formal/auth_liveness.sv:55$120_EN.
+Import proof for assert: $logic_or$formal/auth_liveness.sv:57$123_Y when $assert$formal/auth_liveness.sv:57$122_EN.
+Import proof for assert: $flatten\dut.$le$src/auth_ctrl.v:193$255_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$lt$src/auth_ctrl.v:194$257_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$logic_not$src/auth_ctrl.v:196$260_Y when $flatten\dut.$assert$src/auth_ctrl.v:196$259_EN.
+Import proof for assert: \dut.f_token when $flatten\dut.$assert$src/auth_ctrl.v:198$264_EN.
+Import proof for assert: \dut.f_cmd_seen when $flatten\dut.$assert$src/auth_ctrl.v:200$268_EN.
+Import proof for assert: \dut.f_rx_complete when $flatten\dut.$assert$src/auth_ctrl.v:202$272_EN.
+Import proof for assert: \dut.f_seal_seen when $flatten\dut.$assert$src/auth_ctrl.v:204$276_EN.
+Import proof for assert: $flatten\dut.$logic_not$src/auth_ctrl.v:196$260_Y when $flatten\dut.$assert$src/auth_ctrl.v:205$278_EN.
+Import proof for assert: $flatten\dut.$logic_and$src/auth_ctrl.v:206$283_Y when $flatten\dut.$assert$src/auth_ctrl.v:206$281_EN.
+Import proof for assert: $flatten\dut.$logic_and$src/auth_ctrl.v:208$288_Y when $flatten\dut.$assert$src/auth_ctrl.v:208$285_EN.
+Import proof for assert: \dut.session_end when $flatten\dut.$assert$src/auth_ctrl.v:210$291_EN.
+Import proof for assert: $flatten\dut.$logic_or$src/auth_ctrl.v:211$295_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$logic_or$src/auth_ctrl.v:212$298_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+
+Setting up time step 2:
+Final constraint equation: { } = { }
+Imported 174 cells to SAT database.
+Import proof for assert: \accepted when $assert$formal/auth_liveness.sv:55$120_EN.
+Import proof for assert: $logic_or$formal/auth_liveness.sv:57$123_Y when $assert$formal/auth_liveness.sv:57$122_EN.
+Import proof for assert: $flatten\dut.$le$src/auth_ctrl.v:193$255_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$lt$src/auth_ctrl.v:194$257_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$logic_not$src/auth_ctrl.v:196$260_Y when $flatten\dut.$assert$src/auth_ctrl.v:196$259_EN.
+Import proof for assert: \dut.f_token when $flatten\dut.$assert$src/auth_ctrl.v:198$264_EN.
+Import proof for assert: \dut.f_cmd_seen when $flatten\dut.$assert$src/auth_ctrl.v:200$268_EN.
+Import proof for assert: \dut.f_rx_complete when $flatten\dut.$assert$src/auth_ctrl.v:202$272_EN.
+Import proof for assert: \dut.f_seal_seen when $flatten\dut.$assert$src/auth_ctrl.v:204$276_EN.
+Import proof for assert: $flatten\dut.$logic_not$src/auth_ctrl.v:196$260_Y when $flatten\dut.$assert$src/auth_ctrl.v:205$278_EN.
+Import proof for assert: $flatten\dut.$logic_and$src/auth_ctrl.v:206$283_Y when $flatten\dut.$assert$src/auth_ctrl.v:206$281_EN.
+Import proof for assert: $flatten\dut.$logic_and$src/auth_ctrl.v:208$288_Y when $flatten\dut.$assert$src/auth_ctrl.v:208$285_EN.
+Import proof for assert: \dut.session_end when $flatten\dut.$assert$src/auth_ctrl.v:210$291_EN.
+Import proof for assert: $flatten\dut.$logic_or$src/auth_ctrl.v:211$295_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$logic_or$src/auth_ctrl.v:212$298_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+
+Setting up time step 3:
+Final constraint equation: { } = { }
+Imported 174 cells to SAT database.
+Import proof for assert: \accepted when $assert$formal/auth_liveness.sv:55$120_EN.
+Import proof for assert: $logic_or$formal/auth_liveness.sv:57$123_Y when $assert$formal/auth_liveness.sv:57$122_EN.
+Import proof for assert: $flatten\dut.$le$src/auth_ctrl.v:193$255_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$lt$src/auth_ctrl.v:194$257_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$logic_not$src/auth_ctrl.v:196$260_Y when $flatten\dut.$assert$src/auth_ctrl.v:196$259_EN.
+Import proof for assert: \dut.f_token when $flatten\dut.$assert$src/auth_ctrl.v:198$264_EN.
+Import proof for assert: \dut.f_cmd_seen when $flatten\dut.$assert$src/auth_ctrl.v:200$268_EN.
+Import proof for assert: \dut.f_rx_complete when $flatten\dut.$assert$src/auth_ctrl.v:202$272_EN.
+Import proof for assert: \dut.f_seal_seen when $flatten\dut.$assert$src/auth_ctrl.v:204$276_EN.
+Import proof for assert: $flatten\dut.$logic_not$src/auth_ctrl.v:196$260_Y when $flatten\dut.$assert$src/auth_ctrl.v:205$278_EN.
+Import proof for assert: $flatten\dut.$logic_and$src/auth_ctrl.v:206$283_Y when $flatten\dut.$assert$src/auth_ctrl.v:206$281_EN.
+Import proof for assert: $flatten\dut.$logic_and$src/auth_ctrl.v:208$288_Y when $flatten\dut.$assert$src/auth_ctrl.v:208$285_EN.
+Import proof for assert: \dut.session_end when $flatten\dut.$assert$src/auth_ctrl.v:210$291_EN.
+Import proof for assert: $flatten\dut.$logic_or$src/auth_ctrl.v:211$295_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$logic_or$src/auth_ctrl.v:212$298_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+
+Setting up time step 4:
+Final constraint equation: { } = { }
+Imported 174 cells to SAT database.
+Import proof for assert: \accepted when $assert$formal/auth_liveness.sv:55$120_EN.
+Import proof for assert: $logic_or$formal/auth_liveness.sv:57$123_Y when $assert$formal/auth_liveness.sv:57$122_EN.
+Import proof for assert: $flatten\dut.$le$src/auth_ctrl.v:193$255_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$lt$src/auth_ctrl.v:194$257_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$logic_not$src/auth_ctrl.v:196$260_Y when $flatten\dut.$assert$src/auth_ctrl.v:196$259_EN.
+Import proof for assert: \dut.f_token when $flatten\dut.$assert$src/auth_ctrl.v:198$264_EN.
+Import proof for assert: \dut.f_cmd_seen when $flatten\dut.$assert$src/auth_ctrl.v:200$268_EN.
+Import proof for assert: \dut.f_rx_complete when $flatten\dut.$assert$src/auth_ctrl.v:202$272_EN.
+Import proof for assert: \dut.f_seal_seen when $flatten\dut.$assert$src/auth_ctrl.v:204$276_EN.
+Import proof for assert: $flatten\dut.$logic_not$src/auth_ctrl.v:196$260_Y when $flatten\dut.$assert$src/auth_ctrl.v:205$278_EN.
+Import proof for assert: $flatten\dut.$logic_and$src/auth_ctrl.v:206$283_Y when $flatten\dut.$assert$src/auth_ctrl.v:206$281_EN.
+Import proof for assert: $flatten\dut.$logic_and$src/auth_ctrl.v:208$288_Y when $flatten\dut.$assert$src/auth_ctrl.v:208$285_EN.
+Import proof for assert: \dut.session_end when $flatten\dut.$assert$src/auth_ctrl.v:210$291_EN.
+Import proof for assert: $flatten\dut.$logic_or$src/auth_ctrl.v:211$295_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$logic_or$src/auth_ctrl.v:212$298_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+
+Setting up time step 5:
+Final constraint equation: { } = { }
+Imported 174 cells to SAT database.
+Import proof for assert: \accepted when $assert$formal/auth_liveness.sv:55$120_EN.
+Import proof for assert: $logic_or$formal/auth_liveness.sv:57$123_Y when $assert$formal/auth_liveness.sv:57$122_EN.
+Import proof for assert: $flatten\dut.$le$src/auth_ctrl.v:193$255_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$lt$src/auth_ctrl.v:194$257_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$logic_not$src/auth_ctrl.v:196$260_Y when $flatten\dut.$assert$src/auth_ctrl.v:196$259_EN.
+Import proof for assert: \dut.f_token when $flatten\dut.$assert$src/auth_ctrl.v:198$264_EN.
+Import proof for assert: \dut.f_cmd_seen when $flatten\dut.$assert$src/auth_ctrl.v:200$268_EN.
+Import proof for assert: \dut.f_rx_complete when $flatten\dut.$assert$src/auth_ctrl.v:202$272_EN.
+Import proof for assert: \dut.f_seal_seen when $flatten\dut.$assert$src/auth_ctrl.v:204$276_EN.
+Import proof for assert: $flatten\dut.$logic_not$src/auth_ctrl.v:196$260_Y when $flatten\dut.$assert$src/auth_ctrl.v:205$278_EN.
+Import proof for assert: $flatten\dut.$logic_and$src/auth_ctrl.v:206$283_Y when $flatten\dut.$assert$src/auth_ctrl.v:206$281_EN.
+Import proof for assert: $flatten\dut.$logic_and$src/auth_ctrl.v:208$288_Y when $flatten\dut.$assert$src/auth_ctrl.v:208$285_EN.
+Import proof for assert: \dut.session_end when $flatten\dut.$assert$src/auth_ctrl.v:210$291_EN.
+Import proof for assert: $flatten\dut.$logic_or$src/auth_ctrl.v:211$295_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$logic_or$src/auth_ctrl.v:212$298_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+
+Setting up time step 6:
+Final constraint equation: { } = { }
+Imported 174 cells to SAT database.
+Import proof for assert: \accepted when $assert$formal/auth_liveness.sv:55$120_EN.
+Import proof for assert: $logic_or$formal/auth_liveness.sv:57$123_Y when $assert$formal/auth_liveness.sv:57$122_EN.
+Import proof for assert: $flatten\dut.$le$src/auth_ctrl.v:193$255_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$lt$src/auth_ctrl.v:194$257_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$logic_not$src/auth_ctrl.v:196$260_Y when $flatten\dut.$assert$src/auth_ctrl.v:196$259_EN.
+Import proof for assert: \dut.f_token when $flatten\dut.$assert$src/auth_ctrl.v:198$264_EN.
+Import proof for assert: \dut.f_cmd_seen when $flatten\dut.$assert$src/auth_ctrl.v:200$268_EN.
+Import proof for assert: \dut.f_rx_complete when $flatten\dut.$assert$src/auth_ctrl.v:202$272_EN.
+Import proof for assert: \dut.f_seal_seen when $flatten\dut.$assert$src/auth_ctrl.v:204$276_EN.
+Import proof for assert: $flatten\dut.$logic_not$src/auth_ctrl.v:196$260_Y when $flatten\dut.$assert$src/auth_ctrl.v:205$278_EN.
+Import proof for assert: $flatten\dut.$logic_and$src/auth_ctrl.v:206$283_Y when $flatten\dut.$assert$src/auth_ctrl.v:206$281_EN.
+Import proof for assert: $flatten\dut.$logic_and$src/auth_ctrl.v:208$288_Y when $flatten\dut.$assert$src/auth_ctrl.v:208$285_EN.
+Import proof for assert: \dut.session_end when $flatten\dut.$assert$src/auth_ctrl.v:210$291_EN.
+Import proof for assert: $flatten\dut.$logic_or$src/auth_ctrl.v:211$295_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$logic_or$src/auth_ctrl.v:212$298_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+
+Setting up time step 7:
+Final constraint equation: { } = { }
+Imported 174 cells to SAT database.
+Import proof for assert: \accepted when $assert$formal/auth_liveness.sv:55$120_EN.
+Import proof for assert: $logic_or$formal/auth_liveness.sv:57$123_Y when $assert$formal/auth_liveness.sv:57$122_EN.
+Import proof for assert: $flatten\dut.$le$src/auth_ctrl.v:193$255_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$lt$src/auth_ctrl.v:194$257_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$logic_not$src/auth_ctrl.v:196$260_Y when $flatten\dut.$assert$src/auth_ctrl.v:196$259_EN.
+Import proof for assert: \dut.f_token when $flatten\dut.$assert$src/auth_ctrl.v:198$264_EN.
+Import proof for assert: \dut.f_cmd_seen when $flatten\dut.$assert$src/auth_ctrl.v:200$268_EN.
+Import proof for assert: \dut.f_rx_complete when $flatten\dut.$assert$src/auth_ctrl.v:202$272_EN.
+Import proof for assert: \dut.f_seal_seen when $flatten\dut.$assert$src/auth_ctrl.v:204$276_EN.
+Import proof for assert: $flatten\dut.$logic_not$src/auth_ctrl.v:196$260_Y when $flatten\dut.$assert$src/auth_ctrl.v:205$278_EN.
+Import proof for assert: $flatten\dut.$logic_and$src/auth_ctrl.v:206$283_Y when $flatten\dut.$assert$src/auth_ctrl.v:206$281_EN.
+Import proof for assert: $flatten\dut.$logic_and$src/auth_ctrl.v:208$288_Y when $flatten\dut.$assert$src/auth_ctrl.v:208$285_EN.
+Import proof for assert: \dut.session_end when $flatten\dut.$assert$src/auth_ctrl.v:210$291_EN.
+Import proof for assert: $flatten\dut.$logic_or$src/auth_ctrl.v:211$295_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$logic_or$src/auth_ctrl.v:212$298_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+
+Setting up time step 8:
+Final constraint equation: { } = { }
+Imported 174 cells to SAT database.
+Import proof for assert: \accepted when $assert$formal/auth_liveness.sv:55$120_EN.
+Import proof for assert: $logic_or$formal/auth_liveness.sv:57$123_Y when $assert$formal/auth_liveness.sv:57$122_EN.
+Import proof for assert: $flatten\dut.$le$src/auth_ctrl.v:193$255_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$lt$src/auth_ctrl.v:194$257_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$logic_not$src/auth_ctrl.v:196$260_Y when $flatten\dut.$assert$src/auth_ctrl.v:196$259_EN.
+Import proof for assert: \dut.f_token when $flatten\dut.$assert$src/auth_ctrl.v:198$264_EN.
+Import proof for assert: \dut.f_cmd_seen when $flatten\dut.$assert$src/auth_ctrl.v:200$268_EN.
+Import proof for assert: \dut.f_rx_complete when $flatten\dut.$assert$src/auth_ctrl.v:202$272_EN.
+Import proof for assert: \dut.f_seal_seen when $flatten\dut.$assert$src/auth_ctrl.v:204$276_EN.
+Import proof for assert: $flatten\dut.$logic_not$src/auth_ctrl.v:196$260_Y when $flatten\dut.$assert$src/auth_ctrl.v:205$278_EN.
+Import proof for assert: $flatten\dut.$logic_and$src/auth_ctrl.v:206$283_Y when $flatten\dut.$assert$src/auth_ctrl.v:206$281_EN.
+Import proof for assert: $flatten\dut.$logic_and$src/auth_ctrl.v:208$288_Y when $flatten\dut.$assert$src/auth_ctrl.v:208$285_EN.
+Import proof for assert: \dut.session_end when $flatten\dut.$assert$src/auth_ctrl.v:210$291_EN.
+Import proof for assert: $flatten\dut.$logic_or$src/auth_ctrl.v:211$295_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$logic_or$src/auth_ctrl.v:212$298_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+
+Setting up time step 9:
+Final constraint equation: { } = { }
+Imported 174 cells to SAT database.
+Import proof for assert: \accepted when $assert$formal/auth_liveness.sv:55$120_EN.
+Import proof for assert: $logic_or$formal/auth_liveness.sv:57$123_Y when $assert$formal/auth_liveness.sv:57$122_EN.
+Import proof for assert: $flatten\dut.$le$src/auth_ctrl.v:193$255_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$lt$src/auth_ctrl.v:194$257_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$logic_not$src/auth_ctrl.v:196$260_Y when $flatten\dut.$assert$src/auth_ctrl.v:196$259_EN.
+Import proof for assert: \dut.f_token when $flatten\dut.$assert$src/auth_ctrl.v:198$264_EN.
+Import proof for assert: \dut.f_cmd_seen when $flatten\dut.$assert$src/auth_ctrl.v:200$268_EN.
+Import proof for assert: \dut.f_rx_complete when $flatten\dut.$assert$src/auth_ctrl.v:202$272_EN.
+Import proof for assert: \dut.f_seal_seen when $flatten\dut.$assert$src/auth_ctrl.v:204$276_EN.
+Import proof for assert: $flatten\dut.$logic_not$src/auth_ctrl.v:196$260_Y when $flatten\dut.$assert$src/auth_ctrl.v:205$278_EN.
+Import proof for assert: $flatten\dut.$logic_and$src/auth_ctrl.v:206$283_Y when $flatten\dut.$assert$src/auth_ctrl.v:206$281_EN.
+Import proof for assert: $flatten\dut.$logic_and$src/auth_ctrl.v:208$288_Y when $flatten\dut.$assert$src/auth_ctrl.v:208$285_EN.
+Import proof for assert: \dut.session_end when $flatten\dut.$assert$src/auth_ctrl.v:210$291_EN.
+Import proof for assert: $flatten\dut.$logic_or$src/auth_ctrl.v:211$295_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$logic_or$src/auth_ctrl.v:212$298_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+
+Setting up time step 10:
+Final constraint equation: { } = { }
+Imported 174 cells to SAT database.
+Import proof for assert: \accepted when $assert$formal/auth_liveness.sv:55$120_EN.
+Import proof for assert: $logic_or$formal/auth_liveness.sv:57$123_Y when $assert$formal/auth_liveness.sv:57$122_EN.
+Import proof for assert: $flatten\dut.$le$src/auth_ctrl.v:193$255_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$lt$src/auth_ctrl.v:194$257_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$logic_not$src/auth_ctrl.v:196$260_Y when $flatten\dut.$assert$src/auth_ctrl.v:196$259_EN.
+Import proof for assert: \dut.f_token when $flatten\dut.$assert$src/auth_ctrl.v:198$264_EN.
+Import proof for assert: \dut.f_cmd_seen when $flatten\dut.$assert$src/auth_ctrl.v:200$268_EN.
+Import proof for assert: \dut.f_rx_complete when $flatten\dut.$assert$src/auth_ctrl.v:202$272_EN.
+Import proof for assert: \dut.f_seal_seen when $flatten\dut.$assert$src/auth_ctrl.v:204$276_EN.
+Import proof for assert: $flatten\dut.$logic_not$src/auth_ctrl.v:196$260_Y when $flatten\dut.$assert$src/auth_ctrl.v:205$278_EN.
+Import proof for assert: $flatten\dut.$logic_and$src/auth_ctrl.v:206$283_Y when $flatten\dut.$assert$src/auth_ctrl.v:206$281_EN.
+Import proof for assert: $flatten\dut.$logic_and$src/auth_ctrl.v:208$288_Y when $flatten\dut.$assert$src/auth_ctrl.v:208$285_EN.
+Import proof for assert: \dut.session_end when $flatten\dut.$assert$src/auth_ctrl.v:210$291_EN.
+Import proof for assert: $flatten\dut.$logic_or$src/auth_ctrl.v:211$295_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$logic_or$src/auth_ctrl.v:212$298_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+
+Setting up time step 11:
+Final constraint equation: { } = { }
+Imported 174 cells to SAT database.
+Import proof for assert: \accepted when $assert$formal/auth_liveness.sv:55$120_EN.
+Import proof for assert: $logic_or$formal/auth_liveness.sv:57$123_Y when $assert$formal/auth_liveness.sv:57$122_EN.
+Import proof for assert: $flatten\dut.$le$src/auth_ctrl.v:193$255_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$lt$src/auth_ctrl.v:194$257_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$logic_not$src/auth_ctrl.v:196$260_Y when $flatten\dut.$assert$src/auth_ctrl.v:196$259_EN.
+Import proof for assert: \dut.f_token when $flatten\dut.$assert$src/auth_ctrl.v:198$264_EN.
+Import proof for assert: \dut.f_cmd_seen when $flatten\dut.$assert$src/auth_ctrl.v:200$268_EN.
+Import proof for assert: \dut.f_rx_complete when $flatten\dut.$assert$src/auth_ctrl.v:202$272_EN.
+Import proof for assert: \dut.f_seal_seen when $flatten\dut.$assert$src/auth_ctrl.v:204$276_EN.
+Import proof for assert: $flatten\dut.$logic_not$src/auth_ctrl.v:196$260_Y when $flatten\dut.$assert$src/auth_ctrl.v:205$278_EN.
+Import proof for assert: $flatten\dut.$logic_and$src/auth_ctrl.v:206$283_Y when $flatten\dut.$assert$src/auth_ctrl.v:206$281_EN.
+Import proof for assert: $flatten\dut.$logic_and$src/auth_ctrl.v:208$288_Y when $flatten\dut.$assert$src/auth_ctrl.v:208$285_EN.
+Import proof for assert: \dut.session_end when $flatten\dut.$assert$src/auth_ctrl.v:210$291_EN.
+Import proof for assert: $flatten\dut.$logic_or$src/auth_ctrl.v:211$295_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$logic_or$src/auth_ctrl.v:212$298_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+
+Setting up time step 12:
+Final constraint equation: { } = { }
+Imported 174 cells to SAT database.
+Import proof for assert: \accepted when $assert$formal/auth_liveness.sv:55$120_EN.
+Import proof for assert: $logic_or$formal/auth_liveness.sv:57$123_Y when $assert$formal/auth_liveness.sv:57$122_EN.
+Import proof for assert: $flatten\dut.$le$src/auth_ctrl.v:193$255_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$lt$src/auth_ctrl.v:194$257_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$logic_not$src/auth_ctrl.v:196$260_Y when $flatten\dut.$assert$src/auth_ctrl.v:196$259_EN.
+Import proof for assert: \dut.f_token when $flatten\dut.$assert$src/auth_ctrl.v:198$264_EN.
+Import proof for assert: \dut.f_cmd_seen when $flatten\dut.$assert$src/auth_ctrl.v:200$268_EN.
+Import proof for assert: \dut.f_rx_complete when $flatten\dut.$assert$src/auth_ctrl.v:202$272_EN.
+Import proof for assert: \dut.f_seal_seen when $flatten\dut.$assert$src/auth_ctrl.v:204$276_EN.
+Import proof for assert: $flatten\dut.$logic_not$src/auth_ctrl.v:196$260_Y when $flatten\dut.$assert$src/auth_ctrl.v:205$278_EN.
+Import proof for assert: $flatten\dut.$logic_and$src/auth_ctrl.v:206$283_Y when $flatten\dut.$assert$src/auth_ctrl.v:206$281_EN.
+Import proof for assert: $flatten\dut.$logic_and$src/auth_ctrl.v:208$288_Y when $flatten\dut.$assert$src/auth_ctrl.v:208$285_EN.
+Import proof for assert: \dut.session_end when $flatten\dut.$assert$src/auth_ctrl.v:210$291_EN.
+Import proof for assert: $flatten\dut.$logic_or$src/auth_ctrl.v:211$295_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+Import proof for assert: $flatten\dut.$logic_or$src/auth_ctrl.v:212$298_Y when $flatten\dut.$assert$src/auth_ctrl.v:193$254_EN.
+
+Solving problem with 55157 variables and 151080 clauses..
+SAT proof finished - no model found: SUCCESS!
+
+                  /$$$$$$      /$$$$$$$$     /$$$$$$$    
+                 /$$__  $$    | $$_____/    | $$__  $$   
+                | $$  \ $$    | $$          | $$  \ $$   
+                | $$  | $$    | $$$$$       | $$  | $$   
+                | $$  | $$    | $$__/       | $$  | $$   
+                | $$/$$ $$    | $$          | $$  | $$   
+                |  $$$$$$/ /$$| $$$$$$$$ /$$| $$$$$$$//$$
+                 \____ $$$|__/|________/|__/|_______/|__/
+                       \__/                              
+
+End of script. Logfile hash: c91ee9c2f1, CPU: user 0.19s system 0.08s, MEM: 56.76 MB peak
+Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+Time spent: 86% 1x sat (0 sec), 2% 6x opt_clean (0 sec), ...

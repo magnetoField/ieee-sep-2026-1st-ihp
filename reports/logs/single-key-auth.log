@@ -1,0 +1,5 @@
+== unit:auth_ctrl ==
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_auth_ctrl -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_auth_ctrl.vvp src/auth_ctrl.v test/unit/tb_auth_ctrl.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_auth_ctrl.vvp
+PASS tb_auth_ctrl token, handshakes, absolute timeout, errors
+test/unit/tb_auth_ctrl.sv:74: $finish called at 460000 (1ps)

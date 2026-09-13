@@ -1,0 +1,36 @@
+== unit:szymon_fixed ==
++ /usr/bin/python3 scripts/gen_fixed_round_keys.py /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_0.mem 0x1b1a1918131211100b0a090803020100 0x1b1a1918131211100b0a090803020100
+generated 44 fixed-key pairs: /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_0.mem
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_szymon_fixed -Ptb_szymon_fixed.TEST_KEY=128'h1b1a1918131211100b0a090803020100 -Ptb_szymon_fixed.EXPECT=64'h44c8fc20b9dfa07a -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_0.vvp src/szymon_fixed.v test/unit/tb_szymon_fixed.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_0.vvp +ROUND_KEYS=/mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_0.mem
+PASS tb_szymon_fixed: single-key KAT + 64-cycle wipe, 9344 cycles, key bits, data hold, 28 abort phases, rearm
++ /usr/bin/python3 scripts/gen_fixed_round_keys.py /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_1.mem 0x0 0x0
+generated 44 fixed-key pairs: /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_1.mem
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_szymon_fixed -Ptb_szymon_fixed.TEST_KEY=128'h00000000000000000000000000000000 -Ptb_szymon_fixed.EXPECT=64'h2add22b74aaedac1 -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_1.vvp src/szymon_fixed.v test/unit/tb_szymon_fixed.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_1.vvp +ROUND_KEYS=/mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_1.mem
+PASS tb_szymon_fixed: single-key KAT + 64-cycle wipe, 9344 cycles, key bits, data hold, 28 abort phases, rearm
++ /usr/bin/python3 scripts/gen_fixed_round_keys.py /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_2.mem 0xffffffffffffffffffffffffffffffff 0xffffffffffffffffffffffffffffffff
+generated 44 fixed-key pairs: /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_2.mem
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_szymon_fixed -Ptb_szymon_fixed.TEST_KEY=128'hffffffffffffffffffffffffffffffff -Ptb_szymon_fixed.EXPECT=64'h0c60d513bb08041d -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_2.vvp src/szymon_fixed.v test/unit/tb_szymon_fixed.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_2.vvp +ROUND_KEYS=/mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_2.mem
+PASS tb_szymon_fixed: single-key KAT + 64-cycle wipe, 9344 cycles, key bits, data hold, 28 abort phases, rearm
++ /usr/bin/python3 scripts/gen_fixed_round_keys.py /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_3.mem 0x24d322e8325b1c77900285da2d71002d 0x24d322e8325b1c77900285da2d71002d
+generated 44 fixed-key pairs: /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_3.mem
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_szymon_fixed -Ptb_szymon_fixed.TEST_KEY=128'h24d322e8325b1c77900285da2d71002d -Ptb_szymon_fixed.EXPECT=64'h1cb6abd601ad7eb4 -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_3.vvp src/szymon_fixed.v test/unit/tb_szymon_fixed.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_3.vvp +ROUND_KEYS=/mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_3.mem
+PASS tb_szymon_fixed: single-key KAT + 64-cycle wipe, 9344 cycles, key bits, data hold, 28 abort phases, rearm
++ /usr/bin/python3 scripts/gen_fixed_round_keys.py /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_4.mem 0xa6d02f4e7e4417620311d65b620607e 0xa6d02f4e7e4417620311d65b620607e
+generated 44 fixed-key pairs: /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_4.mem
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_szymon_fixed -Ptb_szymon_fixed.TEST_KEY=128'h0a6d02f4e7e4417620311d65b620607e -Ptb_szymon_fixed.EXPECT=64'h8aa5210613f61e58 -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_4.vvp src/szymon_fixed.v test/unit/tb_szymon_fixed.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_4.vvp +ROUND_KEYS=/mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_4.mem
+PASS tb_szymon_fixed: single-key KAT + 64-cycle wipe, 9344 cycles, key bits, data hold, 28 abort phases, rearm
++ /usr/bin/python3 scripts/gen_fixed_round_keys.py /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_5.mem 0x3d35924af7e10d4b6cd96d0d494b3796 0x3d35924af7e10d4b6cd96d0d494b3796
+generated 44 fixed-key pairs: /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_5.mem
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_szymon_fixed -Ptb_szymon_fixed.TEST_KEY=128'h3d35924af7e10d4b6cd96d0d494b3796 -Ptb_szymon_fixed.EXPECT=64'h5cddf336078d145f -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_5.vvp src/szymon_fixed.v test/unit/tb_szymon_fixed.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_5.vvp +ROUND_KEYS=/mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_5.mem
+PASS tb_szymon_fixed: single-key KAT + 64-cycle wipe, 9344 cycles, key bits, data hold, 28 abort phases, rearm
++ /usr/bin/python3 scripts/gen_fixed_round_keys.py /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_6.mem 0xdf4b84b744f6a8ec8ac03351acb52059 0xdf4b84b744f6a8ec8ac03351acb52059
+generated 44 fixed-key pairs: /mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_6.mem
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh iverilog -g2012 -Wall -s tb_szymon_fixed -Ptb_szymon_fixed.TEST_KEY=128'hdf4b84b744f6a8ec8ac03351acb52059 -Ptb_szymon_fixed.EXPECT=64'h23d70d46d050eb32 -o /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_6.vvp src/szymon_fixed.v test/unit/tb_szymon_fixed.sv
++ /mnt/c/Users/user/Desktop/HACKATHON/scripts/local_tool.sh vvp /mnt/c/Users/user/Desktop/HACKATHON/.build/tb_szymon_single_6.vvp +ROUND_KEYS=/mnt/c/Users/user/Desktop/HACKATHON/.build/single_round_keys_6.mem
+PASS tb_szymon_fixed: single-key KAT + 64-cycle wipe, 9344 cycles, key bits, data hold, 28 abort phases, rearm

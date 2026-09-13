@@ -1,0 +1,18 @@
+platform: Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.43
+python3: FOUND rc=0: Python 3.14.4
+git: FOUND rc=0: git version 2.53.0
+make: FOUND rc=0: GNU Make 4.4.1
+iverilog (local/system fallback): FOUND rc=0: Icarus Verilog version 12.0 (stable) ()
+verilator (local/system fallback): FOUND rc=0: Verilator 5.032 2025-01-01 rev (Debian 5.032-1)
+yosys (local/system fallback): FOUND rc=0: Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+optional sby: NOT_INSTALLED
+optional boolector: NOT_INSTALLED
+optional z3: NOT_INSTALLED
+optional docker: NOT_INSTALLED
+local PDK: FOUND (/mnt/c/Users/user/Desktop/HACKATHON/.tools/IHP-Open-PDK-partial)
+RTL/formal preflight: READY
+IHP PDK configuration: FOUND
+Physical tool versions and executed checks: reports/TOOLCHAIN.md and reports/FINAL.md
+- V e r i l a t i o n   R e p o r t: Verilator 5.032 2025-01-01 rev (Debian 5.032-1)
+- Verilator: Built from 0.561 MB sources in 20 modules, into 0.145 MB in 5 C++ files needing 0.000 MB
+- Verilator: Walltime 0.127 s (elab=0.015, cvt=0.026, bld=0.000); cpu 0.047 s on 1 threads; alloced 10.371 MB

@@ -1,0 +1,12 @@
+2026-09-12 make test-model
+Python 3.14.4
+Ran 13 tests in 0.941s
+OK
+Coverage: published KAT, 1024 seeded model cases, wire ordering, BAD response,
+all 65536 keypad masks, manual ghost cases, SHIFT64 length, scoreboard, sejf.
+
+2026-09-12 python3 tools/verify_arithmetic_plan.py
+Published SIMON64/128 KAT: PASS
+Proposed bit-serial arithmetic vs word reference: 1024 random pairs, all 44 round states: PASS
+Core round cycles: 1408
+Demo bad-key response to KAT challenge: 9350e3713d63ad28

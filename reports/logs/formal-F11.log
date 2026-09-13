@@ -1,0 +1,334 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+
+-- Running command `read_verilog -formal -sv formal/round_equiv.sv; chformal -lower; prep -top round_equiv; sat -verify -prove-asserts -show-all' --
+
+1. Executing Verilog-2005 frontend: formal/round_equiv.sv
+Parsing formal SystemVerilog input from `formal/round_equiv.sv' to AST representation.
+Generating RTLIL representation for module `\round_equiv'.
+Successfully finished Verilog frontend.
+
+2. Executing PREP pass.
+
+2.1. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1.1. Analyzing design hierarchy..
+Top module:  \round_equiv
+
+2.1.2. Analyzing design hierarchy..
+Top module:  \round_equiv
+Removed 0 unused modules.
+Module round_equiv directly or indirectly contains formal properties -> setting "keep" attribute.
+
+2.2. Executing PROC pass (convert processes to netlists).
+
+2.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed a total of 0 dead cases.
+
+2.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 4 redundant assignments.
+Promoted 20 assignments to connections.
+
+2.2.4. Executing PROC_INIT pass (extract init attributes).
+
+2.2.5. Executing PROC_ARST pass (detect async resets in processes).
+
+2.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+2.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\round_equiv.$proc$formal/round_equiv.sv:20$8'.
+
+2.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\round_equiv.\x_serial' from process `\round_equiv.$proc$formal/round_equiv.sv:20$8'.
+No latch inferred for signal `\round_equiv.\y_serial' from process `\round_equiv.$proc$formal/round_equiv.sv:20$8'.
+No latch inferred for signal `\round_equiv.\key_shift' from process `\round_equiv.$proc$formal/round_equiv.sv:20$8'.
+No latch inferred for signal `\round_equiv.\expected' from process `\round_equiv.$proc$formal/round_equiv.sv:20$8'.
+No latch inferred for signal `\round_equiv.\feedback' from process `\round_equiv.$proc$formal/round_equiv.sv:20$8'.
+No latch inferred for signal `\round_equiv.\x_msb' from process `\round_equiv.$proc$formal/round_equiv.sv:20$8'.
+No latch inferred for signal `\round_equiv.\y_msb' from process `\round_equiv.$proc$formal/round_equiv.sv:20$8'.
+No latch inferred for signal `\round_equiv.\key_msb' from process `\round_equiv.$proc$formal/round_equiv.sv:20$8'.
+No latch inferred for signal `\round_equiv.\feedback_msb' from process `\round_equiv.$proc$formal/round_equiv.sv:20$8'.
+No latch inferred for signal `\round_equiv.\index' from process `\round_equiv.$proc$formal/round_equiv.sv:20$8'.
+No latch inferred for signal `\round_equiv.\rol1$func$formal/round_equiv.sv:34$2.$result' from process `\round_equiv.$proc$formal/round_equiv.sv:20$8'.
+No latch inferred for signal `\round_equiv.\rol1$func$formal/round_equiv.sv:34$2.v' from process `\round_equiv.$proc$formal/round_equiv.sv:20$8'.
+No latch inferred for signal `\round_equiv.\rol8$func$formal/round_equiv.sv:34$3.$result' from process `\round_equiv.$proc$formal/round_equiv.sv:20$8'.
+No latch inferred for signal `\round_equiv.\rol8$func$formal/round_equiv.sv:34$3.v' from process `\round_equiv.$proc$formal/round_equiv.sv:20$8'.
+No latch inferred for signal `\round_equiv.\rol2$func$formal/round_equiv.sv:34$4.$result' from process `\round_equiv.$proc$formal/round_equiv.sv:20$8'.
+No latch inferred for signal `\round_equiv.\rol2$func$formal/round_equiv.sv:34$4.v' from process `\round_equiv.$proc$formal/round_equiv.sv:20$8'.
+
+2.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+
+2.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `round_equiv.$proc$formal/round_equiv.sv:20$8'.
+Cleaned up 0 empty switches.
+
+2.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module round_equiv.
+<suppressed ~8 debug messages>
+
+2.3. Executing FUTURE pass.
+
+2.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module round_equiv.
+
+2.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \round_equiv..
+Removed 2 unused cells and 101 unused wires.
+<suppressed ~3 debug messages>
+
+2.6. Executing CHECK pass (checking for obvious problems).
+Checking module round_equiv...
+Found and reported 0 problems.
+
+2.7. Executing OPT pass (performing simple optimizations).
+
+2.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module round_equiv.
+
+2.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\round_equiv'.
+<suppressed ~391 debug messages>
+Removed a total of 131 cells.
+
+2.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \round_equiv..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+2.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \round_equiv.
+Performed a total of 0 changes.
+
+2.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\round_equiv'.
+Removed a total of 0 cells.
+
+2.7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \round_equiv..
+Removed 0 unused cells and 97 unused wires.
+<suppressed ~1 debug messages>
+
+2.7.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module round_equiv.
+
+2.7.8. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.7.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \round_equiv..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+2.7.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \round_equiv.
+Performed a total of 0 changes.
+
+2.7.11. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\round_equiv'.
+Removed a total of 0 cells.
+
+2.7.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \round_equiv..
+
+2.7.13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module round_equiv.
+
+2.7.14. Finished OPT passes. (There is nothing left to do.)
+
+2.8. Executing WREDUCE pass (reducing word size of cells).
+
+2.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \round_equiv..
+
+2.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.11. Executing OPT pass (performing simple optimizations).
+
+2.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module round_equiv.
+
+2.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\round_equiv'.
+Removed a total of 0 cells.
+
+2.11.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \round_equiv..
+
+2.11.4. Finished fast OPT passes.
+
+2.12. Printing statistics.
+
+=== round_equiv ===
+
+   Number of wires:                116
+   Number of wire bits:            643
+   Number of public wires:          16
+   Number of public wire bits:     450
+   Number of ports:                  0
+   Number of port bits:              0
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                138
+     $and                           33
+     $anyconst                       3
+     $assert                         2
+     $eq                             1
+     $xor                           99
+
+2.13. Executing CHECK pass (checking for obvious problems).
+Checking module round_equiv...
+Found and reported 0 problems.
+
+3. Executing SAT pass (solving SAT problems in the circuit).
+
+Setting up SAT problem:
+Final constraint equation: { } = { }
+Imported 138 cells to SAT database.
+Import proof for assert: 1'1 when 1'1.
+Import proof for assert: $eq$formal/round_equiv.sv:36$278_Y when 1'1.
+Import show expression: $and$formal/round_equiv.sv:24$103_Y
+Import show expression: $and$formal/round_equiv.sv:24$111_Y
+Import show expression: $and$formal/round_equiv.sv:24$119_Y
+Import show expression: $and$formal/round_equiv.sv:24$127_Y
+Import show expression: $and$formal/round_equiv.sv:24$135_Y
+Import show expression: $and$formal/round_equiv.sv:24$143_Y
+Import show expression: $and$formal/round_equiv.sv:24$151_Y
+Import show expression: $and$formal/round_equiv.sv:24$159_Y
+Import show expression: $and$formal/round_equiv.sv:24$15_Y
+Import show expression: $and$formal/round_equiv.sv:24$167_Y
+Import show expression: $and$formal/round_equiv.sv:24$175_Y
+Import show expression: $and$formal/round_equiv.sv:24$183_Y
+Import show expression: $and$formal/round_equiv.sv:24$191_Y
+Import show expression: $and$formal/round_equiv.sv:24$199_Y
+Import show expression: $and$formal/round_equiv.sv:24$207_Y
+Import show expression: $and$formal/round_equiv.sv:24$215_Y
+Import show expression: $and$formal/round_equiv.sv:24$223_Y
+Import show expression: $and$formal/round_equiv.sv:24$231_Y
+Import show expression: $and$formal/round_equiv.sv:24$239_Y
+Import show expression: $and$formal/round_equiv.sv:24$23_Y
+Import show expression: $and$formal/round_equiv.sv:24$247_Y
+Import show expression: $and$formal/round_equiv.sv:24$255_Y
+Import show expression: $and$formal/round_equiv.sv:24$263_Y
+Import show expression: $and$formal/round_equiv.sv:24$31_Y
+Import show expression: $and$formal/round_equiv.sv:24$39_Y
+Import show expression: $and$formal/round_equiv.sv:24$47_Y
+Import show expression: $and$formal/round_equiv.sv:24$55_Y
+Import show expression: $and$formal/round_equiv.sv:24$63_Y
+Import show expression: $and$formal/round_equiv.sv:24$71_Y
+Import show expression: $and$formal/round_equiv.sv:24$79_Y
+Import show expression: $and$formal/round_equiv.sv:24$87_Y
+Import show expression: $and$formal/round_equiv.sv:24$95_Y
+Import show expression: $and$formal/round_equiv.sv:34$271_Y
+Import show expression: $eq$formal/round_equiv.sv:36$278_Y
+Import show expression: $xor$formal/round_equiv.sv:24$104_Y
+Import show expression: $xor$formal/round_equiv.sv:24$105_Y
+Import show expression: $xor$formal/round_equiv.sv:24$112_Y
+Import show expression: $xor$formal/round_equiv.sv:24$113_Y
+Import show expression: $xor$formal/round_equiv.sv:24$120_Y
+Import show expression: $xor$formal/round_equiv.sv:24$121_Y
+Import show expression: $xor$formal/round_equiv.sv:24$128_Y
+Import show expression: $xor$formal/round_equiv.sv:24$129_Y
+Import show expression: $xor$formal/round_equiv.sv:24$136_Y
+Import show expression: $xor$formal/round_equiv.sv:24$137_Y
+Import show expression: $xor$formal/round_equiv.sv:24$144_Y
+Import show expression: $xor$formal/round_equiv.sv:24$145_Y
+Import show expression: $xor$formal/round_equiv.sv:24$152_Y
+Import show expression: $xor$formal/round_equiv.sv:24$153_Y
+Import show expression: $xor$formal/round_equiv.sv:24$160_Y
+Import show expression: $xor$formal/round_equiv.sv:24$161_Y
+Import show expression: $xor$formal/round_equiv.sv:24$168_Y
+Import show expression: $xor$formal/round_equiv.sv:24$169_Y
+Import show expression: $xor$formal/round_equiv.sv:24$16_Y
+Import show expression: $xor$formal/round_equiv.sv:24$176_Y
+Import show expression: $xor$formal/round_equiv.sv:24$177_Y
+Import show expression: $xor$formal/round_equiv.sv:24$17_Y
+Import show expression: $xor$formal/round_equiv.sv:24$184_Y
+Import show expression: $xor$formal/round_equiv.sv:24$185_Y
+Import show expression: $xor$formal/round_equiv.sv:24$192_Y
+Import show expression: $xor$formal/round_equiv.sv:24$193_Y
+Import show expression: $xor$formal/round_equiv.sv:24$200_Y
+Import show expression: $xor$formal/round_equiv.sv:24$201_Y
+Import show expression: $xor$formal/round_equiv.sv:24$208_Y
+Import show expression: $xor$formal/round_equiv.sv:24$209_Y
+Import show expression: $xor$formal/round_equiv.sv:24$216_Y
+Import show expression: $xor$formal/round_equiv.sv:24$217_Y
+Import show expression: $xor$formal/round_equiv.sv:24$224_Y
+Import show expression: $xor$formal/round_equiv.sv:24$225_Y
+Import show expression: $xor$formal/round_equiv.sv:24$232_Y
+Import show expression: $xor$formal/round_equiv.sv:24$233_Y
+Import show expression: $xor$formal/round_equiv.sv:24$240_Y
+Import show expression: $xor$formal/round_equiv.sv:24$241_Y
+Import show expression: $xor$formal/round_equiv.sv:24$248_Y
+Import show expression: $xor$formal/round_equiv.sv:24$249_Y
+Import show expression: $xor$formal/round_equiv.sv:24$24_Y
+Import show expression: $xor$formal/round_equiv.sv:24$256_Y
+Import show expression: $xor$formal/round_equiv.sv:24$257_Y
+Import show expression: $xor$formal/round_equiv.sv:24$25_Y
+Import show expression: $xor$formal/round_equiv.sv:24$264_Y
+Import show expression: $xor$formal/round_equiv.sv:24$265_Y
+Import show expression: $xor$formal/round_equiv.sv:24$32_Y
+Import show expression: $xor$formal/round_equiv.sv:24$33_Y
+Import show expression: $xor$formal/round_equiv.sv:24$40_Y
+Import show expression: $xor$formal/round_equiv.sv:24$41_Y
+Import show expression: $xor$formal/round_equiv.sv:24$48_Y
+Import show expression: $xor$formal/round_equiv.sv:24$49_Y
+Import show expression: $xor$formal/round_equiv.sv:24$56_Y
+Import show expression: $xor$formal/round_equiv.sv:24$57_Y
+Import show expression: $xor$formal/round_equiv.sv:24$64_Y
+Import show expression: $xor$formal/round_equiv.sv:24$65_Y
+Import show expression: $xor$formal/round_equiv.sv:24$72_Y
+Import show expression: $xor$formal/round_equiv.sv:24$73_Y
+Import show expression: $xor$formal/round_equiv.sv:24$80_Y
+Import show expression: $xor$formal/round_equiv.sv:24$81_Y
+Import show expression: $xor$formal/round_equiv.sv:24$88_Y
+Import show expression: $xor$formal/round_equiv.sv:24$89_Y
+Import show expression: $xor$formal/round_equiv.sv:24$96_Y
+Import show expression: $xor$formal/round_equiv.sv:24$97_Y
+Import show expression: $xor$formal/round_equiv.sv:34$272_Y
+Import show expression: $xor$formal/round_equiv.sv:34$273_Y
+Import show expression: \expected
+Import show expression: \feedback
+Import show expression: \feedback_msb
+Import show expression: \index
+Import show expression: \key_msb
+Import show expression: \key_shift
+Import show expression: \rol1$func$formal/round_equiv.sv:34$2.v
+Import show expression: \rol2$func$formal/round_equiv.sv:34$4.v
+Import show expression: \rol8$func$formal/round_equiv.sv:34$3.v
+Import show expression: \round_key
+Import show expression: \x_input
+Import show expression: \x_msb
+Import show expression: \x_serial
+Import show expression: \y_input
+Import show expression: \y_msb
+Import show expression: \y_serial
+
+Solving problem with 1831 variables and 4719 clauses..
+SAT proof finished - no model found: SUCCESS!
+
+                  /$$$$$$      /$$$$$$$$     /$$$$$$$    
+                 /$$__  $$    | $$_____/    | $$__  $$   
+                | $$  \ $$    | $$          | $$  \ $$   
+                | $$  | $$    | $$$$$       | $$  | $$   
+                | $$  | $$    | $$__/       | $$  | $$   
+                | $$/$$ $$    | $$          | $$  | $$   
+                |  $$$$$$/ /$$| $$$$$$$$ /$$| $$$$$$$//$$
+                 \____ $$$|__/|________/|__/|_______/|__/
+                       \__/                              
+
+End of script. Logfile hash: 84d292e9b0, CPU: user 0.04s system 0.02s, MEM: 16.75 MB peak
+Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+Time spent: 34% 2x read_verilog (0 sec), 14% 1x sat (0 sec), ...

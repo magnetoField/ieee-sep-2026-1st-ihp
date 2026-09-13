@@ -1,0 +1,22 @@
+{
+  "DESIGN_NAME": "tt_um_rumcajs",
+  "VERILOG_FILES": [
+    "dir::sync2.v",
+    "dir::reset_release.v",
+    "dir::timebase.v",
+    "dir::kb.v",
+    "dir::regs.v",
+    "dir::szymon.v",
+    "dir::szymon_fixed.v",
+    "dir::serial_link.v",
+    "dir::auth_ctrl.v",
+    "dir::buzzer.v",
+    "dir::rumcajs.v",
+    "dir::project.v"
+  ],
+  "DIE_AREA": "0 0 202.08 154.98",
+  "FP_DEF_TEMPLATE": "dir::../tt/tech/ihp-sg13g2/def/tt_block_1x1_pgvdd.def",
+  "VDD_PIN": "VPWR",
+  "GND_PIN": "VGND",
+  "RT_MAX_LAYER": "TopMetal1"
+}

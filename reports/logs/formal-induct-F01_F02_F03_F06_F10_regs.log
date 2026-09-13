@@ -1,0 +1,2173 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+
+-- Running command `read_verilog -formal -D FORMAL src/regs.v; chformal -lower; prep -top regs; flatten; async2sync; formalff -clk2ff; memory_map; opt_clean; sat -verify -prove-asserts -set-init-zero -set-def-formal -set-def-inputs -seq 5 -tempinduct' --
+
+1. Executing Verilog-2005 frontend: src/regs.v
+Parsing formal Verilog input from `src/regs.v' to AST representation.
+Generating RTLIL representation for module `\regs'.
+Successfully finished Verilog frontend.
+
+2. Executing PREP pass.
+
+2.1. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1.1. Analyzing design hierarchy..
+Top module:  \regs
+
+2.1.2. Analyzing design hierarchy..
+Top module:  \regs
+Removed 0 unused modules.
+Module regs directly or indirectly contains formal properties -> setting "keep" attribute.
+
+2.2. Executing PROC pass (convert processes to netlists).
+
+2.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$src/regs.v:156$33 in module regs.
+Marked 4 switch rules as full_case in process $proc$src/regs.v:116$28 in module regs.
+Marked 1 switch rules as full_case in process $proc$src/regs.v:106$22 in module regs.
+Marked 1 switch rules as full_case in process $proc$src/regs.v:78$7 in module regs.
+Removed a total of 0 dead cases.
+
+2.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 3 assignments to connections.
+
+2.2.4. Executing PROC_INIT pass (extract init attributes).
+
+2.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \session_rst_n in `\regs.$proc$src/regs.v:116$28'.
+Found async reset \cold_rst_n in `\regs.$proc$src/regs.v:106$22'.
+
+2.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 1 switch.
+<suppressed ~14 debug messages>
+
+2.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\regs.$proc$src/regs.v:167$42'.
+     1/5: $assert$src/regs.v:176$55_EN
+     2/5: $assert$src/regs.v:174$51_EN
+     3/5: $assert$src/regs.v:172$48_EN
+     4/5: $assert$src/regs.v:170$45_EN
+     5/5: $assert$src/regs.v:169$43_EN
+Creating decoders for process `\regs.$proc$src/regs.v:156$33'.
+     1/5: $0\f_past_valid[0:0]
+     2/5: $0\f_prev_txn_stall[0:0]
+     3/5: $0\f_prev_submit_bad[0:0]
+     4/5: $0\f_prev_fail_count[1:0]
+     5/5: $0\f_prev_cold[0:0]
+Creating decoders for process `\regs.$proc$src/regs.v:116$28'.
+     1/4: $0\session_busy[0:0]
+     2/4: $0\digit_count[1:0]
+     3/4: $0\pin_shift[31:0]
+     4/4: $0\txn_valid[0:0]
+Creating decoders for process `\regs.$proc$src/regs.v:106$22'.
+     1/1: $0\fail_count[1:0]
+Creating decoders for process `\regs.$proc$src/regs.v:78$7'.
+     1/1: { $1\digit[3:0] $1\star_key[0:0] $1\digit_valid[0:0] }
+
+2.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\regs.\digit_valid' from process `\regs.$proc$src/regs.v:78$7'.
+No latch inferred for signal `\regs.\star_key' from process `\regs.$proc$src/regs.v:78$7'.
+No latch inferred for signal `\regs.\digit' from process `\regs.$proc$src/regs.v:78$7'.
+
+2.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\regs.\f_past_valid' using process `\regs.$proc$src/regs.v:156$33'.
+  created $dff cell `$procdff$181' with positive edge clock.
+Creating register for signal `\regs.\f_prev_cold' using process `\regs.$proc$src/regs.v:156$33'.
+  created $dff cell `$procdff$182' with positive edge clock.
+Creating register for signal `\regs.\f_prev_fail_count' using process `\regs.$proc$src/regs.v:156$33'.
+  created $dff cell `$procdff$183' with positive edge clock.
+Creating register for signal `\regs.\f_prev_submit_bad' using process `\regs.$proc$src/regs.v:156$33'.
+  created $dff cell `$procdff$184' with positive edge clock.
+Creating register for signal `\regs.\f_prev_txn_stall' using process `\regs.$proc$src/regs.v:156$33'.
+  created $dff cell `$procdff$185' with positive edge clock.
+Creating register for signal `\regs.\txn_valid' using process `\regs.$proc$src/regs.v:116$28'.
+  created $adff cell `$procdff$190' with positive edge clock and positive level reset.
+Creating register for signal `\regs.\pin_shift' using process `\regs.$proc$src/regs.v:116$28'.
+  created $adff cell `$procdff$195' with positive edge clock and positive level reset.
+Creating register for signal `\regs.\digit_count' using process `\regs.$proc$src/regs.v:116$28'.
+  created $adff cell `$procdff$200' with positive edge clock and positive level reset.
+Creating register for signal `\regs.\session_busy' using process `\regs.$proc$src/regs.v:116$28'.
+  created $adff cell `$procdff$205' with positive edge clock and positive level reset.
+Creating register for signal `\regs.\fail_count' using process `\regs.$proc$src/regs.v:106$22'.
+  created $adff cell `$procdff$210' with positive edge clock and positive level reset.
+
+2.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 5 empty switches in `\regs.$proc$src/regs.v:167$42'.
+Removing empty process `regs.$proc$src/regs.v:167$42'.
+Found and cleaned up 1 empty switch in `\regs.$proc$src/regs.v:156$33'.
+Removing empty process `regs.$proc$src/regs.v:156$33'.
+Found and cleaned up 6 empty switches in `\regs.$proc$src/regs.v:116$28'.
+Removing empty process `regs.$proc$src/regs.v:116$28'.
+Found and cleaned up 2 empty switches in `\regs.$proc$src/regs.v:106$22'.
+Removing empty process `regs.$proc$src/regs.v:106$22'.
+Found and cleaned up 1 empty switch in `\regs.$proc$src/regs.v:78$7'.
+Removing empty process `regs.$proc$src/regs.v:78$7'.
+Cleaned up 15 empty switches.
+
+2.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module regs.
+<suppressed ~18 debug messages>
+
+2.3. Executing FUTURE pass.
+
+2.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module regs.
+
+2.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \regs..
+Removed 17 unused cells and 93 unused wires.
+<suppressed ~18 debug messages>
+
+2.6. Executing CHECK pass (checking for obvious problems).
+Checking module regs...
+Found and reported 0 problems.
+
+2.7. Executing OPT pass (performing simple optimizations).
+
+2.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module regs.
+
+2.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\regs'.
+<suppressed ~18 debug messages>
+Removed a total of 6 cells.
+
+2.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \regs..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+      Replacing known input bits on port B of cell $procmux$120: \cold_rst_n -> 1'1
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~16 debug messages>
+
+2.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \regs.
+Performed a total of 0 changes.
+
+2.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\regs'.
+Removed a total of 0 cells.
+
+2.7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \regs..
+Removed 0 unused cells and 6 unused wires.
+<suppressed ~1 debug messages>
+
+2.7.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module regs.
+
+2.7.8. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.7.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \regs..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~16 debug messages>
+
+2.7.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \regs.
+Performed a total of 0 changes.
+
+2.7.11. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\regs'.
+Removed a total of 0 cells.
+
+2.7.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \regs..
+
+2.7.13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module regs.
+
+2.7.14. Finished OPT passes. (There is nothing left to do.)
+
+2.8. Executing WREDUCE pass (reducing word size of cells).
+Removed top 28 address bits (of 32) from memory init port regs.$auto$mem.cc:328:emit$84 ($auto$proc_rom.cc:155:do_switch$82).
+Removed top 3 bits (of 16) from port B of cell regs.$eq$src/regs.v:69$6 ($eq).
+Removed top 30 bits (of 32) from port B of cell regs.$ge$src/regs.v:98$8 ($ge).
+Removed top 30 bits (of 32) from port B of cell regs.$lt$src/regs.v:110$26 ($lt).
+Removed top 30 bits (of 32) from port B of cell regs.$le$src/regs.v:169$44 ($le).
+
+2.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \regs..
+
+2.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.11. Executing OPT pass (performing simple optimizations).
+
+2.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module regs.
+
+2.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\regs'.
+Removed a total of 0 cells.
+
+2.11.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \regs..
+
+2.11.4. Finished fast OPT passes.
+
+2.12. Printing statistics.
+
+=== regs ===
+
+   Number of wires:                 92
+   Number of wire bits:            328
+   Number of public wires:          30
+   Number of public wire bits:     101
+   Number of ports:                 14
+   Number of port bits:             17
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 85
+     $add                            2
+     $adff                           5
+     $assert                         5
+     $dff                            5
+     $eq                             2
+     $ge                             2
+     $gt                             1
+     $le                             1
+     $logic_and                     14
+     $logic_not                      6
+     $logic_or                       1
+     $lt                             1
+     $mem_v2                         1
+     $mux                           39
+
+2.13. Executing CHECK pass (checking for obvious problems).
+Checking module regs...
+Found and reported 0 problems.
+
+3. Executing FLATTEN pass (flatten design).
+
+4. Executing ASYNC2SYNC pass.
+Replacing regs.$procdff$190 ($adff): ARST=\session_rst_n, D=$0\txn_valid[0:0], Q=\txn_valid
+Replacing regs.$procdff$195 ($adff): ARST=\session_rst_n, D=$0\pin_shift[31:0], Q=\pin_shift
+Replacing regs.$procdff$200 ($adff): ARST=\session_rst_n, D=$0\digit_count[1:0], Q=\digit_count
+Replacing regs.$procdff$205 ($adff): ARST=\session_rst_n, D=$0\session_busy[0:0], Q=\session_busy
+Replacing regs.$procdff$210 ($adff): ARST=\cold_rst_n, D=$0\fail_count[1:0], Q=\fail_count
+
+5. Executing FORMALFF pass.
+
+6. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+Mapping memory $auto$proc_rom.cc:155:do_switch$82 in module \regs:
+  created 16 $dff cells and 0 static cells of width 6.
+  read interface: 0 $dff and 15 $mux cells.
+  write interface: 0 write mux blocks.
+
+7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \regs..
+Removed 0 unused cells and 16 unused wires.
+<suppressed ~1 debug messages>
+
+8. Executing SAT pass (solving SAT problems in the circuit).
+
+Setting up time step 1:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Final init constraint equation: { $auto$async2sync.cc:228:execute$219 $auto$async2sync.cc:228:execute$217 $auto$async2sync.cc:228:execute$215 $auto$async2sync.cc:228:execute$213 $auto$async2sync.cc:228:execute$211 \f_prev_txn_stall \f_prev_submit_bad \f_prev_fail_count \f_prev_cold \f_past_valid } = 44'00000000000000000000000000000000000000000000
+
+Setting up time step 2:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+
+Setting up time step 3:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+
+Setting up time step 4:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+
+Setting up time step 5:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+
+Setting up time step 1:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+** Trying induction with length 1 **
+
+Setting up time step 6:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 1] Solving problem with 57905 variables and 157931 clauses..
+Base case for induction length 1 proven.
+
+Setting up time step 2:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 1] Solving problem with 18913 variables and 51492 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213                0         0    00000000000000000000000000000000
+  init $auto$async2sync.cc:228:execute$215                3         3                                  11
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                0         0                                  00
+  init \f_past_valid                                      0         0                                   0
+  init \f_prev_cold                                       0         0                                   0
+  init \f_prev_fail_count                                 3         3                                  11
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  0         0                                   0
+
+** Trying induction with length 2 **
+
+Setting up time step 7:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 2] Solving problem with 68001 variables and 185622 clauses..
+Base case for induction length 2 proven.
+
+Setting up time step 3:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 2] Solving problem with 29362 variables and 80285 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213               -1  ffffffff    11111111111111111111111111111111
+  init $auto$async2sync.cc:228:execute$215                2         2                                  10
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                1         1                                  01
+  init \f_past_valid                                      0         0                                   0
+  init \f_prev_cold                                       0         0                                   0
+  init \f_prev_fail_count                                 2         2                                  10
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  0         0                                   0
+
+** Trying induction with length 3 **
+
+Setting up time step 8:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 3] Solving problem with 78429 variables and 214352 clauses..
+Base case for induction length 3 proven.
+
+Setting up time step 4:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 3] Solving problem with 40120 variables and 110048 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213               -1  ffffffff    11111111111111111111111111111111
+  init $auto$async2sync.cc:228:execute$215                1         1                                  01
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                1         1                                  01
+  init \f_past_valid                                      0         0                                   0
+  init \f_prev_cold                                       0         0                                   0
+  init \f_prev_fail_count                                 2         2                                  10
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  0         0                                   0
+
+** Trying induction with length 4 **
+
+Setting up time step 9:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 4] Solving problem with 89170 variables and 244064 clauses..
+Base case for induction length 4 proven.
+
+Setting up time step 5:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 4] Solving problem with 51187 variables and 140781 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213       -251658250  f0fffff6    11110000111111111111111111110110
+  init $auto$async2sync.cc:228:execute$215                1         1                                  01
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                2         2                                  10
+  init \f_past_valid                                      0         0                                   0
+  init \f_prev_cold                                       0         0                                   0
+  init \f_prev_fail_count                                 3         3                                  11
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  0         0                                   0
+
+** Trying induction with length 5 **
+
+Setting up time step 10:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 5] Solving problem with 100218 variables and 274740 clauses..
+Base case for induction length 5 proven.
+
+Setting up time step 6:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 5] Solving problem with 62563 variables and 172484 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213               -2  fffffffe    11111111111111111111111111111110
+  init $auto$async2sync.cc:228:execute$215                1         1                                  01
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                2         2                                  10
+  init \f_past_valid                                      0         0                                   0
+  init \f_prev_cold                                       0         0                                   0
+  init \f_prev_fail_count                                 3         3                                  11
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  0         0                                   0
+
+** Trying induction with length 6 **
+
+Setting up time step 11:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 6] Solving problem with 111574 variables and 306383 clauses..
+Base case for induction length 6 proven.
+
+Setting up time step 7:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 6] Solving problem with 74248 variables and 205157 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213       1308731469  4e01a84d    01001110000000011010100001001101
+  init $auto$async2sync.cc:228:execute$215                0         0                                  00
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                2         2                                  10
+  init \f_past_valid                                      1         1                                   1
+  init \f_prev_cold                                       0         0                                   0
+  init \f_prev_fail_count                                 3         3                                  11
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  0         0                                   0
+
+** Trying induction with length 7 **
+
+Setting up time step 12:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 7] Solving problem with 123239 variables and 338996 clauses..
+Base case for induction length 7 proven.
+
+Setting up time step 8:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 7] Solving problem with 86242 variables and 238800 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213        859526301  333b549d    00110011001110110101010010011101
+  init $auto$async2sync.cc:228:execute$215                0         0                                  00
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                3         3                                  11
+  init \f_past_valid                                      0         0                                   0
+  init \f_prev_cold                                       1         1                                   1
+  init \f_prev_fail_count                                 1         1                                  01
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  0         0                                   0
+
+** Trying induction with length 8 **
+
+Setting up time step 13:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 8] Solving problem with 135213 variables and 372579 clauses..
+Base case for induction length 8 proven.
+
+Setting up time step 9:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 8] Solving problem with 98545 variables and 273413 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213      -1090519053  befffff3    10111110111111111111111111110011
+  init $auto$async2sync.cc:228:execute$215                0         0                                  00
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                0         0                                  00
+  init \f_past_valid                                      0         0                                   0
+  init \f_prev_cold                                       1         1                                   1
+  init \f_prev_fail_count                                 0         0                                  00
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  1         1                                   1
+
+** Trying induction with length 9 **
+
+Setting up time step 14:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 9] Solving problem with 147496 variables and 407132 clauses..
+Base case for induction length 9 proven.
+
+Setting up time step 10:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 9] Solving problem with 111157 variables and 308996 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213           974826     edfea    00000000000011101101111111101010
+  init $auto$async2sync.cc:228:execute$215                0         0                                  00
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                0         0                                  00
+  init \f_past_valid                                      0         0                                   0
+  init \f_prev_cold                                       1         1                                   1
+  init \f_prev_fail_count                                 3         3                                  11
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  1         1                                   1
+
+** Trying induction with length 10 **
+
+Setting up time step 15:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 10] Solving problem with 160088 variables and 442655 clauses..
+Base case for induction length 10 proven.
+
+Setting up time step 11:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 10] Solving problem with 124078 variables and 345549 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213        268470718  100089be    00010000000000001000100110111110
+  init $auto$async2sync.cc:228:execute$215                0         0                                  00
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                0         0                                  00
+  init \f_past_valid                                      0         0                                   0
+  init \f_prev_cold                                       1         1                                   1
+  init \f_prev_fail_count                                 1         1                                  01
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  1         1                                   1
+
+** Trying induction with length 11 **
+
+Setting up time step 16:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 11] Solving problem with 172989 variables and 479148 clauses..
+Base case for induction length 11 proven.
+
+Setting up time step 12:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 11] Solving problem with 137308 variables and 383072 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213        268470718  100089be    00010000000000001000100110111110
+  init $auto$async2sync.cc:228:execute$215                0         0                                  00
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                1         1                                  01
+  init \f_past_valid                                      1         1                                   1
+  init \f_prev_cold                                       1         1                                   1
+  init \f_prev_fail_count                                 1         1                                  01
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  1         1                                   1
+
+** Trying induction with length 12 **
+
+Setting up time step 17:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 12] Solving problem with 186199 variables and 516611 clauses..
+Base case for induction length 12 proven.
+
+Setting up time step 13:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 12] Solving problem with 150847 variables and 421565 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213        268470718  100089be    00010000000000001000100110111110
+  init $auto$async2sync.cc:228:execute$215                0         0                                  00
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                1         1                                  01
+  init \f_past_valid                                      1         1                                   1
+  init \f_prev_cold                                       1         1                                   1
+  init \f_prev_fail_count                                 1         1                                  01
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  1         1                                   1
+
+** Trying induction with length 13 **
+
+Setting up time step 18:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 13] Solving problem with 199718 variables and 555044 clauses..
+Base case for induction length 13 proven.
+
+Setting up time step 14:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 13] Solving problem with 164695 variables and 461028 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213       1145324612  44444444    01000100010001000100010001000100
+  init $auto$async2sync.cc:228:execute$215                0         0                                  00
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                0         0                                  00
+  init \f_past_valid                                      0         0                                   0
+  init \f_prev_cold                                       0         0                                   0
+  init \f_prev_fail_count                                 1         1                                  01
+  init \f_prev_submit_bad                                 1         1                                   1
+  init \f_prev_txn_stall                                  1         1                                   1
+
+** Trying induction with length 14 **
+
+Setting up time step 19:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 14] Solving problem with 213546 variables and 594447 clauses..
+Base case for induction length 14 proven.
+
+Setting up time step 15:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 14] Solving problem with 178852 variables and 501461 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213      -2147483648  80000000    10000000000000000000000000000000
+  init $auto$async2sync.cc:228:execute$215                2         2                                  10
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                0         0                                  00
+  init \f_past_valid                                      1         1                                   1
+  init \f_prev_cold                                       1         1                                   1
+  init \f_prev_fail_count                                 0         0                                  00
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  1         1                                   1
+
+** Trying induction with length 15 **
+
+Setting up time step 20:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 15] Solving problem with 227683 variables and 634820 clauses..
+Base case for induction length 15 proven.
+
+Setting up time step 16:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 15] Solving problem with 193318 variables and 542864 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213       -266990607  f0160bf1    11110000000101100000101111110001
+  init $auto$async2sync.cc:228:execute$215                0         0                                  00
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                0         0                                  00
+  init \f_past_valid                                      0         0                                   0
+  init \f_prev_cold                                       1         1                                   1
+  init \f_prev_fail_count                                 2         2                                  10
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  1         1                                   1
+
+** Trying induction with length 16 **
+
+Setting up time step 21:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 16] Solving problem with 242129 variables and 676163 clauses..
+Base case for induction length 16 proven.
+
+Setting up time step 17:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 16] Solving problem with 208093 variables and 585237 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213       -266990607  f0160bf1    11110000000101100000101111110001
+  init $auto$async2sync.cc:228:execute$215                0         0                                  00
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                0         0                                  00
+  init \f_past_valid                                      0         0                                   0
+  init \f_prev_cold                                       1         1                                   1
+  init \f_prev_fail_count                                 2         2                                  10
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  1         1                                   1
+
+** Trying induction with length 17 **
+
+Setting up time step 22:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 17] Solving problem with 256884 variables and 718476 clauses..
+Base case for induction length 17 proven.
+
+Setting up time step 18:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 17] Solving problem with 223177 variables and 628580 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213          1048576    100000    00000000000100000000000000000000
+  init $auto$async2sync.cc:228:execute$215                0         0                                  00
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                1         1                                  01
+  init \f_past_valid                                      0         0                                   0
+  init \f_prev_cold                                       1         1                                   1
+  init \f_prev_fail_count                                 1         1                                  01
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  1         1                                   1
+
+** Trying induction with length 18 **
+
+Setting up time step 23:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 18] Solving problem with 271948 variables and 761759 clauses..
+Base case for induction length 18 proven.
+
+Setting up time step 19:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 18] Solving problem with 238570 variables and 672893 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213          1048576    100000    00000000000100000000000000000000
+  init $auto$async2sync.cc:228:execute$215                0         0                                  00
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                1         1                                  01
+  init \f_past_valid                                      0         0                                   0
+  init \f_prev_cold                                       1         1                                   1
+  init \f_prev_fail_count                                 1         1                                  01
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  1         1                                   1
+
+** Trying induction with length 19 **
+
+Setting up time step 24:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 19] Solving problem with 287321 variables and 806012 clauses..
+Base case for induction length 19 proven.
+
+Setting up time step 20:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 19] Solving problem with 254272 variables and 718176 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213         42606692   28a2064    00000010100010100010000001100100
+  init $auto$async2sync.cc:228:execute$215                1         1                                  01
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                1         1                                  01
+  init \f_past_valid                                      1         1                                   1
+  init \f_prev_cold                                       0         0                                   0
+  init \f_prev_fail_count                                 1         1                                  01
+  init \f_prev_submit_bad                                 1         1                                   1
+  init \f_prev_txn_stall                                  1         1                                   1
+
+** Trying induction with length 20 **
+
+Setting up time step 25:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 20] Solving problem with 303003 variables and 851235 clauses..
+Base case for induction length 20 proven.
+
+Setting up time step 21:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 20] Solving problem with 270283 variables and 764429 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213         42606692   28a2064    00000010100010100010000001100100
+  init $auto$async2sync.cc:228:execute$215                1         1                                  01
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                1         1                                  01
+  init \f_past_valid                                      1         1                                   1
+  init \f_prev_cold                                       0         0                                   0
+  init \f_prev_fail_count                                 1         1                                  01
+  init \f_prev_submit_bad                                 1         1                                   1
+  init \f_prev_txn_stall                                  1         1                                   1
+
+** Trying induction with length 21 **
+
+Setting up time step 26:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 21] Solving problem with 318991 variables and 897419 clauses..
+Base case for induction length 21 proven.
+
+Setting up time step 22:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 21] Solving problem with 286603 variables and 811652 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213        536870912  20000000    00100000000000000000000000000000
+  init $auto$async2sync.cc:228:execute$215                0         0                                  00
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                1         1                                  01
+  init \f_past_valid                                      1         1                                   1
+  init \f_prev_cold                                       1         1                                   1
+  init \f_prev_fail_count                                 1         1                                  01
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  1         1                                   1
+
+** Trying induction with length 22 **
+
+Setting up time step 27:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 22] Solving problem with 335288 variables and 944573 clauses..
+Base case for induction length 22 proven.
+
+Setting up time step 23:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 22] Solving problem with 303232 variables and 859845 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213        536870912  20000000    00100000000000000000000000000000
+  init $auto$async2sync.cc:228:execute$215                0         0                                  00
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                1         1                                  01
+  init \f_past_valid                                      0         0                                   0
+  init \f_prev_cold                                       0         0                                   0
+  init \f_prev_fail_count                                 0         0                                  00
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  1         1                                   1
+
+** Trying induction with length 23 **
+
+Setting up time step 28:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 23] Solving problem with 351894 variables and 992697 clauses..
+Base case for induction length 23 proven.
+
+Setting up time step 24:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 23] Solving problem with 320170 variables and 909008 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213      -2147483648  80000000    10000000000000000000000000000000
+  init $auto$async2sync.cc:228:execute$215                0         0                                  00
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                1         1                                  01
+  init \f_past_valid                                      0         0                                   0
+  init \f_prev_cold                                       1         1                                   1
+  init \f_prev_fail_count                                 0         0                                  00
+  init \f_prev_submit_bad                                 1         1                                   1
+  init \f_prev_txn_stall                                  1         1                                   1
+
+** Trying induction with length 24 **
+
+Setting up time step 29:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 24] Solving problem with 368809 variables and 1041791 clauses..
+Base case for induction length 24 proven.
+
+Setting up time step 25:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 24] Solving problem with 337417 variables and 959141 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213       1145044992  44400000    01000100010000000000000000000000
+  init $auto$async2sync.cc:228:execute$215                0         0                                  00
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                1         1                                  01
+  init \f_past_valid                                      1         1                                   1
+  init \f_prev_cold                                       1         1                                   1
+  init \f_prev_fail_count                                 1         1                                  01
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  0         0                                   0
+
+** Trying induction with length 25 **
+
+Setting up time step 30:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 25] Solving problem with 386033 variables and 1091855 clauses..
+Base case for induction length 25 proven.
+
+Setting up time step 26:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 25] Solving problem with 354973 variables and 1010244 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213       1145044992  44400000    01000100010000000000000000000000
+  init $auto$async2sync.cc:228:execute$215                0         0                                  00
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                1         1                                  01
+  init \f_past_valid                                      1         1                                   1
+  init \f_prev_cold                                       1         1                                   1
+  init \f_prev_fail_count                                 1         1                                  01
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  0         0                                   0
+
+** Trying induction with length 26 **
+
+Setting up time step 31:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 26] Solving problem with 403566 variables and 1142889 clauses..
+Base case for induction length 26 proven.
+
+Setting up time step 27:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 26] Solving problem with 372838 variables and 1062317 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213       1073741824  40000000    01000000000000000000000000000000
+  init $auto$async2sync.cc:228:execute$215                0         0                                  00
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                2         2                                  10
+  init \f_past_valid                                      1         1                                   1
+  init \f_prev_cold                                       0         0                                   0
+  init \f_prev_fail_count                                 1         1                                  01
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  1         1                                   1
+
+** Trying induction with length 27 **
+
+Setting up time step 32:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 27] Solving problem with 421408 variables and 1194893 clauses..
+Base case for induction length 27 proven.
+
+Setting up time step 28:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 27] Solving problem with 391012 variables and 1115360 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213        134217728   8000000    00001000000000000000000000000000
+  init $auto$async2sync.cc:228:execute$215                1         1                                  01
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                2         2                                  10
+  init \f_past_valid                                      1         1                                   1
+  init \f_prev_cold                                       0         0                                   0
+  init \f_prev_fail_count                                 2         2                                  10
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  1         1                                   1
+
+** Trying induction with length 28 **
+
+Setting up time step 33:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 28] Solving problem with 439559 variables and 1247867 clauses..
+Base case for induction length 28 proven.
+
+Setting up time step 29:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 28] Solving problem with 409495 variables and 1169373 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213        134217728   8000000    00001000000000000000000000000000
+  init $auto$async2sync.cc:228:execute$215                0         0                                  00
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                2         2                                  10
+  init \f_past_valid                                      0         0                                   0
+  init \f_prev_cold                                       0         0                                   0
+  init \f_prev_fail_count                                 2         2                                  10
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  1         1                                   1
+
+** Trying induction with length 29 **
+
+Setting up time step 34:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 29] Solving problem with 458019 variables and 1301811 clauses..
+Base case for induction length 29 proven.
+
+Setting up time step 30:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 29] Solving problem with 428287 variables and 1224356 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213        138412032   8400000    00001000010000000000000000000000
+  init $auto$async2sync.cc:228:execute$215                0         0                                  00
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                1         1                                  01
+  init \f_past_valid                                      0         0                                   0
+  init \f_prev_cold                                       1         1                                   1
+  init \f_prev_fail_count                                 2         2                                  10
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  0         0                                   0
+
+** Trying induction with length 30 **
+
+Setting up time step 35:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 30] Solving problem with 476788 variables and 1356725 clauses..
+Base case for induction length 30 proven.
+
+Setting up time step 31:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 30] Solving problem with 447388 variables and 1280309 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213        134217728   8000000    00001000000000000000000000000000
+  init $auto$async2sync.cc:228:execute$215                0         0                                  00
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                1         1                                  01
+  init \f_past_valid                                      0         0                                   0
+  init \f_prev_cold                                       1         1                                   1
+  init \f_prev_fail_count                                 2         2                                  10
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  0         0                                   0
+
+** Trying induction with length 31 **
+
+Setting up time step 36:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 31] Solving problem with 495866 variables and 1412609 clauses..
+Base case for induction length 31 proven.
+
+Setting up time step 32:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 31] Solving problem with 466798 variables and 1337232 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213        134217728   8000000    00001000000000000000000000000000
+  init $auto$async2sync.cc:228:execute$215                0         0                                  00
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                1         1                                  01
+  init \f_past_valid                                      1         1                                   1
+  init \f_prev_cold                                       0         0                                   0
+  init \f_prev_fail_count                                 2         2                                  10
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  0         0                                   0
+
+** Trying induction with length 32 **
+
+Setting up time step 37:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 32] Solving problem with 515253 variables and 1469463 clauses..
+Base case for induction length 32 proven.
+
+Setting up time step 33:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 32] Solving problem with 486517 variables and 1395125 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$211                1         1                                   1
+  init $auto$async2sync.cc:228:execute$213        134217728   8000000    00001000000000000000000000000000
+  init $auto$async2sync.cc:228:execute$215                0         0                                  00
+  init $auto$async2sync.cc:228:execute$217                0         0                                   0
+  init $auto$async2sync.cc:228:execute$219                2         2                                  10
+  init \f_past_valid                                      1         1                                   1
+  init \f_prev_cold                                       0         0                                   0
+  init \f_prev_fail_count                                 2         2                                  10
+  init \f_prev_submit_bad                                 0         0                                   0
+  init \f_prev_txn_stall                                  0         0                                   0
+
+** Trying induction with length 33 **
+
+Setting up time step 38:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[base case 33] Solving problem with 534949 variables and 1527287 clauses..
+Base case for induction length 33 proven.
+
+Setting up time step 34:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \txn_ready
+Import def constraint for this timestep: \session_end
+Import def constraint for this timestep: \key_valid
+Import def constraint for this timestep: \entry_enable
+Import def constraint for this timestep: \cold_rst_n
+Import def constraint for this timestep: \session_rst_n
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \key_id
+Imported 109 cells to SAT database.
+Import proof for assert: $le$src/regs.v:169$44_Y when $assert$src/regs.v:169$43_EN.
+Import proof for assert: $logic_not$src/regs.v:170$46_Y when $assert$src/regs.v:170$45_EN.
+Import proof for assert: $ge$src/regs.v:172$49_Y when $assert$src/regs.v:172$48_EN.
+Import proof for assert: \f_prev_submit_bad when $assert$src/regs.v:174$51_EN.
+Import proof for assert: \txn_valid when $assert$src/regs.v:176$55_EN.
+
+[induction step 33] Solving problem with 506545 variables and 1453988 clauses..
+Induction step proven: SUCCESS!
+
+                  /$$$$$$      /$$$$$$$$     /$$$$$$$    
+                 /$$__  $$    | $$_____/    | $$__  $$   
+                | $$  \ $$    | $$          | $$  \ $$   
+                | $$  | $$    | $$$$$       | $$  | $$   
+                | $$  | $$    | $$__/       | $$  | $$   
+                | $$/$$ $$    | $$          | $$  | $$   
+                |  $$$$$$/ /$$| $$$$$$$$ /$$| $$$$$$$//$$
+                 \____ $$$|__/|________/|__/|_______/|__/
+                       \__/                              
+
+End of script. Logfile hash: 88b6a6168d, CPU: user 19.60s system 0.48s, MEM: 595.49 MB peak
+Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+Time spent: 99% 1x sat (20 sec), 0% 6x opt_clean (0 sec), ...

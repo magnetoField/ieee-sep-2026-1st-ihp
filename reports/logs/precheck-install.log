@@ -1,0 +1,28 @@
+Using Python 3.12.14 environment at: .tools/precheck-py312
+Resolved 13 packages in 437ms
+Downloading numpy (17.1MiB)
+Downloading yowasp-yosys (11.6MiB)
+Downloading klayout (25.9MiB)
+Downloading wasmtime (7.4MiB)
+ Downloaded wasmtime
+ Downloaded numpy
+ Downloaded yowasp-yosys
+ Downloaded klayout
+Prepared 13 packages in 4.29s
+warning: Failed to hardlink files; falling back to full copy. This may lead to degraded performance.
+         If the cache and target directories are on different filesystems, hardlinking may not be supported.
+         If this is intentional, set `export UV_LINK_MODE=copy` or use `--link-mode=copy` to suppress this warning.
+Installed 13 packages in 7.48s
+ + click==8.3.1
+ + gdstk==0.9.52
+ + iniconfig==2.0.0
+ + klayout==0.30.8
+ + numpy==1.26.4
+ + packaging==24.1
+ + platformdirs==4.9.4
+ + pluggy==1.5.0
+ + pytest==8.2.2
+ + pyyaml==6.0.1
+ + wasmtime==42.0.0
+ + yowasp-runtime==1.88
+ + yowasp-yosys==0.63.0.0.post1107

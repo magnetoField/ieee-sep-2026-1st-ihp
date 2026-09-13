@@ -1,0 +1,521 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+
+-- Running command `read_verilog -formal -D FORMAL src/szymon.v; chformal -lower; prep -top szymon; flatten; async2sync; formalff -clk2ff; memory_map; opt_clean; sat -verify -prove-asserts -set-init-zero -set-def-formal -set-def-inputs -seq 5 -tempinduct' --
+
+1. Executing Verilog-2005 frontend: src/szymon.v
+Parsing formal Verilog input from `src/szymon.v' to AST representation.
+Generating RTLIL representation for module `\szymon'.
+Successfully finished Verilog frontend.
+
+2. Executing PREP pass.
+
+2.1. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1.1. Analyzing design hierarchy..
+Top module:  \szymon
+
+2.1.2. Analyzing design hierarchy..
+Top module:  \szymon
+Removed 0 unused modules.
+Module szymon directly or indirectly contains formal properties -> setting "keep" attribute.
+
+2.2. Executing PROC pass (convert processes to netlists).
+
+2.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$src/szymon.v:199$45 in module szymon.
+Marked 9 switch rules as full_case in process $proc$src/szymon.v:66$31 in module szymon.
+Removed a total of 0 dead cases.
+
+2.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 0 assignments to connections.
+
+2.2.4. Executing PROC_INIT pass (extract init attributes).
+
+2.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\szymon.$proc$src/szymon.v:66$31'.
+
+2.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~14 debug messages>
+
+2.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\szymon.$proc$src/szymon.v:209$51'.
+     1/7: $assert$src/szymon.v:219$66_EN
+     2/7: $assert$src/szymon.v:217$64_EN
+     3/7: $assert$src/szymon.v:216$62_EN
+     4/7: $assert$src/szymon.v:215$61_EN
+     5/7: $assert$src/szymon.v:213$56_EN
+     6/7: $assert$src/szymon.v:212$54_EN
+     7/7: $assert$src/szymon.v:211$52_EN
+Creating decoders for process `\szymon.$proc$src/szymon.v:199$45'.
+     1/4: $0\f_past_valid[0:0]
+     2/4: $0\f_prev_m_last[0:0]
+     3/4: $0\f_prev_m_bit[0:0]
+     4/4: $0\f_prev_m_stall[0:0]
+Creating decoders for process `\szymon.$proc$src/szymon.v:66$31'.
+     1/9: $0\round_count[5:0]
+     2/9: $0\bit_count[5:0]
+     3/9: $0\k3[31:0]
+     4/9: $0\k2[31:0]
+     5/9: $0\k1[31:0]
+     6/9: $0\k0[31:0]
+     7/9: $0\b[31:0]
+     8/9: $0\a[31:0]
+     9/9: $0\state[2:0]
+
+2.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+2.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\szymon.\f_past_valid' using process `\szymon.$proc$src/szymon.v:199$45'.
+  created $dff cell `$procdff$336' with positive edge clock.
+Creating register for signal `\szymon.\f_prev_m_stall' using process `\szymon.$proc$src/szymon.v:199$45'.
+  created $dff cell `$procdff$337' with positive edge clock.
+Creating register for signal `\szymon.\f_prev_m_bit' using process `\szymon.$proc$src/szymon.v:199$45'.
+  created $dff cell `$procdff$338' with positive edge clock.
+Creating register for signal `\szymon.\f_prev_m_last' using process `\szymon.$proc$src/szymon.v:199$45'.
+  created $dff cell `$procdff$339' with positive edge clock.
+Creating register for signal `\szymon.\state' using process `\szymon.$proc$src/szymon.v:66$31'.
+  created $adff cell `$procdff$344' with positive edge clock and positive level reset.
+Creating register for signal `\szymon.\a' using process `\szymon.$proc$src/szymon.v:66$31'.
+  created $adff cell `$procdff$349' with positive edge clock and positive level reset.
+Creating register for signal `\szymon.\b' using process `\szymon.$proc$src/szymon.v:66$31'.
+  created $adff cell `$procdff$354' with positive edge clock and positive level reset.
+Creating register for signal `\szymon.\k0' using process `\szymon.$proc$src/szymon.v:66$31'.
+  created $adff cell `$procdff$359' with positive edge clock and positive level reset.
+Creating register for signal `\szymon.\k1' using process `\szymon.$proc$src/szymon.v:66$31'.
+  created $adff cell `$procdff$364' with positive edge clock and positive level reset.
+Creating register for signal `\szymon.\k2' using process `\szymon.$proc$src/szymon.v:66$31'.
+  created $adff cell `$procdff$369' with positive edge clock and positive level reset.
+Creating register for signal `\szymon.\k3' using process `\szymon.$proc$src/szymon.v:66$31'.
+  created $adff cell `$procdff$374' with positive edge clock and positive level reset.
+Creating register for signal `\szymon.\bit_count' using process `\szymon.$proc$src/szymon.v:66$31'.
+  created $adff cell `$procdff$379' with positive edge clock and positive level reset.
+Creating register for signal `\szymon.\round_count' using process `\szymon.$proc$src/szymon.v:66$31'.
+  created $adff cell `$procdff$384' with positive edge clock and positive level reset.
+
+2.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 2 empty switches in `\szymon.$proc$src/szymon.v:209$51'.
+Removing empty process `szymon.$proc$src/szymon.v:209$51'.
+Found and cleaned up 1 empty switch in `\szymon.$proc$src/szymon.v:199$45'.
+Removing empty process `szymon.$proc$src/szymon.v:199$45'.
+Found and cleaned up 11 empty switches in `\szymon.$proc$src/szymon.v:66$31'.
+Removing empty process `szymon.$proc$src/szymon.v:66$31'.
+Cleaned up 14 empty switches.
+
+2.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module szymon.
+<suppressed ~31 debug messages>
+
+2.3. Executing FUTURE pass.
+
+2.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module szymon.
+
+2.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \szymon..
+Removed 26 unused cells and 132 unused wires.
+<suppressed ~28 debug messages>
+
+2.6. Executing CHECK pass (checking for obvious problems).
+Checking module szymon...
+Found and reported 0 problems.
+
+2.7. Executing OPT pass (performing simple optimizations).
+
+2.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module szymon.
+
+2.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\szymon'.
+<suppressed ~144 debug messages>
+Removed a total of 48 cells.
+
+2.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \szymon..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~22 debug messages>
+
+2.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \szymon.
+    New ctrl vector for $pmux cell $procmux$189: { \cmd_ready $auto$opt_reduce.cc:137:opt_pmux$386 $procmux$151_CMP $eq$src/szymon.v:219$68_Y }
+    New ctrl vector for $pmux cell $procmux$210: { \cmd_ready $auto$opt_reduce.cc:137:opt_pmux$388 $procmux$151_CMP $eq$src/szymon.v:219$68_Y }
+    New ctrl vector for $pmux cell $procmux$231: { \cmd_ready $auto$opt_reduce.cc:137:opt_pmux$390 $procmux$151_CMP $eq$src/szymon.v:219$68_Y }
+    New ctrl vector for $pmux cell $procmux$252: { \cmd_ready $auto$opt_reduce.cc:137:opt_pmux$392 $procmux$151_CMP $eq$src/szymon.v:219$68_Y }
+  Optimizing cells in module \szymon.
+Performed a total of 4 changes.
+
+2.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\szymon'.
+<suppressed ~33 debug messages>
+Removed a total of 11 cells.
+
+2.7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \szymon..
+Removed 0 unused cells and 59 unused wires.
+<suppressed ~1 debug messages>
+
+2.7.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module szymon.
+<suppressed ~1 debug messages>
+
+2.7.8. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.7.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \szymon..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~18 debug messages>
+
+2.7.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \szymon.
+Performed a total of 0 changes.
+
+2.7.11. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\szymon'.
+Removed a total of 0 cells.
+
+2.7.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \szymon..
+Removed 1 unused cells and 2 unused wires.
+<suppressed ~2 debug messages>
+
+2.7.13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module szymon.
+
+2.7.14. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.7.15. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \szymon..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~18 debug messages>
+
+2.7.16. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \szymon.
+Performed a total of 0 changes.
+
+2.7.17. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\szymon'.
+Removed a total of 0 cells.
+
+2.7.18. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \szymon..
+
+2.7.19. Executing OPT_EXPR pass (perform const folding).
+Optimizing module szymon.
+
+2.7.20. Finished OPT passes. (There is nothing left to do.)
+
+2.8. Executing WREDUCE pass (reducing word size of cells).
+Removed top 4 bits (of 6) from port B of cell szymon.$ge$src/szymon.v:51$15 ($ge).
+Removed top 2 bits (of 3) from port B of cell szymon.$eq$src/szymon.v:60$23 ($eq).
+Removed top 1 bits (of 3) from port B of cell szymon.$eq$src/szymon.v:61$24 ($eq).
+Removed top 1 bits (of 6) from port B of cell szymon.$eq$src/szymon.v:138$38 ($eq).
+Removed top 1 bits (of 3) from port B of cell szymon.$procmux$151_CMP0 ($eq).
+
+2.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \szymon..
+
+2.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.11. Executing OPT pass (performing simple optimizations).
+
+2.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module szymon.
+
+2.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\szymon'.
+Removed a total of 0 cells.
+
+2.11.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \szymon..
+
+2.11.4. Finished fast OPT passes.
+
+2.12. Printing statistics.
+
+=== szymon ===
+
+   Number of wires:                141
+   Number of wire bits:           1806
+   Number of public wires:          36
+   Number of public wire bits:     485
+   Number of ports:                 15
+   Number of port bits:            142
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                135
+     $add                            2
+     $adff                           9
+     $and                            3
+     $assert                         7
+     $dff                            4
+     $eq                             9
+     $ge                             1
+     $le                             3
+     $logic_and                      9
+     $logic_not                      4
+     $lt                             1
+     $mux                           60
+     $pmux                           9
+     $reduce_or                      1
+     $shiftx                         1
+     $xor                           12
+
+2.13. Executing CHECK pass (checking for obvious problems).
+Checking module szymon...
+Found and reported 0 problems.
+
+3. Executing FLATTEN pass (flatten design).
+
+4. Executing ASYNC2SYNC pass.
+Replacing szymon.$procdff$344 ($adff): ARST=\rst_n, D=$0\state[2:0], Q=\state
+Replacing szymon.$procdff$349 ($adff): ARST=\rst_n, D=$0\a[31:0], Q=\a
+Replacing szymon.$procdff$354 ($adff): ARST=\rst_n, D=$0\b[31:0], Q=\b
+Replacing szymon.$procdff$359 ($adff): ARST=\rst_n, D=$0\k0[31:0], Q=\k0
+Replacing szymon.$procdff$364 ($adff): ARST=\rst_n, D=$0\k1[31:0], Q=\k1
+Replacing szymon.$procdff$369 ($adff): ARST=\rst_n, D=$0\k2[31:0], Q=\k2
+Replacing szymon.$procdff$374 ($adff): ARST=\rst_n, D=$0\k3[31:0], Q=\k3
+Replacing szymon.$procdff$379 ($adff): ARST=\rst_n, D=$0\bit_count[5:0], Q=\bit_count
+Replacing szymon.$procdff$384 ($adff): ARST=\rst_n, D=$0\round_count[5:0], Q=\round_count
+
+5. Executing FORMALFF pass.
+
+6. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \szymon..
+
+8. Executing SAT pass (solving SAT problems in the circuit).
+
+Setting up time step 1:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \s_bit
+Import def constraint for this timestep: \s_valid
+Import def constraint for this timestep: \seal_valid
+Import def constraint for this timestep: \m_ready
+Import def constraint for this timestep: \cmd_valid
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \abort
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \cmd_key
+Imported 153 cells to SAT database.
+Final init constraint equation: { $auto$async2sync.cc:228:execute$409 $auto$async2sync.cc:228:execute$407 $auto$async2sync.cc:228:execute$405 $auto$async2sync.cc:228:execute$403 $auto$async2sync.cc:228:execute$401 $auto$async2sync.cc:228:execute$399 $auto$async2sync.cc:228:execute$397 $auto$async2sync.cc:228:execute$395 $auto$async2sync.cc:228:execute$393 \f_prev_m_last \f_prev_m_bit \f_prev_m_stall \f_past_valid } = 211'0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Setting up time step 2:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \s_bit
+Import def constraint for this timestep: \s_valid
+Import def constraint for this timestep: \seal_valid
+Import def constraint for this timestep: \m_ready
+Import def constraint for this timestep: \cmd_valid
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \abort
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \cmd_key
+Imported 153 cells to SAT database.
+
+Setting up time step 3:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \s_bit
+Import def constraint for this timestep: \s_valid
+Import def constraint for this timestep: \seal_valid
+Import def constraint for this timestep: \m_ready
+Import def constraint for this timestep: \cmd_valid
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \abort
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \cmd_key
+Imported 153 cells to SAT database.
+
+Setting up time step 4:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \s_bit
+Import def constraint for this timestep: \s_valid
+Import def constraint for this timestep: \seal_valid
+Import def constraint for this timestep: \m_ready
+Import def constraint for this timestep: \cmd_valid
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \abort
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \cmd_key
+Imported 153 cells to SAT database.
+
+Setting up time step 5:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \s_bit
+Import def constraint for this timestep: \s_valid
+Import def constraint for this timestep: \seal_valid
+Import def constraint for this timestep: \m_ready
+Import def constraint for this timestep: \cmd_valid
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \abort
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \cmd_key
+Imported 153 cells to SAT database.
+
+Setting up time step 1:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \s_bit
+Import def constraint for this timestep: \s_valid
+Import def constraint for this timestep: \seal_valid
+Import def constraint for this timestep: \m_ready
+Import def constraint for this timestep: \cmd_valid
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \abort
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \cmd_key
+Imported 153 cells to SAT database.
+Import proof for assert: $le$src/szymon.v:211$53_Y when $assert$src/szymon.v:211$52_EN.
+Import proof for assert: $le$src/szymon.v:212$55_Y when $assert$src/szymon.v:211$52_EN.
+Import proof for assert: $le$src/szymon.v:213$57_Y when $assert$src/szymon.v:211$52_EN.
+Import proof for assert: \m_valid when $assert$src/szymon.v:215$61_EN.
+Import proof for assert: $eq$src/szymon.v:216$63_Y when $assert$src/szymon.v:215$61_EN.
+Import proof for assert: $eq$src/szymon.v:217$65_Y when $assert$src/szymon.v:215$61_EN.
+Import proof for assert: 1'1 when $assert$src/szymon.v:211$52_EN.
+
+** Trying induction with length 1 **
+
+Setting up time step 6:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \s_bit
+Import def constraint for this timestep: \s_valid
+Import def constraint for this timestep: \seal_valid
+Import def constraint for this timestep: \m_ready
+Import def constraint for this timestep: \cmd_valid
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \abort
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \cmd_key
+Imported 153 cells to SAT database.
+Import proof for assert: $le$src/szymon.v:211$53_Y when $assert$src/szymon.v:211$52_EN.
+Import proof for assert: $le$src/szymon.v:212$55_Y when $assert$src/szymon.v:211$52_EN.
+Import proof for assert: $le$src/szymon.v:213$57_Y when $assert$src/szymon.v:211$52_EN.
+Import proof for assert: \m_valid when $assert$src/szymon.v:215$61_EN.
+Import proof for assert: $eq$src/szymon.v:216$63_Y when $assert$src/szymon.v:215$61_EN.
+Import proof for assert: $eq$src/szymon.v:217$65_Y when $assert$src/szymon.v:215$61_EN.
+Import proof for assert: 1'1 when $assert$src/szymon.v:211$52_EN.
+
+[base case 1] Solving problem with 292545 variables and 801712 clauses..
+Base case for induction length 1 proven.
+
+Setting up time step 2:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \s_bit
+Import def constraint for this timestep: \s_valid
+Import def constraint for this timestep: \seal_valid
+Import def constraint for this timestep: \m_ready
+Import def constraint for this timestep: \cmd_valid
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \abort
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \cmd_key
+Imported 153 cells to SAT database.
+Import proof for assert: $le$src/szymon.v:211$53_Y when $assert$src/szymon.v:211$52_EN.
+Import proof for assert: $le$src/szymon.v:212$55_Y when $assert$src/szymon.v:211$52_EN.
+Import proof for assert: $le$src/szymon.v:213$57_Y when $assert$src/szymon.v:211$52_EN.
+Import proof for assert: \m_valid when $assert$src/szymon.v:215$61_EN.
+Import proof for assert: $eq$src/szymon.v:216$63_Y when $assert$src/szymon.v:215$61_EN.
+Import proof for assert: $eq$src/szymon.v:217$65_Y when $assert$src/szymon.v:215$61_EN.
+Import proof for assert: 1'1 when $assert$src/szymon.v:211$52_EN.
+
+[induction step 1] Solving problem with 95570 variables and 261471 clauses..
+Induction step failed. Incrementing induction length.
+
+  Time Signal Name                                      Dec       Hex                                 Bin
+  ---- ---------------------------------------- ----------- --------- -----------------------------------
+  init $auto$async2sync.cc:228:execute$393                2         2                                 010
+  init $auto$async2sync.cc:228:execute$395                0         0    00000000000000000000000000000000
+  init $auto$async2sync.cc:228:execute$397                0         0    00000000000000000000000000000000
+  init $auto$async2sync.cc:228:execute$399                0         0    00000000000000000000000000000000
+  init $auto$async2sync.cc:228:execute$401                0         0    00000000000000000000000000000000
+  init $auto$async2sync.cc:228:execute$403                0         0    00000000000000000000000000000000
+  init $auto$async2sync.cc:228:execute$405                0         0    00000000000000000000000000000000
+  init $auto$async2sync.cc:228:execute$407                0         0                              000000
+  init $auto$async2sync.cc:228:execute$409               49        31                              110001
+  init \f_past_valid                                      0         0                                   0
+  init \f_prev_m_bit                                      1         1                                   1
+  init \f_prev_m_last                                     1         1                                   1
+  init \f_prev_m_stall                                    0         0                                   0
+
+** Trying induction with length 2 **
+
+Setting up time step 7:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \s_bit
+Import def constraint for this timestep: \s_valid
+Import def constraint for this timestep: \seal_valid
+Import def constraint for this timestep: \m_ready
+Import def constraint for this timestep: \cmd_valid
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \abort
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \cmd_key
+Imported 153 cells to SAT database.
+Import proof for assert: $le$src/szymon.v:211$53_Y when $assert$src/szymon.v:211$52_EN.
+Import proof for assert: $le$src/szymon.v:212$55_Y when $assert$src/szymon.v:211$52_EN.
+Import proof for assert: $le$src/szymon.v:213$57_Y when $assert$src/szymon.v:211$52_EN.
+Import proof for assert: \m_valid when $assert$src/szymon.v:215$61_EN.
+Import proof for assert: $eq$src/szymon.v:216$63_Y when $assert$src/szymon.v:215$61_EN.
+Import proof for assert: $eq$src/szymon.v:217$65_Y when $assert$src/szymon.v:215$61_EN.
+Import proof for assert: 1'1 when $assert$src/szymon.v:211$52_EN.
+
+[base case 2] Solving problem with 343390 variables and 941741 clauses..
+Base case for induction length 2 proven.
+
+Setting up time step 3:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \s_bit
+Import def constraint for this timestep: \s_valid
+Import def constraint for this timestep: \seal_valid
+Import def constraint for this timestep: \m_ready
+Import def constraint for this timestep: \cmd_valid
+Import def constraint for this timestep: \rst_n
+Import def constraint for this timestep: \abort
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \cmd_key
+Imported 153 cells to SAT database.
+Import proof for assert: $le$src/szymon.v:211$53_Y when $assert$src/szymon.v:211$52_EN.
+Import proof for assert: $le$src/szymon.v:212$55_Y when $assert$src/szymon.v:211$52_EN.
+Import proof for assert: $le$src/szymon.v:213$57_Y when $assert$src/szymon.v:211$52_EN.
+Import proof for assert: \m_valid when $assert$src/szymon.v:215$61_EN.
+Import proof for assert: $eq$src/szymon.v:216$63_Y when $assert$src/szymon.v:215$61_EN.
+Import proof for assert: $eq$src/szymon.v:217$65_Y when $assert$src/szymon.v:215$61_EN.
+Import proof for assert: 1'1 when $assert$src/szymon.v:211$52_EN.
+
+[induction step 2] Solving problem with 148104 variables and 406777 clauses..
+Induction step proven: SUCCESS!
+
+                  /$$$$$$      /$$$$$$$$     /$$$$$$$    
+                 /$$__  $$    | $$_____/    | $$__  $$   
+                | $$  \ $$    | $$          | $$  \ $$   
+                | $$  | $$    | $$$$$       | $$  | $$   
+                | $$  | $$    | $$__/       | $$  | $$   
+                | $$/$$ $$    | $$          | $$  | $$   
+                |  $$$$$$/ /$$| $$$$$$$$ /$$| $$$$$$$//$$
+                 \____ $$$|__/|________/|__/|_______/|__/
+                       \__/                              
+
+End of script. Logfile hash: bde6b671f9, CPU: user 2.26s system 0.22s, MEM: 304.43 MB peak
+Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+Time spent: 97% 1x sat (2 sec), 0% 7x opt_clean (0 sec), ...
