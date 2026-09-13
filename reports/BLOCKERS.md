@@ -98,3 +98,13 @@ Pages is disabled. The authenticated account has WRITE rather than ADMIN, and
 both Pages GET and create API calls return 404. A repository admin must enable
 Settings -> Pages -> GitHub Actions. Shuttle availability must also be confirmed
 before submission. See GITHUB_UPLOAD.md.
+
+## GitHub Pages viewer rerun status (2026-09-13)
+
+The earlier Pages-disabled condition is resolved: workflow-dispatch run
+34764740699 successfully completed `viewer`. The remaining branch summary 6/7
+comes from push run 34762738865 attempt 2, where `deploy-pages@v5` found two
+artifacts named `github-pages` retained across attempts. A local workflow fix
+uses an artifact name unique to `github.run_id` and `github.run_attempt` and is
+covered by the upload-structure validator. Remote verification remains NOT_RUN
+until an explicitly authorized push; do not mark the historical check PASS.

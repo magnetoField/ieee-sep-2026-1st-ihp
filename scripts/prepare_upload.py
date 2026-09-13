@@ -17,6 +17,24 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def check_viewer_artifact(viewer):
+    """Require one attempt-specific Pages artifact from upload through deploy."""
+    errors = []
+    pages_name = 'github-pages-${{ github.run_id }}-${{ github.run_attempt }}'
+    if viewer.get('env', {}).get('PAGES_ARTIFACT') != pages_name:
+        errors.append('Viewer Pages artifact is not unique per workflow attempt')
+    upload_steps = [s for s in viewer.get('steps', [])
+                    if str(s.get('uses', '')).startswith('actions/upload-pages-artifact@')]
+    deploy_steps = [s for s in viewer.get('steps', [])
+                    if str(s.get('uses', '')).startswith('actions/deploy-pages@')]
+    artifact_ref = '${{ env.PAGES_ARTIFACT }}'
+    if len(upload_steps) != 1 or upload_steps[0].get('with', {}).get('name') != artifact_ref:
+        errors.append('Viewer must upload exactly the attempt-specific Pages artifact')
+    if len(deploy_steps) != 1 or deploy_steps[0].get('with', {}).get('artifact_name') != artifact_ref:
+        errors.append('Viewer must deploy exactly the attempt-specific Pages artifact')
+    return errors
+
+
 def candidates():
     data = subprocess.check_output(
         ['git', 'ls-files', '--cached', '--others', '--exclude-standard', '-z'], cwd=ROOT
@@ -82,6 +100,7 @@ def check(names):
         errors.append('Missing Tiny Tapeout jobs')
     if not any(s.get('with', {}).get('pdk') == 'ihp-sg13g2' for s in jobs['gds']['steps']):
         errors.append('GDS workflow does not select IHP')
+    errors += check_viewer_artifact(jobs['viewer'])
     # Report filenames only, never credential contents. Public demo cipher
     # vectors are intentionally allowed; they are not account credentials.
     patterns = [rb'gh[pousr]_[A-Za-z0-9]{30,}', rb'github_pat_[A-Za-z0-9_]{40,}',

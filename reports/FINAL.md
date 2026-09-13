@@ -115,3 +115,15 @@ SYNCASYNCNET warning. The prepared lint change waives only that named rule and
 retains `-Wall`; RTL is unchanged. Fresh remote CI is still required. This step
 does not perform a Tiny Tapeout import, production
 submission, order or payment.
+
+## Latest GitHub CI qualification (2026-09-13)
+
+Commit `857c0e4c9b81f69020444db35f6e80c294e28417` passes the remote RTL,
+docs, wiki, GDS, precheck and gate-level jobs. Pages has since been enabled and
+a fresh manual GDS workflow passes `viewer`; the remaining branch summary 6/7
+is the historical failed `viewer` check from a rerun of push workflow
+34762738865. That rerun retained two fixed-name `github-pages` artifacts. The
+local workflow repair gives every run attempt a unique Pages artifact name and
+is structurally tested, but remote verification is NOT_RUN pending separately
+authorized push. This does not change the local ASIC status fields above or
+constitute a Tiny Tapeout submission.

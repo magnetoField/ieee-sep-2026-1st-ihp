@@ -1,0 +1,26 @@
+TOOLS: Python 3.14.4; PyYAML 6.0.3; GNU bash, version 5.3.9(1)-release (x86_64-pc-linux-gnu); git version 2.53.0
+COMMAND: python3 workflow structural, shell, and negative-validator checks
+PASS YAML; unique attempt names; upload/deploy paired; two negative mutations caught; all run blocks bash -n
+COMMAND: python3 -m py_compile scripts/prepare_upload.py
+PASS prepare_upload.py syntax
+COMMAND: make upload-check
+PASS upload structure: 367 files, 15.47 MiB
+PASS metadata, 24 pins, source list, executable scripts, IHP jobs, size and basic credential-pattern checks
+Project: D00RSH; author: Koło Naukowe BAZA — ZT, PN, MK, JT, KK
+COMMAND: git diff --check
+PASS git diff --check
+COMMAND: make release-check
+release-check: PASS for required local checks; SDF unsupported, no remote submission
+COMMAND: make upload-check
+PASS upload structure: 367 files, 15.48 MiB
+PASS metadata, 24 pins, source list, executable scripts, IHP jobs, size and basic credential-pattern checks
+Project: D00RSH; author: Koło Naukowe BAZA — ZT, PN, MK, JT, KK
+COMMAND: git diff --check
+PASS final manifest/upload/diff checks
+COMMAND: make release-check (after final manifest update)
+release-check: PASS for required local checks; SDF unsupported, no remote submission
+COMMAND: make upload-check (final)
+PASS upload structure: 367 files, 15.48 MiB
+PASS metadata, 24 pins, source list, executable scripts, IHP jobs, size and basic credential-pattern checks
+Project: D00RSH; author: Koło Naukowe BAZA — ZT, PN, MK, JT, KK
+COMMAND: git diff --check (final)

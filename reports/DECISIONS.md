@@ -271,3 +271,16 @@ and then synchronously shifted. That is the deliberate architecture of both
 `reset_release` instances and is covered by a standalone testbench and formal
 checks. Keep `-Wall`, disable only SYNCASYNCNET for the lint invocation, and do
 not alter the reset circuit merely to satisfy this structural heuristic.
+
+## D-027 — make the GitHub Pages viewer safe to rerun
+
+The official `viewer@ttihp26b` sequence at upstream commit `85a4c412` uploads
+the fixed artifact name `github-pages`. GitHub preserves artifacts from an
+earlier attempt when a workflow run is rerun, so `deploy-pages@v5` rejected run
+34762738865 attempt 2 after finding two artifacts with that name. Expand the
+same viewer steps in `gds.yaml` and name the Pages artifact
+`github-pages-${{ github.run_id }}-${{ github.run_attempt }}` for both upload
+and deployment. This preserves the official GDS/render inputs and Pages output
+while making every attempt unambiguous. `prepare_upload.py` enforces the paired
+names. No RTL, physical configuration, signoff evidence or production status
+is changed by this CI-only repair.

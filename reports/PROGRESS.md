@@ -415,3 +415,30 @@ warning would weaken the specified reset behavior. Add only
 other warnings. Reproduction: `gh run view 34762520248 --log-failed`. Evidence:
 `reports/logs/github-rtl-ff4b316-failure.log`. Next: lint locally, publish and
 continue the exact remote regression. No RTL logic changed in this repair.
+
+## P8 — GitHub Pages rerun repair (2026-09-13)
+
+- Diagnosed branch status 6/7 at commit
+  `857c0e4c9b81f69020444db35f6e80c294e28417`: the failed check is `viewer`
+  in workflow run 34762738865 attempt 2. Its public annotations report two
+  artifacts named `github-pages`; GDS, precheck and gate-level checks pass.
+- Confirmed upstream `TinyTapeout/tt-gds-action/viewer@ttihp26b` commit
+  `85a4c4128c10aa024ea8a02c7b3828d11c14ed90` hard-codes the default Pages
+  artifact name in both upload and deployment.
+- Expanded that viewer sequence locally and paired an attempt-specific name
+  using `github.run_id` plus `github.run_attempt`. Added a release-structure
+  check that rejects a mismatched or non-unique Pages artifact.
+- Verification commands: an inline `python3` YAML/structure test with
+  `bash -n` for every workflow `run` block and two controlled bad-name
+  mutations; `python3 -m py_compile scripts/prepare_upload.py`;
+  `make upload-check`; `make release-check`; `git diff --check`. All exit 0.
+  The test proves attempt 1/2 names differ, upload/deploy names match and both
+  negative mutations are rejected. Release check preserves the existing local
+  ASIC evidence status; it is not a remote Pages test. Tools: Python 3.14.4,
+  PyYAML 6.0.3, GNU bash 5.3.9 and Git 2.53.0. Exact output:
+  `reports/logs/github-viewer-rerun-fix.log`.
+- Remote execution: NOT_RUN. Repository instructions require separate approval
+  before push; therefore the historical red check is not claimed resolved yet.
+- Next: after authorized push, require a fresh push-triggered `gds` workflow,
+  then exercise `Re-run all jobs` once and confirm both attempts deploy exactly
+  one Pages artifact each.

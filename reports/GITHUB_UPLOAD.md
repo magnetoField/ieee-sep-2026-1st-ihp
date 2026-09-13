@@ -82,3 +82,18 @@ Ubuntu packages and has not yet been executed on a GitHub runner.
 
 User instructions: docs/GITHUB_UPLOAD.md. No account credentials are requested
 or embedded. The basic credential-pattern scan is not an exhaustive secret audit.
+
+## Current CI status and Pages rerun repair — 2026-09-13
+
+Commit `857c0e4c9b81f69020444db35f6e80c294e28417` passes the remote RTL,
+documentation, wiki, GDS, precheck and gate-level jobs. GitHub Pages is now
+enabled, and fresh workflow-dispatch run 34764740699 also passes `viewer`.
+The branch nevertheless reports 6/7 because push run 34762738865 was rerun as
+attempt 2: the upstream viewer uploaded another fixed-name `github-pages`
+artifact, and `deploy-pages@v5` rejected the two retained artifacts.
+
+The local repair expands the upstream viewer sequence and uses
+`github-pages-${{ github.run_id }}-${{ github.run_attempt }}` consistently for
+upload and deployment. `make upload-check` now rejects loss or mismatch of that
+pair. This CI-only change has local structural verification but no remote result
+until an explicitly authorized push; the existing 6/7 is not relabeled PASS.

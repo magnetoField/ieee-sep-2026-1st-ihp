@@ -34,5 +34,77 @@ jobs:
     permissions:
       pages: write
       id-token: write
+    env:
+      # A rerun keeps artifacts from earlier attempts of the same run. The
+      # upstream viewer action uses the fixed name "github-pages", which makes
+      # deploy-pages reject the duplicate artifacts. Pair both actions with an
+      # attempt-specific name so Re-run jobs remains safe.
+      PAGES_ARTIFACT: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
     steps:
-      - uses: TinyTapeout/tt-gds-action/viewer@ttihp26b
+      # This is the viewer@ttihp26b sequence at upstream commit 85a4c412,
+      # expanded locally only to make the Pages artifact name configurable.
+      - name: Download GDS artifact
+        uses: actions/download-artifact@v7
+        with:
+          name: tt_submission
+      - name: Read PDK information from submission
+        working-directory: tt_submission
+        run: |
+          pdk="$(jq -er '.PDK' pdk.json)"
+          echo "PDK=$pdk" >> "$GITHUB_ENV"
+      - name: Download GDS render artifact
+        uses: actions/download-artifact@v7
+        with:
+          name: gds_render
+          path: gh-pages
+      - name: Copy OAS and GDSII
+        run: |
+          cp tt_submission/*.gds gh-pages/tinytapeout.gds
+          cp tt_submission/*.oas gh-pages/tinytapeout.oas
+      - name: Generate viewer redirect
+        run: |
+          cat << EOF >> gh-pages/index.html
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+              <meta charset="UTF-8">
+              <meta http-equiv="X-UA-Compatible" content="IE=edge">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Redirecting to 3D Viewer...</title>
+            </head>
+            <body>
+              <script>
+                location.href = "https://gds-viewer.tinytapeout.com/?pdk=$PDK&model=" + encodeURIComponent(location.href + '/tinytapeout.oas');
+              </script>
+            </body>
+            </html>
+          EOF
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          name: ${{ env.PAGES_ARTIFACT }}
+          path: gh-pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
+        with:
+          artifact_name: ${{ env.PAGES_ARTIFACT }}
+      - name: Check for failure
+        if: failure()
+        run: |
+          echo "Failed to deploy to GitHub Pages; see https://tinytapeout.com/faq/#my-github-action-is-failing-on-the-pages-part"
+          exit 1
+      - name: Display preview in workflow summary
+        run: |
+          page_url="${{ steps.deployment.outputs.page_url }}"
+          page_url="${page_url%/}"
+          cat << EOF >> "$GITHUB_STEP_SUMMARY"
+          # 3D Viewer
+          [Open 3D viewer](https://gds-viewer.tinytapeout.com/?model=$page_url/tinytapeout.oas&pdk=$PDK)
+
+          # Tiny Tapeout Explorer
+          [Open in Tiny Tapeout Explorer](https://gds-explorer.tinytapeout.com/viewer?file=$page_url/tinytapeout.oas&pdk=$PDK)
+
+          # 2D Preview
+          ![png]($page_url/gds_render.png)
+          EOF
