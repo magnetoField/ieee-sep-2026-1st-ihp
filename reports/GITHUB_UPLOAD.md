@@ -6,10 +6,9 @@ https://github.com/magnetoField/ieee-sep-2026-1st-ihp. The target is public,
 the authenticated account has WRITE permission, and its existing `main`
 history through dde98d17fe0eef79c5d05db6fbf471b7aeebed0e is merged without a
 force-push. The D00RSH project tree remains authoritative over the placeholder
-template. The earlier empty https://github.com/opelkus/D00RSH repository was
-created on the previous instruction but is not used as the publication target.
-At this report snapshot the first target push and remote CI are still pending.
-No payment or production submission has been performed.
+template. Commit 591f96d58bc990ff2b4ac7c46b12b4208281c7a2 was pushed to
+`main`. No other repository is configured as a project remote. No payment or
+production submission has been performed.
 
 ## Prepared
 
@@ -60,13 +59,16 @@ VERIFICATION=PASS (required local evidence; not a new full regression)
 FIT_1_TILE=PASS (existing verified IHP run)
 PHYSICAL_CHECKS=PASS (existing local STA/DRC/LVS/antenna evidence)
 PRODUCTION_PERSISTENCE=NOT_IMPLEMENTED
-REMOTE_CI=NOT_RUN
+REMOTE_CI=FAIL_ON_591F96D
 SUBMISSION=NOT_PERFORMED
 LOCAL_COMMIT=PASS
-FIRST_PUSH=PENDING
+FIRST_PUSH=PASS
 
-Remaining: first push, enable/verify Actions and Pages, require green CI for
-the published commit, verify shuttle availability and import in Tiny Tapeout.
+Remote result for 591f96d: docs PASS, wiki PASS, RTL FAIL because Git mode 0644
+made `scripts/local_tool.sh` non-executable on Linux; GDS was still running at
+the snapshot. The executable-mode fix is staged and the upload checker now
+enforces mode 100755 for shell scripts. Remaining: push the fix, require green
+CI for the published commit, verify shuttle availability and import in Tiny Tapeout.
 Preserve SDF unsupported, 15 fanout warnings, narrow hold margin, public demo
 key, volatile lockout and absence of silicon testing. The standard RTL CI uses
 Ubuntu packages and has not yet been executed on a GitHub runner.

@@ -238,10 +238,17 @@ IHP26b GDS, precheck, gate-level and viewer jobs remain the submission path.
 
 ## D-023 — publish into the assigned holder repository without force-push
 
-The user redirected publication from the newly created empty opelkus/D00RSH
-repository to magnetoField/ieee-sep-2026-1st-ihp. The target already contains
+Publish only to magnetoField/ieee-sep-2026-1st-ihp. The target already contains
 four placeholder/template commits and the authenticated account has WRITE
 permission. Merge the unrelated histories and keep the verified D00RSH tree as
 the result, instead of force-pushing or rewriting the owner's history. The
 remote placeholder commit dde98d17fe0eef79c5d05db6fbf471b7aeebed0e remains an
 ancestor of the publication commit. Do not submit, order or pay for tapeout.
+
+## D-024 — enforce executable modes required by the Linux template runner
+
+The first remote RTL workflow reached the pinned tool installation, then failed
+before lint because Git had stored `scripts/local_tool.sh` as mode 100644. Local
+NTFS execution did not reveal this packaging defect. Track every shell script as
+100755 and make `upload-check` inspect Git index modes. This is a repository and
+CI portability correction; script contents and RTL behavior are unchanged.

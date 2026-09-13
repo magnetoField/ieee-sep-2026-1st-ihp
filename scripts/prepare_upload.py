@@ -24,6 +24,17 @@ def candidates():
     return sorted(set(name.decode() for name in data.split(b'\0') if name))
 
 
+def tracked_modes():
+    data = subprocess.check_output(['git', 'ls-files', '--stage', '-z'], cwd=ROOT)
+    modes = {}
+    for record in data.split(b'\0'):
+        if not record:
+            continue
+        metadata, name = record.split(b'\t', 1)
+        modes[name.decode()] = metadata.split()[0].decode()
+    return modes
+
+
 def check(names):
     errors = []
     info = yaml.safe_load((ROOT / 'info.yaml').read_text())
@@ -61,6 +72,10 @@ def check(names):
                 '.github/workflows/test.yaml', '.github/workflows/wiki.yaml',
                 'MANIFEST.sha256')
     errors += [f'Missing required publication file: {n}' for n in required if n not in names]
+    modes = tracked_modes()
+    for name in (n for n in names if n.startswith('scripts/') and n.endswith('.sh')):
+        if modes.get(name) != '100755':
+            errors.append(f'Linux runner requires executable Git mode 100755: {name}')
     workflow = yaml.safe_load((ROOT / '.github/workflows/gds.yaml').read_text())
     jobs = workflow['jobs']
     if not {'gds', 'precheck', 'gl_test', 'viewer'} <= jobs.keys():
@@ -88,7 +103,7 @@ def check(names):
     if errors:
         raise SystemExit('BLOCKED:\n' + '\n'.join(errors))
     print(f'PASS upload structure: {len(names)} files, {total / 1024 / 1024:.2f} MiB')
-    print('PASS metadata, 24 pins, source list, IHP jobs, size and basic credential-pattern checks')
+    print('PASS metadata, 24 pins, source list, executable scripts, IHP jobs, size and basic credential-pattern checks')
     print(f'Project: {project["title"]}; author: {project["author"]}')
     return total
 

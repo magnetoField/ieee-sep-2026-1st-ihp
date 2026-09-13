@@ -102,8 +102,9 @@ The user selected public repository
 https://github.com/magnetoField/ieee-sep-2026-1st-ihp as the publication target.
 Authenticated WRITE permission is confirmed. Its existing `main` history
 through dde98d17fe0eef79c5d05db6fbf471b7aeebed0e is merged without force-push;
-the published branch head is the merge commit containing this update. Remote
-CI remains NOT_RUN until the first push. The earlier empty opelkus/D00RSH repo
-is not the publication target. This step does not perform a Tiny Tapeout import,
-production submission, order or payment and does not change the verification
-statuses above.
+commit 591f96d58bc990ff2b4ac7c46b12b4208281c7a2 was pushed to `main`.
+Docs and wiki PASS remotely. The first RTL job FAIL is a packaging portability
+issue (shell scripts tracked as 100644); the staged correction changes them to
+100755 and adds an upload guard. GDS remained in progress at this snapshot.
+This step does not perform a Tiny Tapeout import, production submission, order
+or payment and does not change the local verification statuses above.

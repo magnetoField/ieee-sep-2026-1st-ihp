@@ -84,6 +84,8 @@ Project name is D00RSH. Official metadata parser PASS. Local preparation and
 extracted-source tests PASS. The user redirected publication to public target
 magnetoField/ieee-sep-2026-1st-ihp; WRITE permission is confirmed. Its existing
 main history through dde98d17fe0eef79c5d05db6fbf471b7aeebed0e is integrated
-without force-push. First target push and actual remote CI remain. Remote CI is
-NOT_RUN, not PASS. Shuttle availability must be confirmed in Tiny Tapeout before
-submission. See GITHUB_UPLOAD.md.
+without force-push. Commit 591f96d was pushed. Its docs and wiki jobs PASS; RTL
+FAIL is localized to missing executable Git mode on shell scripts, not an RTL
+failure. The mode fix is staged and must pass a fresh remote run. GDS remains
+in progress at this snapshot. Shuttle availability must be confirmed in Tiny
+Tapeout before submission. See GITHUB_UPLOAD.md.

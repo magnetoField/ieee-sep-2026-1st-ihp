@@ -25,28 +25,26 @@ Lokalne środowisko PDK, narzędzia, przebiegi i katalogi runs są ignorowane pr
 Raporty i zweryfikowany GDS pozostają dowodami lokalnymi. GitHub zbuduje własne
 artefakty do zgłoszenia z opublikowanego commitu.
 
-## Utworzenie publicznego repozytorium
+## Repozytorium projektu
 
-Na GitHub utwórz puste **publiczne** repozytorium, np. `D00RSH`.
-Nie inicjalizuj go dodatkowym README/licencją: te pliki już są w projekcie.
-Repozytorium nie ma jeszcze pierwszego commitu ani zdalnego `origin`.
-Istniejący remote `template` nie jest miejscem publikacji projektu.
+Publicznym repozytorium projektu jest
+`https://github.com/magnetoField/ieee-sep-2026-1st-ihp`. Powstało ono z
+oficjalnego `TinyTapeout/ttihp-verilog-template`; jego pierwotna historia jest
+zachowana jako przodek commitu projektu. Nie wykonuj force-pusha.
 
-W GitHub Desktop dodaj ten katalog jako istniejące repozytorium, przejrzyj
-zmiany i utwórz pierwszy commit. Alternatywnie użyj poniższych poleceń po
-ustawieniu własnej tożsamości Git. Zastąp OWNER nazwą swojego konta/organizacji:
+Po sklonowaniu tego repozytorium normalna publikacja kolejnych zmian wygląda
+następująco:
 
 ```sh
-git add .
+git add <zmienione-pliki>
 git diff --cached --stat
-git commit -m "Prepare D00RSH for Tiny Tapeout IHP26b"
-git remote add origin https://github.com/OWNER/D00RSH.git
+git commit -m "Opis zmiany"
 git push -u origin main
 ```
 
-To polecenia do wykonania po przeglądzie publikowanych plików; przygotowanie
-paczki nie wykonuje commitu ani push. Jeśli origin już istnieje, sprawdź
-`git remote -v` zamiast dodawać go ponownie.
+Przed pushem sprawdź `git remote -v`: adres publikacji ma wskazywać wyłącznie
+repozytorium `magnetoField/ieee-sep-2026-1st-ihp` (remote do odczytu oficjalnego
+template’u może pozostać osobno).
 
 Zalecany jest Git/GitHub Desktop: zachowuje ukryty katalog `.github` i uprawnienia
 skryptów. Przy ręcznym przesyłaniu plików przez stronę GitHub łatwo pominąć

@@ -352,8 +352,8 @@ remote-GL Makefile integration and signoff review, not another area sweep.
 ## P7–P8 — D00RSH public repository preparation (2026-09-13)
 
 User supplied product D00RSH, Koło Naukowe BAZA and initials ZT PN MK JT KK.
-After initially requesting creation of opelkus/D00RSH, the user redirected the
-push to https://github.com/magnetoField/ieee-sep-2026-1st-ihp. The target is
+The user selected
+https://github.com/magnetoField/ieee-sep-2026-1st-ihp. The target is
 public and authenticated permission is WRITE. Its four-commit `main` history,
 ending at dde98d17fe0eef79c5d05db6fbf471b7aeebed0e, was fetched and merged with
 the D00RSH project commit without rewriting remote history. Metadata and public
@@ -369,3 +369,15 @@ Fresh ZIP extraction also passes inventory/hash checks, release-check, wiki
 build and actual RTL wrapper smoke. Commands/tool versions/logs and remaining
 risks: reports/GITHUB_UPLOAD.md. Next: first push and remote CI. No remote PASS
 or production submission is claimed.
+
+## P8 — first target push and template compatibility repair (2026-09-13)
+
+Pushed merge commit 591f96d58bc990ff2b4ac7c46b12b4208281c7a2 to
+`magnetoField/ieee-sep-2026-1st-ihp:main` without force. GitHub Actions results
+at inspection: docs PASS, wiki PASS, gds RUNNING, rtl-regression FAIL. Exact
+failure from `gh run view 34761065837 --log-failed`: Linux could not execute
+`scripts/local_tool.sh` because its tracked mode was 100644. Set all nine shell
+scripts to Git mode 100755 and extended `scripts/prepare_upload.py` to reject
+future non-executable shell scripts. Evidence:
+`reports/logs/github-rtl-591f96d-failure.log`. Next: local upload/release checks,
+push repair, then require fresh remote CI. No Tiny Tapeout submission performed.

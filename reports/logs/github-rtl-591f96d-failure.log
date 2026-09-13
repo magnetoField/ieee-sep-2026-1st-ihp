@@ -1,0 +1,12 @@
+GitHub Actions run: 34761065837
+Repository: magnetoField/ieee-sep-2026-1st-ihp
+Commit: 591f96d58bc990ff2b4ac7c46b12b4208281c7a2
+Workflow/job: rtl-regression / test
+Observed: 2026-09-13
+Result: FAIL before RTL lint
+Failed step: Run deterministic regression
+Command: make lint
+Diagnostic: /bin/sh: 1: scripts/local_tool.sh: Permission denied
+Exit: make: *** [Makefile:27: lint] Error 126
+Retrieved with:
+  .tools/gh/bin/gh run view 34761065837 --repo magnetoField/ieee-sep-2026-1st-ihp --log-failed
