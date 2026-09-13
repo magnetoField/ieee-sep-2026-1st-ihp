@@ -58,14 +58,6 @@ module kb #(
     localparam [COUNT_W-1:0] PRESS_LAST = PRESS_FRAMES - 1;
     localparam [COUNT_W-1:0] RELEASE_LAST = RELEASE_FRAMES - 1;
 
-    wire [3:0] col_sync;
-    wire [3:0] sample_hits = ~col_sync;
-    wire [1:0] sample_count = hit_count(sample_hits);
-    wire [2:0] count_sum = frame_hits + sample_count;
-    wire [1:0] combined_count = (count_sum >= 2) ? 2'd2 : count_sum[1:0];
-    wire [3:0] sample_id = {row_index, first_column(sample_hits)};
-    wire [3:0] combined_id = (frame_hits != 0) ? frame_first_id : sample_id;
-
     reg [1:0] row_index;
     reg blank_cycle;
     reg [1:0] frame_hits;
@@ -77,6 +69,14 @@ module kb #(
     reg gesture_poisoned;
     reg releasing;
     reg [COUNT_W-1:0] debounce_count;
+
+    wire [3:0] col_sync;
+    wire [3:0] sample_hits = ~col_sync;
+    wire [1:0] sample_count = hit_count(sample_hits);
+    wire [2:0] count_sum = frame_hits + sample_count;
+    wire [1:0] combined_count = (count_sum >= 2) ? 2'd2 : count_sum[1:0];
+    wire [3:0] sample_id = {row_index, first_column(sample_hits)};
+    wire [3:0] combined_id = (frame_hits != 0) ? frame_first_id : sample_id;
 
     generate
         if ((PRESS_FRAMES < 1) || (RELEASE_FRAMES < 1)) begin : g_invalid_kb

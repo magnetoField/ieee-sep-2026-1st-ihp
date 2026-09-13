@@ -260,10 +260,10 @@ Creating decoders for process `$paramod$189e5c5ece264226de8c0df8c90596b8bf71b942
      3/4: $0\scan_tick[0:0]
      4/4: $0\ms_count[1:0]
 Creating decoders for process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$911'.
-     1/4: $4\first_column$func$src/kb.v:66$836.$result[1:0]$918
-     2/4: $3\first_column$func$src/kb.v:66$836.$result[1:0]$917
-     3/4: $2\first_column$func$src/kb.v:66$836.$result[1:0]$916
-     4/4: $1\first_column$func$src/kb.v:66$836.$result[1:0]$915
+     1/4: $4\first_column$func$src/kb.v:78$836.$result[1:0]$918
+     2/4: $3\first_column$func$src/kb.v:78$836.$result[1:0]$917
+     3/4: $2\first_column$func$src/kb.v:78$836.$result[1:0]$916
+     4/4: $1\first_column$func$src/kb.v:78$836.$result[1:0]$915
 Creating decoders for process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$901'.
 Creating decoders for process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:267$888'.
      1/4: $assert$src/kb.v:273$899_EN
@@ -404,13 +404,13 @@ Creating decoders for process `$paramod\sync2\WIDTH=s32'000000000000000000000000
      2/2: $0\stage1[3:0]
 
 13.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
-No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\first_column$func$src/kb.v:66$834.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$911'.
-No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\first_column$func$src/kb.v:66$836.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$911'.
-No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\first_column$func$src/kb.v:66$836.hits' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$911'.
-No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$src/kb.v:63$833.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$901'.
-No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$src/kb.v:63$835.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$901'.
-No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$src/kb.v:63$835.hits' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$901'.
-No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$src/kb.v:63$835.count' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$901'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\first_column$func$src/kb.v:78$834.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$911'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\first_column$func$src/kb.v:78$836.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$911'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\first_column$func$src/kb.v:78$836.hits' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$911'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$src/kb.v:75$833.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$901'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$src/kb.v:75$835.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$901'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$src/kb.v:75$835.hits' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$901'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$src/kb.v:75$835.count' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$901'.
 No latch inferred for signal `$paramod$b92c0599001ba7fee29ca99bde4121d40086de58\regs.\digit_valid' from process `$paramod$b92c0599001ba7fee29ca99bde4121d40086de58\regs.$proc$src/regs.v:78$782'.
 No latch inferred for signal `$paramod$b92c0599001ba7fee29ca99bde4121d40086de58\regs.\star_key' from process `$paramod$b92c0599001ba7fee29ca99bde4121d40086de58\regs.$proc$src/regs.v:78$782'.
 No latch inferred for signal `$paramod$b92c0599001ba7fee29ca99bde4121d40086de58\regs.\digit' from process `$paramod$b92c0599001ba7fee29ca99bde4121d40086de58\regs.$proc$src/regs.v:78$782'.
@@ -1093,7 +1093,7 @@ Optimizing module tt_um_rumcajs.
 13.7.20. Finished OPT passes. (There is nothing left to do.)
 
 13.8. Executing WREDUCE pass (reducing word size of cells).
-Removed top 30 bits (of 32) from port B of cell $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$ge$src/kb.v:65$839 ($ge).
+Removed top 30 bits (of 32) from port B of cell $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$ge$src/kb.v:77$839 ($ge).
 Removed top 3 bits (of 4) from port A of cell $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$shl$src/kb.v:94$843 ($shl).
 Removed top 1 bits (of 2) from port B of cell $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$eq$src/kb.v:171$859 ($eq).
 Removed top 30 bits (of 32) from port B of cell $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$ge$src/kb.v:183$860 ($ge).
@@ -1112,7 +1112,7 @@ Removed top 29 bits (of 32) from port B of cell $paramod$143b15b9608e06eea62a21c
 Converting cell $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$ge$src/kb.v:40$909 ($ge) from signed to unsigned.
 Removed top 1 bits (of 5) from port A of cell $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$ge$src/kb.v:40$909 ($ge).
 Removed top 1 bits (of 3) from port B of cell $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$ge$src/kb.v:40$909 ($ge).
-Removed top 28 bits (of 32) from wire $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$0\hit_count$func$src/kb.v:63$835.count[31:0]$905.
+Removed top 28 bits (of 32) from wire $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$0\hit_count$func$src/kb.v:75$835.count[31:0]$905.
 Removed top 30 bits (of 32) from wire $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$add$src/kb.v:38$906_Y.
 Removed top 29 bits (of 32) from wire $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$add$src/kb.v:38$907_Y.
 Removed top 1 bits (of 32) from wire $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$and$src/kb.v:269$891_Y.
@@ -1962,6 +1962,6 @@ SAT proof finished - no model found: SUCCESS!
                  \____ $$$|__/|________/|__/|_______/|__/
                        \__/                              
 
-End of script. Logfile hash: 3d6ba6bb15, CPU: user 0.38s system 0.09s, MEM: 89.07 MB peak
+End of script. Logfile hash: 601c4def77, CPU: user 0.84s system 0.19s, MEM: 89.09 MB peak
 Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
-Time spent: 52% 1x sat (0 sec), 8% 13x read_verilog (0 sec), ...
+Time spent: 59% 1x sat (0 sec), 7% 13x read_verilog (0 sec), ...

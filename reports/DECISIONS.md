@@ -252,3 +252,14 @@ before lint because Git had stored `scripts/local_tool.sh` as mode 100644. Local
 NTFS execution did not reveal this packaging defect. Track every shell script as
 100755 and make `upload-check` inspect Git index modes. This is a repository and
 CI portability correction; script contents and RTL behavior are unchanged.
+
+## D-025 — use strict declaration-before-reference ordering for Icarus 13
+
+The template-compatible pinned CI bundle supplies Icarus 13, which rejects
+continuous assignments in kb.v that refer to module variables declared later.
+Move the existing row/frame register declarations above those assignments.
+Do not change expressions, state, widths or timing. Re-run the entire functional,
+exhaustive, formal, mutation and synthesis suite because the edited file is RTL.
+Treat the prior physical artifacts as evidence for the logic-equivalent source;
+the official remote GDS/precheck/gl_test run for the published correction is the
+required current publication evidence.

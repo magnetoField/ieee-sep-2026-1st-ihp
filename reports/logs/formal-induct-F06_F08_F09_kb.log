@@ -71,10 +71,10 @@ Converted 0 switches.
 
 3.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
 Creating decoders for process `\kb.$proc$src/kb.v:0$83'.
-     1/4: $4\first_column$func$src/kb.v:66$8.$result[1:0]$90
-     2/4: $3\first_column$func$src/kb.v:66$8.$result[1:0]$89
-     3/4: $2\first_column$func$src/kb.v:66$8.$result[1:0]$88
-     4/4: $1\first_column$func$src/kb.v:66$8.$result[1:0]$87
+     1/4: $4\first_column$func$src/kb.v:78$8.$result[1:0]$90
+     2/4: $3\first_column$func$src/kb.v:78$8.$result[1:0]$89
+     3/4: $2\first_column$func$src/kb.v:78$8.$result[1:0]$88
+     4/4: $1\first_column$func$src/kb.v:78$8.$result[1:0]$87
 Creating decoders for process `\kb.$proc$src/kb.v:0$73'.
 Creating decoders for process `\kb.$proc$src/kb.v:267$60'.
      1/4: $assert$src/kb.v:273$71_EN
@@ -103,13 +103,13 @@ Creating decoders for process `$paramod\sync2\WIDTH=s32'000000000000000000000000
      2/2: $0\stage1[3:0]
 
 3.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
-No latch inferred for signal `\kb.\first_column$func$src/kb.v:66$6.$result' from process `\kb.$proc$src/kb.v:0$83'.
-No latch inferred for signal `\kb.\first_column$func$src/kb.v:66$8.$result' from process `\kb.$proc$src/kb.v:0$83'.
-No latch inferred for signal `\kb.\first_column$func$src/kb.v:66$8.hits' from process `\kb.$proc$src/kb.v:0$83'.
-No latch inferred for signal `\kb.\hit_count$func$src/kb.v:63$5.$result' from process `\kb.$proc$src/kb.v:0$73'.
-No latch inferred for signal `\kb.\hit_count$func$src/kb.v:63$7.$result' from process `\kb.$proc$src/kb.v:0$73'.
-No latch inferred for signal `\kb.\hit_count$func$src/kb.v:63$7.hits' from process `\kb.$proc$src/kb.v:0$73'.
-No latch inferred for signal `\kb.\hit_count$func$src/kb.v:63$7.count' from process `\kb.$proc$src/kb.v:0$73'.
+No latch inferred for signal `\kb.\first_column$func$src/kb.v:78$6.$result' from process `\kb.$proc$src/kb.v:0$83'.
+No latch inferred for signal `\kb.\first_column$func$src/kb.v:78$8.$result' from process `\kb.$proc$src/kb.v:0$83'.
+No latch inferred for signal `\kb.\first_column$func$src/kb.v:78$8.hits' from process `\kb.$proc$src/kb.v:0$83'.
+No latch inferred for signal `\kb.\hit_count$func$src/kb.v:75$5.$result' from process `\kb.$proc$src/kb.v:0$73'.
+No latch inferred for signal `\kb.\hit_count$func$src/kb.v:75$7.$result' from process `\kb.$proc$src/kb.v:0$73'.
+No latch inferred for signal `\kb.\hit_count$func$src/kb.v:75$7.hits' from process `\kb.$proc$src/kb.v:0$73'.
+No latch inferred for signal `\kb.\hit_count$func$src/kb.v:75$7.count' from process `\kb.$proc$src/kb.v:0$73'.
 
 3.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
 Creating register for signal `\kb.\f_past_valid' using process `\kb.$proc$src/kb.v:258$54'.
@@ -270,7 +270,7 @@ Optimizing module kb.
 3.7.14. Finished OPT passes. (There is nothing left to do.)
 
 3.8. Executing WREDUCE pass (reducing word size of cells).
-Removed top 30 bits (of 32) from port B of cell kb.$ge$src/kb.v:65$11 ($ge).
+Removed top 30 bits (of 32) from port B of cell kb.$ge$src/kb.v:77$11 ($ge).
 Removed top 3 bits (of 4) from port A of cell kb.$shl$src/kb.v:94$15 ($shl).
 Removed top 1 bits (of 2) from port B of cell kb.$eq$src/kb.v:171$31 ($eq).
 Removed top 30 bits (of 32) from port B of cell kb.$ge$src/kb.v:183$32 ($ge).
@@ -289,7 +289,7 @@ Removed top 29 bits (of 32) from port B of cell kb.$ge$src/kb.v:40$81 ($ge).
 Converting cell kb.$ge$src/kb.v:40$81 ($ge) from signed to unsigned.
 Removed top 1 bits (of 5) from port A of cell kb.$ge$src/kb.v:40$81 ($ge).
 Removed top 1 bits (of 3) from port B of cell kb.$ge$src/kb.v:40$81 ($ge).
-Removed top 28 bits (of 32) from wire kb.$0\hit_count$func$src/kb.v:63$7.count[31:0]$77.
+Removed top 28 bits (of 32) from wire kb.$0\hit_count$func$src/kb.v:75$7.count[31:0]$77.
 Removed top 30 bits (of 32) from wire kb.$add$src/kb.v:38$78_Y.
 Removed top 29 bits (of 32) from wire kb.$add$src/kb.v:38$79_Y.
 Removed top 1 bits (of 32) from wire kb.$and$src/kb.v:269$63_Y.
@@ -608,6 +608,6 @@ Induction step proven: SUCCESS!
                  \____ $$$|__/|________/|__/|_______/|__/
                        \__/                              
 
-End of script. Logfile hash: c0b2b55615, CPU: user 0.32s system 0.08s, MEM: 73.51 MB peak
+End of script. Logfile hash: 52ad61c5d6, CPU: user 0.54s system 0.12s, MEM: 73.27 MB peak
 Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
-Time spent: 89% 1x sat (0 sec), 2% 3x read_verilog (0 sec), ...
+Time spent: 87% 1x sat (0 sec), 2% 6x opt_clean (0 sec), ...

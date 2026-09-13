@@ -105,6 +105,10 @@ through dde98d17fe0eef79c5d05db6fbf471b7aeebed0e is merged without force-push;
 commit 591f96d58bc990ff2b4ac7c46b12b4208281c7a2 was pushed to `main`.
 Docs and wiki PASS remotely. The first RTL job FAIL is a packaging portability
 issue (shell scripts tracked as 100644); the staged correction changes them to
-100755 and adds an upload guard. GDS remained in progress at this snapshot.
-This step does not perform a Tiny Tapeout import, production submission, order
-or payment and does not change the local verification statuses above.
+100755 and adds an upload guard. The official 591f96d run later reports gds,
+precheck and gl_test PASS; viewer FAIL is only disabled repository Pages. The
+bc292cd RTL rerun found Icarus 13 declaration-order incompatibility in kb.v;
+moving existing declarations before their uses leaves logic unchanged and the
+complete local regression PASS. Fresh remote CI is still required for this
+correction. This step does not perform a Tiny Tapeout import, production
+submission, order or payment.

@@ -86,6 +86,11 @@ magnetoField/ieee-sep-2026-1st-ihp; WRITE permission is confirmed. Its existing
 main history through dde98d17fe0eef79c5d05db6fbf471b7aeebed0e is integrated
 without force-push. Commit 591f96d was pushed. Its docs and wiki jobs PASS; RTL
 FAIL is localized to missing executable Git mode on shell scripts, not an RTL
-failure. The mode fix is staged and must pass a fresh remote run. GDS remains
-in progress at this snapshot. Shuttle availability must be confirmed in Tiny
-Tapeout before submission. See GITHUB_UPLOAD.md.
+failure. Commit bc292cd fixes the modes; its next RTL run found Icarus 13
+forward-reference elaboration errors in kb.v. Declaration order is corrected and
+the complete local regression PASS, but a fresh remote run is required. For
+591f96d the official gds, precheck and gl_test jobs PASS; viewer alone FAIL because
+Pages is disabled. The authenticated account has WRITE rather than ADMIN, and
+both Pages GET and create API calls return 404. A repository admin must enable
+Settings -> Pages -> GitHub Actions. Shuttle availability must also be confirmed
+before submission. See GITHUB_UPLOAD.md.

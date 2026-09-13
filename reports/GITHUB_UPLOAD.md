@@ -64,11 +64,15 @@ SUBMISSION=NOT_PERFORMED
 LOCAL_COMMIT=PASS
 FIRST_PUSH=PASS
 
-Remote result for 591f96d: docs PASS, wiki PASS, RTL FAIL because Git mode 0644
-made `scripts/local_tool.sh` non-executable on Linux; GDS was still running at
-the snapshot. The executable-mode fix is staged and the upload checker now
-enforces mode 100755 for shell scripts. Remaining: push the fix, require green
-CI for the published commit, verify shuttle availability and import in Tiny Tapeout.
+Remote result for 591f96d: docs/wiki/gds/precheck/gl_test PASS; RTL FAIL because
+Git mode 0644 made `scripts/local_tool.sh` non-executable on Linux. Viewer alone
+FAIL because GitHub Pages is not enabled. Commit bc292cd fixes executable modes,
+but its RTL run exposed Icarus 13 rejecting a forward declaration use in kb.v.
+Declarations were reordered without logic changes and the complete local CI
+command set PASS. A fresh push and remote run remain required. The Pages API
+returned 404 for the authenticated WRITE collaborator; a repository admin must
+enable Pages with GitHub Actions as source. Then verify shuttle availability and
+import in Tiny Tapeout.
 Preserve SDF unsupported, 15 fanout warnings, narrow hold margin, public demo
 key, volatile lockout and absence of silicon testing. The standard RTL CI uses
 Ubuntu packages and has not yet been executed on a GitHub runner.

@@ -735,6 +735,6 @@ SAT solving finished - model found:
   ---- ---------------------------------------- ----------- --------- -------------
     20 \cover_goal                                        1         1             1
 
-End of script. Logfile hash: 3c92f1764b, CPU: user 0.44s system 0.11s, MEM: 127.25 MB peak
+End of script. Logfile hash: 3c92f1764b, CPU: user 0.69s system 0.20s, MEM: 127.25 MB peak
 Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
-Time spent: 90% 1x sat (0 sec), 1% 6x opt_clean (0 sec), ...
+Time spent: 89% 1x sat (0 sec), 1% 6x opt_clean (0 sec), ...

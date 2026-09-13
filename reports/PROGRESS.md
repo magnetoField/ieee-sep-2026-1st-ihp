@@ -381,3 +381,25 @@ scripts to Git mode 100755 and extended `scripts/prepare_upload.py` to reject
 future non-executable shell scripts. Evidence:
 `reports/logs/github-rtl-591f96d-failure.log`. Next: local upload/release checks,
 push repair, then require fresh remote CI. No Tiny Tapeout submission performed.
+
+## P8 — template parser compatibility and official remote jobs (2026-09-13)
+
+Commit bc292cd89c310cac13115c4f5b4fd8e3235ee453 fixes Git executable modes.
+Its remote docs and wiki jobs PASS. The RTL job reached Icarus 13 and FAILed
+because kb.v used frame_hits/row_index before their declarations; the older
+local Icarus 12 accepted the ordering. Moved existing declarations before the
+continuous assignments, with no expression, width or sequential logic change.
+
+Executed locally:
+`make lint test-model test-unit test-integration test-exhaustive test-params formal test-mutations synth`.
+PASS: 15 model tests, every unit/integration case, 256 seeded sessions, all
+65536 keypad masks, parameter checks, formal properties, 7/7 killed mutations
+and synthesis. Evidence summary: `reports/logs/template-compat-local.log`;
+formal and synthesis logs were regenerated and hashed in MANIFEST.sha256.
+
+Official run 34761065857 on 591f96d independently reports gds PASS, precheck
+PASS and gl_test PASS. Viewer FAIL is repository configuration only: Pages is
+disabled. `gh api .../pages` GET and create both returned HTTP 404 under WRITE
+permission, so repository ADMIN must enable Pages with GitHub Actions source.
+Next: publish declaration-order fix and require fresh RTL/GDS results. No
+submission, order or payment performed.

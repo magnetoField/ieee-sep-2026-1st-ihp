@@ -248,10 +248,10 @@ Creating decoders for process `$paramod$189e5c5ece264226de8c0df8c90596b8bf71b942
      3/4: $0\scan_tick[0:0]
      4/4: $0\ms_count[1:0]
 Creating decoders for process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$601'.
-     1/4: $4\first_column$func$src/kb.v:66$545.$result[1:0]$608
-     2/4: $3\first_column$func$src/kb.v:66$545.$result[1:0]$607
-     3/4: $2\first_column$func$src/kb.v:66$545.$result[1:0]$606
-     4/4: $1\first_column$func$src/kb.v:66$545.$result[1:0]$605
+     1/4: $4\first_column$func$src/kb.v:78$545.$result[1:0]$608
+     2/4: $3\first_column$func$src/kb.v:78$545.$result[1:0]$607
+     3/4: $2\first_column$func$src/kb.v:78$545.$result[1:0]$606
+     4/4: $1\first_column$func$src/kb.v:78$545.$result[1:0]$605
 Creating decoders for process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$591'.
 Creating decoders for process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:96$554'.
      1/12: $0\debounce_count[4:0]
@@ -321,13 +321,13 @@ Creating decoders for process `$paramod\sync2\WIDTH=s32'000000000000000000000000
      2/2: $0\stage1[3:0]
 
 13.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
-No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\first_column$func$src/kb.v:66$543.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$601'.
-No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\first_column$func$src/kb.v:66$545.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$601'.
-No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\first_column$func$src/kb.v:66$545.hits' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$601'.
-No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$src/kb.v:63$542.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$591'.
-No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$src/kb.v:63$544.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$591'.
-No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$src/kb.v:63$544.hits' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$591'.
-No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$src/kb.v:63$544.count' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$591'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\first_column$func$src/kb.v:78$543.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$601'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\first_column$func$src/kb.v:78$545.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$601'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\first_column$func$src/kb.v:78$545.hits' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$601'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$src/kb.v:75$542.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$591'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$src/kb.v:75$544.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$591'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$src/kb.v:75$544.hits' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$591'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$src/kb.v:75$544.count' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$src/kb.v:0$591'.
 No latch inferred for signal `$paramod$b92c0599001ba7fee29ca99bde4121d40086de58\regs.\digit_valid' from process `$paramod$b92c0599001ba7fee29ca99bde4121d40086de58\regs.$proc$src/regs.v:78$514'.
 No latch inferred for signal `$paramod$b92c0599001ba7fee29ca99bde4121d40086de58\regs.\star_key' from process `$paramod$b92c0599001ba7fee29ca99bde4121d40086de58\regs.$proc$src/regs.v:78$514'.
 No latch inferred for signal `$paramod$b92c0599001ba7fee29ca99bde4121d40086de58\regs.\digit' from process `$paramod$b92c0599001ba7fee29ca99bde4121d40086de58\regs.$proc$src/regs.v:78$514'.
@@ -1664,7 +1664,7 @@ Optimizing module tt_um_rumcajs.
 13.8.23. Finished OPT passes. (There is nothing left to do.)
 
 13.9. Executing WREDUCE pass (reducing word size of cells).
-Removed top 30 bits (of 32) from port B of cell $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$ge$src/kb.v:65$548 ($ge).
+Removed top 30 bits (of 32) from port B of cell $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$ge$src/kb.v:77$548 ($ge).
 Removed top 3 bits (of 4) from port A of cell $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$shl$src/kb.v:94$552 ($shl).
 Removed top 1 bits (of 2) from port B of cell $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$eq$src/kb.v:171$568 ($eq).
 Removed top 30 bits (of 32) from port B of cell $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$ge$src/kb.v:183$569 ($ge).
@@ -1687,7 +1687,7 @@ Removed top 1 bits (of 6) from port B of cell $paramod$143b15b9608e06eea62a21ca9
 Removed top 3 bits (of 5) from port B of cell $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$auto$opt_dff.cc:195:make_patterns_logic$2130 ($ne).
 Removed top 1 bits (of 9) from port B of cell $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$auto$opt_dff.cc:195:make_patterns_logic$2126 ($ne).
 Removed top 2 bits (of 4) from port B of cell $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$auto$opt_dff.cc:195:make_patterns_logic$2097 ($ne).
-Removed top 28 bits (of 32) from wire $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$0\hit_count$func$src/kb.v:63$544.count[31:0]$595.
+Removed top 28 bits (of 32) from wire $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$0\hit_count$func$src/kb.v:75$544.count[31:0]$595.
 Removed top 30 bits (of 32) from wire $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$add$src/kb.v:38$596_Y.
 Removed top 1 bits (of 2) from port B of cell $paramod$2fbeea17c508b5a84cc6f18b01b95928e639afe0\szymon_fixed.$auto$opt_dff.cc:195:make_patterns_logic$2156 ($ne).
 Removed top 3 bits (of 4) from port B of cell $paramod$2fbeea17c508b5a84cc6f18b01b95928e639afe0\szymon_fixed.$auto$opt_dff.cc:195:make_patterns_logic$2152 ($ne).
@@ -1803,22 +1803,22 @@ Extracting $alu and $macc cells in module $paramod$143b15b9608e06eea62a21ca91d45
   creating $macc model for $add$src/kb.v:38$596 ($add).
   creating $macc model for $add$src/kb.v:38$597 ($add).
   creating $macc model for $add$src/kb.v:38$598 ($add).
-  creating $macc model for $add$src/kb.v:64$547 ($add).
+  creating $macc model for $add$src/kb.v:76$547 ($add).
   merging $macc model for $add$src/kb.v:38$597 into $add$src/kb.v:38$598.
   merging $macc model for $add$src/kb.v:38$596 into $add$src/kb.v:38$598.
-  creating $alu model for $macc $add$src/kb.v:64$547.
+  creating $alu model for $macc $add$src/kb.v:76$547.
   creating $alu model for $macc $add$src/kb.v:241$586.
   creating $alu model for $macc $add$src/kb.v:165$566.
   creating $macc cell for $add$src/kb.v:38$598: $auto$alumacc.cc:365:replace_macc$2311
   creating $alu model for $ge$src/kb.v:183$569 ($ge): new $alu
   creating $alu model for $ge$src/kb.v:40$599 ($ge): new $alu
-  creating $alu model for $ge$src/kb.v:65$548 ($ge): new $alu
-  creating $alu cell for $ge$src/kb.v:65$548: $auto$alumacc.cc:495:replace_alu$2315
+  creating $alu model for $ge$src/kb.v:77$548 ($ge): new $alu
+  creating $alu cell for $ge$src/kb.v:77$548: $auto$alumacc.cc:495:replace_alu$2315
   creating $alu cell for $ge$src/kb.v:40$599: $auto$alumacc.cc:495:replace_alu$2328
   creating $alu cell for $ge$src/kb.v:183$569: $auto$alumacc.cc:495:replace_alu$2341
   creating $alu cell for $add$src/kb.v:165$566: $auto$alumacc.cc:495:replace_alu$2354
   creating $alu cell for $add$src/kb.v:241$586: $auto$alumacc.cc:495:replace_alu$2357
-  creating $alu cell for $add$src/kb.v:64$547: $auto$alumacc.cc:495:replace_alu$2360
+  creating $alu cell for $add$src/kb.v:76$547: $auto$alumacc.cc:495:replace_alu$2360
   created 6 $alu and 1 $macc cells.
 Extracting $alu and $macc cells in module $paramod$189e5c5ece264226de8c0df8c90596b8bf71b942\timebase:
   creating $macc model for $add$src/timebase.v:64$615 ($add).
@@ -2362,9 +2362,9 @@ Removed 0 multiplexer ports.
 13.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
   Optimizing cells in module $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.
     Consolidated identical input bits for $mux cell $procmux$642:
-      Old ports: A=2'00, B=2'11, Y=$4\first_column$func$src/kb.v:66$545.$result[1:0]$608
-      New ports: A=1'0, B=1'1, Y=$4\first_column$func$src/kb.v:66$545.$result[1:0]$608 [0]
-      New connections: $4\first_column$func$src/kb.v:66$545.$result[1:0]$608 [1] = $4\first_column$func$src/kb.v:66$545.$result[1:0]$608 [0]
+      Old ports: A=2'00, B=2'11, Y=$4\first_column$func$src/kb.v:78$545.$result[1:0]$608
+      New ports: A=1'0, B=1'1, Y=$4\first_column$func$src/kb.v:78$545.$result[1:0]$608 [0]
+      New connections: $4\first_column$func$src/kb.v:78$545.$result[1:0]$608 [1] = $4\first_column$func$src/kb.v:78$545.$result[1:0]$608 [0]
   Optimizing cells in module $paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.
   Optimizing cells in module $paramod$189e5c5ece264226de8c0df8c90596b8bf71b942\timebase.
   Optimizing cells in module $paramod$2fbeea17c508b5a84cc6f18b01b95928e639afe0\szymon_fixed.
@@ -3873,6 +3873,6 @@ Checking module serial_link...
 Checking module tt_um_rumcajs...
 Found and reported 0 problems.
 
-End of script. Logfile hash: cc7591cc88, CPU: user 1.34s system 0.06s, MEM: 59.20 MB peak
+End of script. Logfile hash: e2e007c10a, CPU: user 2.44s system 0.18s, MEM: 58.49 MB peak
 Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
-Time spent: 23% 44x opt_expr (0 sec), 21% 1x abc (0 sec), ...
+Time spent: 24% 44x opt_expr (0 sec), 20% 1x abc (0 sec), ...

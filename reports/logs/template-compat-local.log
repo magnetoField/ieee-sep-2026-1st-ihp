@@ -1,0 +1,14 @@
+Date: 2026-09-13
+Command:
+  make lint test-model test-unit test-integration test-exhaustive test-params formal test-mutations synth
+Result: PASS
+Observed markers:
+  model tests: 15 PASS
+  tb_szymon: KAT + 1024 seeded vectors PASS
+  tb_random_sessions: 256 sessions PASS
+  tb_kb_exhaustive: all 65536 physical masks PASS
+  formal bounded, temporal induction and reachability PASS
+  mutation score: 7/7 killed
+  synthesis: PASS
+Tools: local Icarus 12.0, Yosys 0.52, Verilator 5.032, Python 3.14.4
+Qualification: exact Icarus 13 parser result still requires the next remote run.

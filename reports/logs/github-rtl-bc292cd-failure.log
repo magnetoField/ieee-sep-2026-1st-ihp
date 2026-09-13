@@ -1,0 +1,10 @@
+GitHub Actions run: 34761561392
+Repository: magnetoField/ieee-sep-2026-1st-ihp
+Commit: bc292cd89c310cac13115c4f5b4fd8e3235ee453
+Workflow/job: rtl-regression / test
+Observed: 2026-09-13
+Result: FAIL during Icarus 13 lint elaboration
+Diagnostic: src/kb.v used frame_hits and row_index before their declarations
+Exit: make: *** [Makefile:27: lint] Error 5
+Retrieved with:
+  .tools/gh/bin/gh run view 34761561392 --repo magnetoField/ieee-sep-2026-1st-ihp --log-failed
