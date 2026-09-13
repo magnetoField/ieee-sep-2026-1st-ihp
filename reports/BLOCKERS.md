@@ -88,7 +88,11 @@ without force-push. Commit 591f96d was pushed. Its docs and wiki jobs PASS; RTL
 FAIL is localized to missing executable Git mode on shell scripts, not an RTL
 failure. Commit bc292cd fixes the modes; its next RTL run found Icarus 13
 forward-reference elaboration errors in kb.v. Declaration order is corrected and
-the complete local regression PASS, but a fresh remote run is required. For
+the complete local regression PASS. Commit ff4b316 carries that correction; its
+remote lint reaches Verilator 5.053, which promotes the intentional
+asynchronous-assert/synchronous-release reset warning to an error. A narrow
+`-Wno-SYNCASYNCNET` waiver is prepared; all other `-Wall` checks remain enabled
+and a fresh remote run is required. For
 591f96d the official gds, precheck and gl_test jobs PASS; viewer alone FAIL because
 Pages is disabled. The authenticated account has WRITE rather than ADMIN, and
 both Pages GET and create API calls return 404. A repository admin must enable

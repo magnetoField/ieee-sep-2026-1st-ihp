@@ -1,0 +1,11 @@
+GitHub Actions run: 34762520248
+Repository: magnetoField/ieee-sep-2026-1st-ihp
+Commit: ff4b316c0f9562c1da6a44b2aa5b49b7d97c6f2e
+Workflow/job: rtl-regression / test
+Observed: 2026-09-13
+Result: FAIL during Verilator 5.053 lint
+Diagnostic: two SYNCASYNCNET warnings for reset_release.release_pipe
+Context: intentional asynchronous assertion and synchronous release
+Exit: Verilator exited due to 2 warnings; make lint Error 1
+Retrieved with:
+  .tools/gh/bin/gh run view 34762520248 --repo magnetoField/ieee-sep-2026-1st-ihp --log-failed

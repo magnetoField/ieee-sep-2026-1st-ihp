@@ -263,3 +263,11 @@ exhaustive, formal, mutation and synthesis suite because the edited file is RTL.
 Treat the prior physical artifacts as evidence for the logic-equivalent source;
 the official remote GDS/precheck/gl_test run for the published correction is the
 required current publication evidence.
+
+## D-026 — narrow Verilator waiver for reset-release synchronizers
+
+Verilator 5.053 reports SYNCASYNCNET when a register is asynchronously cleared
+and then synchronously shifted. That is the deliberate architecture of both
+`reset_release` instances and is covered by a standalone testbench and formal
+checks. Keep `-Wall`, disable only SYNCASYNCNET for the lint invocation, and do
+not alter the reset circuit merely to satisfy this structural heuristic.

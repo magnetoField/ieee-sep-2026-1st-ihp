@@ -69,7 +69,10 @@ Git mode 0644 made `scripts/local_tool.sh` non-executable on Linux. Viewer alone
 FAIL because GitHub Pages is not enabled. Commit bc292cd fixes executable modes,
 but its RTL run exposed Icarus 13 rejecting a forward declaration use in kb.v.
 Declarations were reordered without logic changes and the complete local CI
-command set PASS. A fresh push and remote run remain required. The Pages API
+command set PASS. Commit ff4b316 confirms Icarus 13 acceptance, then Verilator
+5.053 FAILs only on SYNCASYNCNET for the intentional reset-release synchronizer.
+The lint command now waives only that named warning while retaining `-Wall`.
+A fresh push and remote run remain required. The Pages API
 returned 404 for the authenticated WRITE collaborator; a repository admin must
 enable Pages with GitHub Actions as source. Then verify shuttle availability and
 import in Tiny Tapeout.

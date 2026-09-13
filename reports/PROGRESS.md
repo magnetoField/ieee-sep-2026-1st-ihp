@@ -403,3 +403,15 @@ disabled. `gh api .../pages` GET and create both returned HTTP 404 under WRITE
 permission, so repository ADMIN must enable Pages with GitHub Actions source.
 Next: publish declaration-order fix and require fresh RTL/GDS results. No
 submission, order or payment performed.
+
+## P8 — strict Verilator compatibility (2026-09-13)
+
+Remote rtl-regression run 34762520248 for ff4b316 confirms that Icarus 13 now
+passes elaboration. Verilator 5.053 then stops on two SYNCASYNCNET warnings for
+the tested `reset_release` pattern. This module deliberately asserts reset
+asynchronously and shifts its release synchronously; changing it to silence the
+warning would weaken the specified reset behavior. Add only
+`-Wno-SYNCASYNCNET` to the Verilator invocation while preserving `-Wall` and all
+other warnings. Reproduction: `gh run view 34762520248 --log-failed`. Evidence:
+`reports/logs/github-rtl-ff4b316-failure.log`. Next: lint locally, publish and
+continue the exact remote regression. No RTL logic changed in this repair.

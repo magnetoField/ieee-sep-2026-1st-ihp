@@ -109,6 +109,9 @@ issue (shell scripts tracked as 100644); the staged correction changes them to
 precheck and gl_test PASS; viewer FAIL is only disabled repository Pages. The
 bc292cd RTL rerun found Icarus 13 declaration-order incompatibility in kb.v;
 moving existing declarations before their uses leaves logic unchanged and the
-complete local regression PASS. Fresh remote CI is still required for this
-correction. This step does not perform a Tiny Tapeout import, production
+complete local regression PASS. Commit ff4b316 confirms the parser fix remotely,
+then stops only because Verilator 5.053 promotes the intentional reset-release
+SYNCASYNCNET warning. The prepared lint change waives only that named rule and
+retains `-Wall`; RTL is unchanged. Fresh remote CI is still required. This step
+does not perform a Tiny Tapeout import, production
 submission, order or payment.

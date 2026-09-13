@@ -26,7 +26,8 @@ lint:
 	@$(PYTHON) -m compileall -q model scripts test
 	@scripts/local_tool.sh iverilog -g2005 -Wall -s tt_um_rumcajs -t null src/*.v
 	@scripts/local_tool.sh yosys -q -p 'read_verilog src/*.v; hierarchy -check -top tt_um_rumcajs; proc; check'
-	@scripts/local_tool.sh verilator --lint-only --timing -Wall --top-module tt_um_rumcajs src/*.v
+	@# reset_release intentionally uses asynchronous assertion and synchronous release.
+	@scripts/local_tool.sh verilator --lint-only --timing -Wall -Wno-SYNCASYNCNET --top-module tt_um_rumcajs src/*.v
 
 test-model:
 	@$(PYTHON) -m unittest discover -s test/model -p 'test_*.py' -v
