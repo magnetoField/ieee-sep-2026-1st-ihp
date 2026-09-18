@@ -1,6 +1,6 @@
 # Bezpieczeństwo
 
-D00RSH jest **demonstratorem funkcjonalnym**. PIN i klucz w tej wersji są publiczne.
+IEEE DOORSH jest **demonstratorem funkcjonalnym**. PIN i klucz w tej wersji są publiczne.
 Nie używaj tej konfiguracji do zabezpieczenia rzeczywistego sejfu lub danych produkcyjnych.
 
 ## Autoryzacja i licznik prób

@@ -179,9 +179,9 @@ Nie trzeba symulować wszystkich 2^192 kombinacji danych i klucza. Zgodność al
 
 | ID | Scenariusz | Warunek PASS |
 |---|---|---|
-| BZ-01 | Tryb ACTIVE, różne fazy trigger/ms_tick | Dokładnie określona liczba przyszłych ticków, bez off-by-one |
+| BZ-01 | Finalny ton pasywny, różne fazy trigger/ms_tick | Dokładnie określona liczba przyszłych ticków, bez off-by-one |
 | BZ-02 | Trigger podczas busy, także na ostatnim ticku | Brak przedłużenia i kolejki dźwięków |
-| BZ-03 | Tryb pasywny, HALF_TICKS=1,2,3 | Prawidłowy półokres i liczba przełączeń |
+| BZ-03 | HALF_TICKS=1,2,3 | Prawidłowy półokres i liczba przełączeń |
 | BZ-04 | Reset / ena podczas tonu | Wyjście 0, brak starego tonu po powrocie |
 | BZ-05 | Poprawny i błędny PIN o tej samej długości/rytmie | Ten sam przebieg sterowania buzzerem |
 | BZ-06 | Parametry brzegowe, BEEP=1 | Brak zerowej szerokości rejestrów i zawinięcia |

@@ -1,4 +1,4 @@
-<testsuite name="Rumcajs post-route pin-level smoke" tests="1"><testcase name="single_key_pins_no_sdf" time="53.745"><system-out>/mnt/c/Users/user/Desktop/HACKATHON/.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1883: warning: Timing checks are not supported.
+<testsuite name="Rumcajs post-route pin-level smoke" tests="1"><testcase name="single_key_pins_no_sdf" time="116.660"><system-out>/mnt/c/Users/user/Desktop/HACKATHON/.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/verilog/sg13g2_stdcell.v:1883: warning: Timing checks are not supported.
 PASS gate-level mapped standard cells: reset/ena, malformed RX, single-key GOOD, BAD rejection, limit
 /mnt/c/Users/user/Desktop/HACKATHON/test/gatelevel/tb_tt_um_rumcajs_gl.sv:234: $finish called at 3529369000 (1ps)
 </system-out></testcase></testsuite>

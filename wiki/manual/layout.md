@@ -3,8 +3,8 @@
 ## Render layoutu
 
 <figure class="figure">
-<a href="assets/chip-d6-layout.png"><img src="assets/chip-d6-layout.png" alt="Rzeczywisty render warstw layoutu D00RSH po routingu" width="1000" height="766"></a>
-<figcaption>Rysunek 2. Końcowy layout D00RSH wygenerowany przez KLayout w flow LibreLane 3.0.5. Obraz 1000 × 766 px. To render projektu po place-and-route, nie mikrofotografia wyprodukowanego układu. Kliknij, aby otworzyć obraz.</figcaption>
+<a href="assets/chip-d6-layout.png"><img src="assets/chip-d6-layout.png" alt="Rzeczywisty render warstw layoutu IEEE DOORSH po routingu" width="1000" height="766"></a>
+<figcaption>Rysunek 2. Końcowy layout IEEE DOORSH wygenerowany przez KLayout w flow LibreLane 3.0.5. Obraz 1000 × 766 px. To render projektu po place-and-route, nie mikrofotografia wyprodukowanego układu. Kliknij, aby otworzyć obraz.</figcaption>
 </figure>
 
 ## Zmierzone parametry projektu

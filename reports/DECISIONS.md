@@ -306,3 +306,25 @@ ASIC candidate remains `ACTIVE_BUZZER=1`. Do not flip the elaboration parameter
 inside a documentation publication change: it would create a different
 synthesized netlist/GDS and require a complete new physical and gate-level
 qualification.
+
+## D-030 — final upload identity, passive buzzer and BA2A key
+
+The user superseded D-029 for the final Tiny Tapeout candidate. The public
+project title is exactly `IEEE DOORSH`. The final RTL has one buzzer behavior:
+a nominal 2 kHz tone for a passive buzzer; the `ACTIVE_BUZZER` selection was
+removed from the synthesizable design. The demonstration key is
+`128'hba2a1918131211100b0a090803020100`, and the reference challenge
+`656b696c20646e75` produces `a67ee743f2808f0f` according to the independent
+model. Because these changes alter the netlist, previous physical results are
+not reused as sign-off; RTL, synthesis, gate-level and GDS checks must rerun.
+
+For the public how-to, use challenge `F15654A8D25FFA1C`. Its response is the
+visually distinctive hexadecimal value `BA2A5234DEADBEEF`, requiring no ASCII
+decoding. This pair is derived from the same final key and is checked
+end-to-end in RTL and gate-level benches; the published SIMON KAT remains a
+separate algorithm test.
+
+The upload-facing README and datasheet retain only Tiny Tapeout-relevant
+operation, test, hardware and pin information. SwissChips is not presented as
+an IEEE DOORSH acknowledgement because the reviewed Tiny Tapeout credit refers
+to platform infrastructure, not a direct project requirement or project grant.

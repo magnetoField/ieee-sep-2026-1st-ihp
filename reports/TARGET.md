@@ -33,7 +33,7 @@ Older physical-failure descriptions below are superseded by FINAL.md.
 - Clock: `1_000_000 Hz`; `CLOCK_PERIOD=1000 ns`.
 - Active MVP parameters: SIMON64/128, 44 rounds, PIN_LEN=4, PIN=1234,
   MAX_FAILS=3, SCAN_HZ=4000, PRESS_FRAMES=20, RELEASE_FRAMES=20,
-  AUTH_TIMEOUT_MS=5000, ACTIVE_BUZZER=1.
+  AUTH_TIMEOUT_MS=5000, passive buzzer tone 2 kHz, BEEP_TICKS_MS=50.
 
 The earlier SKY130 work remains useful as an architecture comparison only. It
 is not fit evidence for TTIHP26b. The complete exact PDK and official

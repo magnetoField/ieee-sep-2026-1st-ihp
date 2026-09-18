@@ -5,7 +5,7 @@
         /* verilator lint_off DECLFILENAME */
         module tt_um_rumcajs (
  613781     input  wire [7:0] ui_in,
-~000062     output wire [7:0] uo_out,
+~001528     output wire [7:0] uo_out,
  613781     input  wire [7:0] uio_in,
 %000000     output wire [7:0] uio_out,
 ~001230     output wire [7:0] uio_oe,
@@ -16,8 +16,8 @@
  001230     wire [3:0] row_oe;
  000002     wire req;
  000002     wire rsp_ready;
- 000062     wire serial_sdo;
- 000016     wire buzzer_out;
+ 000076     wire serial_sdo;
+ 001528     wire buzzer_out;
 %000000     wire unused = &{1'b0, ui_in[7], uio_in, rsp_ready};
         
             rumcajs u_rumcajs (

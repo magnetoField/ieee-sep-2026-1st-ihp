@@ -80,16 +80,8 @@ sprawdzenia pełnym flow, a nie dowodem dopasowania.
 Oficjalna strona programu opisuje IEEE Open Silicon Initiative jako program
 prototypowania i wytwarzania układów dla studentów. Wymienia IEEE EDS, SSCS,
 CASS, CEDA i IEEE Nanotechnology Council jako jednostki zapewniające
-finansowanie oraz Tiny Tapeout jako partnera zewnętrznego. Na tej podstawie
-sformułowano podziękowanie w publicznej dokumentacji D00RSH.
-
-## S12 — Tiny Tapeout, credits
-
-`https://tinytapeout.com/credits/`
-
-Oficjalna strona Tiny Tapeout przypisuje finansowanie prac nad IHP 130 nm
-programowi SwissChips. Jest to odrębne podziękowanie dotyczące infrastruktury
-Tiny Tapeout, nie twierdzenie o bezpośrednim grancie dla zespołu D00RSH.
+finansowanie oraz Tiny Tapeout jako partnera zewnętrznego. Źródło potwierdza
+pochodzenie prefiksu IEEE w nazwie projektu.
 
 ## S13 — Tiny Tapeout, updating project documentation
 
@@ -104,7 +96,7 @@ dokumentacji.
 `https://tinytapeout.com/chips/ttsky26b/tt_um_oreoluwa_water_level`
 
 Opublikowany projekt programu IEEE Open Silicon z osobnym „About this project”,
-opisem działania, instrukcją testu i tabelą pinów. D00RSH stosuje ten czytelny
+opisem działania, instrukcją testu i tabelą pinów. IEEE DOORSH stosuje ten czytelny
 podział, ale nie kopiuje tekstu ani RTL projektu.
 
 ## S15 — Tiny Tapeout, related lock and serial-challenge projects
@@ -123,5 +115,5 @@ oczekiwany stan wyjścia. Służą wyłącznie jako porównanie sposobu dokument
 
 Publiczny projekt z tej samej serii pokazuje dobry wzorzec rozdzielenia opisu
 interfejsu, procedury weryfikacji, metryk fizycznych i uczciwych ograniczeń.
-D00RSH utrzymuje analogiczny rozdział między zachowaniem funkcjonalnym,
+IEEE DOORSH utrzymuje analogiczny rozdział między zachowaniem funkcjonalnym,
 dowodami oraz ograniczeniami bezpieczeństwa.

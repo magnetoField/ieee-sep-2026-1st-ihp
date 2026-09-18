@@ -113,7 +113,9 @@ W `kb` zbuduj najpierw poprawne skanowanie full-frame, potem kwalifikację gestu
 
 W `regs` rozdziel reset licznika i reset sesji. Zdefiniuj atomowy punkt przyjęcia ostatniej cyfry, trwałość kontekstu przy txn_ready=0 oraz wyjątek dla ostatniej dozwolonej próby. Przetestuj wybrany PIN zaczynający się od zera i konfigurację PIN_LEN=1.
 
-Buzzer domyślnie implementuj jako timer ACTIVE; tryb tonu jest parametrem eliminowanym z nietonalnej konfiguracji. Nie dodawaj melodii ani dużej pamięci dźwięków.
+Buzzer implementuj jako stały generator tonu dla przetwornika pasywnego,
+aktywny tylko w oknie timera. Nie dodawaj wyboru trybu, melodii ani dużej
+pamięci dźwięków.
 
 Można pracować równolegle nad `kb`, `regs` i `buzzer`, ale tylko po P1 i bez wzajemnego zmieniania kontraktów.
 

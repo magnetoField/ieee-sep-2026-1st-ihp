@@ -1,15 +1,18 @@
-# Verified local IHP26b candidate
+# Verified local IEEE DOORSH IHP26b candidate
 
-Exact GDS/LEF and unpowered netlist copied from runs/single_key_wipe_p80_h0/final.
-The unpowered netlist is the IHP netlist_type=nl required by tt/tech.py.
-All10 Tiny Tapeout prechecks pass on this bundle. Functional post-route gate
-simulation and STA/Magic DRC/LVS/antenna checks pass with qualifications in
-[FINAL.md](../../reports/FINAL.md). Full SDF simulation is unsupported.
+This directory contains the final GDS, LEF and unpowered post-route netlist
+for the fixed Tiny Tapeout configuration:
 
-This bundle is not submitted. Supply author identity before submission.
-Public demo key; volatile lockout; no production-security claim.
-Source and artifact SHA-256 identity: ../../MANIFEST.sha256.
+- project: IEEE DOORSH;
+- key: `BA2A1918131211100B0A090803020100`;
+- buzzer: fixed passive-buzzer tone, nominally 2 kHz;
+- run: `runs/final_ieee_doorsh_ba2a_passive`;
+- tile: IHP SG13G2 1×1.
 
-P&R: raw IHP-Open-PDK e16d00b7b26a93956563c373b782f54dd4d77a7f,
-LibreLane3.0.5; precheck: CIEL c4b8b4e5e7a05f375cca3815d51b3a37721fbf5c.
-No git commit exists; no commit identifier is invented.
+LibreLane 3.0.5 completed with routing DRC, Magic DRC, LVS, antenna and timing
+violations at zero. The official Tiny Tapeout precheck, including KLayout
+SG13G2 DRC, passed. Post-route no-SDF gate-level simulation passed with the
+public transaction `F15654A8D25FFA1C → BA2A5234DEADBEEF`.
+
+This bundle has not been submitted or ordered. The key and PIN are public
+demonstration constants, and the lockout remains volatile.

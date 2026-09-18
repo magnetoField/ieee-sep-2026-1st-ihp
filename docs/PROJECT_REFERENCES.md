@@ -1,7 +1,7 @@
-# D00RSH — public-project references
+# IEEE DOORSH — public-project references
 
 Checked: 2026-09-18. These are primary public pages or repositories. They were
-used to decide how to present D00RSH; no RTL, diagrams or prose were copied.
+used to decide how to present IEEE DOORSH; no RTL, diagrams or prose were copied.
 
 ## Documentation pattern used
 
@@ -15,7 +15,7 @@ evaluate by separating:
 5. a complete pin table and clock value;
 6. limitations that prevent a demo from being mistaken for a production part.
 
-D00RSH applies that pattern in `docs/info.md`, then keeps deeper verification,
+IEEE DOORSH applies that pattern in `docs/info.md`, then keeps deeper verification,
 physical metrics and security qualifications in the linked reports.
 
 ## Comparable published projects
@@ -32,8 +32,6 @@ physical metrics and security qualifications in the linked reports.
 - [IEEE HART — Chip Fabrication](https://hart.ieee.org/projects/chip-fabrication/)
   identifies the IEEE Open Silicon Initiative, its IEEE funding partners and
   Tiny Tapeout as an external partner.
-- [Tiny Tapeout credits](https://tinytapeout.com/credits/) identifies
-  SwissChips as the funder of Tiny Tapeout's IHP 130 nm work.
 - [Tiny Tapeout documentation guide](https://tinytapeout.com/guides/documentation/)
   confirms that `info.yaml` and `docs/info.md` provide the public project
   metadata and datasheet content.
@@ -43,10 +41,10 @@ physical metrics and security qualifications in the linked reports.
   [clock specification](https://tinytapeout.com/specs/clock/) define the
   platform-level pins and externally supplied project clock.
 
-## D00RSH-specific distinction
+## IEEE DOORSH-specific distinction
 
 The related lock and shift-register projects are presentation references, not
-security baselines. D00RSH additionally uses a matrix keypad with filtered
+security baselines. IEEE DOORSH additionally uses a matrix keypad with filtered
 gestures, one-use authorization, framed 64-bit challenge/response traffic and
 full 44-round SIMON64/128. Its public key, resettable lockout and unverified
 physical-attack resistance remain explicit demo limitations.

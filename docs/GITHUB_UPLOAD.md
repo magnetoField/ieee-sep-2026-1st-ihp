@@ -1,11 +1,11 @@
-# D00RSH — publiczne repozytorium i Tiny Tapeout
+# IEEE DOORSH — publiczne repozytorium i Tiny Tapeout
 
 Projekt przygotowany dla **Tiny Tapeout IHP26b, IHP SG13G2, 1×1, 1 MHz**.
 Nie zmieniaj technologii na SKY ani nazwy fizycznego topa przy publikacji tej wersji.
 
 ## Przed publikacją
 
-Metadane są uzupełnione: **D00RSH**, **Koło Naukowe BAZA — ZT, PN, MK, JT, KK**.
+Metadane są uzupełnione: **IEEE DOORSH**, **Koło Naukowe BAZA — ZT, PN, MK, JT, KK**.
 Pole Discord jest opcjonalne. Sprawdź pisownię przed pierwszym push.
 Tożsamość autora commitu Git ustaw osobno na swoim komputerze.
 

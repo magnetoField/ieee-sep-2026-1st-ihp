@@ -1,4 +1,4 @@
-# D00RSH Wiki — MkDocs
+# IEEE DOORSH Wiki — MkDocs
 
 Źródła dokumentacji: `manual/*.md`. Framework: MkDocs 1.6.1,
 motyw Read the Docs z lokalnym arkuszem stylów klasycznej wiki.

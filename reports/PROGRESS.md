@@ -470,3 +470,64 @@ continue the exact remote regression. No RTL logic changed in this repair.
 - Next: refresh hashes for the changed public/report files, run release and
   upload gates, commit/push, then require fresh GitHub checks. No Tiny Tapeout
   submission, order or payment was performed.
+
+## P8 — final IEEE DOORSH upload candidate (2026-09-18)
+
+- User fixed the public title to `IEEE DOORSH`, selected one passive-buzzer
+  implementation and required the demonstration key to contain `BA2A`.
+  Removed the synthesizable `ACTIVE_BUZZER` choice. Final key:
+  `BA2A1918131211100B0A090803020100`; nominal buzzer output: 2 kHz for 50 ms.
+- Derived and independently verified a readable hexadecimal demo transaction:
+  `F15654A8D25FFA1C -> BA2A5234DEADBEEF`. The pair is checked by RTL wrapper,
+  fault-session and post-route gate-level benches.
+- Reduced upload-facing README/datasheet content to Tiny Tapeout operation,
+  test, external hardware and pinout. Removed the SwissChips acknowledgement;
+  it is not required metadata for this project. Reviewed the public structure
+  against the official Tiny Tapeout documentation guide and comparable project
+  repositories listed in `docs/PROJECT_REFERENCES.md`.
+- Exact regression command:
+  `make test-model test-unit test-integration test-exhaustive test-params formal test-mutations synth`.
+  PASS: 15 model tests, all unit/integration tests, 1024 vectors, seven fixed
+  keys, 256 random sessions, all 65,536 keypad masks, formal BMC/induction/
+  reachability, mutations 7/7 and synthesis. Log:
+  `reports/logs/full-verification-regression.log`.
+- Coverage command: `make coverage`. PASS: 12 cases; unique RTL line coverage
+  876/986 (88.8%), aggregate 1463/1764 (82.0%). Log:
+  `reports/logs/full-verification-coverage.log`.
+- Physical command:
+  `/var/tmp/rumcajs-appimage/appimage_extracted_7ee003e414b503dafc1ee3684d415174/AppRun python -m librelane --manual-pdk --pdk-root /mnt/c/Users/user/Desktop/HACKATHON/.tools/IHP-Open-PDK-partial --pdk ihp-sg13g2 --force-run-dir runs/final_ieee_doorsh_ba2a_passive --condensed -j 4 -c 'SYNTH_STRATEGY=AREA 0' -c 'PL_TARGET_DENSITY_PCT=80' -c 'PL_RESIZER_HOLD_SLACK_MARGIN=0' src/config_merged.json`.
+  Exit 0. Synthesis 21,086.163 um2; routed standard-cell area excluding filler
+  26,203.6 um2; utilization 90.5398%; route/Magic DRC, LVS, antenna, setup,
+  hold, max-slew and max-cap violations all zero.
+- Precheck command:
+  `scripts/run_precheck.sh runs/final_ieee_doorsh_ba2a_passive/final/gds/tt_um_rumcajs.gds`.
+  PASS after packaging the generated companion Verilog beside the GDS; KLayout
+  SG13G2 DRC, pins, boundary, layers, cell name, zero-area and syntax PASS.
+- Post-route gate command:
+  `IHP_NETLIST=$PWD/runs/final_ieee_doorsh_ba2a_passive/final/nl/tt_um_rumcajs.nl.v IHP_GL_LOG=$PWD/reports/logs/gatelevel-final-ieee-doorsh.log scripts/test_gatelevel_ihp.sh`.
+  PASS, no SDF. `make -C test GATES=yes` also PASS and refreshed JUnit evidence.
+- Tools: Python 3.14.4, Icarus Verilog 12.0/13 gate runner, Verilator 5.032,
+  LibreLane 3.0.5, IHP-Open-PDK `e16d00b7...`, precheck CIEL `c4b8b4e5...`.
+- Next: refresh manifest, run wiki/upload/release gates, commit and run fresh
+  remote CI. `SUBMISSION=NOT_PERFORMED`; no order or payment.
+
+## P8 — final publication gates (2026-09-18)
+
+- `make wiki-build` and `python3 scripts/check_wiki.py`: PASS, 12 HTML pages,
+  398 local links/anchors, 56 search-index entries and the verified final
+  layout image.
+- `make upload-check`: PASS, 370 publication files, 24 mapped pins, Tiny
+  Tapeout IHP jobs, source list, metadata, executable modes and basic secret
+  patterns checked.
+- `make upload-package`: PASS. Reproducible transport archive path:
+  `.upload/IEEE-DOORSH-github.zip`; the command prints its size and SHA-256.
+- `make release-check`: PASS against the current physical metrics, JUnit,
+  regression, coverage and artifact evidence. `sha256sum -c MANIFEST.sha256`
+  also passed after refreshing the manifest.
+- Upload-facing text contains one configuration only: passive buzzer at
+  nominal 2 kHz, public title `IEEE DOORSH`, key beginning `BA2A`, and the
+  hexadecimal reference transaction
+  `F15654A8D25FFA1C -> BA2A5234DEADBEEF` with no ASCII decoding.
+- Next: commit and push the authorized repository change, then require fresh
+  GitHub checks for that exact commit. Tiny Tapeout submission, order and
+  payment remain NOT_PERFORMED.

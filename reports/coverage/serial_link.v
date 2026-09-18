@@ -19,7 +19,7 @@
  000448     input  wire serial_sdi,
  001292     input  wire serial_sclk,
  000029     input  wire serial_cs_n,
- 000128     output wire serial_sdo,
+ 000144     output wire serial_sdo,
         
  000640     output wire s_valid,
  000008     input  wire s_ready,
@@ -27,7 +27,7 @@
         
  000010     input  wire m_valid,
  000390     output wire m_ready,
- 000056     input  wire m_bit,
+ 000070     input  wire m_bit,
  000007     input  wire m_last
         );
             localparam [2:0] ST_IDLE        = 3'd0;
@@ -54,7 +54,7 @@
  000640     reg rx_pending;
  000318     reg rx_bit_hold;
  000388     reg tx_hold_valid;
- 000056     reg tx_hold_bit;
+ 000070     reg tx_hold_bit;
  000008     reg tx_hold_last;
  000382     reg tx_sampled_wait_fall;
  000004     reg tx_last_sampled;

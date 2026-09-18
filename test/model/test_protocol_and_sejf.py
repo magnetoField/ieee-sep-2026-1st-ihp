@@ -6,7 +6,7 @@ from model.sejf_model import SejfModel, Verdict, classify_response
 from model.simon64_128 import bits_msb, encrypt
 
 
-GOOD = 0x1B1A1918131211100B0A090803020100
+GOOD = 0xBA2A1918131211100B0A090803020100
 BAD = 0xF0E1D2C3B4A5968778695A4B3C2D1E0F
 
 

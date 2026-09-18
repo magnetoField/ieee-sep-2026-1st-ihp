@@ -6,6 +6,8 @@ dwóch kluczy. Starsze materiały zachowano z oznaczeniem zakresu historycznego;
 bieżące dowody i ograniczenia znajdują się w `../reports/SINGLE_KEY.md`.
 
 - `KEY`: jeden 128-bitowy parametr szyfru. Pełny SIMON64/128, 44 rundy.
+  Finalna wartość demonstracyjna to
+  `128'hba2a1918131211100b0a090803020100`.
 - Poprawny kompletny PIN dopuszcza dokładnie jeden challenge.
 - Błędny kompletny PIN zwiększa licznik błędów, czyści PIN i ponownie
   uzbraja klawiaturę po stabilnym puszczeniu. Nie tworzy tokenu sesji,
@@ -36,6 +38,13 @@ stałego oczekiwania. Przedwczesna ramka podczas obliczeń anuluje sesję.
 Timeout 5000 ms liczony jest od przyjęcia poprawnego PIN-u przez kontroler.
 Błędny PIN nie otwiera sesji timeout. Nowy challenge wymaga kolejnego
 poprawnego PIN-u; nie ma ponownego użycia tokenu.
+
+## Finalny buzzer
+
+`uo_out[3]` zawsze generuje nominalny ton 2 kHz dla buzzera pasywnego przez
+50 ms. W finalnym topie Tiny Tapeout nie ma parametru ani wyboru trybu buzzera.
+Wyjście wymaga odpowiedniego zewnętrznego drivera dla zastosowanego
+przetwornika.
 
 ## Kasowanie zatwierdzone przez użytkownika
 

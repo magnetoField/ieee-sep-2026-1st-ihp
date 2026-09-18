@@ -7,19 +7,19 @@ IEEE SSCS, IEEE CASS, IEEE CEDA i IEEE Nanotechnology Council za finansowanie
 programu oraz Tiny Tapeout za partnerstwo w ścieżce wytworzenia układu.
 
 <div class="portal-intro">
-<p class="welcome">Witaj w D00RSH Wiki</p>
-<p>Dokumentacja użytkowa układu uwierzytelniającego <b>D00RSH</b>. Znajdziesz tu instrukcję uruchomienia, opis połączeń, protokół komunikacyjny i parametry demonstratora.</p>
+<p class="welcome">Witaj w IEEE DOORSH Wiki</p>
+<p>Dokumentacja użytkowa układu uwierzytelniającego <b>IEEE DOORSH</b>. Znajdziesz tu instrukcję uruchomienia, opis połączeń, protokół komunikacyjny i parametry demonstratora.</p>
 </div>
 
 <aside class="infobox">
-<strong>D00RSH</strong>
-<a href="layout.html"><img src="assets/chip-d6-layout.png" alt="Layout D00RSH po place-and-route" width="1000" height="766"></a>
+<strong>IEEE DOORSH</strong>
+<a href="layout.html"><img src="assets/chip-d6-layout.png" alt="Layout IEEE DOORSH po place-and-route" width="1000" height="766"></a>
 <dl><dt>Technologia</dt><dd>IHP SG13G2</dd><dt>Format</dt><dd>Tiny Tapeout 1×1</dd><dt>Zegar</dt><dd>1 MHz</dd><dt>Szyfr</dt><dd>SIMON64/128</dd><dt>Interfejs</dt><dd>SHIFT64</dd><dt>Klawiatura</dt><dd>matryca 4×4</dd></dl>
 </aside>
 
 ## O układzie
 
-D00RSH dopuszcza **jedną transakcję challenge–response po poprawnym PIN-ie**.
+IEEE DOORSH dopuszcza **jedną transakcję challenge–response po poprawnym PIN-ie**.
 Urządzenie nadrzędne wysyła 64-bitowy challenge i odbiera jego zaszyfrowaną
 odpowiedź. Układ wykorzystuje jeden klucz 128-bitowy i pełne 44 rundy SIMON64/128.
 
@@ -48,4 +48,4 @@ Przed użyciem przeczytaj [zakres bezpieczeństwa](bezpieczenstwo.md).
 </section>
 </div>
 
-<div class="category">Kategorie: D00RSH · Układy scalone · Dokumentacja użytkowa</div>
+<div class="category">Kategorie: IEEE DOORSH · Układy scalone · Dokumentacja użytkowa</div>

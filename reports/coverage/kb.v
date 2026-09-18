@@ -1,7 +1,7 @@
 //      // verilator_coverage annotation
         `timescale 1ns/1ps
         `default_nettype none
-        
+
         module kb #(
             parameter PRESS_FRAMES = 20,
             parameter RELEASE_FRAMES = 20
@@ -59,14 +59,6 @@
             localparam [COUNT_W-1:0] PRESS_LAST = PRESS_FRAMES - 1;
             localparam [COUNT_W-1:0] RELEASE_LAST = RELEASE_FRAMES - 1;
         
- 001511     wire [3:0] col_sync;
- 001512     wire [3:0] sample_hits = ~col_sync;
- 002308     wire [1:0] sample_count = hit_count(sample_hits);
-~004832     wire [2:0] count_sum = frame_hits + sample_count;
- 002562     wire [1:0] combined_count = (count_sum >= 2) ? 2'd2 : count_sum[1:0];
- 012068     wire [3:0] sample_id = {row_index, first_column(sample_hits)};
- 009174     wire [3:0] combined_id = (frame_hits != 0) ? frame_first_id : sample_id;
-        
  012068     reg [1:0] row_index;
  024785     reg blank_cycle;
 ~001480     reg [1:0] frame_hits;
@@ -79,6 +71,14 @@
  000656     reg releasing;
 ~001394     reg [COUNT_W-1:0] debounce_count;
         
+ 001511     wire [3:0] col_sync;
+ 001512     wire [3:0] sample_hits = ~col_sync;
+ 002308     wire [1:0] sample_count = hit_count(sample_hits);
+~004832     wire [2:0] count_sum = frame_hits + sample_count;
+ 002562     wire [1:0] combined_count = (count_sum >= 2) ? 2'd2 : count_sum[1:0];
+ 012068     wire [3:0] sample_id = {row_index, first_column(sample_hits)};
+ 009174     wire [3:0] combined_id = (frame_hits != 0) ? frame_first_id : sample_id;
+
             generate
                 if ((PRESS_FRAMES < 1) || (RELEASE_FRAMES < 1)) begin : g_invalid_kb
                     INVALID_KB_CONFIGURATION invalid_configuration();

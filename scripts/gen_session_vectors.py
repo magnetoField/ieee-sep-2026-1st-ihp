@@ -14,7 +14,7 @@ sys.path.insert(0, str(ROOT))
 from model.simon64_128 import encrypt  # noqa: E402
 
 
-KEY = 0x1B1A1918131211100B0A090803020100
+KEY = 0xBA2A1918131211100B0A090803020100
 
 
 def main() -> None:

@@ -704,7 +704,7 @@ Import proof for assert: $eq$src/szymon_fixed.v:262$104_Y when $assert$src/szymo
 Import proof for assert: $eq$src/szymon_fixed.v:263$106_Y when $assert$src/szymon_fixed.v:261$102_EN.
 Import proof for assert: 1'1 when $assert$src/szymon_fixed.v:257$93_EN.
 
-Solving problem with 1472664 variables and 4152237 clauses..
+Solving problem with 1473644 variables and 4155177 clauses..
 SAT proof finished - no model found: SUCCESS!
 
                   /$$$$$$      /$$$$$$$$     /$$$$$$$    
@@ -717,6 +717,6 @@ SAT proof finished - no model found: SUCCESS!
                  \____ $$$|__/|________/|__/|_______/|__/
                        \__/                              
 
-End of script. Logfile hash: 920fe961b4, CPU: user 11.28s system 2.74s, MEM: 1139.97 MB peak
+End of script. Logfile hash: 83b8604c1a, CPU: user 11.73s system 2.36s, MEM: 1140.53 MB peak
 Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
 Time spent: 99% 1x sat (13 sec), 0% 2x read_verilog (0 sec), ...

@@ -1,5 +1,5 @@
-site_name: D00RSH Wiki
-site_description: Dokumentacja użytkowa układu D00RSH
+site_name: IEEE DOORSH Wiki
+site_description: Dokumentacja użytkowa układu IEEE DOORSH
 docs_dir: manual
 site_dir: site
 use_directory_urls: false

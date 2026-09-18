@@ -1,15 +1,21 @@
 # IHP26b physical-flow result
 
-Full verification update: all10 TT prechecks now PASS with the official
-precheck PDK package; no layout/rule edits. Routed GDS is unchanged.
-Current report: FINAL.md. The precheck blocker mentioned below is historical.
+Current final run: `runs/final_ieee_doorsh_ba2a_passive`, completed with exit
+0 on 2026-09-18. It contains the fixed passive-buzzer implementation and
+demonstration key `BA2A1918131211100B0A090803020100`.
 
-Current single-key run supersedes the historical fit failures below:
-`runs/single_key_wipe_p80_h0` completed with exit0. Routed cell area
-25996.7 µm², utilization 89.8251%; STA, Magic DRC, LVS and antenna pass.
-TT precheck remains blocked by its KLayout/PDK environment, not by placement.
-Current qualifications and artifact paths: [FINAL.md](FINAL.md),
-[SINGLE_KEY.md](SINGLE_KEY.md). Older metrics below remain historical.
+- 1×1 outline: 202.08 × 154.98 µm.
+- Synthesis area: 21,086.163 µm².
+- Routed standard-cell area excluding filler: 26,203.6 µm².
+- Utilization: 90.5398%.
+- Routing DRC, Magic DRC, LVS and antenna violations: 0.
+- Setup/hold/max-slew/max-cap violations: 0.
+- Tiny Tapeout precheck, including KLayout SG13G2 DRC: PASS.
+- Post-route no-SDF gate-level test: PASS.
+
+Current qualifications and artifact paths are in [FINAL.md](FINAL.md). Older
+attempts below remain historical and do not describe the final IEEE DOORSH
+GDS.
 
 Date: 2026-09-12. Terminal result: **no production-ready 1x1 output**.
 

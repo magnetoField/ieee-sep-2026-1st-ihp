@@ -3,8 +3,8 @@
         `default_nettype none
         
         module tb_szymon_fixed #(
-            parameter [127:0] TEST_KEY = 128'h1b1a1918131211100b0a090803020100,
-            parameter [63:0] EXPECT = 64'h44c8fc20b9dfa07a
+            parameter [127:0] TEST_KEY = 128'hba2a1918131211100b0a090803020100,
+            parameter [63:0] EXPECT = 64'ha67ee743f2808f0f
         );
  397704     reg clk = 0;
  000003     reg rst_n = 0;
@@ -27,7 +27,7 @@
             integer abort_depth;
             integer abort_phase;
             integer wait_cycles;
- 006224     reg [63:0] held_data;
+ 006186     reg [63:0] held_data;
         
             szymon_fixed #(.KEY(TEST_KEY)) dut (
                 .clk(clk), .rst_n(rst_n), .abort(abort),

@@ -11,24 +11,23 @@
             parameter [31:0] PIN_VALUE = 32'h00001234,
             parameter MAX_FAILS = 3,
             parameter AUTH_TIMEOUT_MS = 5000,
-            parameter ACTIVE_BUZZER = 1,
             parameter BEEP_TICKS_MS = 50,
             parameter TONE_HALF_TICKS = 1,
             parameter FIXED_KEY_CORE = 1,
-            parameter [127:0] KEY = 128'h1b1a1918131211100b0a090803020100
+            parameter [127:0] KEY = 128'hba2a1918131211100b0a090803020100
         ) (
  1227568     input  wire       clk,
  000003     input  wire       rst_n,
  000003     input  wire       ena,
  000137     input  wire [3:0] kb_col_n,
  001932     output wire [3:0] kb_row_oe,
- 000178     input  wire       serial_sdi,
+ 000174     input  wire       serial_sdi,
  000768     input  wire       serial_sclk,
  000017     input  wire       serial_cs_n,
- 000128     output wire       serial_sdo,
+ 000144     output wire       serial_sdo,
  000008     output wire       req,
  000004     output wire       rsp_ready,
- 000060     output wire       buzzer_out
+ 001528     output wire       buzzer_out
         );
  000003     wire cold_reset_n;
  000005     wire session_reset_n;
@@ -55,12 +54,12 @@
  000014     wire cmd_ready;
  000382     wire core_s_valid;
  000008     wire core_s_ready;
- 000112     wire core_s_bit;
+ 000110     wire core_s_bit;
  000004     wire seal_valid;
  000004     wire seal_ready;
  000004     wire core_m_valid;
  000256     wire core_m_ready;
- 000056     wire core_m_bit;
+ 000070     wire core_m_bit;
  000004     wire core_m_last;
  000008     wire cipher_abort;
         
@@ -73,10 +72,10 @@
  000004     wire tx_done;
 ~000002     wire protocol_error;
  000018     wire frame_start;
- 000128     wire link_sdo;
+ 000144     wire link_sdo;
  000008     wire req_raw;
  000004     wire rsp_ready_raw;
- 000060     wire buzzer_raw;
+ 001528     wire buzzer_raw;
  000060     wire buzzer_busy_unused;
 %000000     wire unused_internal_status = &{1'b0, locked, buzzer_busy_unused, submit_event};
         
@@ -161,8 +160,7 @@
             );
         
             buzzer #(
-                .ACTIVE_BUZZER(ACTIVE_BUZZER), .BEEP_TICKS_MS(BEEP_TICKS_MS),
-                .TONE_HALF_TICKS(TONE_HALF_TICKS)
+                .BEEP_TICKS_MS(BEEP_TICKS_MS), .TONE_HALF_TICKS(TONE_HALF_TICKS)
             ) u_buzzer (
                 .clk(clk), .rst_n(session_reset_n), .ms_tick(ms_tick),
                 .scan_tick(scan_tick), .beep_event(beep_event),

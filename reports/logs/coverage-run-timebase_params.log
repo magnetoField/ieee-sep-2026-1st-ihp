@@ -1,5 +1,5 @@
 PASS tb_timebase_params valid dividers and default 1MHz/4kHz
 - test/unit/tb_timebase_params.sv:28: Verilog $finish
 - S i m u l a t i o n   R e p o r t: Verilator 5.032 2025-01-01
-- Verilator: $finish at 10us; walltime 0.005 s; speed 2.850 ms/s
-- Verilator: cpu 0.004 s on 1 threads; alloced 121 MB
+- Verilator: $finish at 10us; walltime 0.020 s; speed 1.726 ms/s
+- Verilator: cpu 0.006 s on 1 threads; alloced 121 MB

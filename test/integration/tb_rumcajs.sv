@@ -78,13 +78,13 @@ module tb_rumcajs;
     initial begin
         repeat(4)@(posedge clk);@(negedge clk);rst_n=1;wait_cycles(160);
         // Physical keypad -> KAT under GOOD.
-        enter_good();exchange(64'h656b696c20646e75,64'h44c8fc20b9dfa07a);
+        enter_good();exchange(64'hf15654a8d25ffa1c,64'hba2a5234deadbeef);
         if(dut.u_regs.fail_count!=0)$fatal(1,"GOOD changed attempts");
         // BAD -> GOOD -> BAD -> terminal BAD. Success must not clear failures.
         enter_bad();wait_cycles(200);
         if(req||rsp_ready||dut.cmd_valid||dut.txn_valid)$fatal(1,"BAD1 created a token");
         if(dut.u_regs.fail_count!=1)$fatal(1,"BAD1 count wrong");
-        enter_good();exchange(64'hfedcba9876543210,64'h6879a5ff245ce192);
+        enter_good();exchange(64'hfedcba9876543210,64'h85da33ec49ff111d);
         if(dut.u_regs.fail_count!=1)$fatal(1,"GOOD cleared failure");
         enter_bad();wait_cycles(200);
         if(req||rsp_ready||dut.cmd_valid||dut.txn_valid)$fatal(1,"BAD2 created a token");

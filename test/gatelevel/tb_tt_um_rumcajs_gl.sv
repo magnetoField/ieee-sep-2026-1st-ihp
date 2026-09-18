@@ -214,7 +214,7 @@ module tb_tt_um_rumcajs_gl #(
         good_pin();
         malformed_63_bit_frame();
         good_pin();
-        exchange(64'h656b696c20646e75, 64'h44c8fc20b9dfa07a);
+        exchange(64'hf15654a8d25ffa1c, 64'hba2a5234deadbeef);
         bad_pin();
         cycles(10000);
         if(uo_out[2:0]!==0)$fatal(1,"BAD PIN produced readiness or data");

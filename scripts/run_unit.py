@@ -52,7 +52,7 @@ def run_szymon_fixed() -> None:
 
     BUILD.mkdir(exist_ok=True)
     rng = random.Random(0x53494D4F)
-    keys = [0x1B1A1918131211100B0A090803020100, 0, (1 << 128) - 1]
+    keys = [0xBA2A1918131211100B0A090803020100, 0, (1 << 128) - 1]
     keys.extend(rng.getrandbits(128) for _ in range(4))
     for index, key in enumerate(keys):
         round_keys = BUILD / f"single_round_keys_{index}.mem"

@@ -28,7 +28,7 @@ niskim przed uzbrojeniem nie stanowi nowego rozpoczęcia.
 
 ## Oczekiwanie i ramka wyjściowa
 
-Po zakończeniu RX odczekaj **10 000 cykli CLK**. D00RSH nie wystawia osobnego
+Po zakończeniu RX odczekaj **10 000 cykli CLK**. IEEE DOORSH nie wystawia osobnego
 sygnału gotowości odpowiedzi. Przy 1 MHz wymagane oczekiwanie wynosi 10 ms.
 
 Opuść CS_n przy SCLK = 0. Po co najmniej 16 cyklach CLK rozpocznij 64 impulsy zegara.
@@ -47,7 +47,7 @@ Po anulowaniu obowiązuje okres [kasowania danych](czasy.md#reset-i-dezaktywacja
 Host oblicza oczekiwaną odpowiedź jako `SIMON64/128(KEY, challenge)` i porównuje
 wszystkie 64 bity. Musi odrzucić odpowiedź bez aktywnego challenge, niepełną,
 niezgodną lub spóźnioną. Challenge powinien być świeży, jednorazowy i nieprzewidywalny.
-D00RSH nie generuje challenge i nie przechowuje historii użytych wartości.
+IEEE DOORSH nie generuje challenge i nie przechowuje historii użytych wartości.
 
 Demonstrator używa publicznego klucza, więc sam poprawny wynik nie dowodzi
-posiadania konkretnego egzemplarza D00RSH. Zobacz [bezpieczeństwo](bezpieczenstwo.md).
+posiadania konkretnego egzemplarza IEEE DOORSH. Zobacz [bezpieczeństwo](bezpieczenstwo.md).

@@ -5,7 +5,7 @@ Rozmieszczenie złączy zależy od użytej płytki.
 
 ## Sygnały
 
-| Pin logiczny | Funkcja | Kierunek względem D00RSH | Uwagi |
+| Pin logiczny | Funkcja | Kierunek względem IEEE DOORSH | Uwagi |
 |---|---|---|---|
 | `ui_in[0]`…`ui_in[3]` | C0…C3 | wejście | Kolumny aktywne stanem 0, zewnętrzne pull-upy |
 | `ui_in[4]` | SDI | wejście | Challenge z hosta |
@@ -35,10 +35,7 @@ Zobacz [mapę klawiatury](klawiatura.md).
 
 ## Buzzer
 
-Domyślnie wyjście steruje buzzerem aktywnym (z własnym generatorem).
-Jest to konfiguracja zahartowanego ASIC (`ACTIVE_BUZZER=1`). Dostępny i
-przetestowany w RTL wariant `ACTIVE_BUZZER=0` generuje przebieg dla buzzera
-pasywnego; zespół projektu potwierdził jego działanie na prototypie FPGA.
+Wyjście generuje nominalny przebieg 2 kHz przez 50 ms dla buzzera pasywnego.
 Zastosuj zewnętrzny tranzystor lub driver, jeśli obciążenie tego wymaga.
 Zapewnij wspólną masę i właściwe zabezpieczenie obciążenia indukcyjnego.
 

@@ -6,7 +6,7 @@
 // checkpoints plus a serial XOR accumulator reconstruct omitted key words.
 // Full 44 rounds take 9344 cycles; no runtime 128-bit key schedule is stored.
 module szymon_fixed #(
-    parameter [127:0] KEY = 128'h1b1a1918131211100b0a090803020100
+    parameter [127:0] KEY = 128'hba2a1918131211100b0a090803020100
 ) (
     input  wire clk,
     input  wire rst_n,

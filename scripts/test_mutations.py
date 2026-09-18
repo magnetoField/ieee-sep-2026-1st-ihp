@@ -143,7 +143,7 @@ def main() -> None:
         sys.executable,
         "scripts/gen_fixed_round_keys.py",
         ".build/fixed_round_keys_default.mem",
-        "0x1b1a1918131211100b0a090803020100",
+        "0xba2a1918131211100b0a090803020100",
         "0xf0e1d2c3b4a5968778695a4b3c2d1e0f",
     ])
     if fixed_result.returncode:

@@ -2,16 +2,20 @@
 
 ## Full verification update — current
 
-B-008 RESOLVED: correct official CIEL c4b8b4e5 precheck PDK; all10 checks pass.
-B-009 RESOLVED LOCALLY: test/Makefile and real results.xml implemented;
-official GATES=yes make contract passes with the unpowered IHP netlist.
-No remote CI execution is claimed. Existing local physical fit also passes.
+The final IEEE DOORSH configuration is locally complete: fixed passive buzzer,
+key `BA2A1918131211100B0A090803020100`, 1×1 P&R, Tiny Tapeout precheck and
+post-route gate-level test all PASS. Author metadata is present.
 
-Remaining limitations: author identity needed for submission, public demo key,
-volatile lockout, no board measurements. Full SDF annotation is UNSUPPORTED
-by Icarus13 (extra experiment, not required gate); STA covers all3 corners.
-15 non-gating CTS fanout warnings and narrow hold margin remain disclosed.
-FINAL.md and FULL_VERIFICATION.md supersede earlier blocker statuses below.
+Remaining limitations are scope qualifications, not upload blockers: public
+demo key/PIN, volatile lockout, no post-fabrication silicon measurement and
+unsupported full SDF annotation in the available simulator. STA covers all
+three reported corners. The flow retains 15 non-gating max-fanout warnings;
+max capacitance, slew and timing violations are zero. Remote CI for the new
+revision remains NOT_RUN until the revision is pushed. No Tiny Tapeout
+submission, order or payment has been performed.
+
+`FINAL.md` supersedes earlier current-status wording below; older sections are
+retained as historical evidence.
 
 ## Current single-key revision (supersedes B-005 below)
 

@@ -46,7 +46,6 @@ def invalid_elaboration() -> None:
         "regs_fail_zero": ("src/regs.v", "regs #(.MAX_FAILS(0)) d();"),
         "buzzer_zero": ("src/buzzer.v", "buzzer #(.BEEP_TICKS_MS(0)) d();"),
         "buzzer_half_zero": ("src/buzzer.v", "buzzer #(.TONE_HALF_TICKS(0)) d();"),
-        "buzzer_mode": ("src/buzzer.v", "buzzer #(.ACTIVE_BUZZER(2)) d();"),
         "auth_zero": ("src/auth_ctrl.v", "auth_ctrl #(.AUTH_TIMEOUT_MS(0)) d();"),
         "core_mode": (
             "src/sync2.v src/reset_release.v src/timebase.v src/kb.v src/regs.v "

@@ -1,16 +1,14 @@
 # Pierwsze uruchomienie
 
-Procedura dotyczy domyślnej konfiguracji D00RSH z zegarem **1 MHz** i PIN-em **1234**.
+Procedura dotyczy domyślnej konfiguracji IEEE DOORSH z zegarem **1 MHz** i PIN-em **1234**.
 
 ## Wymagany sprzęt
 
 - Płytka udostępniająca interfejs Tiny Tapeout układu.
 - Pasywna klawiatura matrycowa 4×4 i cztery rezystory podciągające kolumny.
 - Host z liniami SDI, SCLK, CS_n oraz wejściami READY i SDO.
-- Źródło zegara 1 MHz; opcjonalnie aktywny buzzer z odpowiednim driverem.
-  Zahartowana konfiguracja ASIC używa `ACTIVE_BUZZER=1`. Wariant FPGA
-  `ACTIVE_BUZZER=0` generujący ton dla buzzera pasywnego został pomyślnie
-  sprawdzony sprzętowo przez zespół projektu.
+- Źródło zegara 1 MHz oraz opcjonalny buzzer pasywny z odpowiednim driverem.
+  ASIC generuje nominalny ton 2 kHz; nie używa buzzera z własnym generatorem.
 
 Połączenia opisuje [pinout](pinout.md). Dostosuj poziomy logiczne do płytki.
 
@@ -33,9 +31,9 @@ Wartości szesnastkowe; pierwszy przesyłany bit ma numer 63.
 
 ```text
 PIN:        1234
-KEY:        1b1a1918131211100b0a090803020100
-CHALLENGE:  656b696c20646e75
-RESPONSE:   44c8fc20b9dfa07a
+KEY:        BA2A1918131211100B0A090803020100
+CHALLENGE:  F15654A8D25FFA1C
+RESPONSE:   BA2A5234DEADBEEF
 ```
 
 To publiczny wektor testowy. Stałego challenge nie należy traktować jako zabezpieczenia przed ponownym użyciem odpowiedzi.

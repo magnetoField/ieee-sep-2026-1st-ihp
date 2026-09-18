@@ -3,7 +3,6 @@
         `default_nettype none
         
         module buzzer #(
-            parameter ACTIVE_BUZZER = 1,
             parameter BEEP_TICKS_MS = 50,
             parameter TONE_HALF_TICKS = 1
         ) (
@@ -12,7 +11,7 @@
  001926     input  wire ms_tick,
  007708     input  wire scan_tick,
  000060     input  wire beep_event,
- 000060     output wire buzzer_out,
+ 001528     output wire buzzer_out,
  000060     output reg  busy
         );
 %000000     function integer width_for;
@@ -39,13 +38,13 @@
  001528     reg tone_phase;
         
             generate
-                if ((BEEP_TICKS_MS < 1) || (TONE_HALF_TICKS < 1)
-                    || ((ACTIVE_BUZZER != 0) && (ACTIVE_BUZZER != 1))) begin : g_invalid_buzzer
+                if ((BEEP_TICKS_MS < 1) || (TONE_HALF_TICKS < 1)) begin : g_invalid_buzzer
                     INVALID_BUZZER_CONFIGURATION invalid_configuration();
                 end
             endgenerate
         
-            assign buzzer_out = ACTIVE_BUZZER ? busy : (busy && tone_phase);
+            // Fixed Tiny Tapeout interface: generate the tone for a passive buzzer.
+            assign buzzer_out = busy && tone_phase;
         
  613785     always @(posedge clk or negedge rst_n) begin
  000015         if (!rst_n) begin

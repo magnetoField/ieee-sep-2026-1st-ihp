@@ -10,11 +10,10 @@ module rumcajs #(
     parameter [31:0] PIN_VALUE = 32'h00001234,
     parameter MAX_FAILS = 3,
     parameter AUTH_TIMEOUT_MS = 5000,
-    parameter ACTIVE_BUZZER = 1,
     parameter BEEP_TICKS_MS = 50,
     parameter TONE_HALF_TICKS = 1,
     parameter FIXED_KEY_CORE = 1,
-    parameter [127:0] KEY = 128'h1b1a1918131211100b0a090803020100
+    parameter [127:0] KEY = 128'hba2a1918131211100b0a090803020100
 ) (
     input  wire       clk,
     input  wire       rst_n,
@@ -160,8 +159,7 @@ module rumcajs #(
     );
 
     buzzer #(
-        .ACTIVE_BUZZER(ACTIVE_BUZZER), .BEEP_TICKS_MS(BEEP_TICKS_MS),
-        .TONE_HALF_TICKS(TONE_HALF_TICKS)
+        .BEEP_TICKS_MS(BEEP_TICKS_MS), .TONE_HALF_TICKS(TONE_HALF_TICKS)
     ) u_buzzer (
         .clk(clk), .rst_n(session_reset_n), .ms_tick(ms_tick),
         .scan_tick(scan_tick), .beep_event(beep_event),

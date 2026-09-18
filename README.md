@@ -1,68 +1,56 @@
-# D00RSH — Tiny Tapeout IHP26b
+# IEEE DOORSH
 
 **Koło Naukowe BAZA, Politechnika Warszawska — ZT, PN, MK, JT, KK**
 
-D00RSH is a deliberately small Tiny Tapeout challenge-response authenticator.
-A 4×4 matrix keypad authorizes one challenge after the correct PIN. One fixed
-demonstration key encrypts it over a custom 64-bit SHIFT64 link using full
-SIMON64/128 with 44 rounds. Wrong PINs consume attempts but never authorize
-a challenge or produce a response.
-The design is written in synthesizable Verilog-2005 and targets one IHP SG13G2
-Tiny Tapeout IHP26b tile at 1 MHz.
+IEEE DOORSH is a one-tile Tiny Tapeout challenge-response authenticator. A
+4×4 keypad accepts the PIN, and a correct PIN authorizes exactly one 64-bit
+challenge. The response is calculated with the full 44-round SIMON64/128
+cipher and returned over the SHIFT64 serial interface.
 
-The ASIC top derives its round-key table from one `KEY` parameter at elaboration,
-avoiding 128 runtime key-schedule flip-flops. `uo_out[0]` is CHALLENGE_READY;
-`uo_out[1]` is tied low. Ciphertext remains on `uo_out[2]`. After sending a
-challenge, wait 10000 clock cycles (10 ms at 1 MHz) before reading the response.
-Reset/abort erases data serially over 64 cycles with the core interface blocked.
-The arbitrary-runtime-key reference core remains independently testable.
-The single-key candidate passes local P&R and all10 Tiny Tapeout prechecks.
-Full regression and post-route no-SDF gate simulation pass. Full SDF annotation
-is unsupported by the simulator; STA is the timing evidence. See
-[the final report](reports/FINAL.md) for warnings and verification scope, and
-[verified files](artifacts/verified_single_key/README.md) for GDS/LEF/netlist.
+The project targets Tiny Tapeout IHP26b, uses synthesizable Verilog-2005 and
+runs from a 1 MHz project clock. The submitted hardware has one fixed
+configuration: a single demonstration key and a 2 kHz output for a passive
+buzzer.
 
-Start with [the project datasheet](docs/info.md). The normative behavior and
-verification scope are amended by [docs/SINGLE_KEY.md](docs/SINGLE_KEY.md),
-which takes precedence over the earlier two-key specification and test plan.
-`make doctor` reports the available local
-toolchain; the other Make targets run the model, RTL, formal, synthesis and
-physical gates without silently treating missing tools as success.
+## How it works
 
-This is an educational volatile-lockout profile. Its hard-coded demo key and
-resettable attempt counter are not production authentication security.
+1. Enter `1234` on the matrix keypad.
+2. `CHALLENGE_READY` rises after the complete correct PIN.
+3. Send one 64-bit challenge, MSB first, using `SDI`, `SCLK` and `CS_n`.
+4. Wait 10,000 project-clock cycles (10 ms at 1 MHz).
+5. Read the 64-bit encrypted response from `SDO` in a second frame.
 
-## Programme and acknowledgements
+A wrong PIN never raises `CHALLENGE_READY` and never produces a response.
+After three wrong PINs, new attempts remain blocked until cold reset.
 
-D00RSH was developed by Koło Naukowe BAZA at Warsaw University of Technology
-as part of the **IEEE Open Silicon Initiative**. We gratefully acknowledge the
-programme funding provided by the IEEE Electron Devices Society (EDS), IEEE
-Solid-State Circuits Society (SSCS), IEEE Circuits and Systems Society (CASS),
-IEEE Council on Electronic Design Automation (CEDA), and IEEE Nanotechnology
-Council, as listed by the [official IEEE programme page](https://hart.ieee.org/projects/chip-fabrication/).
-Tiny Tapeout is an external programme partner. Tiny Tapeout separately credits
-[SwissChips for funding its IHP 130 nm work](https://tinytapeout.com/credits/).
+## Reference transaction
 
-The public page follows Tiny Tapeout's established `About / How it works / How
-to test / External hardware / IO` structure. The comparable projects and the
-specific documentation lessons used here are recorded in
-[docs/PROJECT_REFERENCES.md](docs/PROJECT_REFERENCES.md); no third-party RTL or
-project text was copied.
+```text
+PIN:       1234
+KEY:       BA2A1918131211100B0A090803020100
+CHALLENGE: F15654A8D25FFA1C
+RESPONSE:  BA2A5234DEADBEEF
+```
 
-The repository structure and ASIC workflow are based on the Apache-2.0-licensed
-Tiny Tapeout Verilog template, pinned in `reports/TARGET.md`.
+## External hardware
 
-## Documentation and GitHub upload
+- passive 4×4 matrix keypad with pull-ups on the column inputs;
+- host or microcontroller for the SHIFT64 interface;
+- passive buzzer connected through a suitable output driver;
+- 1 MHz project clock.
 
-- [User datasheet](docs/info.md) — pins, operation and hardware.
-- [Wiki sources](wiki/manual/index.md) — build with `make wiki-build` or view locally with `make wiki-serve`.
-- [GitHub / Tiny Tapeout upload guide](docs/GITHUB_UPLOAD.md).
-- [Local evidence](reports/FINAL.md) — local PASS does not claim a remote CI run.
+The ASIC output generates the buzzer tone; a buzzer with a built-in oscillator
+is not required.
 
-The physical top identifier remains `tt_um_rumcajs` to preserve the verified
-GDS/netlist identity; the product name is D00RSH. Project authorship is recorded
-in `info.yaml`; the Git commit author is set separately by the repository owner.
+## Tiny Tapeout files
 
-GitHub Actions builds the IHP GDS, precheck, gate-level tests and datasheet.
-The wiki workflow builds a downloadable HTML artifact; the official Tiny
-Tapeout viewer retains control of GitHub Pages.
+- [Project datasheet](docs/info.md)
+- [Pin assignment](info.yaml)
+- [Current functional contract](docs/SINGLE_KEY.md)
+- [Verification report](reports/FINAL.md)
+
+The Tiny Tapeout top module remains `tt_um_rumcajs` because it is the verified
+physical identifier. The public project name is **IEEE DOORSH**.
+
+The fixed key and PIN are public demonstration values. This project is an
+educational ASIC demonstrator, not a production security device.

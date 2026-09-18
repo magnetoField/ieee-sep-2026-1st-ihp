@@ -1,9 +1,6 @@
-# Full local verification — single-key IHP26b revision
+# IEEE DOORSH — final local Tiny Tapeout report
 
-Date: 2026-09-12. Required local functional and Tiny Tapeout checks PASS.
-This is a verified demonstrator candidate, not a claim of silicon testing or
-production security. No commit exists (unborn main); source/artifact identity
-is recorded by SHA-256 in MANIFEST.sha256.
+Date: 2026-09-18. Target: Tiny Tapeout IHP26b, IHP SG13G2, one 1×1 tile.
 
 ```text
 RTL_DEMO=PASS
@@ -17,113 +14,74 @@ SUBMISSION=NOT_PERFORMED
 PRODUCTION_PERSISTENCE=NOT_IMPLEMENTED
 ```
 
-## Implemented and tested
+## Final configuration
 
-One 128-bit KEY, full SIMON64/128 with 44 rounds. Only a correct complete PIN
-raises CHALLENGE_READY on uo_out[0]; uo_out[1] stays zero. Ciphertext remains
-on uo_out[2]. Wrong PINs never open a session; the third wrong PIN locks
-without a final BAD response. Success does not clear failed-attempt history.
-Reset/abort clears the shared data register over 64 clocks with its interface
-blocked. Encryption is 9344 clocks; the host waits 10000 clocks (10 ms at
-1 MHz) after RX before reading TX.
+- Public title: **IEEE DOORSH**.
+- Internal physical top: `tt_um_rumcajs`.
+- Clock: 1 MHz.
+- PIN: `1234`.
+- One SIMON64/128 demonstration key:
+  `BA2A1918131211100B0A090803020100`.
+- Full 44-round SIMON64/128, 9344 cipher cycles.
+- One challenge after a correct PIN; wrong PIN produces no READY and no
+  response; third wrong PIN blocks until cold reset.
+- Reset/abort data erasure: 64 clock cycles.
+- One fixed buzzer implementation: nominal 2 kHz tone for a passive buzzer,
+  50 ms duration. There is no final buzzer-mode parameter.
+- Public reference transaction:
+  `F15654A8D25FFA1C → BA2A5234DEADBEEF`.
 
-The complete required regression was rerun: models, all default unit modules,
-1024 runtime-key vectors, seven fixed-key configurations, directed/default-pin
-and fault integration, 256 random authorization trials, all 65536 keypad
-masks, parameter checks, formal checks, 7/7 killed mutations and synthesis.
-Formal results distinguish SAT/induction from control BMC20, wrapper BMC2
-and scaled timeout BMC12; no unbounded end-to-end proof is claimed.
-Coverage: 876/986 unique RTL lines (88.8%), aggregate 1463/1764 (82% as reported
-by Verilator). Coverage is measured, not a proof that all bugs are absent.
+## Verification
 
-## Physical and gate-level results
+The final source passed:
 
-Run runs/single_key_wipe_p80_h0, LibreLane3.0.5, raw IHP PDK e16d00b7,
-official 1x1 outline 202.08 × 154.98 µm, AREA0, placement target80%,
-extra post-CTS hold margin0. No functional RTL changed during this verification.
+- 15 independent Python model tests;
+- all standalone RTL module tests;
+- published SIMON64/128 KAT and exact 44-round trace;
+- 1024 seeded runtime-key vectors and seven fixed-key configurations;
+- directed wrapper/fault tests and 256 random authorization sessions;
+- all 65,536 physical keypad masks;
+- invalid-parameter rejection;
+- bounded formal checks, temporal induction and reachability;
+- mutation score 7/7;
+- IHP synthesis and no-SDF gate-level simulation.
 
-- Official synthesis: 20944.7154 µm², 1318 cells.
-- Routed standard-cell area excluding filler: 25996.7 µm²; utilization89.8251%.
-- Worst setup slack +598.4245 ns, worst hold slack +0.0079368 ns.
-- Setup/hold TNS zero in fast, typical and slow corners.
-- Routing DRC, Magic DRC, LVS differences, antenna violations: zero.
-- Unmodified Tiny Tapeout precheck: all10 checks PASS, including KLayout
-  SG13G2 DRC, pin geometry, boundary, layers and Verilog syntax.
-- Post-route pin-level simulation PASS with Icarus13 and unmodified original
-  cell models, no SDF. The TT action's GATES=yes make entry and results.xml
-  checks also pass locally.
+The readable public challenge/response pair is checked in RTL wrapper,
+fault-session and post-route gate-level benches. The published SIMON KAT
+remains an independent algorithm test.
 
-The precheck failure is resolved: the official precheck uses CIEL PDK
-c4b8b4e5, not the raw PDK used for P&R. The correct package supplies
-ihp-sg13g2.drc; no rules or layout were changed. CLI KLayout0.30.7 executed
-this deck successfully; the Python bindings are0.30.8. A separately downloaded
-0.30.8 CLI was not needed and is not claimed as the executed version.
+## Physical result
 
-## Timing qualifications and remaining limitations
+Run: `runs/final_ieee_doorsh_ba2a_passive`.
 
-STA uses the official flow's generic SDC: 1000 ns clock, 200 ns input/output
-delays, propagated clock, 0.25 ns uncertainty. check_setup reports no missing
-clocks, unconstrained endpoints or combinational loops. No timing paths were
-newly disabled. Of21 unannotated drivers,9 are unused inputs and12 are
-unloaded CTS balancing-cell outputs; filtered unannotated count is0.
+- LibreLane 3.0.5 with IHP-Open-PDK commit
+  `e16d00b7b26a93956563c373b782f54dd4d77a7f`.
+- Official 1×1 outline: 202.08 × 154.98 µm.
+- Synthesis area: 21,086.163 µm².
+- Routed standard-cell area excluding filler: 26,203.6 µm².
+- Final utilization: 90.5398%; 1703 standard cells, 213 sequential cells.
+- Routing DRC: 0; Magic DRC: 0; LVS errors: 0; antenna violations: 0.
+- Setup, hold, max-slew and max-cap violations: 0 in all reported corners.
+- Worst setup slack: +598.210 ns; worst hold slack: +0.0106 ns.
+- Tiny Tapeout precheck: PASS, including KLayout SG13G2 DRC, pins, boundary,
+  layers, cell name, zero-area and Verilog syntax.
+- Post-route pin-level no-SDF simulation: PASS.
 
-There are15 max-fanout warnings, all CTS leaf outputs driving10–17 sinks
-against a generic limit8. Max capacitance and slew violations are0. The
-official flow does not gate max fanout. This warning is retained, not waived
-or silently reported as zero. Hold margin is small and only the analyzed
-corners/constraints are covered.
+The flow reports 15 max-fanout warnings against its generic fanout limit. The
+flow does not gate on this metric; max capacitance, max slew and timing checks
+are clean. The generic SDC and IR-drop source-location qualifications remain
+tool-flow limitations and are not hidden.
 
-Additional SDF experiments on all three corners did NOT pass: Icarus13
-cannot fully annotate these SDF files (constant-output interconnects and COND
-syntax); setup/hold timing checks are also unsupported by this simulator.
-These failed experiments are not evidence of a silicon bug or timing PASS.
-No SDF was edited to manufacture a successful result. Timing signoff evidence
-is STA, independently of the passing no-SDF functional gate smoke, as allowed
-by TEST_PLAN section8.
+## Deliverables and limits
 
-No remote CI, hardware/analog measurements, secure provisioning or permanent
-lockout. Demo key is public; cold reset clears failures; READY intentionally
-reveals PIN correctness. Author metadata is still empty and must be supplied
-before submission. No push, order, purchase or submission was performed.
+Verified GDS, LEF and post-route netlist are in
+[`artifacts/verified_single_key`](../artifacts/verified_single_key/README.md).
+SHA-256 identities are recorded in `MANIFEST.sha256`.
 
-## Deliverables and reproduction
+Full SDF simulation is unsupported by the available Icarus/IHP model
+combination; STA is the timing evidence, while gate-level simulation is
+functional and no-SDF. The key and PIN are public. The failure counter is
+volatile and clears on cold reset. There is no secure provisioning, NVM,
+tamper resistance or production-persistence claim.
 
-[Verified candidate files](../artifacts/verified_single_key/README.md):
-GDS, LEF, unpowered IHP gate-level netlist and provenance. The older
-artifacts/single_key directory is a historical candidate, not the current bundle.
-
-Detailed commands, evidence and limitations: [FULL_VERIFICATION.md](FULL_VERIFICATION.md).
-`make release-check` checks exact status labels, hashes, XML results, physical
-metrics and required regression evidence; it does not submit anything.
-
-## GitHub publication update (2026-09-13)
-
-The user selected public repository
-https://github.com/magnetoField/ieee-sep-2026-1st-ihp as the publication target.
-Authenticated WRITE permission is confirmed. Its existing `main` history
-through dde98d17fe0eef79c5d05db6fbf471b7aeebed0e is merged without force-push;
-commit 591f96d58bc990ff2b4ac7c46b12b4208281c7a2 was pushed to `main`.
-Docs and wiki PASS remotely. The first RTL job FAIL is a packaging portability
-issue (shell scripts tracked as 100644); the staged correction changes them to
-100755 and adds an upload guard. The official 591f96d run later reports gds,
-precheck and gl_test PASS; viewer FAIL is only disabled repository Pages. The
-bc292cd RTL rerun found Icarus 13 declaration-order incompatibility in kb.v;
-moving existing declarations before their uses leaves logic unchanged and the
-complete local regression PASS. Commit ff4b316 confirms the parser fix remotely,
-then stops only because Verilator 5.053 promotes the intentional reset-release
-SYNCASYNCNET warning. The prepared lint change waives only that named rule and
-retains `-Wall`; RTL is unchanged. Fresh remote CI is still required. This step
-does not perform a Tiny Tapeout import, production
-submission, order or payment.
-
-## Latest GitHub CI qualification (2026-09-13)
-
-Commit `857c0e4c9b81f69020444db35f6e80c294e28417` passes the remote RTL,
-docs, wiki, GDS, precheck and gate-level jobs. Pages has since been enabled and
-a fresh manual GDS workflow passes `viewer`; the remaining branch summary 6/7
-is the historical failed `viewer` check from a rerun of push workflow
-34762738865. That rerun retained two fixed-name `github-pages` artifacts. The
-local workflow repair gives every run attempt a unique Pages artifact name and
-is structurally tested, but remote verification is NOT_RUN pending separately
-authorized push. This does not change the local ASIC status fields above or
-constitute a Tiny Tapeout submission.
+No Tiny Tapeout submission, fabrication order or payment was performed.

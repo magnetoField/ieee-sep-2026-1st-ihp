@@ -66,7 +66,7 @@
  000001         cycles(4);@(negedge clk);rst_n=1;cycles(25000);
  000001         cycles(20);
  000001         if(uo_out[2:0]!=0)$fatal(1,"unused inputs affected idle protocol");
- 000001         good_pin();exchange(64'h656b696c20646e75,64'h44c8fc20b9dfa07a);
+ 000001         good_pin();exchange(64'hf15654a8d25ffa1c,64'hba2a5234deadbeef);
  000001         bad_pin();cycles(10000);
  000001         if(uo_out[2:0]!==0)$fatal(1,"BAD PIN exposed READY or data");
  000001         if(dut.u_rumcajs.u_regs.fail_count!=1)$fatal(1,"wrapper BAD not accounted");

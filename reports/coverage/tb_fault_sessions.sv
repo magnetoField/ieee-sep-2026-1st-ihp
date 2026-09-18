@@ -3,7 +3,7 @@
         module tb_fault_sessions;
 ~123361     reg clk=0,rst_n=0,ena=1;reg[15:0]pressed=0;
  001932     wire[3:0]kb_col_n,kb_row_oe;reg sdi=0,sclk=0,cs_n=1;
- 000062     wire sdo,req,rsp_ready,buzzer_out;
+ 000076     wire sdo,req,rsp_ready,buzzer_out;
             integer cmd_fires,seal_fires,session_ends,i,base;
  370212     function[3:0]network_columns;
                 input[15:0]keys;input[3:0]driven;reg[7:0]reached;integer pass,row,col;
@@ -101,7 +101,7 @@
                 // BAD2 completes normally. A second challenge without a new PIN is inert.
  000001         bad_pin();cycles(200);
  000001         if(req||rsp_ready)$fatal(1,"BAD2 admitted a session");
- 000001         good_pin();complete_exchange(64'h656b696c20646e75,64'h44c8fc20b9dfa07a);
+ 000001         good_pin();complete_exchange(64'hf15654a8d25ffa1c,64'hba2a5234deadbeef);
  000001         if(dut.u_regs.fail_count!=2)$fatal(1,"BAD2 accounting wrong");
  000001         base=cmd_fires;frame_bits(64'h0123456789abcdef,64);cycles(300);
  000001         if(req||rsp_ready||cmd_fires!=base)$fatal(1,"second challenge reused token");

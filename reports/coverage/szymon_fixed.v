@@ -7,7 +7,7 @@
         // checkpoints plus a serial XOR accumulator reconstruct omitted key words.
         // Full 44 rounds take 9344 cycles; no runtime 128-bit key schedule is stored.
         module szymon_fixed #(
-            parameter [127:0] KEY = 128'h1b1a1918131211100b0a090803020100
+            parameter [127:0] KEY = 128'hba2a1918131211100b0a090803020100
         ) (
  1227568     input  wire clk,
  000005     input  wire rst_n,
@@ -18,14 +18,14 @@
         
  000382     input  wire s_valid,
  000064     output wire s_ready,
- 000112     input  wire s_bit,
+ 000110     input  wire s_bit,
         
  000060     input  wire seal_valid,
  000060     output wire seal_ready,
         
  000004     output wire m_valid,
  000256     input  wire m_ready,
- 000056     output wire m_bit,
+ 000070     output wire m_bit,
  000004     output wire m_last
         );
             localparam [2:0] ST_IDLE      = 3'd0;
@@ -63,8 +63,8 @@
             localparam [1407:0] ROUND_KEYS = expand_key(KEY);
         
  000126     reg [2:0] state;
- 013748     reg [31:0] a;
- 013700     reg [31:0] b;
+ 013992     reg [31:0] a;
+ 013512     reg [31:0] b;
  031948     reg [5:0] bit_count;
  000872     reg [5:0] round_count;
         
@@ -81,7 +81,7 @@
             localparam [1407:0] SPARSE_KEYS = sparse_keys(ROUND_KEYS);
  166792     reg [1:0] key_phase;
  047712     reg [2:0] key_depth;
- 086768     reg key_accumulator;
+ 085032     reg key_accumulator;
  047932     wire [5:0] work_round = round_count - {1'b0, key_depth, 2'b0};
  023864     wire reconstruct = !work_round[0] && (work_round[4:2] != 3'b0);
  023865     wire key_ready = !reconstruct;
@@ -99,8 +99,8 @@
  115331     wire [4:0] lookup_bit = ~bit_count[4:0]
                 + (reconstruct ? bit_offset : 5'b0);
  115331     wire [10:0] round_bit_index = {lookup_round, lookup_bit};
- 095530     wire lookup_value = SPARSE_KEYS[round_bit_index];
- 089702     wire round_key_bit = lookup_value ^ key_accumulator;
+ 102292     wire lookup_value = SPARSE_KEYS[round_bit_index];
+ 089144     wire round_key_bit = lookup_value ^ key_accumulator;
             localparam [31:0] RECONSTRUCT_Z = 32'bxxxxxxxxxx0100xx11001001111101xx;
  002801     wire key_constant = (bit_count[4:0] < 5'd30)
                 ^ ((bit_count[4:0] == 5'd31) & RECONSTRUCT_Z[work_round[5:1]]);
@@ -121,9 +121,9 @@
             end
             /* verilator lint_on SYNCASYNCNET */
  000873     wire even_round = ~round_count[0];
- 090796     wire data_feedback_even = (a[30] & a[23]) ^ a[29] ^ b[31]
+ 090126     wire data_feedback_even = (a[30] & a[23]) ^ a[29] ^ b[31]
                 ^ round_key_bit;
- 090812     wire data_feedback_odd = (b[30] & b[23]) ^ b[29] ^ a[31]
+ 089482     wire data_feedback_odd = (b[30] & b[23]) ^ b[29] ^ a[31]
                 ^ round_key_bit;
         
             assign cmd_ready  = (state == ST_IDLE);
@@ -222,9 +222,9 @@
  000382     wire load_step = (state == ST_LOAD) && s_valid;
  000256     wire output_step = (state == ST_OUTPUT) && m_ready;
  023936     wire shift_data = crypt_step || load_step || output_step;
- 019360     wire a_input = crypt_step
+ 019264     wire a_input = crypt_step
                 ? (even_round ? a[31] : data_feedback_odd) : b[31];
- 019440     wire b_input = crypt_step
+ 019940     wire b_input = crypt_step
                 ? (even_round ? data_feedback_even : b[31]) : (load_step && s_bit);
             // Serial wipe takes 64 clocks with every ready/valid output blocked.
  613784     always @(posedge clk) begin

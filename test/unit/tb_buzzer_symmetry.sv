@@ -9,9 +9,9 @@ module tb_buzzer_symmetry;
         gv,1'b0,1'b0,glock,gbeep,gsubmit,greject);
     regs bad_regs(clk,cold_rst_n,session_rst_n,1'b1,key_valid,br,bad_id,
         bv,1'b0,1'b0,block,bbeep,bsubmit,breject);
-    buzzer #(.ACTIVE_BUZZER(0),.BEEP_TICKS_MS(3),.TONE_HALF_TICKS(2)) good_buzzer(
+    buzzer #(.BEEP_TICKS_MS(3),.TONE_HALF_TICKS(2)) good_buzzer(
         clk,session_rst_n,ms_tick,scan_tick,gbeep,gout,gbusy);
-    buzzer #(.ACTIVE_BUZZER(0),.BEEP_TICKS_MS(3),.TONE_HALF_TICKS(2)) bad_buzzer(
+    buzzer #(.BEEP_TICKS_MS(3),.TONE_HALF_TICKS(2)) bad_buzzer(
         clk,session_rst_n,ms_tick,scan_tick,bbeep,bout,bbusy);
     always #5 clk=~clk;
     always @(posedge clk)if(session_rst_n)begin

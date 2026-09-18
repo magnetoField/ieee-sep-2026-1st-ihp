@@ -28,9 +28,8 @@ W tabelach `I` i `O` oznaczają kierunek względem opisywanego modułu. Wszystki
 | `PIN_VALUE` | `16'h1234` | Jawny PIN demonstracyjny, cyfry BCD od lewej |
 | `MAX_FAILS` | 3 | Trzy błędy łącznie; blokada przy osiągnięciu, nie dopiero po przekroczeniu |
 | `AUTH_TIMEOUT_MS` | 5000 | Absolutny limit sesji od zatwierdzenia PIN-u |
-| `ACTIVE_BUZZER` | 1 | Domyślnie sterowanie zewnętrznym buzzerem z generatorem |
 | `BEEP_TICKS_MS` | 50 | Liczba kolejnych ticków 1 ms trwania impulsu |
-| `TONE_HALF_TICKS` | 1 | Dla pasywnego buzzera: półokres w tickach skanowania, domyślnie 2 kHz |
+| `TONE_HALF_TICKS` | 1 | Półokres tonu buzzera pasywnego w tickach skanowania, domyślnie 2 kHz |
 | Blokada | `DEMO_VOLATILE_LOCKOUT` | Reset globalny lub utrata zasilania nie zapewniają zachowania blokady |
 
 `SCAN_DIV = CLK_HZ / SCAN_HZ` musi być całkowite i co najmniej 16. Dodatkowo `SCAN_HZ` ma być podzielne przez 1000, a dla skanowania 4×4 w MVP ustalone na 4000. Dopuszczalne jest uproszczenie interfejsu do stałego `SCAN_HZ=4000` i parametryzacji `CLK_HZ`. Parametry czasowe muszą być dodatnie. Rozmiar każdego licznika to minimum 1 bit. Parametry niepoprawne mają być odrzucane przez test elaboracji / kontrolę konfiguracji, a nie po cichu przycinane.
@@ -350,9 +349,12 @@ Wyczyść stan roboczy szyfru, kontekst PIN-u, bufory linku i oczekujące zdarze
 
 Wejścia: `clk`, reset sesji, `ms_tick`, `scan_tick`, `beep_event`; wyjścia: `buzzer_out`, opcjonalnie wewnętrzny `busy`. `regs` emituje beep_event dla odebranej cyfry oraz `*` — jednakowo niezależnie od zgodności PIN-u. Klawisze ignorowane nie uruchamiają buzzera.
 
-W trybie ACTIVE wyjście jest 1 przez `BEEP_TICKS_MS` przyszłych ticków ms. Ponowny trigger podczas busy jest ignorowany i nie przedłuża dźwięku. Trigger w tym samym cyklu co tick ma pierwszeństwo przy rozpoczynaniu z IDLE; trigger w cyklu kończącym busy nadal traktujemy jako zdarzenie podczas busy i ignorujemy.
-
-W trybie pasywnym generuj przebieg prostokątny wyłącznie w tym samym oknie, przełączając fazę co `TONE_HALF_TICKS` scan_tick. Faza startuje od 0, a po końcu, reset lub ena=0 wyjście ma 0. Domyślny ACTIVE powinien usunąć niepotrzebny generator tonu w syntezie przez generate/stałą parametryzację.
+Wyjście generuje przebieg prostokątny dla buzzera pasywnego wyłącznie przez
+`BEEP_TICKS_MS` przyszłych ticków ms, przełączając fazę co
+`TONE_HALF_TICKS` `scan_tick`. Faza startuje od 0, a po końcu, reset lub
+`ena=0` wyjście ma 0. Ponowny trigger podczas `busy` jest ignorowany i nie
+przedłuża dźwięku. Finalny top Tiny Tapeout nie udostępnia wyboru trybu
+buzzera.
 
 Nie dodawaj różnych dźwięków dla poprawnego i błędnego PIN-u. Funkcja buzzera nie może zmieniać licznika prób ani blokować protokołu uwierzytelniania.
 
@@ -375,7 +377,11 @@ W testach używaj jawnego, powtarzalnego PRNG z seedem. W demonstratorze program
 
 ## 14. Parametry i rzeczy zabronione
 
-Wspieraj PIN_LEN 1..8, poprawne BCD, różne klucze, MAX_FAILS co najmniej 1, dodatnie timery, oba tryby buzzera oraz konfiguracje testowe. Testuj MAX_FAILS 1, 3, 4, 7 i wartości wymagające zwiększenia szerokości licznika. Większe parametry mogą nie mieścić się w 1 tile; dowód fit dotyczy konkretnych udokumentowanych parametrów.
+Wspieraj PIN_LEN 1..8, poprawne BCD, różne klucze, MAX_FAILS co najmniej 1,
+dodatnie timery buzzera pasywnego oraz konfiguracje testowe. Testuj MAX_FAILS
+1, 3, 4, 7 i wartości wymagające zwiększenia szerokości licznika. Większe
+parametry mogą nie mieścić się w 1 tile; dowód fit dotyczy konkretnych
+udokumentowanych parametrów.
 
 Nie obiecuj dowolnej parametryzacji szerokości SIMON: inne warianty mają inne rundy/sekwencje. Bez zgody nie zamieniaj SIMON64/128 na SIMON64/96, nawet jeżeli oszczędzi to rejestry. Nie używaj `initial` do zaszywania stanu startowego ASIC ani fałszywych makr NVM. Stałe kombinacyjne są dozwolone.
 

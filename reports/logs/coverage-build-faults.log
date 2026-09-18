@@ -38,5 +38,5 @@ echo "" > Vtb_fault_sessions__ALL.verilator_deplist.tmp
 rm Vtb_fault_sessions__ALL.verilator_deplist.tmp
 make[1]: Leaving directory '/mnt/c/Users/user/Desktop/HACKATHON/.build/coverage/faults'
 - V e r i l a t i o n   R e p o r t: Verilator 5.032 2025-01-01 rev (Debian 5.032-1)
-- Verilator: Built from 0.540 MB sources in 20 modules, into 1.547 MB in 10 C++ files needing 0.001 MB
-- Verilator: Walltime 20.021 s (elab=0.015, cvt=0.176, bld=19.544); cpu 0.247 s on 16 threads; alloced 53.848 MB
+- Verilator: Built from 0.540 MB sources in 20 modules, into 1.548 MB in 10 C++ files needing 0.001 MB
+- Verilator: Walltime 29.751 s (elab=0.034, cvt=0.235, bld=28.675); cpu 0.396 s on 16 threads; alloced 53.344 MB

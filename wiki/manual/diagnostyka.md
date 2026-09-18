@@ -34,4 +34,5 @@ przywróć spoczynkowe CS_n/SCLK i rozpocznij od nowego PIN-u.
 ## Buzzer nie wydaje dźwięku przy każdej cyfrze
 
 Nowe zdarzenia podczas trwającego impulsu są ignorowane. Sprawdź również,
-czy użyto buzzera aktywnego i drivera o odpowiedniej wydajności prądowej.
+czy użyto buzzera pasywnego i drivera o odpowiedniej wydajności prądowej.
+Wyjście generuje przebieg prostokątny o nominalnej częstotliwości 2 kHz.

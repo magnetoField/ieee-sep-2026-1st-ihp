@@ -424,7 +424,7 @@ Import proof for assert: $eq$src/szymon_fixed.v:262$104_Y when $assert$src/szymo
 Import proof for assert: $eq$src/szymon_fixed.v:263$106_Y when $assert$src/szymon_fixed.v:261$102_EN.
 Import proof for assert: 1'1 when $assert$src/szymon_fixed.v:257$93_EN.
 
-[base case 1] Solving problem with 441403 variables and 1244563 clauses..
+[base case 1] Solving problem with 441697 variables and 1245445 clauses..
 Base case for induction length 1 proven.
 
 Setting up time step 2:
@@ -446,19 +446,19 @@ Import proof for assert: $eq$src/szymon_fixed.v:262$104_Y when $assert$src/szymo
 Import proof for assert: $eq$src/szymon_fixed.v:263$106_Y when $assert$src/szymon_fixed.v:261$102_EN.
 Import proof for assert: 1'1 when $assert$src/szymon_fixed.v:257$93_EN.
 
-[induction step 1] Solving problem with 146327 variables and 412461 clauses..
+[induction step 1] Solving problem with 146425 variables and 412755 clauses..
 Induction step failed. Incrementing induction length.
 
   Time Signal Name                                      Dec       Hex                                 Bin
   ---- ---------------------------------------- ----------- --------- -----------------------------------
-  init $auto$async2sync.cc:228:execute$323                5         5                                 101
-  init $auto$async2sync.cc:228:execute$325               63        3f                              111111
+  init $auto$async2sync.cc:228:execute$323                3         3                                 011
+  init $auto$async2sync.cc:228:execute$325               59        3b                              111011
   init $auto$async2sync.cc:228:execute$327               44        2c                              101100
   init \a                                                 0         0    00000000000000000000000000000000
   init \b                                                 0         0    00000000000000000000000000000000
   init \f_past_valid                                      0         0                                   0
-  init \f_prev_m_bit                                      0         0                                   0
-  init \f_prev_m_last                                     0         0                                   0
+  init \f_prev_m_bit                                      1         1                                   1
+  init \f_prev_m_last                                     1         1                                   1
   init \f_prev_m_stall                                    0         0                                   0
   init \key_accumulator                                   0         0                                   0
   init \key_depth                                         3         3                                 011
@@ -485,7 +485,7 @@ Import proof for assert: $eq$src/szymon_fixed.v:262$104_Y when $assert$src/szymo
 Import proof for assert: $eq$src/szymon_fixed.v:263$106_Y when $assert$src/szymon_fixed.v:261$102_EN.
 Import proof for assert: 1'1 when $assert$src/szymon_fixed.v:257$93_EN.
 
-[base case 2] Solving problem with 515857 variables and 1454717 clauses..
+[base case 2] Solving problem with 516198 variables and 1455740 clauses..
 Base case for induction length 2 proven.
 
 Setting up time step 3:
@@ -507,7 +507,7 @@ Import proof for assert: $eq$src/szymon_fixed.v:262$104_Y when $assert$src/szymo
 Import proof for assert: $eq$src/szymon_fixed.v:263$106_Y when $assert$src/szymon_fixed.v:261$102_EN.
 Import proof for assert: 1'1 when $assert$src/szymon_fixed.v:257$93_EN.
 
-[induction step 2] Solving problem with 221494 variables and 624842 clauses..
+[induction step 2] Solving problem with 221641 variables and 625283 clauses..
 Induction step proven: SUCCESS!
 
                   /$$$$$$      /$$$$$$$$     /$$$$$$$    
@@ -520,6 +520,6 @@ Induction step proven: SUCCESS!
                  \____ $$$|__/|________/|__/|_______/|__/
                        \__/                              
 
-End of script. Logfile hash: 28917a1c32, CPU: user 4.65s system 1.02s, MEM: 426.75 MB peak
+End of script. Logfile hash: c62a8891b6, CPU: user 4.35s system 0.89s, MEM: 427.73 MB peak
 Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
 Time spent: 98% 1x sat (5 sec), 0% 2x read_verilog (0 sec), ...

@@ -29,7 +29,7 @@ EXPECTED_PINOUT = {
     'uo[0]': 'CHALLENGE_READY after correct PIN',
     'uo[1]': 'unused, tied low',
     'uo[2]': 'SHIFT64 SDO',
-    'uo[3]': 'buzzer',
+    'uo[3]': '2 kHz passive buzzer drive',
     'uo[4]': 'unused, tied low',
     'uo[5]': 'unused, tied low',
     'uo[6]': 'unused, tied low',
@@ -92,8 +92,8 @@ def check(names):
         errors.append('Expected YAML v6 and 1x1 tile')
     if project.get('clock_hz') != 1000000:
         errors.append('Expected 1 MHz clock')
-    if project.get('title') != 'D00RSH' or project.get('author') != EXPECTED_AUTHOR:
-        errors.append('Expected public D00RSH title and full BAZA/PW authorship')
+    if project.get('title') != 'IEEE DOORSH' or project.get('author') != EXPECTED_AUTHOR:
+        errors.append('Expected public IEEE DOORSH title and full BAZA/PW authorship')
     sources = project.get('source_files', [])
     if not sources or len(sources) != len(set(sources)):
         errors.append('Empty or duplicate source list')
@@ -116,7 +116,7 @@ def check(names):
             if f'{group}[{bit}]' not in info.get('pinout', {}):
                 errors.append(f'Missing pin {group}[{bit}]')
     if info.get('pinout') != EXPECTED_PINOUT:
-        errors.append('Public pinout differs from the reviewed D00RSH mapping')
+        errors.append('Public pinout differs from the reviewed IEEE DOORSH mapping')
     wrapper = (ROOT / 'src/project.v').read_text()
     for port in ('ui_in', 'uo_out', 'uio_in', 'uio_out', 'uio_oe', 'ena', 'clk', 'rst_n'):
         if not re.search(rf'\b{port}\b', wrapper):
@@ -125,9 +125,9 @@ def check(names):
     if re.search(r'\bposedge\s+(?:serial_)?sclk\b', verilog, re.IGNORECASE):
         errors.append('SCLK must be synchronized data, not an RTL clock')
     datasheet = (ROOT / 'docs/info.md').read_text()
-    for marker in ('## About this project', '## How it works', '## How to test',
-                   '## External hardware', '## Security scope',
-                   'IEEE Open Silicon Initiative', 'Politechnika Warszawska'):
+    for marker in ('## How it works', '## How to test', '## External hardware',
+                   'IEEE DOORSH', 'Politechnika Warszawska',
+                   'BA2A1918131211100B0A090803020100'):
         if marker not in datasheet:
             errors.append(f'Public datasheet missing: {marker}')
     required = ('LICENSE', 'README.md', 'docs/info.md', 'test/Makefile',
@@ -181,21 +181,21 @@ def main():
     if args.archive:
         directory = ROOT / '.upload'
         directory.mkdir(exist_ok=True)
-        output = directory / 'D00RSH-github.zip'
+        output = directory / 'IEEE-DOORSH-github.zip'
         inventory = {}
         with zipfile.ZipFile(output, 'w', compression=zipfile.ZIP_DEFLATED) as archive:
             for name in names:
                 data = (ROOT / name).read_bytes()
-                entry = zipfile.ZipInfo('D00RSH/' + name, (2026, 9, 13, 0, 0, 0))
+                entry = zipfile.ZipInfo('IEEE-DOORSH/' + name, (2026, 9, 13, 0, 0, 0))
                 entry.create_system = 3
                 mode = 0o755 if name.endswith('.sh') else 0o644
                 entry.external_attr = (0o100000 | mode) << 16
                 entry.compress_type = zipfile.ZIP_DEFLATED
                 archive.writestr(entry, data)
                 inventory[name] = hashlib.sha256(data).hexdigest()
-        (directory / 'D00RSH-files.json').write_text(json.dumps(inventory, indent=2) + '\n')
+        (directory / 'IEEE-DOORSH-files.json').write_text(json.dumps(inventory, indent=2) + '\n')
         digest = hashlib.sha256(output.read_bytes()).hexdigest()
-        (directory / 'D00RSH-github.zip.sha256').write_text(digest + '  D00RSH-github.zip\n')
+        (directory / 'IEEE-DOORSH-github.zip.sha256').write_text(digest + '  IEEE-DOORSH-github.zip\n')
         print(f'Archive: {output} ({output.stat().st_size} bytes)')
         print('SHA256: ' + digest)
         print('No Git commit, remote creation, push or Tiny Tapeout submission performed.')
