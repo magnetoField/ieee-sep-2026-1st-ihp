@@ -282,10 +282,10 @@ Creating decoders for process `$paramod$189e5c5ece264226de8c0df8c90596b8bf71b942
      3/4: $0\scan_tick[0:0]
      4/4: $0\ms_count[1:0]
 Creating decoders for process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:0$601'.
-     1/4: $4\first_column$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:66$545.$result[1:0]$608
-     2/4: $3\first_column$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:66$545.$result[1:0]$607
-     3/4: $2\first_column$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:66$545.$result[1:0]$606
-     4/4: $1\first_column$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:66$545.$result[1:0]$605
+     1/4: $4\first_column$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:78$545.$result[1:0]$608
+     2/4: $3\first_column$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:78$545.$result[1:0]$607
+     3/4: $2\first_column$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:78$545.$result[1:0]$606
+     4/4: $1\first_column$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:78$545.$result[1:0]$605
 Creating decoders for process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:0$591'.
 Creating decoders for process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:96$554'.
      1/12: $0\debounce_count[4:0]
@@ -355,13 +355,13 @@ Creating decoders for process `$paramod\sync2\WIDTH=s32'000000000000000000000000
      2/2: $0\stage1[3:0]
 
 15.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
-No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\first_column$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:66$543.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:0$601'.
-No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\first_column$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:66$545.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:0$601'.
-No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\first_column$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:66$545.hits' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:0$601'.
-No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:63$542.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:0$591'.
-No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:63$544.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:0$591'.
-No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:63$544.hits' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:0$591'.
-No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:63$544.count' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:0$591'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\first_column$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:78$543.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:0$601'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\first_column$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:78$545.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:0$601'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\first_column$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:78$545.hits' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:0$601'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:75$542.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:0$591'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:75$544.$result' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:0$591'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:75$544.hits' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:0$591'.
+No latch inferred for signal `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.\hit_count$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:75$544.count' from process `$paramod$143b15b9608e06eea62a21ca91d45c97880ffd0d\kb.$proc$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:0$591'.
 No latch inferred for signal `$paramod$b92c0599001ba7fee29ca99bde4121d40086de58\regs.\digit_valid' from process `$paramod$b92c0599001ba7fee29ca99bde4121d40086de58\regs.$proc$/mnt/c/Users/user/Desktop/HACKATHON/src/regs.v:78$514'.
 No latch inferred for signal `$paramod$b92c0599001ba7fee29ca99bde4121d40086de58\regs.\star_key' from process `$paramod$b92c0599001ba7fee29ca99bde4121d40086de58\regs.$proc$/mnt/c/Users/user/Desktop/HACKATHON/src/regs.v:78$514'.
 No latch inferred for signal `$paramod$b92c0599001ba7fee29ca99bde4121d40086de58\regs.\digit' from process `$paramod$b92c0599001ba7fee29ca99bde4121d40086de58\regs.$proc$/mnt/c/Users/user/Desktop/HACKATHON/src/regs.v:78$514'.
@@ -1147,7 +1147,7 @@ Removed top 30 bits (of 32) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs
 Removed top 4 bits (of 32) from FF cell tt_um_rumcajs.$auto$ff.cc:266:slice$2129 ($adffe).
 Removed top 30 bits (of 32) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$lt$/mnt/c/Users/user/Desktop/HACKATHON/src/regs.v:110$533 ($lt).
 Removed top 4 bits (of 32) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1087 ($mux).
-Removed top 30 bits (of 32) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$ge$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:65$548 ($ge).
+Removed top 30 bits (of 32) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$ge$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:77$548 ($ge).
 Removed top 3 bits (of 4) from port A of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$shl$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:94$552 ($shl).
 Removed top 1 bits (of 2) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$eq$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:171$568 ($eq).
 Removed top 30 bits (of 32) from port B of cell tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$ge$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:183$569 ($ge).
@@ -1201,7 +1201,7 @@ Removed top 4 bits (of 16) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_reg
 Removed top 4 bits (of 16) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1079 ($mux).
 Removed top 4 bits (of 16) from mux cell tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1077 ($mux).
 Removed top 4 bits (of 6) from wire tt_um_rumcajs.$flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$ternary$/mnt/c/Users/user/Desktop/HACKATHON/src/szymon_fixed.v:88$373_Y.
-Removed top 28 bits (of 32) from wire tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$0\hit_count$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:63$544.count[31:0]$595.
+Removed top 28 bits (of 32) from wire tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$0\hit_count$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:75$544.count[31:0]$595.
 Removed top 30 bits (of 32) from wire tt_um_rumcajs.$flatten\u_rumcajs.\u_kb.$add$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:38$596_Y.
 Removed top 20 bits (of 32) from wire tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$0\pin_shift[31:0].
 Removed top 20 bits (of 32) from wire tt_um_rumcajs.$flatten\u_rumcajs.\u_regs.$procmux$1077_Y.
@@ -1230,7 +1230,7 @@ Extracting $alu and $macc cells in module tt_um_rumcajs:
   creating $macc model for $flatten\u_rumcajs.\u_kb.$add$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:38$596 ($add).
   creating $macc model for $flatten\u_rumcajs.\u_kb.$add$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:38$597 ($add).
   creating $macc model for $flatten\u_rumcajs.\u_kb.$add$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:38$598 ($add).
-  creating $macc model for $flatten\u_rumcajs.\u_kb.$add$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:64$547 ($add).
+  creating $macc model for $flatten\u_rumcajs.\u_kb.$add$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:76$547 ($add).
   creating $macc model for $flatten\u_rumcajs.\u_link.$add$/mnt/c/Users/user/Desktop/HACKATHON/src/serial_link.v:181$214 ($add).
   creating $macc model for $flatten\u_rumcajs.\u_regs.$add$/mnt/c/Users/user/Desktop/HACKATHON/src/regs.v:111$534 ($add).
   creating $macc model for $flatten\u_rumcajs.\u_regs.$add$/mnt/c/Users/user/Desktop/HACKATHON/src/regs.v:143$539 ($add).
@@ -1241,7 +1241,7 @@ Extracting $alu and $macc cells in module tt_um_rumcajs:
   creating $alu model for $macc $flatten\u_rumcajs.\u_regs.$add$/mnt/c/Users/user/Desktop/HACKATHON/src/regs.v:143$539.
   creating $alu model for $macc $flatten\u_rumcajs.\u_regs.$add$/mnt/c/Users/user/Desktop/HACKATHON/src/regs.v:111$534.
   creating $alu model for $macc $flatten\u_rumcajs.\u_link.$add$/mnt/c/Users/user/Desktop/HACKATHON/src/serial_link.v:181$214.
-  creating $alu model for $macc $flatten\u_rumcajs.\u_kb.$add$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:64$547.
+  creating $alu model for $macc $flatten\u_rumcajs.\u_kb.$add$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:76$547.
   creating $alu model for $macc $flatten\u_rumcajs.\u_timebase.$add$/mnt/c/Users/user/Desktop/HACKATHON/src/timebase.v:64$615.
   creating $alu model for $macc $flatten\u_rumcajs.\u_timebase.$add$/mnt/c/Users/user/Desktop/HACKATHON/src/timebase.v:67$616.
   creating $alu model for $macc $flatten\u_rumcajs.\u_kb.$add$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:241$586.
@@ -1259,14 +1259,14 @@ Extracting $alu and $macc cells in module tt_um_rumcajs:
   creating $alu model for $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$lt$/mnt/c/Users/user/Desktop/HACKATHON/src/szymon_fixed.v:104$382 ($lt): new $alu
   creating $alu model for $flatten\u_rumcajs.\u_kb.$ge$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:183$569 ($ge): new $alu
   creating $alu model for $flatten\u_rumcajs.\u_kb.$ge$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:40$599 ($ge): new $alu
-  creating $alu model for $flatten\u_rumcajs.\u_kb.$ge$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:65$548 ($ge): new $alu
+  creating $alu model for $flatten\u_rumcajs.\u_kb.$ge$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:77$548 ($ge): new $alu
   creating $alu model for $flatten\u_rumcajs.\u_link.$ge$/mnt/c/Users/user/Desktop/HACKATHON/src/serial_link.v:170$211 ($ge): new $alu
   creating $alu model for $flatten\u_rumcajs.\u_regs.$ge$/mnt/c/Users/user/Desktop/HACKATHON/src/regs.v:98$515 ($ge): new $alu
   creating $alu model for $flatten\u_rumcajs.\u_regs.$lt$/mnt/c/Users/user/Desktop/HACKATHON/src/regs.v:110$533 ($lt): merged with $flatten\u_rumcajs.\u_regs.$ge$/mnt/c/Users/user/Desktop/HACKATHON/src/regs.v:98$515.
   creating $alu model for $flatten\u_rumcajs.\u_link.$eq$/mnt/c/Users/user/Desktop/HACKATHON/src/serial_link.v:160$207 ($eq): merged with $flatten\u_rumcajs.\u_link.$ge$/mnt/c/Users/user/Desktop/HACKATHON/src/serial_link.v:170$211.
   creating $alu cell for $flatten\u_rumcajs.\u_regs.$ge$/mnt/c/Users/user/Desktop/HACKATHON/src/regs.v:98$515, $flatten\u_rumcajs.\u_regs.$lt$/mnt/c/Users/user/Desktop/HACKATHON/src/regs.v:110$533: $auto$alumacc.cc:495:replace_alu$2325
   creating $alu cell for $flatten\u_rumcajs.\u_link.$ge$/mnt/c/Users/user/Desktop/HACKATHON/src/serial_link.v:170$211, $flatten\u_rumcajs.\u_link.$eq$/mnt/c/Users/user/Desktop/HACKATHON/src/serial_link.v:160$207: $auto$alumacc.cc:495:replace_alu$2338
-  creating $alu cell for $flatten\u_rumcajs.\u_kb.$ge$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:65$548: $auto$alumacc.cc:495:replace_alu$2351
+  creating $alu cell for $flatten\u_rumcajs.\u_kb.$ge$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:77$548: $auto$alumacc.cc:495:replace_alu$2351
   creating $alu cell for $flatten\u_rumcajs.\u_kb.$ge$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:40$599: $auto$alumacc.cc:495:replace_alu$2364
   creating $alu cell for $flatten\u_rumcajs.\u_kb.$ge$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:183$569: $auto$alumacc.cc:495:replace_alu$2377
   creating $alu cell for $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$lt$/mnt/c/Users/user/Desktop/HACKATHON/src/szymon_fixed.v:104$382: $auto$alumacc.cc:495:replace_alu$2390
@@ -1283,7 +1283,7 @@ Extracting $alu and $macc cells in module tt_um_rumcajs:
   creating $alu cell for $flatten\u_rumcajs.\u_kb.$add$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:241$586: $auto$alumacc.cc:495:replace_alu$2425
   creating $alu cell for $flatten\u_rumcajs.\u_timebase.$add$/mnt/c/Users/user/Desktop/HACKATHON/src/timebase.v:67$616: $auto$alumacc.cc:495:replace_alu$2428
   creating $alu cell for $flatten\u_rumcajs.\u_timebase.$add$/mnt/c/Users/user/Desktop/HACKATHON/src/timebase.v:64$615: $auto$alumacc.cc:495:replace_alu$2431
-  creating $alu cell for $flatten\u_rumcajs.\u_kb.$add$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:64$547: $auto$alumacc.cc:495:replace_alu$2434
+  creating $alu cell for $flatten\u_rumcajs.\u_kb.$add$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:76$547: $auto$alumacc.cc:495:replace_alu$2434
   creating $alu cell for $flatten\u_rumcajs.\u_link.$add$/mnt/c/Users/user/Desktop/HACKATHON/src/serial_link.v:181$214: $auto$alumacc.cc:495:replace_alu$2437
   creating $alu cell for $flatten\u_rumcajs.\u_regs.$add$/mnt/c/Users/user/Desktop/HACKATHON/src/regs.v:111$534: $auto$alumacc.cc:495:replace_alu$2440
   creating $alu cell for $flatten\u_rumcajs.\u_regs.$add$/mnt/c/Users/user/Desktop/HACKATHON/src/regs.v:143$539: $auto$alumacc.cc:495:replace_alu$2443
@@ -1471,9 +1471,9 @@ Removed 0 multiplexer ports.
       New connections: $flatten\u_rumcajs.\g_fixed_key_core.u_szymon.$ternary$/mnt/c/Users/user/Desktop/HACKATHON/src/szymon_fixed.v:99$378_Y [4:3] = 2'00
     New ctrl vector for $pmux cell $flatten\u_rumcajs.\u_auth.$procmux$1441: { $flatten\u_rumcajs.\u_auth.$eq$/mnt/c/Users/user/Desktop/HACKATHON/src/auth_ctrl.v:78$475_Y \u_rumcajs.g_fixed_key_core.u_szymon.cmd_valid \u_rumcajs.rx_arm $flatten\u_rumcajs.\u_auth.$eq$/mnt/c/Users/user/Desktop/HACKATHON/src/auth_ctrl.v:86$485_Y $flatten\u_rumcajs.\u_auth.$procmux$1458_CMP \u_rumcajs.g_fixed_key_core.u_szymon.seal_valid $flatten\u_rumcajs.\u_auth.$procmux$1452_CMP \u_rumcajs.tx_arm $flatten\u_rumcajs.\u_auth.$procmux$1448_CMP \u_rumcajs.g_fixed_key_core.u_szymon.abort }
     Consolidated identical input bits for $mux cell $flatten\u_rumcajs.\u_kb.$procmux$642:
-      Old ports: A=2'00, B=2'11, Y=$flatten\u_rumcajs.\u_kb.$4\first_column$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:66$545.$result[1:0]$608
-      New ports: A=1'0, B=1'1, Y=$flatten\u_rumcajs.\u_kb.$4\first_column$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:66$545.$result[1:0]$608 [0]
-      New connections: $flatten\u_rumcajs.\u_kb.$4\first_column$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:66$545.$result[1:0]$608 [1] = $flatten\u_rumcajs.\u_kb.$4\first_column$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:66$545.$result[1:0]$608 [0]
+      Old ports: A=2'00, B=2'11, Y=$flatten\u_rumcajs.\u_kb.$4\first_column$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:78$545.$result[1:0]$608
+      New ports: A=1'0, B=1'1, Y=$flatten\u_rumcajs.\u_kb.$4\first_column$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:78$545.$result[1:0]$608 [0]
+      New connections: $flatten\u_rumcajs.\u_kb.$4\first_column$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:78$545.$result[1:0]$608 [1] = $flatten\u_rumcajs.\u_kb.$4\first_column$func$/mnt/c/Users/user/Desktop/HACKATHON/src/kb.v:78$545.$result[1:0]$608 [0]
     New ctrl vector for $pmux cell $flatten\u_rumcajs.\u_link.$procmux$1188: \u_rumcajs.u_link.state [1]
     New ctrl vector for $pmux cell $flatten\u_rumcajs.\u_link.$procmux$1312: \u_rumcajs.u_link.state [2:1]
     Consolidated identical input bits for $mux cell $memory$flatten\u_rumcajs.\u_regs.$auto$proc_rom.cc:155:do_switch$620$rdmux[0][3][6]$2511:
@@ -1787,7 +1787,7 @@ ABC: ABC command line: "source <abc-temp-dir>/abc.script".
 ABC: 
 ABC: + read_blif <abc-temp-dir>/input.blif 
 ABC: + read_lib -w /mnt/c/Users/user/Desktop/HACKATHON/.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib 
-ABC: Parsing finished successfully.  Parsing time =     0.02 sec
+ABC: Parsing finished successfully.  Parsing time =     0.07 sec
 ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_antennanp" due to dont_use attribute.
 ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_decap_4" due to dont_use attribute.
 ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_decap_8" due to dont_use attribute.
@@ -1818,8 +1818,8 @@ ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfrbpq_1".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "sg13g2_sdfrbpq_2".
 ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_sighold" due to dont_use attribute.
 ABC: Scl_LibertyReadGenlib() skipped cell "sg13g2_slgcp_1" due to dont_use attribute.
-ABC: Library "sg13g2_stdcell_typ_1p20V_25C" from "/mnt/c/Users/user/Desktop/HACKATHON/.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib" has 54 cells (20 skipped: 14 seq; 6 tri-state; 0 no func; 10 dont_use).  Time =     0.03 sec
-ABC: Memory =    2.85 MB. Time =     0.03 sec
+ABC: Library "sg13g2_stdcell_typ_1p20V_25C" from "/mnt/c/Users/user/Desktop/HACKATHON/.tools/IHP-Open-PDK-partial/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib" has 54 cells (20 skipped: 14 seq; 6 tri-state; 0 no func; 10 dont_use).  Time =     0.08 sec
+ABC: Memory =    2.85 MB. Time =     0.08 sec
 ABC: + strash 
 ABC: + &get -n 
 ABC: + &fraig -x 
@@ -1836,28 +1836,29 @@ ABC: + &put
 ABC: + write_blif <abc-temp-dir>/output.blif 
 
 17.1.2. Re-integrating ABC results.
-ABC RESULTS:     sg13g2_a21o_1 cells:       19
-ABC RESULTS:    sg13g2_a21oi_1 cells:      126
+ABC RESULTS:     sg13g2_a21o_1 cells:       22
+ABC RESULTS:    sg13g2_a21oi_1 cells:      128
 ABC RESULTS:   sg13g2_a221oi_1 cells:       17
-ABC RESULTS:    sg13g2_a22oi_1 cells:       20
-ABC RESULTS:     sg13g2_and2_1 cells:       36
-ABC RESULTS:     sg13g2_and3_1 cells:       10
-ABC RESULTS:     sg13g2_and4_1 cells:        2
-ABC RESULTS:      sg13g2_inv_1 cells:       56
+ABC RESULTS:    sg13g2_a22oi_1 cells:       22
+ABC RESULTS:     sg13g2_and2_1 cells:       34
+ABC RESULTS:     sg13g2_and3_1 cells:        8
+ABC RESULTS:     sg13g2_and4_1 cells:        3
+ABC RESULTS:      sg13g2_inv_1 cells:       71
 ABC RESULTS:     sg13g2_mux2_1 cells:       65
-ABC RESULTS:    sg13g2_nand2_1 cells:      123
-ABC RESULTS:   sg13g2_nand2b_1 cells:       37
-ABC RESULTS:    sg13g2_nand3_1 cells:       54
+ABC RESULTS:    sg13g2_nand2_1 cells:      120
+ABC RESULTS:   sg13g2_nand2b_1 cells:       29
+ABC RESULTS:    sg13g2_nand3_1 cells:       56
 ABC RESULTS:   sg13g2_nand3b_1 cells:        6
 ABC RESULTS:    sg13g2_nand4_1 cells:       21
-ABC RESULTS:     sg13g2_nor2_1 cells:      132
-ABC RESULTS:    sg13g2_nor2b_1 cells:       23
-ABC RESULTS:     sg13g2_nor3_1 cells:       60
-ABC RESULTS:     sg13g2_nor4_1 cells:       16
-ABC RESULTS:    sg13g2_o21ai_1 cells:      100
-ABC RESULTS:      sg13g2_or2_1 cells:       21
-ABC RESULTS:      sg13g2_or3_1 cells:        1
-ABC RESULTS:    sg13g2_xnor2_1 cells:       28
+ABC RESULTS:     sg13g2_nor2_1 cells:      119
+ABC RESULTS:    sg13g2_nor2b_1 cells:       22
+ABC RESULTS:     sg13g2_nor3_1 cells:       57
+ABC RESULTS:     sg13g2_nor4_1 cells:       11
+ABC RESULTS:    sg13g2_o21ai_1 cells:      112
+ABC RESULTS:      sg13g2_or2_1 cells:       19
+ABC RESULTS:      sg13g2_or3_1 cells:        4
+ABC RESULTS:      sg13g2_or4_1 cells:        1
+ABC RESULTS:    sg13g2_xnor2_1 cells:       27
 ABC RESULTS:     sg13g2_xor2_1 cells:       16
 ABC RESULTS:        internal signals:     1704
 ABC RESULTS:           input signals:      204
@@ -1869,8 +1870,8 @@ Removed 0 unused cells and 1297 unused wires.
 
 === tt_um_rumcajs ===
 
-   Number of wires:               1156
-   Number of wire bits:           1475
+   Number of wires:               1157
+   Number of wire bits:           1476
    Number of public wires:         171
    Number of public wire bits:     490
    Number of ports:                  8
@@ -1878,36 +1879,37 @@ Removed 0 unused cells and 1297 unused wires.
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
-   Number of cells:               1213
+   Number of cells:               1214
      $scopeinfo                     12
-     sg13g2_a21o_1                  19
-     sg13g2_a21oi_1                126
+     sg13g2_a21o_1                  22
+     sg13g2_a21oi_1                128
      sg13g2_a221oi_1                17
-     sg13g2_a22oi_1                 20
-     sg13g2_and2_1                  36
-     sg13g2_and3_1                  10
-     sg13g2_and4_1                   2
+     sg13g2_a22oi_1                 22
+     sg13g2_and2_1                  34
+     sg13g2_and3_1                   8
+     sg13g2_and4_1                   3
      sg13g2_dfrbpq_1               212
-     sg13g2_inv_1                   56
+     sg13g2_inv_1                   71
      sg13g2_mux2_1                  65
-     sg13g2_nand2_1                123
-     sg13g2_nand2b_1                37
-     sg13g2_nand3_1                 54
+     sg13g2_nand2_1                120
+     sg13g2_nand2b_1                29
+     sg13g2_nand3_1                 56
      sg13g2_nand3b_1                 6
      sg13g2_nand4_1                 21
-     sg13g2_nor2_1                 132
-     sg13g2_nor2b_1                 23
-     sg13g2_nor3_1                  60
-     sg13g2_nor4_1                  16
-     sg13g2_o21ai_1                100
-     sg13g2_or2_1                   21
-     sg13g2_or3_1                    1
-     sg13g2_xnor2_1                 28
+     sg13g2_nor2_1                 119
+     sg13g2_nor2b_1                 22
+     sg13g2_nor3_1                  57
+     sg13g2_nor4_1                  11
+     sg13g2_o21ai_1                112
+     sg13g2_or2_1                   19
+     sg13g2_or3_1                    4
+     sg13g2_or4_1                    1
+     sg13g2_xnor2_1                 27
      sg13g2_xor2_1                  16
 
    Area for cell type $scopeinfo is unknown!
 
-   Chip area for module '\tt_um_rumcajs': 19857.852000
+   Chip area for module '\tt_um_rumcajs': 19855.962000
      of which used for sequential elements: 10385.625600 (52.30%)
 
 19. Executing CHECK pass (checking for obvious problems).
@@ -1921,6 +1923,6 @@ Found and reported 0 problems.
 20.2. Executing DEMUXMAP pass.
 Dumping module `\tt_um_rumcajs'.
 
-End of script. Logfile hash: c946c87a6c, CPU: user 1.31s system 0.10s, MEM: 61.54 MB peak
+End of script. Logfile hash: 48ce169565, CPU: user 2.25s system 0.22s, MEM: 60.53 MB peak
 Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
-Time spent: 25% 43x opt_expr (0 sec), 14% 1x abc (0 sec), ...
+Time spent: 21% 43x opt_expr (0 sec), 16% 1x abc (0 sec), ...

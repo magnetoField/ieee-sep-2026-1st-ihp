@@ -520,6 +520,6 @@ Induction step proven: SUCCESS!
                  \____ $$$|__/|________/|__/|_______/|__/
                        \__/                              
 
-End of script. Logfile hash: 28917a1c32, CPU: user 4.35s system 0.73s, MEM: 426.79 MB peak
+End of script. Logfile hash: 28917a1c32, CPU: user 4.65s system 1.02s, MEM: 426.75 MB peak
 Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
-Time spent: 98% 1x sat (4 sec), 0% 2x read_verilog (0 sec), ...
+Time spent: 98% 1x sat (5 sec), 0% 2x read_verilog (0 sec), ...

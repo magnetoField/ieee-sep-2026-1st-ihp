@@ -72,3 +72,56 @@ Oficjalna dokumentacja definiuje strategie `AREA 0`–`AREA 3` oraz
 `SYNTH_ABC_AREA_USE_NF`. Changelog potwierdza obecność trybu `&nf` przed wersją
 3.0.5 przypiętą przez TTIHP26b. Wybór konfiguracji jest nadal hipotezą PPA do
 sprawdzenia pełnym flow, a nie dowodem dopasowania.
+
+## S11 — IEEE HART, IEEE Open Silicon Initiative
+
+`https://hart.ieee.org/projects/chip-fabrication/`
+
+Oficjalna strona programu opisuje IEEE Open Silicon Initiative jako program
+prototypowania i wytwarzania układów dla studentów. Wymienia IEEE EDS, SSCS,
+CASS, CEDA i IEEE Nanotechnology Council jako jednostki zapewniające
+finansowanie oraz Tiny Tapeout jako partnera zewnętrznego. Na tej podstawie
+sformułowano podziękowanie w publicznej dokumentacji D00RSH.
+
+## S12 — Tiny Tapeout, credits
+
+`https://tinytapeout.com/credits/`
+
+Oficjalna strona Tiny Tapeout przypisuje finansowanie prac nad IHP 130 nm
+programowi SwissChips. Jest to odrębne podziękowanie dotyczące infrastruktury
+Tiny Tapeout, nie twierdzenie o bezpośrednim grancie dla zespołu D00RSH.
+
+## S13 — Tiny Tapeout, updating project documentation
+
+`https://tinytapeout.com/guides/documentation/`
+
+Oficjalny przewodnik potwierdza, że `info.yaml` i `docs/info.md` są źródłami
+publicznej strony projektu oraz że autor, tytuł i pinout należą do metadanych
+dokumentacji.
+
+## S14 — Tiny Tapeout, IEEE Open Silicon water-level controller
+
+`https://tinytapeout.com/chips/ttsky26b/tt_um_oreoluwa_water_level`
+
+Opublikowany projekt programu IEEE Open Silicon z osobnym „About this project”,
+opisem działania, instrukcją testu i tabelą pinów. D00RSH stosuje ten czytelny
+podział, ale nie kopiuje tekstu ani RTL projektu.
+
+## S15 — Tiny Tapeout, related lock and serial-challenge projects
+
+`https://tinytapeout.com/chips/ttsky26b/tt_um_wokwi_461622504612675585`
+
+`https://tinytapeout.com/chips/ttsky26b/tt_um_thorsten_shiftregister`
+
+Pierwszy przykład pokazuje prosty zamek i jawny test sygnałów LED/buzzera;
+drugi opisuje przesyłany szeregowo challenge, kolejność bitów, reset i
+oczekiwany stan wyjścia. Służą wyłącznie jako porównanie sposobu dokumentacji.
+
+## S16 — Sibling IHP project with evidence-led README
+
+`https://github.com/magnetoField/ieee-sep-2026-2nd-ihp`
+
+Publiczny projekt z tej samej serii pokazuje dobry wzorzec rozdzielenia opisu
+interfejsu, procedury weryfikacji, metryk fizycznych i uczciwych ograniczeń.
+D00RSH utrzymuje analogiczny rozdział między zachowaniem funkcjonalnym,
+dowodami oraz ograniczeniami bezpieczeństwa.

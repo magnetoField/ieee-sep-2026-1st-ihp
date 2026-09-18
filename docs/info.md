@@ -1,6 +1,18 @@
-## How it works
+## About this project
 
-D00RSH — Koło Naukowe BAZA. Creators: ZT, PN, MK, JT, KK.
+D00RSH was developed by **Koło Naukowe BAZA, Politechnika Warszawska**.
+Creators: ZT, PN, MK, JT, KK. It is a one-tile educational authenticator for
+Tiny Tapeout IHP26b, designed to demonstrate a complete keypad-to-ciphertext
+path while making its non-production security limits explicit.
+
+The project was developed as part of the **IEEE Open Silicon Initiative**. We
+gratefully acknowledge programme funding from IEEE EDS, IEEE SSCS, IEEE CASS,
+IEEE CEDA and the IEEE Nanotechnology Council, as listed by the
+[official IEEE programme page](https://hart.ieee.org/projects/chip-fabrication/),
+and Tiny Tapeout as an external programme partner. Tiny Tapeout credits
+[SwissChips for funding its IHP 130 nm work](https://tinytapeout.com/credits/).
+
+## How it works
 
 D00RSH scans a 4×4 passive matrix keypad using four open-drain row enables.
 Enter the four digits `1234` to authorize one challenge under the sole
@@ -41,9 +53,14 @@ to erase the shared data register; interfaces are blocked during erasure.
 ## External hardware
 
 A passive 4×4 matrix keypad with column pull-ups, a host able to drive the
-SHIFT64 timing above, and either an active buzzer or a suitable driver are
-required. Electrical row/column settling, pull-up values and buzzer current must
-be measured on the actual board; the RTL test model does not replace that work.
+SHIFT64 timing above, and an active buzzer with a suitable output driver are
+required for the hardened ASIC configuration (`ACTIVE_BUZZER=1`). The RTL also
+contains and tests `ACTIVE_BUZZER=0`, which generates a tone for a passive
+buzzer. The project team reports that this passive-buzzer mode passed on the
+FPGA prototype; that observation is hardware evidence supplied by the team,
+not a measurement reproduced in this repository. Electrical row/column
+settling, pull-up values and buzzer current must be measured on the actual
+board; the RTL test model does not replace that work.
 
 ## Security scope
 
@@ -52,3 +69,10 @@ READY intentionally reveals whether the PIN was correct.
 This configuration is only a functional ASIC demonstration. It does not claim
 secure provisioning, non-volatile lockout, tamper resistance, side-channel
 resistance or production cryptographic suitability.
+
+## Documentation references
+
+The page structure and level of test detail were checked against the official
+Tiny Tapeout documentation guide and several related published projects. The
+source list and the exact lessons applied to D00RSH are in
+[PROJECT_REFERENCES.md](PROJECT_REFERENCES.md).

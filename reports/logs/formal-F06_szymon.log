@@ -722,6 +722,6 @@ SAT proof finished - no model found: SUCCESS!
                  \____ $$$|__/|________/|__/|_______/|__/
                        \__/                              
 
-End of script. Logfile hash: aecd76901d, CPU: user 9.05s system 2.16s, MEM: 783.25 MB peak
+End of script. Logfile hash: aecd76901d, CPU: user 7.84s system 2.28s, MEM: 783.50 MB peak
 Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
-Time spent: 99% 1x sat (11 sec), 0% 7x opt_clean (0 sec), ...
+Time spent: 98% 1x sat (9 sec), 0% 7x opt_clean (0 sec), ...

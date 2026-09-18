@@ -8,6 +8,9 @@ Procedura dotyczy domyślnej konfiguracji D00RSH z zegarem **1 MHz** i PIN-em **
 - Pasywna klawiatura matrycowa 4×4 i cztery rezystory podciągające kolumny.
 - Host z liniami SDI, SCLK, CS_n oraz wejściami READY i SDO.
 - Źródło zegara 1 MHz; opcjonalnie aktywny buzzer z odpowiednim driverem.
+  Zahartowana konfiguracja ASIC używa `ACTIVE_BUZZER=1`. Wariant FPGA
+  `ACTIVE_BUZZER=0` generujący ton dla buzzera pasywnego został pomyślnie
+  sprawdzony sprzętowo przez zespół projektu.
 
 Połączenia opisuje [pinout](pinout.md). Dostosuj poziomy logiczne do płytki.
 

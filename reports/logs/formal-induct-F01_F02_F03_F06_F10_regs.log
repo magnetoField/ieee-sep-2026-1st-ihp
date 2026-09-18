@@ -2168,6 +2168,6 @@ Induction step proven: SUCCESS!
                  \____ $$$|__/|________/|__/|_______/|__/
                        \__/                              
 
-End of script. Logfile hash: 88b6a6168d, CPU: user 30.42s system 1.35s, MEM: 595.38 MB peak
+End of script. Logfile hash: 88b6a6168d, CPU: user 31.16s system 1.34s, MEM: 595.67 MB peak
 Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
-Time spent: 99% 1x sat (31 sec), 0% 6x opt_clean (0 sec), ...
+Time spent: 99% 1x sat (32 sec), 0% 6x opt_clean (0 sec), ...

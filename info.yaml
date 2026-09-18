@@ -2,7 +2,7 @@
 # pinned in reports/TARGET.md.
 project:
   title:        "D00RSH"
-  author:       "Koło Naukowe BAZA — ZT, PN, MK, JT, KK"
+  author:       "Koło Naukowe BAZA, Politechnika Warszawska — ZT, PN, MK, JT, KK"
   discord:      ""
   description:  "PIN-authorized SIMON64/128 challenge-response authenticator with a 4x4 keypad"
   language:     "Verilog"

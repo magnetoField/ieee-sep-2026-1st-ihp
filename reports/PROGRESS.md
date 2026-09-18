@@ -442,3 +442,31 @@ continue the exact remote regression. No RTL logic changed in this repair.
 - Next: after authorized push, require a fresh push-triggered `gds` workflow,
   then exercise `Re-run all jobs` once and confirm both attempts deploy exactly
   one Pages artifact each.
+
+## P8 — public identity, IEEE acknowledgement and final interface audit (2026-09-18)
+
+- Compared `src/project.v` with official TTIHP template commit
+  `6598bef4d3159f19fe471a2a2225df52e6f5ad25`; all wrapper ports, directions
+  and active-high `uio_oe` semantics match. Confirmed exact 24-pin metadata,
+  1 MHz `clk` and absence of `posedge sclk`/`posedge serial_sclk` in RTL.
+- Updated public author attribution to Koło Naukowe BAZA, Politechnika
+  Warszawska — ZT, PN, MK, JT, KK. Added source-backed IEEE Open Silicon and
+  SwissChips acknowledgements. Added four comparable-project references and
+  the documentation lessons applied without copying third-party content.
+- Recorded the team's successful passive-buzzer FPGA test while preserving the
+  physically verified ASIC configuration `ACTIVE_BUZZER=1`.
+- Commands: `make upload-check`; `make lint`; `make wiki-build`;
+  `python3 scripts/check_wiki.py`; `make test-model test-unit test-integration
+  test-exhaustive test-params formal test-mutations synth`; `make
+  test-gatelevel`; `git diff --check`.
+- PASS: 15 model tests, all units/integration, active/passive buzzer, 1024 SIMON
+  vectors, seven fixed-key configurations, 256 random sessions, all 65536
+  keypad masks, parameter checks, formal SAT/BMC/induction/reachability, 7/7
+  mutations, synthesis, fresh IHP standard-cell gate smoke, 12-page wiki/398
+  local references and upload audit.
+- Tools: Python 3.14.4, Git 2.53.0, Icarus 12.0, Verilator 5.032. Formal and
+  synthesis logs are under `reports/logs/`; consolidated evidence is
+  `reports/PUBLICATION_AUDIT.md`.
+- Next: refresh hashes for the changed public/report files, run release and
+  upload gates, commit/push, then require fresh GitHub checks. No Tiny Tapeout
+  submission, order or payment was performed.

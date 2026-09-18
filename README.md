@@ -1,6 +1,6 @@
 # D00RSH — Tiny Tapeout IHP26b
 
-**Koło Naukowe BAZA — ZT, PN, MK, JT, KK**
+**Koło Naukowe BAZA, Politechnika Warszawska — ZT, PN, MK, JT, KK**
 
 D00RSH is a deliberately small Tiny Tapeout challenge-response authenticator.
 A 4×4 matrix keypad authorizes one challenge after the correct PIN. One fixed
@@ -31,6 +31,23 @@ physical gates without silently treating missing tools as success.
 
 This is an educational volatile-lockout profile. Its hard-coded demo key and
 resettable attempt counter are not production authentication security.
+
+## Programme and acknowledgements
+
+D00RSH was developed by Koło Naukowe BAZA at Warsaw University of Technology
+as part of the **IEEE Open Silicon Initiative**. We gratefully acknowledge the
+programme funding provided by the IEEE Electron Devices Society (EDS), IEEE
+Solid-State Circuits Society (SSCS), IEEE Circuits and Systems Society (CASS),
+IEEE Council on Electronic Design Automation (CEDA), and IEEE Nanotechnology
+Council, as listed by the [official IEEE programme page](https://hart.ieee.org/projects/chip-fabrication/).
+Tiny Tapeout is an external programme partner. Tiny Tapeout separately credits
+[SwissChips for funding its IHP 130 nm work](https://tinytapeout.com/credits/).
+
+The public page follows Tiny Tapeout's established `About / How it works / How
+to test / External hardware / IO` structure. The comparable projects and the
+specific documentation lessons used here are recorded in
+[docs/PROJECT_REFERENCES.md](docs/PROJECT_REFERENCES.md); no third-party RTL or
+project text was copied.
 
 The repository structure and ASIC workflow are based on the Apache-2.0-licensed
 Tiny Tapeout Verilog template, pinned in `reports/TARGET.md`.

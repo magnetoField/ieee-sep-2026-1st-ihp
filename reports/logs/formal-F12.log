@@ -641,6 +641,6 @@ SAT proof finished - no model found: SUCCESS!
                  \____ $$$|__/|________/|__/|_______/|__/
                        \__/                              
 
-End of script. Logfile hash: 5414d3ffac, CPU: user 0.12s system 0.04s, MEM: 17.78 MB peak
+End of script. Logfile hash: 5414d3ffac, CPU: user 0.12s system 0.04s, MEM: 17.66 MB peak
 Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
-Time spent: 38% 2x read_verilog (0 sec), 15% 5x opt_clean (0 sec), ...
+Time spent: 34% 2x read_verilog (0 sec), 18% 1x sat (0 sec), ...

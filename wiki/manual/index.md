@@ -1,6 +1,10 @@
 # Strona główna
 
-**Koło Naukowe BAZA · ZT · PN · MK · JT · KK**
+**Koło Naukowe BAZA, Politechnika Warszawska · ZT · PN · MK · JT · KK**
+
+Projekt powstał w ramach **IEEE Open Silicon Initiative**. Dziękujemy IEEE EDS,
+IEEE SSCS, IEEE CASS, IEEE CEDA i IEEE Nanotechnology Council za finansowanie
+programu oraz Tiny Tapeout za partnerstwo w ścieżce wytworzenia układu.
 
 <div class="portal-intro">
 <p class="welcome">Witaj w D00RSH Wiki</p>

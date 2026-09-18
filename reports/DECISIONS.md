@@ -284,3 +284,25 @@ and deployment. This preserves the official GDS/render inputs and Pages output
 while making every attempt unambiguous. `prepare_upload.py` enforces the paired
 names. No RTL, physical configuration, signoff evidence or production status
 is changed by this CI-only repair.
+
+## D-028 — source-backed IEEE acknowledgement and TT page structure
+
+Date: 2026-09-18. Publicly identify the author as Koło Naukowe BAZA,
+Politechnika Warszawska, with creator initials ZT PN MK JT KK. Acknowledge the
+IEEE Open Silicon Initiative using only the funding organizations and partner
+relationship stated on the official IEEE HART page. Separately acknowledge
+SwissChips exactly in the scope stated by Tiny Tapeout: funding the platform's
+IHP 130 nm work. Organize the datasheet using the recurring Tiny Tapeout
+`About / How it works / How to test / External hardware / IO` pattern. Related
+projects are documented as presentation references only; do not copy their RTL
+or prose and do not imply that they validate D00RSH security.
+
+## D-029 — preserve hardened active-buzzer identity; record passive FPGA test
+
+Date: 2026-09-18. The user reports successful FPGA operation with a passive
+buzzer (`ACTIVE_BUZZER=0`). Record this as user-supplied hardware evidence and
+keep the existing independent RTL tests of both buzzer modes. The signed-off
+ASIC candidate remains `ACTIVE_BUZZER=1`. Do not flip the elaboration parameter
+inside a documentation publication change: it would create a different
+synthesized netlist/GDS and require a complete new physical and gate-level
+qualification.

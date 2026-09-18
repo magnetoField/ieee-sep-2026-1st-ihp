@@ -16,6 +16,34 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 
+EXPECTED_AUTHOR = 'Koło Naukowe BAZA, Politechnika Warszawska — ZT, PN, MK, JT, KK'
+EXPECTED_PINOUT = {
+    'ui[0]': 'keypad column 0, active low',
+    'ui[1]': 'keypad column 1, active low',
+    'ui[2]': 'keypad column 2, active low',
+    'ui[3]': 'keypad column 3, active low',
+    'ui[4]': 'SHIFT64 SDI',
+    'ui[5]': 'SHIFT64 SCLK',
+    'ui[6]': 'SHIFT64 CS_n',
+    'ui[7]': 'unused',
+    'uo[0]': 'CHALLENGE_READY after correct PIN',
+    'uo[1]': 'unused, tied low',
+    'uo[2]': 'SHIFT64 SDO',
+    'uo[3]': 'buzzer',
+    'uo[4]': 'unused, tied low',
+    'uo[5]': 'unused, tied low',
+    'uo[6]': 'unused, tied low',
+    'uo[7]': 'unused, tied low',
+    'uio[0]': 'keypad row 0 open-drain enable',
+    'uio[1]': 'keypad row 1 open-drain enable',
+    'uio[2]': 'keypad row 2 open-drain enable',
+    'uio[3]': 'keypad row 3 open-drain enable',
+    'uio[4]': 'unused',
+    'uio[5]': 'unused',
+    'uio[6]': 'unused',
+    'uio[7]': 'unused',
+}
+
 
 def check_viewer_artifact(viewer):
     """Require one attempt-specific Pages artifact from upload through deploy."""
@@ -64,6 +92,8 @@ def check(names):
         errors.append('Expected YAML v6 and 1x1 tile')
     if project.get('clock_hz') != 1000000:
         errors.append('Expected 1 MHz clock')
+    if project.get('title') != 'D00RSH' or project.get('author') != EXPECTED_AUTHOR:
+        errors.append('Expected public D00RSH title and full BAZA/PW authorship')
     sources = project.get('source_files', [])
     if not sources or len(sources) != len(set(sources)):
         errors.append('Empty or duplicate source list')
@@ -85,6 +115,21 @@ def check(names):
         for bit in range(8):
             if f'{group}[{bit}]' not in info.get('pinout', {}):
                 errors.append(f'Missing pin {group}[{bit}]')
+    if info.get('pinout') != EXPECTED_PINOUT:
+        errors.append('Public pinout differs from the reviewed D00RSH mapping')
+    wrapper = (ROOT / 'src/project.v').read_text()
+    for port in ('ui_in', 'uo_out', 'uio_in', 'uio_out', 'uio_oe', 'ena', 'clk', 'rst_n'):
+        if not re.search(rf'\b{port}\b', wrapper):
+            errors.append(f'Tiny Tapeout wrapper port missing: {port}')
+    verilog = '\n'.join(path.read_text() for path in source_paths)
+    if re.search(r'\bposedge\s+(?:serial_)?sclk\b', verilog, re.IGNORECASE):
+        errors.append('SCLK must be synchronized data, not an RTL clock')
+    datasheet = (ROOT / 'docs/info.md').read_text()
+    for marker in ('## About this project', '## How it works', '## How to test',
+                   '## External hardware', '## Security scope',
+                   'IEEE Open Silicon Initiative', 'Politechnika Warszawska'):
+        if marker not in datasheet:
+            errors.append(f'Public datasheet missing: {marker}')
     required = ('LICENSE', 'README.md', 'docs/info.md', 'test/Makefile',
                 '.github/workflows/gds.yaml', '.github/workflows/docs.yaml',
                 '.github/workflows/test.yaml', '.github/workflows/wiki.yaml',
