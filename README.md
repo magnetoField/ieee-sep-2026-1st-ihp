@@ -1,3 +1,5 @@
+![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg)
+
 # IEEE DOORSH
 
 **Koło Naukowe BAZA, Politechnika Warszawska — ZT, PN, MK, JT, KK**
